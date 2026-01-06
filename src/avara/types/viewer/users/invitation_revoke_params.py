@@ -1,0 +1,15 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+from typing_extensions import Annotated, TypedDict
+
+from ...._utils import PropertyInfo
+
+__all__ = ["InvitationRevokeParams"]
+
+
+class InvitationRevokeParams(TypedDict, total=False):
+    invitation_id: Annotated[str, PropertyInfo(alias="invitationId")]
+
+    user_id: Annotated[str, PropertyInfo(alias="userId")]

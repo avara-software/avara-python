@@ -1,0 +1,253 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from typing import List, Generic, TypeVar, Optional
+from typing_extensions import override
+
+from pydantic import Field as FieldInfo
+
+from ._base_client import BasePage, PageInfo, BaseSyncPage, BaseAsyncPage
+
+__all__ = [
+    "SyncCursorUsers",
+    "AsyncCursorUsers",
+    "SyncCursorStudies",
+    "AsyncCursorStudies",
+    "SyncCursorInvitations",
+    "AsyncCursorInvitations",
+    "SyncCursorOrganizations",
+    "AsyncCursorOrganizations",
+]
+
+_T = TypeVar("_T")
+
+
+class SyncCursorUsers(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
+    users: List[_T]
+    cursor: Optional[str] = None
+    has_more: Optional[bool] = FieldInfo(alias="hasMore", default=None)
+
+    @override
+    def _get_page_items(self) -> List[_T]:
+        users = self.users
+        if not users:
+            return []
+        return users
+
+    @override
+    def has_next_page(self) -> bool:
+        has_more = self.has_more
+        if has_more is not None and has_more is False:
+            return False
+
+        return super().has_next_page()
+
+    @override
+    def next_page_info(self) -> Optional[PageInfo]:
+        cursor = self.cursor
+        if not cursor:
+            return None
+
+        return PageInfo(params={"cursor": cursor})
+
+
+class AsyncCursorUsers(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
+    users: List[_T]
+    cursor: Optional[str] = None
+    has_more: Optional[bool] = FieldInfo(alias="hasMore", default=None)
+
+    @override
+    def _get_page_items(self) -> List[_T]:
+        users = self.users
+        if not users:
+            return []
+        return users
+
+    @override
+    def has_next_page(self) -> bool:
+        has_more = self.has_more
+        if has_more is not None and has_more is False:
+            return False
+
+        return super().has_next_page()
+
+    @override
+    def next_page_info(self) -> Optional[PageInfo]:
+        cursor = self.cursor
+        if not cursor:
+            return None
+
+        return PageInfo(params={"cursor": cursor})
+
+
+class SyncCursorStudies(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
+    studies: List[_T]
+    cursor: Optional[str] = None
+    has_more: Optional[bool] = FieldInfo(alias="hasMore", default=None)
+
+    @override
+    def _get_page_items(self) -> List[_T]:
+        studies = self.studies
+        if not studies:
+            return []
+        return studies
+
+    @override
+    def has_next_page(self) -> bool:
+        has_more = self.has_more
+        if has_more is not None and has_more is False:
+            return False
+
+        return super().has_next_page()
+
+    @override
+    def next_page_info(self) -> Optional[PageInfo]:
+        cursor = self.cursor
+        if not cursor:
+            return None
+
+        return PageInfo(params={"cursor": cursor})
+
+
+class AsyncCursorStudies(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
+    studies: List[_T]
+    cursor: Optional[str] = None
+    has_more: Optional[bool] = FieldInfo(alias="hasMore", default=None)
+
+    @override
+    def _get_page_items(self) -> List[_T]:
+        studies = self.studies
+        if not studies:
+            return []
+        return studies
+
+    @override
+    def has_next_page(self) -> bool:
+        has_more = self.has_more
+        if has_more is not None and has_more is False:
+            return False
+
+        return super().has_next_page()
+
+    @override
+    def next_page_info(self) -> Optional[PageInfo]:
+        cursor = self.cursor
+        if not cursor:
+            return None
+
+        return PageInfo(params={"cursor": cursor})
+
+
+class SyncCursorInvitations(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
+    invitations: List[_T]
+    cursor: Optional[str] = None
+    has_more: Optional[bool] = FieldInfo(alias="hasMore", default=None)
+
+    @override
+    def _get_page_items(self) -> List[_T]:
+        invitations = self.invitations
+        if not invitations:
+            return []
+        return invitations
+
+    @override
+    def has_next_page(self) -> bool:
+        has_more = self.has_more
+        if has_more is not None and has_more is False:
+            return False
+
+        return super().has_next_page()
+
+    @override
+    def next_page_info(self) -> Optional[PageInfo]:
+        cursor = self.cursor
+        if not cursor:
+            return None
+
+        return PageInfo(params={"cursor": cursor})
+
+
+class AsyncCursorInvitations(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
+    invitations: List[_T]
+    cursor: Optional[str] = None
+    has_more: Optional[bool] = FieldInfo(alias="hasMore", default=None)
+
+    @override
+    def _get_page_items(self) -> List[_T]:
+        invitations = self.invitations
+        if not invitations:
+            return []
+        return invitations
+
+    @override
+    def has_next_page(self) -> bool:
+        has_more = self.has_more
+        if has_more is not None and has_more is False:
+            return False
+
+        return super().has_next_page()
+
+    @override
+    def next_page_info(self) -> Optional[PageInfo]:
+        cursor = self.cursor
+        if not cursor:
+            return None
+
+        return PageInfo(params={"cursor": cursor})
+
+
+class SyncCursorOrganizations(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
+    organizations: List[_T]
+    cursor: Optional[str] = None
+    has_more: Optional[bool] = FieldInfo(alias="hasMore", default=None)
+
+    @override
+    def _get_page_items(self) -> List[_T]:
+        organizations = self.organizations
+        if not organizations:
+            return []
+        return organizations
+
+    @override
+    def has_next_page(self) -> bool:
+        has_more = self.has_more
+        if has_more is not None and has_more is False:
+            return False
+
+        return super().has_next_page()
+
+    @override
+    def next_page_info(self) -> Optional[PageInfo]:
+        cursor = self.cursor
+        if not cursor:
+            return None
+
+        return PageInfo(params={"cursor": cursor})
+
+
+class AsyncCursorOrganizations(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
+    organizations: List[_T]
+    cursor: Optional[str] = None
+    has_more: Optional[bool] = FieldInfo(alias="hasMore", default=None)
+
+    @override
+    def _get_page_items(self) -> List[_T]:
+        organizations = self.organizations
+        if not organizations:
+            return []
+        return organizations
+
+    @override
+    def has_next_page(self) -> bool:
+        has_more = self.has_more
+        if has_more is not None and has_more is False:
+            return False
+
+        return super().has_next_page()
+
+    @override
+    def next_page_info(self) -> Optional[PageInfo]:
+        cursor = self.cursor
+        if not cursor:
+            return None
+
+        return PageInfo(params={"cursor": cursor})
