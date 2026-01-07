@@ -7,7 +7,7 @@ from .report_pdf_params import ReportPdfParams as ReportPdfParams
 from .study_list_params import StudyListParams as StudyListParams
 from .report_list_params import ReportListParams as ReportListParams
 from .report_text_params import ReportTextParams as ReportTextParams
-from .user_create_params import UserCreateParams as UserCreateParams
+from .user_invite_params import UserInviteParams as UserInviteParams
 from .user_list_response import UserListResponse as UserListResponse
 from .user_update_params import UserUpdateParams as UserUpdateParams
 from .report_pdf_response import ReportPdfResponse as ReportPdfResponse
@@ -17,7 +17,7 @@ from .study_list_response import StudyListResponse as StudyListResponse
 from .study_update_params import StudyUpdateParams as StudyUpdateParams
 from .report_list_response import ReportListResponse as ReportListResponse
 from .report_text_response import ReportTextResponse as ReportTextResponse
-from .user_create_response import UserCreateResponse as UserCreateResponse
+from .user_invite_response import UserInviteResponse as UserInviteResponse
 from .user_update_response import UserUpdateResponse as UserUpdateResponse
 from .report_id_with_status import ReportIDWithStatus as ReportIDWithStatus
 from .study_cancel_response import StudyCancelResponse as StudyCancelResponse

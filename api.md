@@ -40,10 +40,10 @@ Types:
 
 ```python
 from avara.types.viewer import (
-    UserCreateResponse,
     UserRetrieveResponse,
     UserUpdateResponse,
     UserListResponse,
+    UserInviteResponse,
     UserReactivateResponse,
     UserRevokeAccessResponse,
 )
@@ -51,10 +51,10 @@ from avara.types.viewer import (
 
 Methods:
 
-- <code title="post /v1/viewer/users">client.viewer.users.<a href="./src/avara/resources/viewer/users/users.py">create</a>(\*\*<a href="src/avara/types/viewer/user_create_params.py">params</a>) -> <a href="./src/avara/types/viewer/user_create_response.py">UserCreateResponse</a></code>
 - <code title="get /v1/viewer/users/{userId}">client.viewer.users.<a href="./src/avara/resources/viewer/users/users.py">retrieve</a>(user_id) -> <a href="./src/avara/types/viewer/user_retrieve_response.py">UserRetrieveResponse</a></code>
 - <code title="patch /v1/viewer/users/{userId}">client.viewer.users.<a href="./src/avara/resources/viewer/users/users.py">update</a>(user_id, \*\*<a href="src/avara/types/viewer/user_update_params.py">params</a>) -> <a href="./src/avara/types/viewer/user_update_response.py">UserUpdateResponse</a></code>
 - <code title="get /v1/viewer/users">client.viewer.users.<a href="./src/avara/resources/viewer/users/users.py">list</a>(\*\*<a href="src/avara/types/viewer/user_list_params.py">params</a>) -> <a href="./src/avara/types/viewer/user_list_response.py">SyncCursorUsers[UserListResponse]</a></code>
+- <code title="post /v1/viewer/users">client.viewer.users.<a href="./src/avara/resources/viewer/users/users.py">invite</a>(\*\*<a href="src/avara/types/viewer/user_invite_params.py">params</a>) -> <a href="./src/avara/types/viewer/user_invite_response.py">UserInviteResponse</a></code>
 - <code title="post /v1/viewer/users/reactivate">client.viewer.users.<a href="./src/avara/resources/viewer/users/users.py">reactivate</a>(\*\*<a href="src/avara/types/viewer/user_reactivate_params.py">params</a>) -> <a href="./src/avara/types/viewer/user_reactivate_response.py">UserReactivateResponse</a></code>
 - <code title="post /v1/viewer/users/revoke-access">client.viewer.users.<a href="./src/avara/resources/viewer/users/users.py">revoke_access</a>(\*\*<a href="src/avara/types/viewer/user_revoke_access_params.py">params</a>) -> <a href="./src/avara/types/viewer/user_revoke_access_response.py">UserRevokeAccessResponse</a></code>
 
@@ -123,10 +123,10 @@ Types:
 
 ```python
 from avara.types.auto_scribe import (
-    UserCreateResponse,
     UserRetrieveResponse,
     UserUpdateResponse,
     UserListResponse,
+    UserInviteResponse,
     UserReactivateResponse,
     UserRevokeAccessResponse,
 )
@@ -134,10 +134,10 @@ from avara.types.auto_scribe import (
 
 Methods:
 
-- <code title="post /v1/autoScribe/users">client.auto_scribe.users.<a href="./src/avara/resources/auto_scribe/users/users.py">create</a>(\*\*<a href="src/avara/types/auto_scribe/user_create_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/user_create_response.py">UserCreateResponse</a></code>
 - <code title="get /v1/autoScribe/users/{userId}">client.auto_scribe.users.<a href="./src/avara/resources/auto_scribe/users/users.py">retrieve</a>(user_id) -> <a href="./src/avara/types/auto_scribe/user_retrieve_response.py">UserRetrieveResponse</a></code>
 - <code title="patch /v1/autoScribe/users/{userId}">client.auto_scribe.users.<a href="./src/avara/resources/auto_scribe/users/users.py">update</a>(user_id, \*\*<a href="src/avara/types/auto_scribe/user_update_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/user_update_response.py">UserUpdateResponse</a></code>
 - <code title="get /v1/autoScribe/users">client.auto_scribe.users.<a href="./src/avara/resources/auto_scribe/users/users.py">list</a>(\*\*<a href="src/avara/types/auto_scribe/user_list_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/user_list_response.py">SyncCursorUsers[UserListResponse]</a></code>
+- <code title="post /v1/autoScribe/users">client.auto_scribe.users.<a href="./src/avara/resources/auto_scribe/users/users.py">invite</a>(\*\*<a href="src/avara/types/auto_scribe/user_invite_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/user_invite_response.py">UserInviteResponse</a></code>
 - <code title="post /v1/autoScribe/users/reactivate">client.auto_scribe.users.<a href="./src/avara/resources/auto_scribe/users/users.py">reactivate</a>(\*\*<a href="src/avara/types/auto_scribe/user_reactivate_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/user_reactivate_response.py">UserReactivateResponse</a></code>
 - <code title="post /v1/autoScribe/users/revoke-access">client.auto_scribe.users.<a href="./src/avara/resources/auto_scribe/users/users.py">revoke_access</a>(\*\*<a href="src/avara/types/auto_scribe/user_revoke_access_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/user_revoke_access_response.py">UserRevokeAccessResponse</a></code>
 
@@ -212,13 +212,13 @@ Methods:
 Types:
 
 ```python
-from avara.types.orgs import UserCreateResponse, UserDeleteResponse
+from avara.types.orgs import UserAddResponse, UserRemoveResponse
 ```
 
 Methods:
 
-- <code title="post /v1/orgs/{orgId}/users">client.orgs.users.<a href="./src/avara/resources/orgs/users.py">create</a>(org_id, \*\*<a href="src/avara/types/orgs/user_create_params.py">params</a>) -> <a href="./src/avara/types/orgs/user_create_response.py">UserCreateResponse</a></code>
-- <code title="delete /v1/orgs/{orgId}/users">client.orgs.users.<a href="./src/avara/resources/orgs/users.py">delete</a>(org_id, \*\*<a href="src/avara/types/orgs/user_delete_params.py">params</a>) -> <a href="./src/avara/types/orgs/user_delete_response.py">UserDeleteResponse</a></code>
+- <code title="post /v1/orgs/{orgId}/users">client.orgs.users.<a href="./src/avara/resources/orgs/users.py">add</a>(org_id, \*\*<a href="src/avara/types/orgs/user_add_params.py">params</a>) -> <a href="./src/avara/types/orgs/user_add_response.py">UserAddResponse</a></code>
+- <code title="delete /v1/orgs/{orgId}/users">client.orgs.users.<a href="./src/avara/resources/orgs/users.py">remove</a>(org_id, \*\*<a href="src/avara/types/orgs/user_remove_params.py">params</a>) -> <a href="./src/avara/types/orgs/user_remove_response.py">UserRemoveResponse</a></code>
 
 # Webhooks
 

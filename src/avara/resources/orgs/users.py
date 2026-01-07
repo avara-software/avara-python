@@ -14,10 +14,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.orgs import user_create_params, user_delete_params
+from ...types.orgs import user_add_params, user_remove_params
 from ..._base_client import make_request_options
-from ...types.orgs.user_create_response import UserCreateResponse
-from ...types.orgs.user_delete_response import UserDeleteResponse
+from ...types.orgs.user_add_response import UserAddResponse
+from ...types.orgs.user_remove_response import UserRemoveResponse
 
 __all__ = ["UsersResource", "AsyncUsersResource"]
 
@@ -42,7 +42,7 @@ class UsersResource(SyncAPIResource):
         """
         return UsersResourceWithStreamingResponse(self)
 
-    def create(
+    def add(
         self,
         org_id: str,
         *,
@@ -53,7 +53,7 @@ class UsersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> UserCreateResponse:
+    ) -> UserAddResponse:
         """Args:
           org_id: Organization ID.
 
@@ -71,14 +71,14 @@ class UsersResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._post(
             f"/v1/orgs/{org_id}/users",
-            body=maybe_transform({"user_id": user_id}, user_create_params.UserCreateParams),
+            body=maybe_transform({"user_id": user_id}, user_add_params.UserAddParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=UserCreateResponse,
+            cast_to=UserAddResponse,
         )
 
-    def delete(
+    def remove(
         self,
         org_id: str,
         *,
@@ -89,7 +89,7 @@ class UsersResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> UserDeleteResponse:
+    ) -> UserRemoveResponse:
         """Args:
           org_id: Organization ID.
 
@@ -107,11 +107,11 @@ class UsersResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return self._delete(
             f"/v1/orgs/{org_id}/users",
-            body=maybe_transform({"user_id": user_id}, user_delete_params.UserDeleteParams),
+            body=maybe_transform({"user_id": user_id}, user_remove_params.UserRemoveParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=UserDeleteResponse,
+            cast_to=UserRemoveResponse,
         )
 
 
@@ -135,7 +135,7 @@ class AsyncUsersResource(AsyncAPIResource):
         """
         return AsyncUsersResourceWithStreamingResponse(self)
 
-    async def create(
+    async def add(
         self,
         org_id: str,
         *,
@@ -146,7 +146,7 @@ class AsyncUsersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> UserCreateResponse:
+    ) -> UserAddResponse:
         """Args:
           org_id: Organization ID.
 
@@ -164,14 +164,14 @@ class AsyncUsersResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._post(
             f"/v1/orgs/{org_id}/users",
-            body=await async_maybe_transform({"user_id": user_id}, user_create_params.UserCreateParams),
+            body=await async_maybe_transform({"user_id": user_id}, user_add_params.UserAddParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=UserCreateResponse,
+            cast_to=UserAddResponse,
         )
 
-    async def delete(
+    async def remove(
         self,
         org_id: str,
         *,
@@ -182,7 +182,7 @@ class AsyncUsersResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> UserDeleteResponse:
+    ) -> UserRemoveResponse:
         """Args:
           org_id: Organization ID.
 
@@ -200,11 +200,11 @@ class AsyncUsersResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `org_id` but received {org_id!r}")
         return await self._delete(
             f"/v1/orgs/{org_id}/users",
-            body=await async_maybe_transform({"user_id": user_id}, user_delete_params.UserDeleteParams),
+            body=await async_maybe_transform({"user_id": user_id}, user_remove_params.UserRemoveParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=UserDeleteResponse,
+            cast_to=UserRemoveResponse,
         )
 
 
@@ -212,11 +212,11 @@ class UsersResourceWithRawResponse:
     def __init__(self, users: UsersResource) -> None:
         self._users = users
 
-        self.create = to_raw_response_wrapper(
-            users.create,
+        self.add = to_raw_response_wrapper(
+            users.add,
         )
-        self.delete = to_raw_response_wrapper(
-            users.delete,
+        self.remove = to_raw_response_wrapper(
+            users.remove,
         )
 
 
@@ -224,11 +224,11 @@ class AsyncUsersResourceWithRawResponse:
     def __init__(self, users: AsyncUsersResource) -> None:
         self._users = users
 
-        self.create = async_to_raw_response_wrapper(
-            users.create,
+        self.add = async_to_raw_response_wrapper(
+            users.add,
         )
-        self.delete = async_to_raw_response_wrapper(
-            users.delete,
+        self.remove = async_to_raw_response_wrapper(
+            users.remove,
         )
 
 
@@ -236,11 +236,11 @@ class UsersResourceWithStreamingResponse:
     def __init__(self, users: UsersResource) -> None:
         self._users = users
 
-        self.create = to_streamed_response_wrapper(
-            users.create,
+        self.add = to_streamed_response_wrapper(
+            users.add,
         )
-        self.delete = to_streamed_response_wrapper(
-            users.delete,
+        self.remove = to_streamed_response_wrapper(
+            users.remove,
         )
 
 
@@ -248,9 +248,9 @@ class AsyncUsersResourceWithStreamingResponse:
     def __init__(self, users: AsyncUsersResource) -> None:
         self._users = users
 
-        self.create = async_to_streamed_response_wrapper(
-            users.create,
+        self.add = async_to_streamed_response_wrapper(
+            users.add,
         )
-        self.delete = async_to_streamed_response_wrapper(
-            users.delete,
+        self.remove = async_to_streamed_response_wrapper(
+            users.remove,
         )

@@ -4,10 +4,10 @@ from typing import Optional
 
 from ..._models import BaseModel
 
-__all__ = ["UserDeleteResponse"]
+__all__ = ["UserAddResponse"]
 
 
-class UserDeleteResponse(BaseModel):
+class UserAddResponse(BaseModel):
     """Standard success response with optional message"""
 
     success: bool

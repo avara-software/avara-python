@@ -6,8 +6,8 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["UserCreateParams"]
+__all__ = ["UserAddParams"]
 
 
-class UserCreateParams(TypedDict, total=False):
+class UserAddParams(TypedDict, total=False):
     user_id: Required[Annotated[str, PropertyInfo(alias="userId")]]

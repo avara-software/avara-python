@@ -8,10 +8,10 @@ from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 
-__all__ = ["UserCreateResponse"]
+__all__ = ["UserInviteResponse"]
 
 
-class UserCreateResponse(BaseModel):
+class UserInviteResponse(BaseModel):
     """A user in the Viewer system with study management permissions"""
 
     can_manage_studies: bool = FieldInfo(alias="canManageStudies")

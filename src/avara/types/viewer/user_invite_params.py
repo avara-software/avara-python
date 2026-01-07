@@ -6,12 +6,10 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["UserCreateParams"]
+__all__ = ["UserInviteParams"]
 
 
-class UserCreateParams(TypedDict, total=False):
-    can_create_reports: Required[Annotated[bool, PropertyInfo(alias="canCreateReports")]]
-
+class UserInviteParams(TypedDict, total=False):
     can_manage_studies: Required[Annotated[bool, PropertyInfo(alias="canManageStudies")]]
 
     clinic_role: Required[
@@ -54,8 +52,6 @@ class UserCreateParams(TypedDict, total=False):
     level: Required[Literal["admin", "member"]]
 
     middle_name: Annotated[str, PropertyInfo(alias="middleName")]
-
-    npi_number: Annotated[str, PropertyInfo(alias="npiNumber")]
 
     phone_number: Annotated[str, PropertyInfo(alias="phoneNumber")]
 
