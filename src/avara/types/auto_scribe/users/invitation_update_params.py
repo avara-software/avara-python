@@ -12,8 +12,16 @@ __all__ = ["InvitationUpdateParams"]
 
 class InvitationUpdateParams(TypedDict, total=False):
     can_create_reports: Annotated[bool, PropertyInfo(alias="canCreateReports")]
+    """Whether the invited user can generate and sign radiology reports.
+
+    Requires NPI number
+    """
 
     can_manage_studies: Annotated[bool, PropertyInfo(alias="canManageStudies")]
+    """
+    Whether the invited user will have permission to create, update, and manage
+    studies
+    """
 
     clinic_role: Annotated[
         Optional[

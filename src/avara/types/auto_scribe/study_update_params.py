@@ -25,8 +25,13 @@ class StudyUpdateParams(TypedDict, total=False):
     report_metadata: Annotated[ReportMetadata, PropertyInfo(alias="reportMetadata")]
 
     severity: Literal["normal", "high", "stat"]
+    """Priority level of the study.
+
+    'normal' for routine, 'high' for urgent, 'stat' for immediate attention
+    """
 
     study_description: Annotated[str, PropertyInfo(alias="studyDescription")]
+    """Description of the study/scan (e.g., 'Brain MRI with Contrast', 'Chest CT')"""
 
 
 class ReportMetadataHeight(TypedDict, total=False):
