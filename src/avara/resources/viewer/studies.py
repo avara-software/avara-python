@@ -135,6 +135,8 @@ class StudiesResource(SyncAPIResource):
         object with all metadata and status information.
 
         Args:
+          study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -175,6 +177,8 @@ class StudiesResource(SyncAPIResource):
         be updated.
 
         Args:
+          study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
           severity: Priority level of the study. 'normal' for routine, 'high' for urgent, 'stat' for
               immediate attention
 
@@ -537,6 +541,8 @@ class AsyncStudiesResource(AsyncAPIResource):
         object with all metadata and status information.
 
         Args:
+          study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -577,6 +583,8 @@ class AsyncStudiesResource(AsyncAPIResource):
         be updated.
 
         Args:
+          study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
           severity: Priority level of the study. 'normal' for routine, 'high' for urgent, 'stat' for
               immediate attention
 

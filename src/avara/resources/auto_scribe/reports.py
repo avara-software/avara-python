@@ -111,6 +111,8 @@ class ReportsResource(SyncAPIResource):
         additional findings.
 
         Args:
+          report_id: Unique report identifier. Format: rep\\__{32-hex-chars}
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -146,6 +148,8 @@ class ReportsResource(SyncAPIResource):
         original report remains unchanged. Only valid for active addendums.
 
         Args:
+          report_id: Unique report identifier. Format: rep\\__{32-hex-chars}
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -355,6 +359,8 @@ class AsyncReportsResource(AsyncAPIResource):
         additional findings.
 
         Args:
+          report_id: Unique report identifier. Format: rep\\__{32-hex-chars}
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -390,6 +396,8 @@ class AsyncReportsResource(AsyncAPIResource):
         original report remains unchanged. Only valid for active addendums.
 
         Args:
+          report_id: Unique report identifier. Format: rep\\__{32-hex-chars}
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
