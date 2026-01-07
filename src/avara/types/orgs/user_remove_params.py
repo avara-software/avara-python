@@ -6,8 +6,8 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["UserDeleteParams"]
+__all__ = ["UserRemoveParams"]
 
 
-class UserDeleteParams(TypedDict, total=False):
+class UserRemoveParams(TypedDict, total=False):
     user_id: Required[Annotated[str, PropertyInfo(alias="userId")]]

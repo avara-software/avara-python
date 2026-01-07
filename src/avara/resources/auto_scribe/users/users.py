@@ -29,13 +29,13 @@ from ....pagination import SyncCursorUsers, AsyncCursorUsers
 from ...._base_client import AsyncPaginator, make_request_options
 from ....types.auto_scribe import (
     user_list_params,
-    user_create_params,
+    user_invite_params,
     user_update_params,
     user_reactivate_params,
     user_revoke_access_params,
 )
 from ....types.auto_scribe.user_list_response import UserListResponse
-from ....types.auto_scribe.user_create_response import UserCreateResponse
+from ....types.auto_scribe.user_invite_response import UserInviteResponse
 from ....types.auto_scribe.user_update_response import UserUpdateResponse
 from ....types.auto_scribe.user_retrieve_response import UserRetrieveResponse
 from ....types.auto_scribe.user_reactivate_response import UserReactivateResponse
@@ -67,87 +67,6 @@ class UsersResource(SyncAPIResource):
         For more information, see https://www.github.com/stainless-sdks/avara-python#with_streaming_response
         """
         return UsersResourceWithStreamingResponse(self)
-
-    def create(
-        self,
-        *,
-        can_create_reports: bool,
-        can_manage_studies: bool,
-        clinic_role: Literal[
-            "Radiologist",
-            "Cardiologist",
-            "Neurologist",
-            "Urologist",
-            "Gynecologist",
-            "Endocrinologist",
-            "Doctor",
-            "Surgeon",
-            "Physician",
-            "Physician Assistant",
-            "Nurse Practitioner",
-            "Registered Nurse",
-            "Patient Care Coordinator",
-            "Front Desk Operator",
-            "Imaging Technologist",
-            "PACS Administrator",
-            "Software Engineer",
-            "Revenue Cycle Manager",
-            "Administrative Director",
-            "Administrative Assistant",
-            "Other",
-        ],
-        email: str,
-        first_name: str,
-        has_dashboard_access: bool,
-        last_name: str,
-        level: Literal["admin", "member"],
-        middle_name: str | Omit = omit,
-        npi_number: str | Omit = omit,
-        phone_number: str | Omit = omit,
-        suffix1: str | Omit = omit,
-        suffix2: str | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> UserCreateResponse:
-        """
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._post(
-            "/v1/autoScribe/users",
-            body=maybe_transform(
-                {
-                    "can_create_reports": can_create_reports,
-                    "can_manage_studies": can_manage_studies,
-                    "clinic_role": clinic_role,
-                    "email": email,
-                    "first_name": first_name,
-                    "has_dashboard_access": has_dashboard_access,
-                    "last_name": last_name,
-                    "level": level,
-                    "middle_name": middle_name,
-                    "npi_number": npi_number,
-                    "phone_number": phone_number,
-                    "suffix1": suffix1,
-                    "suffix2": suffix2,
-                },
-                user_create_params.UserCreateParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=UserCreateResponse,
-        )
 
     def retrieve(
         self,
@@ -337,6 +256,87 @@ class UsersResource(SyncAPIResource):
             model=UserListResponse,
         )
 
+    def invite(
+        self,
+        *,
+        can_create_reports: bool,
+        can_manage_studies: bool,
+        clinic_role: Literal[
+            "Radiologist",
+            "Cardiologist",
+            "Neurologist",
+            "Urologist",
+            "Gynecologist",
+            "Endocrinologist",
+            "Doctor",
+            "Surgeon",
+            "Physician",
+            "Physician Assistant",
+            "Nurse Practitioner",
+            "Registered Nurse",
+            "Patient Care Coordinator",
+            "Front Desk Operator",
+            "Imaging Technologist",
+            "PACS Administrator",
+            "Software Engineer",
+            "Revenue Cycle Manager",
+            "Administrative Director",
+            "Administrative Assistant",
+            "Other",
+        ],
+        email: str,
+        first_name: str,
+        has_dashboard_access: bool,
+        last_name: str,
+        level: Literal["admin", "member"],
+        middle_name: str | Omit = omit,
+        npi_number: str | Omit = omit,
+        phone_number: str | Omit = omit,
+        suffix1: str | Omit = omit,
+        suffix2: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> UserInviteResponse:
+        """
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/v1/autoScribe/users",
+            body=maybe_transform(
+                {
+                    "can_create_reports": can_create_reports,
+                    "can_manage_studies": can_manage_studies,
+                    "clinic_role": clinic_role,
+                    "email": email,
+                    "first_name": first_name,
+                    "has_dashboard_access": has_dashboard_access,
+                    "last_name": last_name,
+                    "level": level,
+                    "middle_name": middle_name,
+                    "npi_number": npi_number,
+                    "phone_number": phone_number,
+                    "suffix1": suffix1,
+                    "suffix2": suffix2,
+                },
+                user_invite_params.UserInviteParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=UserInviteResponse,
+        )
+
     def reactivate(
         self,
         *,
@@ -421,87 +421,6 @@ class AsyncUsersResource(AsyncAPIResource):
         For more information, see https://www.github.com/stainless-sdks/avara-python#with_streaming_response
         """
         return AsyncUsersResourceWithStreamingResponse(self)
-
-    async def create(
-        self,
-        *,
-        can_create_reports: bool,
-        can_manage_studies: bool,
-        clinic_role: Literal[
-            "Radiologist",
-            "Cardiologist",
-            "Neurologist",
-            "Urologist",
-            "Gynecologist",
-            "Endocrinologist",
-            "Doctor",
-            "Surgeon",
-            "Physician",
-            "Physician Assistant",
-            "Nurse Practitioner",
-            "Registered Nurse",
-            "Patient Care Coordinator",
-            "Front Desk Operator",
-            "Imaging Technologist",
-            "PACS Administrator",
-            "Software Engineer",
-            "Revenue Cycle Manager",
-            "Administrative Director",
-            "Administrative Assistant",
-            "Other",
-        ],
-        email: str,
-        first_name: str,
-        has_dashboard_access: bool,
-        last_name: str,
-        level: Literal["admin", "member"],
-        middle_name: str | Omit = omit,
-        npi_number: str | Omit = omit,
-        phone_number: str | Omit = omit,
-        suffix1: str | Omit = omit,
-        suffix2: str | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> UserCreateResponse:
-        """
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._post(
-            "/v1/autoScribe/users",
-            body=await async_maybe_transform(
-                {
-                    "can_create_reports": can_create_reports,
-                    "can_manage_studies": can_manage_studies,
-                    "clinic_role": clinic_role,
-                    "email": email,
-                    "first_name": first_name,
-                    "has_dashboard_access": has_dashboard_access,
-                    "last_name": last_name,
-                    "level": level,
-                    "middle_name": middle_name,
-                    "npi_number": npi_number,
-                    "phone_number": phone_number,
-                    "suffix1": suffix1,
-                    "suffix2": suffix2,
-                },
-                user_create_params.UserCreateParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=UserCreateResponse,
-        )
 
     async def retrieve(
         self,
@@ -691,6 +610,87 @@ class AsyncUsersResource(AsyncAPIResource):
             model=UserListResponse,
         )
 
+    async def invite(
+        self,
+        *,
+        can_create_reports: bool,
+        can_manage_studies: bool,
+        clinic_role: Literal[
+            "Radiologist",
+            "Cardiologist",
+            "Neurologist",
+            "Urologist",
+            "Gynecologist",
+            "Endocrinologist",
+            "Doctor",
+            "Surgeon",
+            "Physician",
+            "Physician Assistant",
+            "Nurse Practitioner",
+            "Registered Nurse",
+            "Patient Care Coordinator",
+            "Front Desk Operator",
+            "Imaging Technologist",
+            "PACS Administrator",
+            "Software Engineer",
+            "Revenue Cycle Manager",
+            "Administrative Director",
+            "Administrative Assistant",
+            "Other",
+        ],
+        email: str,
+        first_name: str,
+        has_dashboard_access: bool,
+        last_name: str,
+        level: Literal["admin", "member"],
+        middle_name: str | Omit = omit,
+        npi_number: str | Omit = omit,
+        phone_number: str | Omit = omit,
+        suffix1: str | Omit = omit,
+        suffix2: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> UserInviteResponse:
+        """
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/v1/autoScribe/users",
+            body=await async_maybe_transform(
+                {
+                    "can_create_reports": can_create_reports,
+                    "can_manage_studies": can_manage_studies,
+                    "clinic_role": clinic_role,
+                    "email": email,
+                    "first_name": first_name,
+                    "has_dashboard_access": has_dashboard_access,
+                    "last_name": last_name,
+                    "level": level,
+                    "middle_name": middle_name,
+                    "npi_number": npi_number,
+                    "phone_number": phone_number,
+                    "suffix1": suffix1,
+                    "suffix2": suffix2,
+                },
+                user_invite_params.UserInviteParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=UserInviteResponse,
+        )
+
     async def reactivate(
         self,
         *,
@@ -756,9 +756,6 @@ class UsersResourceWithRawResponse:
     def __init__(self, users: UsersResource) -> None:
         self._users = users
 
-        self.create = to_raw_response_wrapper(
-            users.create,
-        )
         self.retrieve = to_raw_response_wrapper(
             users.retrieve,
         )
@@ -767,6 +764,9 @@ class UsersResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             users.list,
+        )
+        self.invite = to_raw_response_wrapper(
+            users.invite,
         )
         self.reactivate = to_raw_response_wrapper(
             users.reactivate,
@@ -784,9 +784,6 @@ class AsyncUsersResourceWithRawResponse:
     def __init__(self, users: AsyncUsersResource) -> None:
         self._users = users
 
-        self.create = async_to_raw_response_wrapper(
-            users.create,
-        )
         self.retrieve = async_to_raw_response_wrapper(
             users.retrieve,
         )
@@ -795,6 +792,9 @@ class AsyncUsersResourceWithRawResponse:
         )
         self.list = async_to_raw_response_wrapper(
             users.list,
+        )
+        self.invite = async_to_raw_response_wrapper(
+            users.invite,
         )
         self.reactivate = async_to_raw_response_wrapper(
             users.reactivate,
@@ -812,9 +812,6 @@ class UsersResourceWithStreamingResponse:
     def __init__(self, users: UsersResource) -> None:
         self._users = users
 
-        self.create = to_streamed_response_wrapper(
-            users.create,
-        )
         self.retrieve = to_streamed_response_wrapper(
             users.retrieve,
         )
@@ -823,6 +820,9 @@ class UsersResourceWithStreamingResponse:
         )
         self.list = to_streamed_response_wrapper(
             users.list,
+        )
+        self.invite = to_streamed_response_wrapper(
+            users.invite,
         )
         self.reactivate = to_streamed_response_wrapper(
             users.reactivate,
@@ -840,9 +840,6 @@ class AsyncUsersResourceWithStreamingResponse:
     def __init__(self, users: AsyncUsersResource) -> None:
         self._users = users
 
-        self.create = async_to_streamed_response_wrapper(
-            users.create,
-        )
         self.retrieve = async_to_streamed_response_wrapper(
             users.retrieve,
         )
@@ -851,6 +848,9 @@ class AsyncUsersResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             users.list,
+        )
+        self.invite = async_to_streamed_response_wrapper(
+            users.invite,
         )
         self.reactivate = async_to_streamed_response_wrapper(
             users.reactivate,
