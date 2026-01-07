@@ -61,7 +61,7 @@ class UsersResource(SyncAPIResource):
         Args:
           org_id: Unique organization identifier. Format: org\\__{32-hex-chars}
 
-          user_id: User ID to add to the organization
+          user_id: User ID to add to the organization. Format: usr\\__{32-hex-chars}
 
           extra_headers: Send extra headers
 
@@ -102,7 +102,7 @@ class UsersResource(SyncAPIResource):
         Args:
           org_id: Unique organization identifier. Format: org\\__{32-hex-chars}
 
-          user_id: User ID to remove from the organization
+          user_id: User ID to remove from the organization. Format: usr\\__{32-hex-chars}
 
           extra_headers: Send extra headers
 
@@ -163,7 +163,7 @@ class AsyncUsersResource(AsyncAPIResource):
         Args:
           org_id: Unique organization identifier. Format: org\\__{32-hex-chars}
 
-          user_id: User ID to add to the organization
+          user_id: User ID to add to the organization. Format: usr\\__{32-hex-chars}
 
           extra_headers: Send extra headers
 
@@ -204,7 +204,7 @@ class AsyncUsersResource(AsyncAPIResource):
         Args:
           org_id: Unique organization identifier. Format: org\\__{32-hex-chars}
 
-          user_id: User ID to remove from the organization
+          user_id: User ID to remove from the organization. Format: usr\\__{32-hex-chars}
 
           extra_headers: Send extra headers
 
