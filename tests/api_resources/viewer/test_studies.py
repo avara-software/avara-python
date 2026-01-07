@@ -31,9 +31,9 @@ class TestStudies:
     @parametrize
     def test_method_create(self, client: Avara) -> None:
         study = client.viewer.studies.create(
-            severity="normal",
-            study_description="x",
-            study_instance_uid=".16...2511..",
+            severity="high",
+            study_description="CT Chest/Abdomen/Pelvis",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         )
         assert_matches_type(StudyCreateResponse, study, path=["response"])
 
@@ -41,11 +41,14 @@ class TestStudies:
     @parametrize
     def test_method_create_with_all_params(self, client: Avara) -> None:
         study = client.viewer.studies.create(
-            severity="normal",
-            study_description="x",
-            study_instance_uid=".16...2511..",
+            severity="high",
+            study_description="CT Chest/Abdomen/Pelvis",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
             assigned_to="usr_1234567890abcdef1234567890abcdef",
-            metadata={"foo": "string"},
+            metadata={
+                "department": "radiology",
+                "priority": "urgent",
+            },
             org_id="org_1234567890abcdef1234567890abcdef",
         )
         assert_matches_type(StudyCreateResponse, study, path=["response"])
@@ -54,9 +57,9 @@ class TestStudies:
     @parametrize
     def test_raw_response_create(self, client: Avara) -> None:
         response = client.viewer.studies.with_raw_response.create(
-            severity="normal",
-            study_description="x",
-            study_instance_uid=".16...2511..",
+            severity="high",
+            study_description="CT Chest/Abdomen/Pelvis",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         )
 
         assert response.is_closed is True
@@ -68,9 +71,9 @@ class TestStudies:
     @parametrize
     def test_streaming_response_create(self, client: Avara) -> None:
         with client.viewer.studies.with_streaming_response.create(
-            severity="normal",
-            study_description="x",
-            study_instance_uid=".16...2511..",
+            severity="high",
+            study_description="CT Chest/Abdomen/Pelvis",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -137,9 +140,9 @@ class TestStudies:
             study_id="stu_1234567890abcdef1234567890abcdef",
             assigned_to="usr_1234567890abcdef1234567890abcdef",
             metadata={"foo": "string"},
-            severity="normal",
-            study_description="x",
-            study_viewer_status="incomplete",
+            severity="stat",
+            study_description="CT Chest/Abdomen/Pelvis with Contrast",
+            study_viewer_status="complete",
         )
         assert_matches_type(StudyUpdateResponse, study, path=["response"])
 
@@ -230,7 +233,7 @@ class TestStudies:
     def test_method_cancel_with_all_params(self, client: Avara) -> None:
         study = client.viewer.studies.cancel(
             study_id="stu_1234567890abcdef1234567890abcdef",
-            study_instance_uid=".16...2511..",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         )
         assert_matches_type(StudyCancelResponse, study, path=["response"])
 
@@ -267,7 +270,7 @@ class TestStudies:
     def test_method_reroute_url_with_all_params(self, client: Avara) -> None:
         study = client.viewer.studies.reroute_url(
             study_id="stu_1234567890abcdef1234567890abcdef",
-            study_instance_uid=".16...2511..",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         )
         assert_matches_type(StudyRerouteURLResponse, study, path=["response"])
 
@@ -346,7 +349,7 @@ class TestStudies:
     def test_method_uncancel_with_all_params(self, client: Avara) -> None:
         study = client.viewer.studies.uncancel(
             study_id="stu_1234567890abcdef1234567890abcdef",
-            study_instance_uid=".16...2511..",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         )
         assert_matches_type(StudyUncancelResponse, study, path=["response"])
 
@@ -382,9 +385,9 @@ class TestAsyncStudies:
     @parametrize
     async def test_method_create(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.create(
-            severity="normal",
-            study_description="x",
-            study_instance_uid=".16...2511..",
+            severity="high",
+            study_description="CT Chest/Abdomen/Pelvis",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         )
         assert_matches_type(StudyCreateResponse, study, path=["response"])
 
@@ -392,11 +395,14 @@ class TestAsyncStudies:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.create(
-            severity="normal",
-            study_description="x",
-            study_instance_uid=".16...2511..",
+            severity="high",
+            study_description="CT Chest/Abdomen/Pelvis",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
             assigned_to="usr_1234567890abcdef1234567890abcdef",
-            metadata={"foo": "string"},
+            metadata={
+                "department": "radiology",
+                "priority": "urgent",
+            },
             org_id="org_1234567890abcdef1234567890abcdef",
         )
         assert_matches_type(StudyCreateResponse, study, path=["response"])
@@ -405,9 +411,9 @@ class TestAsyncStudies:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncAvara) -> None:
         response = await async_client.viewer.studies.with_raw_response.create(
-            severity="normal",
-            study_description="x",
-            study_instance_uid=".16...2511..",
+            severity="high",
+            study_description="CT Chest/Abdomen/Pelvis",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         )
 
         assert response.is_closed is True
@@ -419,9 +425,9 @@ class TestAsyncStudies:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncAvara) -> None:
         async with async_client.viewer.studies.with_streaming_response.create(
-            severity="normal",
-            study_description="x",
-            study_instance_uid=".16...2511..",
+            severity="high",
+            study_description="CT Chest/Abdomen/Pelvis",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -488,9 +494,9 @@ class TestAsyncStudies:
             study_id="stu_1234567890abcdef1234567890abcdef",
             assigned_to="usr_1234567890abcdef1234567890abcdef",
             metadata={"foo": "string"},
-            severity="normal",
-            study_description="x",
-            study_viewer_status="incomplete",
+            severity="stat",
+            study_description="CT Chest/Abdomen/Pelvis with Contrast",
+            study_viewer_status="complete",
         )
         assert_matches_type(StudyUpdateResponse, study, path=["response"])
 
@@ -581,7 +587,7 @@ class TestAsyncStudies:
     async def test_method_cancel_with_all_params(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.cancel(
             study_id="stu_1234567890abcdef1234567890abcdef",
-            study_instance_uid=".16...2511..",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         )
         assert_matches_type(StudyCancelResponse, study, path=["response"])
 
@@ -618,7 +624,7 @@ class TestAsyncStudies:
     async def test_method_reroute_url_with_all_params(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.reroute_url(
             study_id="stu_1234567890abcdef1234567890abcdef",
-            study_instance_uid=".16...2511..",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         )
         assert_matches_type(StudyRerouteURLResponse, study, path=["response"])
 
@@ -697,7 +703,7 @@ class TestAsyncStudies:
     async def test_method_uncancel_with_all_params(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.uncancel(
             study_id="stu_1234567890abcdef1234567890abcdef",
-            study_instance_uid=".16...2511..",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         )
         assert_matches_type(StudyUncancelResponse, study, path=["response"])
 

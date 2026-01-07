@@ -82,12 +82,12 @@ class TestUsers:
             user_id="usr_1234567890abcdef1234567890abcdef",
             can_manage_studies=True,
             clinic_role="Radiologist",
-            first_name="x",
+            first_name="Sarah",
             has_dashboard_access=True,
-            last_name="x",
+            last_name="Johnson-Smith",
             level="admin",
             middle_name="x",
-            phone_number="321669910225610",
+            phone_number="5551234567",
             suffix1="x",
             suffix2="x",
         )
@@ -175,11 +175,11 @@ class TestUsers:
         user = client.viewer.users.invite(
             can_manage_studies=True,
             clinic_role="Radiologist",
-            email="S%+_FW+l+.n-@1F.-.eVZe",
-            first_name="x",
+            email="dr.johnson@hospital.org",
+            first_name="Sarah",
             has_dashboard_access=True,
-            last_name="x",
-            level="admin",
+            last_name="Johnson",
+            level="member",
         )
         assert_matches_type(UserInviteResponse, user, path=["response"])
 
@@ -189,15 +189,15 @@ class TestUsers:
         user = client.viewer.users.invite(
             can_manage_studies=True,
             clinic_role="Radiologist",
-            email="S%+_FW+l+.n-@1F.-.eVZe",
-            first_name="x",
+            email="dr.johnson@hospital.org",
+            first_name="Sarah",
             has_dashboard_access=True,
-            last_name="x",
-            level="admin",
-            middle_name="x",
-            phone_number="321669910225610",
-            suffix1="x",
-            suffix2="x",
+            last_name="Johnson",
+            level="member",
+            middle_name="Marie",
+            phone_number="5551234567",
+            suffix1="MD",
+            suffix2="FACR",
         )
         assert_matches_type(UserInviteResponse, user, path=["response"])
 
@@ -207,11 +207,11 @@ class TestUsers:
         response = client.viewer.users.with_raw_response.invite(
             can_manage_studies=True,
             clinic_role="Radiologist",
-            email="S%+_FW+l+.n-@1F.-.eVZe",
-            first_name="x",
+            email="dr.johnson@hospital.org",
+            first_name="Sarah",
             has_dashboard_access=True,
-            last_name="x",
-            level="admin",
+            last_name="Johnson",
+            level="member",
         )
 
         assert response.is_closed is True
@@ -225,11 +225,11 @@ class TestUsers:
         with client.viewer.users.with_streaming_response.invite(
             can_manage_studies=True,
             clinic_role="Radiologist",
-            email="S%+_FW+l+.n-@1F.-.eVZe",
-            first_name="x",
+            email="dr.johnson@hospital.org",
+            first_name="Sarah",
             has_dashboard_access=True,
-            last_name="x",
-            level="admin",
+            last_name="Johnson",
+            level="member",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -370,12 +370,12 @@ class TestAsyncUsers:
             user_id="usr_1234567890abcdef1234567890abcdef",
             can_manage_studies=True,
             clinic_role="Radiologist",
-            first_name="x",
+            first_name="Sarah",
             has_dashboard_access=True,
-            last_name="x",
+            last_name="Johnson-Smith",
             level="admin",
             middle_name="x",
-            phone_number="321669910225610",
+            phone_number="5551234567",
             suffix1="x",
             suffix2="x",
         )
@@ -463,11 +463,11 @@ class TestAsyncUsers:
         user = await async_client.viewer.users.invite(
             can_manage_studies=True,
             clinic_role="Radiologist",
-            email="S%+_FW+l+.n-@1F.-.eVZe",
-            first_name="x",
+            email="dr.johnson@hospital.org",
+            first_name="Sarah",
             has_dashboard_access=True,
-            last_name="x",
-            level="admin",
+            last_name="Johnson",
+            level="member",
         )
         assert_matches_type(UserInviteResponse, user, path=["response"])
 
@@ -477,15 +477,15 @@ class TestAsyncUsers:
         user = await async_client.viewer.users.invite(
             can_manage_studies=True,
             clinic_role="Radiologist",
-            email="S%+_FW+l+.n-@1F.-.eVZe",
-            first_name="x",
+            email="dr.johnson@hospital.org",
+            first_name="Sarah",
             has_dashboard_access=True,
-            last_name="x",
-            level="admin",
-            middle_name="x",
-            phone_number="321669910225610",
-            suffix1="x",
-            suffix2="x",
+            last_name="Johnson",
+            level="member",
+            middle_name="Marie",
+            phone_number="5551234567",
+            suffix1="MD",
+            suffix2="FACR",
         )
         assert_matches_type(UserInviteResponse, user, path=["response"])
 
@@ -495,11 +495,11 @@ class TestAsyncUsers:
         response = await async_client.viewer.users.with_raw_response.invite(
             can_manage_studies=True,
             clinic_role="Radiologist",
-            email="S%+_FW+l+.n-@1F.-.eVZe",
-            first_name="x",
+            email="dr.johnson@hospital.org",
+            first_name="Sarah",
             has_dashboard_access=True,
-            last_name="x",
-            level="admin",
+            last_name="Johnson",
+            level="member",
         )
 
         assert response.is_closed is True
@@ -513,11 +513,11 @@ class TestAsyncUsers:
         async with async_client.viewer.users.with_streaming_response.invite(
             can_manage_studies=True,
             clinic_role="Radiologist",
-            email="S%+_FW+l+.n-@1F.-.eVZe",
-            first_name="x",
+            email="dr.johnson@hospital.org",
+            first_name="Sarah",
             has_dashboard_access=True,
-            last_name="x",
-            level="admin",
+            last_name="Johnson",
+            level="member",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
