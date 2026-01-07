@@ -43,11 +43,13 @@ __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Avara", "A
 class Avara(SyncAPIClient):
     # client options
     api_key: str
+    webhook_key: str | None
 
     def __init__(
         self,
         *,
         api_key: str | None = None,
+        webhook_key: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = not_given,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -69,7 +71,9 @@ class Avara(SyncAPIClient):
     ) -> None:
         """Construct a new synchronous Avara client instance.
 
-        This automatically infers the `api_key` argument from the `AVARA_API_KEY` environment variable if it is not provided.
+        This automatically infers the following arguments from their corresponding environment variables if they are not provided:
+        - `api_key` from `AVARA_API_KEY`
+        - `webhook_key` from `AVARA_WEBHOOK_KEY`
         """
         if api_key is None:
             api_key = os.environ.get("AVARA_API_KEY")
@@ -78,6 +82,10 @@ class Avara(SyncAPIClient):
                 "The api_key client option must be set either by passing api_key to the client or by setting the AVARA_API_KEY environment variable"
             )
         self.api_key = api_key
+
+        if webhook_key is None:
+            webhook_key = os.environ.get("AVARA_WEBHOOK_KEY")
+        self.webhook_key = webhook_key
 
         if base_url is None:
             base_url = os.environ.get("AVARA_BASE_URL")
@@ -115,6 +123,83 @@ class Avara(SyncAPIClient):
 
     @cached_property
     def webhooks(self) -> WebhooksResource:
+        """Webhook event handling utilities for Avara.
+
+        Avara sends webhook events to your configured endpoint with Standard Webhooks headers
+        (`webhook-id`, `webhook-timestamp`, `webhook-signature`) for signature verification.
+
+        ## Event Types
+
+        - **`study.access_requested`**: Synchronous - you must return presigned DICOM image URLs within the request timeout
+        - **`report.delivered`**: Asynchronous notification when a report is completed
+
+        ## TypeScript
+
+        ```typescript
+        import Avara from 'avara';
+        import express from 'express';
+
+        const client = new Avara({
+          webhookKey: process.env.AVARA_WEBHOOK_KEY, // From your Avara dashboard
+        });
+
+        app.post('/webhooks/avara', express.raw({ type: 'application/json' }), (req, res) => {
+          try {
+            const event = client.webhooks.unwrap(req.body.toString(), req.headers);
+
+            if (event.type === 'report.delivered') {
+              console.log('Report ready:', event.data.reportId);
+              console.log('PDF URL:', event.data.presignedUrl);
+              return res.json({ success: true });
+            }
+
+            if (event.type === 'study.access_requested') {
+              // Fetch presigned URLs from your PACS/storage
+              const urls = await getPresignedUrls(event.data.studyInstanceUid);
+              return res.json({ authorized: true, urls });
+            }
+          } catch (err) {
+            console.error('Webhook error:', err);
+            return res.status(400).json({ error: 'Invalid webhook' });
+          }
+        });
+        ```
+
+        ## Python
+
+        ```python
+        import os
+        from flask import Flask, request, jsonify
+        from avara import Avara
+
+        app = Flask(__name__)
+        client = Avara(webhook_key=os.environ['AVARA_WEBHOOK_KEY'])
+
+        @app.route('/webhooks/avara', methods=['POST'])
+        def handle_webhook():
+            try:
+                event = client.webhooks.unwrap(request.data, dict(request.headers))
+
+                if event.type == 'report.delivered':
+                    print(f"Report ready: {event.data.report_id}")
+                    print(f"PDF URL: {event.data.presigned_url}")
+                    return jsonify({'success': True})
+
+                if event.type == 'study.access_requested':
+                    # Fetch presigned URLs from your PACS/storage
+                    urls = get_presigned_urls(event.data.study_instance_uid)
+                    return jsonify({'authorized': True, 'urls': urls})
+
+            except Exception as e:
+                print(f"Webhook error: {e}")
+                return jsonify({'error': 'Invalid webhook'}), 400
+        ```
+
+        ## Verification
+
+        The `unwrap()` method verifies the webhook signature using your `webhookKey` before parsing.
+        This ensures the request came from Avara and wasn't tampered with.
+        """
         from .resources.webhooks import WebhooksResource
 
         return WebhooksResource(self)
@@ -151,6 +236,7 @@ class Avara(SyncAPIClient):
         self,
         *,
         api_key: str | None = None,
+        webhook_key: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = not_given,
         http_client: httpx.Client | None = None,
@@ -185,6 +271,7 @@ class Avara(SyncAPIClient):
         http_client = http_client or self._client
         return self.__class__(
             api_key=api_key or self.api_key,
+            webhook_key=webhook_key or self.webhook_key,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,
@@ -235,11 +322,13 @@ class Avara(SyncAPIClient):
 class AsyncAvara(AsyncAPIClient):
     # client options
     api_key: str
+    webhook_key: str | None
 
     def __init__(
         self,
         *,
         api_key: str | None = None,
+        webhook_key: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = not_given,
         max_retries: int = DEFAULT_MAX_RETRIES,
@@ -261,7 +350,9 @@ class AsyncAvara(AsyncAPIClient):
     ) -> None:
         """Construct a new async AsyncAvara client instance.
 
-        This automatically infers the `api_key` argument from the `AVARA_API_KEY` environment variable if it is not provided.
+        This automatically infers the following arguments from their corresponding environment variables if they are not provided:
+        - `api_key` from `AVARA_API_KEY`
+        - `webhook_key` from `AVARA_WEBHOOK_KEY`
         """
         if api_key is None:
             api_key = os.environ.get("AVARA_API_KEY")
@@ -270,6 +361,10 @@ class AsyncAvara(AsyncAPIClient):
                 "The api_key client option must be set either by passing api_key to the client or by setting the AVARA_API_KEY environment variable"
             )
         self.api_key = api_key
+
+        if webhook_key is None:
+            webhook_key = os.environ.get("AVARA_WEBHOOK_KEY")
+        self.webhook_key = webhook_key
 
         if base_url is None:
             base_url = os.environ.get("AVARA_BASE_URL")
@@ -307,6 +402,83 @@ class AsyncAvara(AsyncAPIClient):
 
     @cached_property
     def webhooks(self) -> AsyncWebhooksResource:
+        """Webhook event handling utilities for Avara.
+
+        Avara sends webhook events to your configured endpoint with Standard Webhooks headers
+        (`webhook-id`, `webhook-timestamp`, `webhook-signature`) for signature verification.
+
+        ## Event Types
+
+        - **`study.access_requested`**: Synchronous - you must return presigned DICOM image URLs within the request timeout
+        - **`report.delivered`**: Asynchronous notification when a report is completed
+
+        ## TypeScript
+
+        ```typescript
+        import Avara from 'avara';
+        import express from 'express';
+
+        const client = new Avara({
+          webhookKey: process.env.AVARA_WEBHOOK_KEY, // From your Avara dashboard
+        });
+
+        app.post('/webhooks/avara', express.raw({ type: 'application/json' }), (req, res) => {
+          try {
+            const event = client.webhooks.unwrap(req.body.toString(), req.headers);
+
+            if (event.type === 'report.delivered') {
+              console.log('Report ready:', event.data.reportId);
+              console.log('PDF URL:', event.data.presignedUrl);
+              return res.json({ success: true });
+            }
+
+            if (event.type === 'study.access_requested') {
+              // Fetch presigned URLs from your PACS/storage
+              const urls = await getPresignedUrls(event.data.studyInstanceUid);
+              return res.json({ authorized: true, urls });
+            }
+          } catch (err) {
+            console.error('Webhook error:', err);
+            return res.status(400).json({ error: 'Invalid webhook' });
+          }
+        });
+        ```
+
+        ## Python
+
+        ```python
+        import os
+        from flask import Flask, request, jsonify
+        from avara import Avara
+
+        app = Flask(__name__)
+        client = Avara(webhook_key=os.environ['AVARA_WEBHOOK_KEY'])
+
+        @app.route('/webhooks/avara', methods=['POST'])
+        def handle_webhook():
+            try:
+                event = client.webhooks.unwrap(request.data, dict(request.headers))
+
+                if event.type == 'report.delivered':
+                    print(f"Report ready: {event.data.report_id}")
+                    print(f"PDF URL: {event.data.presigned_url}")
+                    return jsonify({'success': True})
+
+                if event.type == 'study.access_requested':
+                    # Fetch presigned URLs from your PACS/storage
+                    urls = get_presigned_urls(event.data.study_instance_uid)
+                    return jsonify({'authorized': True, 'urls': urls})
+
+            except Exception as e:
+                print(f"Webhook error: {e}")
+                return jsonify({'error': 'Invalid webhook'}), 400
+        ```
+
+        ## Verification
+
+        The `unwrap()` method verifies the webhook signature using your `webhookKey` before parsing.
+        This ensures the request came from Avara and wasn't tampered with.
+        """
         from .resources.webhooks import AsyncWebhooksResource
 
         return AsyncWebhooksResource(self)
@@ -343,6 +515,7 @@ class AsyncAvara(AsyncAPIClient):
         self,
         *,
         api_key: str | None = None,
+        webhook_key: str | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = not_given,
         http_client: httpx.AsyncClient | None = None,
@@ -377,6 +550,7 @@ class AsyncAvara(AsyncAPIClient):
         http_client = http_client or self._client
         return self.__class__(
             api_key=api_key or self.api_key,
+            webhook_key=webhook_key or self.webhook_key,
             base_url=base_url or self.base_url,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
             http_client=http_client,

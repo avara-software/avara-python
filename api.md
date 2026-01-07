@@ -226,8 +226,11 @@ Types:
 
 ```python
 from avara.types import (
-    StudyAccessRequestedWebhookEvent,
-    ReportDeliveredWebhookEvent,
+    ReportDeliveredEvent,
+    ReportDeliveredResponse,
+    StudyAccessRequestedEvent,
+    StudyAccessRequestedResponse,
+    WebhookEvent,
     UnwrapWebhookEvent,
 )
 ```
