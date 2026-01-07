@@ -11,7 +11,7 @@ __all__ = ["StudyUpdateParams"]
 
 
 class StudyUpdateParams(TypedDict, total=False):
-    assigned_to: Annotated[Optional[str], PropertyInfo(alias="assignedTo")]
+    assigned_to: Annotated[str, PropertyInfo(alias="assignedTo")]
 
     metadata: Optional[Dict[str, str]]
 
