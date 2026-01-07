@@ -54,11 +54,11 @@ class UsersResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UserAddResponse:
-        """Args:
-          org_id: Organization ID.
+        """
+        Associates an existing user with an organization, granting them access to
+        organization-specific resources and studies.
 
-        Format: org\\__<32-hex-chars>
-
+        Args:
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -90,11 +90,12 @@ class UsersResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UserRemoveResponse:
-        """Args:
-          org_id: Organization ID.
+        """
+        Removes a user's association with an organization, revoking their access to
+        organization-specific resources. The user account remains active but is no
+        longer linked to this organization.
 
-        Format: org\\__<32-hex-chars>
-
+        Args:
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -147,11 +148,11 @@ class AsyncUsersResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UserAddResponse:
-        """Args:
-          org_id: Organization ID.
+        """
+        Associates an existing user with an organization, granting them access to
+        organization-specific resources and studies.
 
-        Format: org\\__<32-hex-chars>
-
+        Args:
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -183,11 +184,12 @@ class AsyncUsersResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UserRemoveResponse:
-        """Args:
-          org_id: Organization ID.
+        """
+        Removes a user's association with an organization, revoking their access to
+        organization-specific resources. The user account remains active but is no
+        longer linked to this organization.
 
-        Format: org\\__<32-hex-chars>
-
+        Args:
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
