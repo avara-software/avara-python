@@ -23,8 +23,11 @@ _T = TypeVar("_T")
 
 class SyncCursorUsers(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
     users: List[_T]
+    """Array of user objects"""
     cursor: Optional[str] = None
+    """Next page cursor. Pass this to the next request to get the next page of results"""
     has_more: Optional[bool] = FieldInfo(alias="hasMore", default=None)
+    """Whether there are more results available"""
 
     @override
     def _get_page_items(self) -> List[_T]:
@@ -52,8 +55,11 @@ class SyncCursorUsers(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
 
 class AsyncCursorUsers(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
     users: List[_T]
+    """Array of user objects"""
     cursor: Optional[str] = None
+    """Next page cursor. Pass this to the next request to get the next page of results"""
     has_more: Optional[bool] = FieldInfo(alias="hasMore", default=None)
+    """Whether there are more results available"""
 
     @override
     def _get_page_items(self) -> List[_T]:
@@ -81,8 +87,11 @@ class AsyncCursorUsers(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
 
 class SyncCursorStudies(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
     studies: List[_T]
+    """Array of study objects"""
     cursor: Optional[str] = None
+    """Next page cursor. Pass this to the next request to get the next page of results"""
     has_more: Optional[bool] = FieldInfo(alias="hasMore", default=None)
+    """Whether there are more results available"""
 
     @override
     def _get_page_items(self) -> List[_T]:
@@ -110,8 +119,11 @@ class SyncCursorStudies(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
 
 class AsyncCursorStudies(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
     studies: List[_T]
+    """Array of study objects"""
     cursor: Optional[str] = None
+    """Next page cursor. Pass this to the next request to get the next page of results"""
     has_more: Optional[bool] = FieldInfo(alias="hasMore", default=None)
+    """Whether there are more results available"""
 
     @override
     def _get_page_items(self) -> List[_T]:
@@ -139,8 +151,11 @@ class AsyncCursorStudies(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
 
 class SyncCursorInvitations(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
     invitations: List[_T]
+    """Array of invitation objects"""
     cursor: Optional[str] = None
+    """Next page cursor. Pass this to the next request to get the next page of results"""
     has_more: Optional[bool] = FieldInfo(alias="hasMore", default=None)
+    """Whether there are more results available"""
 
     @override
     def _get_page_items(self) -> List[_T]:
@@ -168,8 +183,11 @@ class SyncCursorInvitations(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
 
 class AsyncCursorInvitations(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
     invitations: List[_T]
+    """Array of invitation objects"""
     cursor: Optional[str] = None
+    """Next page cursor. Pass this to the next request to get the next page of results"""
     has_more: Optional[bool] = FieldInfo(alias="hasMore", default=None)
+    """Whether there are more results available"""
 
     @override
     def _get_page_items(self) -> List[_T]:
@@ -197,8 +215,11 @@ class AsyncCursorInvitations(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
 
 class SyncCursorOrganizations(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
     organizations: List[_T]
+    """Array of organization objects"""
     cursor: Optional[str] = None
+    """Next page cursor. Pass this to the next request to get the next page of results"""
     has_more: Optional[bool] = FieldInfo(alias="hasMore", default=None)
+    """Whether there are more results available"""
 
     @override
     def _get_page_items(self) -> List[_T]:
@@ -226,8 +247,11 @@ class SyncCursorOrganizations(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
 
 class AsyncCursorOrganizations(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
     organizations: List[_T]
+    """Array of organization objects"""
     cursor: Optional[str] = None
+    """Next page cursor. Pass this to the next request to get the next page of results"""
     has_more: Optional[bool] = FieldInfo(alias="hasMore", default=None)
+    """Whether there are more results available"""
 
     @override
     def _get_page_items(self) -> List[_T]:
