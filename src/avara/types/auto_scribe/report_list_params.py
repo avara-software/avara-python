@@ -11,7 +11,6 @@ __all__ = ["ReportListParams"]
 
 class ReportListParams(TypedDict, total=False):
     study_id: Annotated[str, PropertyInfo(alias="studyId")]
-    """Study ID. Format: stu\\__<32-hex-chars>"""
 
     study_instance_uid: Annotated[str, PropertyInfo(alias="studyInstanceUid")]
     """DICOM Study Instance UID"""

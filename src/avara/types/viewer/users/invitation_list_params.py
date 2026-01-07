@@ -30,4 +30,3 @@ class InvitationListParams(TypedDict, total=False):
     """Filter by invitation status(es)"""
 
     user_id: Annotated[str, PropertyInfo(alias="userId")]
-    """Filter by user ID. Format: usr\\__<32-hex-chars>"""

@@ -12,11 +12,11 @@ __all__ = ["StudyUpdateParams", "ReportMetadata", "ReportMetadataHeight", "Repor
 
 
 class StudyUpdateParams(TypedDict, total=False):
-    assigned_to: Annotated[Optional[str], PropertyInfo(alias="assignedTo")]
+    assigned_to: Annotated[str, PropertyInfo(alias="assignedTo")]
 
     metadata: Optional[Dict[str, str]]
 
-    org_id: Annotated[Optional[str], PropertyInfo(alias="orgId")]
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
     prior_report_texts: Annotated[Optional[SequenceNotStr[str]], PropertyInfo(alias="priorReportTexts")]
 
@@ -25,8 +25,13 @@ class StudyUpdateParams(TypedDict, total=False):
     report_metadata: Annotated[ReportMetadata, PropertyInfo(alias="reportMetadata")]
 
     severity: Literal["normal", "high", "stat"]
+    """Priority level of the study.
+
+    'normal' for routine, 'high' for urgent, 'stat' for immediate attention
+    """
 
     study_description: Annotated[str, PropertyInfo(alias="studyDescription")]
+    """Description of the study/scan (e.g., 'Brain MRI with Contrast', 'Chest CT')"""
 
 
 class ReportMetadataHeight(TypedDict, total=False):
