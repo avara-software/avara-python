@@ -11,5 +11,7 @@ class OrgReference(BaseModel):
     """A reference to an organization with basic identifying information"""
 
     org_id: str = FieldInfo(alias="orgId")
+    """Unique organization identifier. Format: org\\__{32-hex-chars}"""
 
     org_name: str = FieldInfo(alias="orgName")
+    """Name of the organization"""

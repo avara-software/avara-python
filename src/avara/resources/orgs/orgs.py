@@ -80,6 +80,10 @@ class OrgsResource(SyncAPIResource):
         Avara platform.
 
         Args:
+          org_name: Name of the organization to create
+
+          metadata: Custom key-value metadata for the organization. Maximum 50 pairs
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -120,6 +124,8 @@ class OrgsResource(SyncAPIResource):
         complete organization object with name, status, and timestamps.
 
         Args:
+          org_id: Unique organization identifier. Format: org\\__{32-hex-chars}
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -157,6 +163,12 @@ class OrgsResource(SyncAPIResource):
         are optional - only provided fields will be updated.
 
         Args:
+          org_id: Unique organization identifier. Format: org\\__{32-hex-chars}
+
+          metadata: Updated metadata. Pass null to clear all metadata
+
+          org_name: Updated name for the organization
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -247,6 +259,8 @@ class OrgsResource(SyncAPIResource):
         reactivated later.
 
         Args:
+          org_id: Unique organization identifier. Format: org\\__{32-hex-chars}
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -281,6 +295,8 @@ class OrgsResource(SyncAPIResource):
         new studies and user assignments again.
 
         Args:
+          org_id: Unique organization identifier. Format: org\\__{32-hex-chars}
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -343,6 +359,10 @@ class AsyncOrgsResource(AsyncAPIResource):
         Avara platform.
 
         Args:
+          org_name: Name of the organization to create
+
+          metadata: Custom key-value metadata for the organization. Maximum 50 pairs
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -383,6 +403,8 @@ class AsyncOrgsResource(AsyncAPIResource):
         complete organization object with name, status, and timestamps.
 
         Args:
+          org_id: Unique organization identifier. Format: org\\__{32-hex-chars}
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -420,6 +442,12 @@ class AsyncOrgsResource(AsyncAPIResource):
         are optional - only provided fields will be updated.
 
         Args:
+          org_id: Unique organization identifier. Format: org\\__{32-hex-chars}
+
+          metadata: Updated metadata. Pass null to clear all metadata
+
+          org_name: Updated name for the organization
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -510,6 +538,8 @@ class AsyncOrgsResource(AsyncAPIResource):
         reactivated later.
 
         Args:
+          org_id: Unique organization identifier. Format: org\\__{32-hex-chars}
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -544,6 +574,8 @@ class AsyncOrgsResource(AsyncAPIResource):
         new studies and user assignments again.
 
         Args:
+          org_id: Unique organization identifier. Format: org\\__{32-hex-chars}
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
