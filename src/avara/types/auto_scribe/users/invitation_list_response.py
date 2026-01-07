@@ -15,8 +15,16 @@ class InvitationListResponse(BaseModel):
     """A pending user invitation in the AutoScribe system"""
 
     can_create_reports: bool = FieldInfo(alias="canCreateReports")
+    """Whether the invited user can generate and sign radiology reports.
+
+    Requires NPI number
+    """
 
     can_manage_studies: bool = FieldInfo(alias="canManageStudies")
+    """
+    Whether the invited user will have permission to create, update, and manage
+    studies
+    """
 
     clinic_id: str = FieldInfo(alias="clinicId")
 
@@ -75,6 +83,10 @@ class InvitationListResponse(BaseModel):
     middle_name: Optional[str] = FieldInfo(alias="middleName", default=None)
 
     npi_number: Optional[str] = FieldInfo(alias="npiNumber", default=None)
+    """
+    National Provider Identifier - required for users who can create reports
+    (10-digit number)
+    """
 
     phone_number: Optional[str] = FieldInfo(alias="phoneNumber", default=None)
 

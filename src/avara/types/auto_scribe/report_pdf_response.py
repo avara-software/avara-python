@@ -19,7 +19,7 @@ class SingleReportPdfResponse(BaseModel):
     report_id: str = FieldInfo(alias="reportId")
 
     snapshot_metadata: StudyReportMetadata = FieldInfo(alias="snapshotMetadata")
-    """Metadata for a study report including patient demographics and scan information"""
+    """Patient demographics and scan information for report generation"""
 
     study_id: str = FieldInfo(alias="studyId")
 
@@ -34,7 +34,7 @@ class ListReportsPdfResponseReport(BaseModel):
     report_id: str = FieldInfo(alias="reportId")
 
     snapshot_metadata: StudyReportMetadata = FieldInfo(alias="snapshotMetadata")
-    """Metadata for a study report including patient demographics and scan information"""
+    """Patient demographics and scan information for report generation"""
 
     study_id: str = FieldInfo(alias="studyId")
 
