@@ -65,6 +65,8 @@ class ReportsResource(SyncAPIResource):
         metadata including status, version, and timestamps.
 
         Args:
+          study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
           study_instance_uid: DICOM Study Instance UID
 
           extra_headers: Send extra headers
@@ -188,6 +190,10 @@ class ReportsResource(SyncAPIResource):
         time-limited for security.
 
         Args:
+          report_id: Unique report identifier. Format: rep\\__{32-hex-chars}
+
+          study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
           study_instance_uid: DICOM Study Instance UID
 
           extra_headers: Send extra headers
@@ -240,6 +246,10 @@ class ReportsResource(SyncAPIResource):
         content.
 
         Args:
+          report_id: Unique report identifier. Format: rep\\__{32-hex-chars}
+
+          study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
           study_instance_uid: DICOM Study Instance UID
 
           extra_headers: Send extra headers
@@ -313,6 +323,8 @@ class AsyncReportsResource(AsyncAPIResource):
         metadata including status, version, and timestamps.
 
         Args:
+          study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
           study_instance_uid: DICOM Study Instance UID
 
           extra_headers: Send extra headers
@@ -436,6 +448,10 @@ class AsyncReportsResource(AsyncAPIResource):
         time-limited for security.
 
         Args:
+          report_id: Unique report identifier. Format: rep\\__{32-hex-chars}
+
+          study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
           study_instance_uid: DICOM Study Instance UID
 
           extra_headers: Send extra headers
@@ -488,6 +504,10 @@ class AsyncReportsResource(AsyncAPIResource):
         content.
 
         Args:
+          report_id: Unique report identifier. Format: rep\\__{32-hex-chars}
+
+          study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
           study_instance_uid: DICOM Study Instance UID
 
           extra_headers: Send extra headers

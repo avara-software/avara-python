@@ -301,6 +301,10 @@ class StudiesResource(SyncAPIResource):
         inactive. Can be identified by either study ID or DICOM Study Instance UID.
 
         Args:
+          study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
+          study_instance_uid: DICOM Study Instance UID
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -342,6 +346,10 @@ class StudiesResource(SyncAPIResource):
         security.
 
         Args:
+          study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
+          study_instance_uid: DICOM Study Instance UID
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -421,6 +429,10 @@ class StudiesResource(SyncAPIResource):
         cancelled. Can be identified by either study ID or DICOM Study Instance UID.
 
         Args:
+          study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
+          study_instance_uid: DICOM Study Instance UID
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -707,6 +719,10 @@ class AsyncStudiesResource(AsyncAPIResource):
         inactive. Can be identified by either study ID or DICOM Study Instance UID.
 
         Args:
+          study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
+          study_instance_uid: DICOM Study Instance UID
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -748,6 +764,10 @@ class AsyncStudiesResource(AsyncAPIResource):
         security.
 
         Args:
+          study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
+          study_instance_uid: DICOM Study Instance UID
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -827,6 +847,10 @@ class AsyncStudiesResource(AsyncAPIResource):
         cancelled. Can be identified by either study ID or DICOM Study Instance UID.
 
         Args:
+          study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
+          study_instance_uid: DICOM Study Instance UID
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

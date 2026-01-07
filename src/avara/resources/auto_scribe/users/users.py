@@ -397,6 +397,8 @@ class UsersResource(SyncAPIResource):
         capabilities.
 
         Args:
+          user_id: User ID to reactivate. Format: usr\\__{32-hex-chars}
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -432,6 +434,8 @@ class UsersResource(SyncAPIResource):
         reactivated later.
 
         Args:
+          user_id: User ID to revoke access for. Format: usr\\__{32-hex-chars}
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -803,6 +807,8 @@ class AsyncUsersResource(AsyncAPIResource):
         capabilities.
 
         Args:
+          user_id: User ID to reactivate. Format: usr\\__{32-hex-chars}
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -838,6 +844,8 @@ class AsyncUsersResource(AsyncAPIResource):
         reactivated later.
 
         Args:
+          user_id: User ID to revoke access for. Format: usr\\__{32-hex-chars}
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

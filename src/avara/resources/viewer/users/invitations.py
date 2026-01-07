@@ -207,6 +207,8 @@ class InvitationsResource(SyncAPIResource):
 
           status: Filter by invitation status(es)
 
+          user_id: Filter by user ID. Format: usr\\__{32-hex-chars}
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -258,6 +260,10 @@ class InvitationsResource(SyncAPIResource):
         error.
 
         Args:
+          invitation_id: Invitation ID to revoke. Format: inv\\__{32-hex-chars}
+
+          user_id: User ID whose pending invitation to revoke. Format: usr\\__{32-hex-chars}
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -461,6 +467,8 @@ class AsyncInvitationsResource(AsyncAPIResource):
 
           status: Filter by invitation status(es)
 
+          user_id: Filter by user ID. Format: usr\\__{32-hex-chars}
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -512,6 +520,10 @@ class AsyncInvitationsResource(AsyncAPIResource):
         error.
 
         Args:
+          invitation_id: Invitation ID to revoke. Format: inv\\__{32-hex-chars}
+
+          user_id: User ID whose pending invitation to revoke. Format: usr\\__{32-hex-chars}
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
