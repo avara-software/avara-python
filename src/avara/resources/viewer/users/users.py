@@ -85,6 +85,8 @@ class UsersResource(SyncAPIResource):
         object with all profile information, permissions, and status.
 
         Args:
+          user_id: Unique user identifier. Format: usr\\__{32-hex-chars}
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -156,6 +158,8 @@ class UsersResource(SyncAPIResource):
         API.
 
         Args:
+          user_id: Unique user identifier. Format: usr\\__{32-hex-chars}
+
           first_name: User's first name
 
           has_dashboard_access: Whether the user can access the dashboard interface. Required for admin users
@@ -471,6 +475,8 @@ class AsyncUsersResource(AsyncAPIResource):
         object with all profile information, permissions, and status.
 
         Args:
+          user_id: Unique user identifier. Format: usr\\__{32-hex-chars}
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -542,6 +548,8 @@ class AsyncUsersResource(AsyncAPIResource):
         API.
 
         Args:
+          user_id: Unique user identifier. Format: usr\\__{32-hex-chars}
+
           first_name: User's first name
 
           has_dashboard_access: Whether the user can access the dashboard interface. Required for admin users
