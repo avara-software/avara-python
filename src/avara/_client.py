@@ -96,16 +96,16 @@ class Avara(SyncAPIClient):
         )
 
     @cached_property
-    def viewer(self) -> ViewerResource:
-        from .resources.viewer import ViewerResource
-
-        return ViewerResource(self)
-
-    @cached_property
     def auto_scribe(self) -> AutoScribeResource:
         from .resources.auto_scribe import AutoScribeResource
 
         return AutoScribeResource(self)
+
+    @cached_property
+    def viewer(self) -> ViewerResource:
+        from .resources.viewer import ViewerResource
+
+        return ViewerResource(self)
 
     @cached_property
     def orgs(self) -> OrgsResource:
@@ -288,16 +288,16 @@ class AsyncAvara(AsyncAPIClient):
         )
 
     @cached_property
-    def viewer(self) -> AsyncViewerResource:
-        from .resources.viewer import AsyncViewerResource
-
-        return AsyncViewerResource(self)
-
-    @cached_property
     def auto_scribe(self) -> AsyncAutoScribeResource:
         from .resources.auto_scribe import AsyncAutoScribeResource
 
         return AsyncAutoScribeResource(self)
+
+    @cached_property
+    def viewer(self) -> AsyncViewerResource:
+        from .resources.viewer import AsyncViewerResource
+
+        return AsyncViewerResource(self)
 
     @cached_property
     def orgs(self) -> AsyncOrgsResource:
@@ -431,16 +431,16 @@ class AvaraWithRawResponse:
         self._client = client
 
     @cached_property
-    def viewer(self) -> viewer.ViewerResourceWithRawResponse:
-        from .resources.viewer import ViewerResourceWithRawResponse
-
-        return ViewerResourceWithRawResponse(self._client.viewer)
-
-    @cached_property
     def auto_scribe(self) -> auto_scribe.AutoScribeResourceWithRawResponse:
         from .resources.auto_scribe import AutoScribeResourceWithRawResponse
 
         return AutoScribeResourceWithRawResponse(self._client.auto_scribe)
+
+    @cached_property
+    def viewer(self) -> viewer.ViewerResourceWithRawResponse:
+        from .resources.viewer import ViewerResourceWithRawResponse
+
+        return ViewerResourceWithRawResponse(self._client.viewer)
 
     @cached_property
     def orgs(self) -> orgs.OrgsResourceWithRawResponse:
@@ -456,16 +456,16 @@ class AsyncAvaraWithRawResponse:
         self._client = client
 
     @cached_property
-    def viewer(self) -> viewer.AsyncViewerResourceWithRawResponse:
-        from .resources.viewer import AsyncViewerResourceWithRawResponse
-
-        return AsyncViewerResourceWithRawResponse(self._client.viewer)
-
-    @cached_property
     def auto_scribe(self) -> auto_scribe.AsyncAutoScribeResourceWithRawResponse:
         from .resources.auto_scribe import AsyncAutoScribeResourceWithRawResponse
 
         return AsyncAutoScribeResourceWithRawResponse(self._client.auto_scribe)
+
+    @cached_property
+    def viewer(self) -> viewer.AsyncViewerResourceWithRawResponse:
+        from .resources.viewer import AsyncViewerResourceWithRawResponse
+
+        return AsyncViewerResourceWithRawResponse(self._client.viewer)
 
     @cached_property
     def orgs(self) -> orgs.AsyncOrgsResourceWithRawResponse:
@@ -481,16 +481,16 @@ class AvaraWithStreamedResponse:
         self._client = client
 
     @cached_property
-    def viewer(self) -> viewer.ViewerResourceWithStreamingResponse:
-        from .resources.viewer import ViewerResourceWithStreamingResponse
-
-        return ViewerResourceWithStreamingResponse(self._client.viewer)
-
-    @cached_property
     def auto_scribe(self) -> auto_scribe.AutoScribeResourceWithStreamingResponse:
         from .resources.auto_scribe import AutoScribeResourceWithStreamingResponse
 
         return AutoScribeResourceWithStreamingResponse(self._client.auto_scribe)
+
+    @cached_property
+    def viewer(self) -> viewer.ViewerResourceWithStreamingResponse:
+        from .resources.viewer import ViewerResourceWithStreamingResponse
+
+        return ViewerResourceWithStreamingResponse(self._client.viewer)
 
     @cached_property
     def orgs(self) -> orgs.OrgsResourceWithStreamingResponse:
@@ -506,16 +506,16 @@ class AsyncAvaraWithStreamedResponse:
         self._client = client
 
     @cached_property
-    def viewer(self) -> viewer.AsyncViewerResourceWithStreamingResponse:
-        from .resources.viewer import AsyncViewerResourceWithStreamingResponse
-
-        return AsyncViewerResourceWithStreamingResponse(self._client.viewer)
-
-    @cached_property
     def auto_scribe(self) -> auto_scribe.AsyncAutoScribeResourceWithStreamingResponse:
         from .resources.auto_scribe import AsyncAutoScribeResourceWithStreamingResponse
 
         return AsyncAutoScribeResourceWithStreamingResponse(self._client.auto_scribe)
+
+    @cached_property
+    def viewer(self) -> viewer.AsyncViewerResourceWithStreamingResponse:
+        from .resources.viewer import AsyncViewerResourceWithStreamingResponse
+
+        return AsyncViewerResourceWithStreamingResponse(self._client.viewer)
 
     @cached_property
     def orgs(self) -> orgs.AsyncOrgsResourceWithStreamingResponse:

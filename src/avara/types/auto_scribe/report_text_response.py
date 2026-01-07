@@ -17,7 +17,7 @@ class SingleReportTextResponse(BaseModel):
     report_id: str = FieldInfo(alias="reportId")
 
     snapshot_metadata: StudyReportMetadata = FieldInfo(alias="snapshotMetadata")
-    """Patient demographics and scan information for report generation"""
+    """Metadata for a study report including patient demographics and scan information"""
 
     study_id: str = FieldInfo(alias="studyId")
 
@@ -32,7 +32,7 @@ class ListReportsTextResponseReport(BaseModel):
     report_id: str = FieldInfo(alias="reportId")
 
     snapshot_metadata: StudyReportMetadata = FieldInfo(alias="snapshotMetadata")
-    """Patient demographics and scan information for report generation"""
+    """Metadata for a study report including patient demographics and scan information"""
 
     study_id: str = FieldInfo(alias="studyId")
 

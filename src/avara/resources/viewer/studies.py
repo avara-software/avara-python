@@ -76,21 +76,7 @@ class StudiesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StudyCreateResponse:
         """
-        Creates a new study in the Viewer system with the specified DICOM Study Instance
-        UID and metadata. The study can be optionally assigned to a user.
-
         Args:
-          severity: Priority level of the study. 'normal' for routine, 'high' for urgent, 'stat' for
-              immediate attention
-
-          study_description: Description of the study/scan (e.g., 'Brain MRI with Contrast', 'Chest CT')
-
-          study_instance_uid: DICOM Study Instance UID. Must be a valid DICOM UID format (e.g.,
-              '1.2.840.10008.5.1.4.1.1.2')
-
-          metadata: Custom key-value metadata for the study. Maximum 50 pairs, keys up to 100 chars,
-              values up to 1000 chars
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -129,11 +115,7 @@ class StudiesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StudyRetrieveResponse:
-        """Retrieves a single study by its unique study ID.
-
-        Returns the complete study
-        object with all metadata and status information.
-
+        """
         Args:
           extra_headers: Send extra headers
 
@@ -157,7 +139,7 @@ class StudiesResource(SyncAPIResource):
         self,
         study_id: str,
         *,
-        assigned_to: str | Omit = omit,
+        assigned_to: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, str]] | Omit = omit,
         severity: Literal["normal", "high", "stat"] | Omit = omit,
         study_description: str | Omit = omit,
@@ -170,16 +152,7 @@ class StudiesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StudyUpdateResponse:
         """
-        Updates a study's properties including description, severity, assignment,
-        organization, and metadata. All fields are optional - only provided fields will
-        be updated.
-
         Args:
-          severity: Priority level of the study. 'normal' for routine, 'high' for urgent, 'stat' for
-              immediate attention
-
-          study_description: Description of the study/scan (e.g., 'Brain MRI with Contrast', 'Chest CT')
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -226,10 +199,6 @@ class StudiesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursorStudies[StudyListResponse]:
         """
-        Retrieves a paginated list of studies with optional filtering by assignment,
-        severity, description, cancellation status, and viewer status. Returns up to 100
-        studies per request.
-
         Args:
           assigned_to:
               Filter by assigned user ID (null = explicitly unassigned). Format:
@@ -291,11 +260,7 @@ class StudiesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StudyCancelResponse:
-        """Marks a study as cancelled.
-
-        Cancelled studies are preserved but flagged as
-        inactive. Can be identified by either study ID or DICOM Study Instance UID.
-
+        """
         Args:
           extra_headers: Send extra headers
 
@@ -333,10 +298,6 @@ class StudiesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StudyRerouteURLResponse:
         """
-        Generates a tokenized URL that redirects users directly to the Avara Viewer for
-        the specified study. The URL includes authentication and is time-limited for
-        security.
-
         Args:
           extra_headers: Send extra headers
 
@@ -372,13 +333,10 @@ class StudiesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StudyRetrieveByUidResponse:
-        """Retrieves a single study by its DICOM Study Instance UID.
+        """Args:
+          study_instance_uid: DICOM Study Instance UID.
 
-        This is useful when
-        you have the DICOM UID but not the Avara study ID.
-
-        Args:
-          study_instance_uid: DICOM Study Instance UID. Format: numbers and dots (e.g.,
+        Format: numbers and dots (e.g.,
               1.2.840.10008.5.1.4.1.1.2).
 
           extra_headers: Send extra headers
@@ -411,11 +369,7 @@ class StudiesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StudyUncancelResponse:
-        """Restores a cancelled study to active status.
-
-        The study must have been previously
-        cancelled. Can be identified by either study ID or DICOM Study Instance UID.
-
+        """
         Args:
           extra_headers: Send extra headers
 
@@ -478,21 +432,7 @@ class AsyncStudiesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StudyCreateResponse:
         """
-        Creates a new study in the Viewer system with the specified DICOM Study Instance
-        UID and metadata. The study can be optionally assigned to a user.
-
         Args:
-          severity: Priority level of the study. 'normal' for routine, 'high' for urgent, 'stat' for
-              immediate attention
-
-          study_description: Description of the study/scan (e.g., 'Brain MRI with Contrast', 'Chest CT')
-
-          study_instance_uid: DICOM Study Instance UID. Must be a valid DICOM UID format (e.g.,
-              '1.2.840.10008.5.1.4.1.1.2')
-
-          metadata: Custom key-value metadata for the study. Maximum 50 pairs, keys up to 100 chars,
-              values up to 1000 chars
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -531,11 +471,7 @@ class AsyncStudiesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StudyRetrieveResponse:
-        """Retrieves a single study by its unique study ID.
-
-        Returns the complete study
-        object with all metadata and status information.
-
+        """
         Args:
           extra_headers: Send extra headers
 
@@ -559,7 +495,7 @@ class AsyncStudiesResource(AsyncAPIResource):
         self,
         study_id: str,
         *,
-        assigned_to: str | Omit = omit,
+        assigned_to: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, str]] | Omit = omit,
         severity: Literal["normal", "high", "stat"] | Omit = omit,
         study_description: str | Omit = omit,
@@ -572,16 +508,7 @@ class AsyncStudiesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StudyUpdateResponse:
         """
-        Updates a study's properties including description, severity, assignment,
-        organization, and metadata. All fields are optional - only provided fields will
-        be updated.
-
         Args:
-          severity: Priority level of the study. 'normal' for routine, 'high' for urgent, 'stat' for
-              immediate attention
-
-          study_description: Description of the study/scan (e.g., 'Brain MRI with Contrast', 'Chest CT')
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -628,10 +555,6 @@ class AsyncStudiesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[StudyListResponse, AsyncCursorStudies[StudyListResponse]]:
         """
-        Retrieves a paginated list of studies with optional filtering by assignment,
-        severity, description, cancellation status, and viewer status. Returns up to 100
-        studies per request.
-
         Args:
           assigned_to:
               Filter by assigned user ID (null = explicitly unassigned). Format:
@@ -693,11 +616,7 @@ class AsyncStudiesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StudyCancelResponse:
-        """Marks a study as cancelled.
-
-        Cancelled studies are preserved but flagged as
-        inactive. Can be identified by either study ID or DICOM Study Instance UID.
-
+        """
         Args:
           extra_headers: Send extra headers
 
@@ -735,10 +654,6 @@ class AsyncStudiesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StudyRerouteURLResponse:
         """
-        Generates a tokenized URL that redirects users directly to the Avara Viewer for
-        the specified study. The URL includes authentication and is time-limited for
-        security.
-
         Args:
           extra_headers: Send extra headers
 
@@ -774,13 +689,10 @@ class AsyncStudiesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StudyRetrieveByUidResponse:
-        """Retrieves a single study by its DICOM Study Instance UID.
+        """Args:
+          study_instance_uid: DICOM Study Instance UID.
 
-        This is useful when
-        you have the DICOM UID but not the Avara study ID.
-
-        Args:
-          study_instance_uid: DICOM Study Instance UID. Format: numbers and dots (e.g.,
+        Format: numbers and dots (e.g.,
               1.2.840.10008.5.1.4.1.1.2).
 
           extra_headers: Send extra headers
@@ -813,11 +725,7 @@ class AsyncStudiesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StudyUncancelResponse:
-        """Restores a cancelled study to active status.
-
-        The study must have been previously
-        cancelled. Can be identified by either study ID or DICOM Study Instance UID.
-
+        """
         Args:
           extra_headers: Send extra headers
 

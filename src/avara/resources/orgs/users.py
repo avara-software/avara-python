@@ -54,12 +54,10 @@ class UsersResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UserAddResponse:
-        """
-        Associates an existing user with an organization, granting them access to
-        organization-specific resources and studies.
+        """Args:
+          org_id: Organization ID.
 
-        Args:
-          org_id: Organization ID. Format: org\\__<32-hex-chars>
+        Format: org\\__<32-hex-chars>
 
           extra_headers: Send extra headers
 
@@ -92,13 +90,10 @@ class UsersResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UserRemoveResponse:
-        """
-        Removes a user's association with an organization, revoking their access to
-        organization-specific resources. The user account remains active but is no
-        longer linked to this organization.
+        """Args:
+          org_id: Organization ID.
 
-        Args:
-          org_id: Organization ID. Format: org\\__<32-hex-chars>
+        Format: org\\__<32-hex-chars>
 
           extra_headers: Send extra headers
 
@@ -152,12 +147,10 @@ class AsyncUsersResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UserAddResponse:
-        """
-        Associates an existing user with an organization, granting them access to
-        organization-specific resources and studies.
+        """Args:
+          org_id: Organization ID.
 
-        Args:
-          org_id: Organization ID. Format: org\\__<32-hex-chars>
+        Format: org\\__<32-hex-chars>
 
           extra_headers: Send extra headers
 
@@ -190,13 +183,10 @@ class AsyncUsersResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UserRemoveResponse:
-        """
-        Removes a user's association with an organization, revoking their access to
-        organization-specific resources. The user account remains active but is no
-        longer linked to this organization.
+        """Args:
+          org_id: Organization ID.
 
-        Args:
-          org_id: Organization ID. Format: org\\__<32-hex-chars>
+        Format: org\\__<32-hex-chars>
 
           extra_headers: Send extra headers
 

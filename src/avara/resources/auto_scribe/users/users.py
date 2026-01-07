@@ -79,12 +79,7 @@ class UsersResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UserRetrieveResponse:
-        """Retrieves a single user by their unique user ID.
-
-        Returns the complete user
-        object with all profile information, permissions, AutoScribe-specific settings,
-        and status.
-
+        """
         Args:
           extra_headers: Send extra headers
 
@@ -152,20 +147,10 @@ class UsersResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UserUpdateResponse:
-        """
-        Updates a user's profile information, permissions, and AutoScribe-specific
-        settings. All fields are optional - only provided fields will be updated. Email
-        cannot be changed via API. NPI number is required if enabling report creation
-        capability.
+        """Args:
+          user_id: User ID.
 
-        Args:
-          user_id: User ID. Format: usr\\__<32-hex-chars>
-
-          first_name: User's first name
-
-          has_dashboard_access: Whether the user can access the dashboard interface. Required for admin users
-
-          last_name: User's last name
+        Format: usr\\__<32-hex-chars>
 
           extra_headers: Send extra headers
 
@@ -221,10 +206,6 @@ class UsersResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursorUsers[UserListResponse]:
         """
-        Retrieves a paginated list of users with optional filtering by access level,
-        email, name, invitation source, and report creation capability. Returns up to
-        100 users per request.
-
         Args:
           can_create_reports: Filter by canCreateReports permission (AutoScribe-specific)
 
@@ -321,28 +302,7 @@ class UsersResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UserInviteResponse:
         """
-        Creates a new user in the AutoScribe system and sends them an invitation email.
-        The user will have the specified permissions including report creation and study
-        management capabilities. NPI number is required for users who can create
-        reports.
-
         Args:
-          clinic_role: User's clinical or organizational role
-
-          email: User's email address for login and notifications
-
-          first_name: User's first name
-
-          last_name: User's last name
-
-          middle_name: User's middle name (optional)
-
-          phone_number: User's phone number (10-15 digits, optional)
-
-          suffix1: Name suffix (e.g., 'Jr.', 'Sr.', 'III') - optional
-
-          suffix2: Additional name suffix (optional)
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -388,12 +348,7 @@ class UsersResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UserReactivateResponse:
-        """Restores access for a previously deactivated user.
-
-        The user will regain their
-        original permissions including report creation and study management
-        capabilities.
-
+        """
         Args:
           extra_headers: Send extra headers
 
@@ -423,12 +378,7 @@ class UsersResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UserRevokeAccessResponse:
-        """Deactivates a user's access to the system.
-
-        The user will no longer be able to
-        log in, create reports, or access studies. User data is preserved and can be
-        reactivated later.
-
+        """
         Args:
           extra_headers: Send extra headers
 
@@ -483,12 +433,7 @@ class AsyncUsersResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UserRetrieveResponse:
-        """Retrieves a single user by their unique user ID.
-
-        Returns the complete user
-        object with all profile information, permissions, AutoScribe-specific settings,
-        and status.
-
+        """
         Args:
           extra_headers: Send extra headers
 
@@ -556,20 +501,10 @@ class AsyncUsersResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UserUpdateResponse:
-        """
-        Updates a user's profile information, permissions, and AutoScribe-specific
-        settings. All fields are optional - only provided fields will be updated. Email
-        cannot be changed via API. NPI number is required if enabling report creation
-        capability.
+        """Args:
+          user_id: User ID.
 
-        Args:
-          user_id: User ID. Format: usr\\__<32-hex-chars>
-
-          first_name: User's first name
-
-          has_dashboard_access: Whether the user can access the dashboard interface. Required for admin users
-
-          last_name: User's last name
+        Format: usr\\__<32-hex-chars>
 
           extra_headers: Send extra headers
 
@@ -625,10 +560,6 @@ class AsyncUsersResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[UserListResponse, AsyncCursorUsers[UserListResponse]]:
         """
-        Retrieves a paginated list of users with optional filtering by access level,
-        email, name, invitation source, and report creation capability. Returns up to
-        100 users per request.
-
         Args:
           can_create_reports: Filter by canCreateReports permission (AutoScribe-specific)
 
@@ -725,28 +656,7 @@ class AsyncUsersResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UserInviteResponse:
         """
-        Creates a new user in the AutoScribe system and sends them an invitation email.
-        The user will have the specified permissions including report creation and study
-        management capabilities. NPI number is required for users who can create
-        reports.
-
         Args:
-          clinic_role: User's clinical or organizational role
-
-          email: User's email address for login and notifications
-
-          first_name: User's first name
-
-          last_name: User's last name
-
-          middle_name: User's middle name (optional)
-
-          phone_number: User's phone number (10-15 digits, optional)
-
-          suffix1: Name suffix (e.g., 'Jr.', 'Sr.', 'III') - optional
-
-          suffix2: Additional name suffix (optional)
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -792,12 +702,7 @@ class AsyncUsersResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UserReactivateResponse:
-        """Restores access for a previously deactivated user.
-
-        The user will regain their
-        original permissions including report creation and study management
-        capabilities.
-
+        """
         Args:
           extra_headers: Send extra headers
 
@@ -827,12 +732,7 @@ class AsyncUsersResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> UserRevokeAccessResponse:
-        """Deactivates a user's access to the system.
-
-        The user will no longer be able to
-        log in, create reports, or access studies. User data is preserved and can be
-        reactivated later.
-
+        """
         Args:
           extra_headers: Send extra headers
 

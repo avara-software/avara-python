@@ -44,9 +44,9 @@ class TestStudies:
             severity="normal",
             study_description="x",
             study_instance_uid=".16...2511..",
-            assigned_to="usr_1234567890abcdef1234567890abcdef",
+            assigned_to="usr_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
             metadata={"foo": "string"},
-            org_id="org_1234567890abcdef1234567890abcdef",
+            org_id="org_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
         )
         assert_matches_type(StudyCreateResponse, study, path=["response"])
 
@@ -84,7 +84,7 @@ class TestStudies:
     @parametrize
     def test_method_retrieve(self, client: Avara) -> None:
         study = client.viewer.studies.retrieve(
-            "stu_1234567890abcdef1234567890abcdef",
+            "stu_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
         )
         assert_matches_type(StudyRetrieveResponse, study, path=["response"])
 
@@ -92,7 +92,7 @@ class TestStudies:
     @parametrize
     def test_raw_response_retrieve(self, client: Avara) -> None:
         response = client.viewer.studies.with_raw_response.retrieve(
-            "stu_1234567890abcdef1234567890abcdef",
+            "stu_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
         )
 
         assert response.is_closed is True
@@ -104,7 +104,7 @@ class TestStudies:
     @parametrize
     def test_streaming_response_retrieve(self, client: Avara) -> None:
         with client.viewer.studies.with_streaming_response.retrieve(
-            "stu_1234567890abcdef1234567890abcdef",
+            "stu_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -126,7 +126,7 @@ class TestStudies:
     @parametrize
     def test_method_update(self, client: Avara) -> None:
         study = client.viewer.studies.update(
-            study_id="stu_1234567890abcdef1234567890abcdef",
+            study_id="stu_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
         )
         assert_matches_type(StudyUpdateResponse, study, path=["response"])
 
@@ -134,8 +134,8 @@ class TestStudies:
     @parametrize
     def test_method_update_with_all_params(self, client: Avara) -> None:
         study = client.viewer.studies.update(
-            study_id="stu_1234567890abcdef1234567890abcdef",
-            assigned_to="usr_1234567890abcdef1234567890abcdef",
+            study_id="stu_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
+            assigned_to="usr_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
             metadata={"foo": "string"},
             severity="normal",
             study_description="x",
@@ -147,7 +147,7 @@ class TestStudies:
     @parametrize
     def test_raw_response_update(self, client: Avara) -> None:
         response = client.viewer.studies.with_raw_response.update(
-            study_id="stu_1234567890abcdef1234567890abcdef",
+            study_id="stu_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
         )
 
         assert response.is_closed is True
@@ -159,7 +159,7 @@ class TestStudies:
     @parametrize
     def test_streaming_response_update(self, client: Avara) -> None:
         with client.viewer.studies.with_streaming_response.update(
-            study_id="stu_1234567890abcdef1234567890abcdef",
+            study_id="stu_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -229,7 +229,7 @@ class TestStudies:
     @parametrize
     def test_method_cancel_with_all_params(self, client: Avara) -> None:
         study = client.viewer.studies.cancel(
-            study_id="stu_1234567890abcdef1234567890abcdef",
+            study_id="stu_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
             study_instance_uid=".16...2511..",
         )
         assert_matches_type(StudyCancelResponse, study, path=["response"])
@@ -266,7 +266,7 @@ class TestStudies:
     @parametrize
     def test_method_reroute_url_with_all_params(self, client: Avara) -> None:
         study = client.viewer.studies.reroute_url(
-            study_id="stu_1234567890abcdef1234567890abcdef",
+            study_id="stu_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
             study_instance_uid=".16...2511..",
         )
         assert_matches_type(StudyRerouteURLResponse, study, path=["response"])
@@ -345,7 +345,7 @@ class TestStudies:
     @parametrize
     def test_method_uncancel_with_all_params(self, client: Avara) -> None:
         study = client.viewer.studies.uncancel(
-            study_id="stu_1234567890abcdef1234567890abcdef",
+            study_id="stu_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
             study_instance_uid=".16...2511..",
         )
         assert_matches_type(StudyUncancelResponse, study, path=["response"])
@@ -395,9 +395,9 @@ class TestAsyncStudies:
             severity="normal",
             study_description="x",
             study_instance_uid=".16...2511..",
-            assigned_to="usr_1234567890abcdef1234567890abcdef",
+            assigned_to="usr_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
             metadata={"foo": "string"},
-            org_id="org_1234567890abcdef1234567890abcdef",
+            org_id="org_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
         )
         assert_matches_type(StudyCreateResponse, study, path=["response"])
 
@@ -435,7 +435,7 @@ class TestAsyncStudies:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.retrieve(
-            "stu_1234567890abcdef1234567890abcdef",
+            "stu_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
         )
         assert_matches_type(StudyRetrieveResponse, study, path=["response"])
 
@@ -443,7 +443,7 @@ class TestAsyncStudies:
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncAvara) -> None:
         response = await async_client.viewer.studies.with_raw_response.retrieve(
-            "stu_1234567890abcdef1234567890abcdef",
+            "stu_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
         )
 
         assert response.is_closed is True
@@ -455,7 +455,7 @@ class TestAsyncStudies:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncAvara) -> None:
         async with async_client.viewer.studies.with_streaming_response.retrieve(
-            "stu_1234567890abcdef1234567890abcdef",
+            "stu_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -477,7 +477,7 @@ class TestAsyncStudies:
     @parametrize
     async def test_method_update(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.update(
-            study_id="stu_1234567890abcdef1234567890abcdef",
+            study_id="stu_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
         )
         assert_matches_type(StudyUpdateResponse, study, path=["response"])
 
@@ -485,8 +485,8 @@ class TestAsyncStudies:
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.update(
-            study_id="stu_1234567890abcdef1234567890abcdef",
-            assigned_to="usr_1234567890abcdef1234567890abcdef",
+            study_id="stu_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
+            assigned_to="usr_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
             metadata={"foo": "string"},
             severity="normal",
             study_description="x",
@@ -498,7 +498,7 @@ class TestAsyncStudies:
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncAvara) -> None:
         response = await async_client.viewer.studies.with_raw_response.update(
-            study_id="stu_1234567890abcdef1234567890abcdef",
+            study_id="stu_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
         )
 
         assert response.is_closed is True
@@ -510,7 +510,7 @@ class TestAsyncStudies:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncAvara) -> None:
         async with async_client.viewer.studies.with_streaming_response.update(
-            study_id="stu_1234567890abcdef1234567890abcdef",
+            study_id="stu_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -580,7 +580,7 @@ class TestAsyncStudies:
     @parametrize
     async def test_method_cancel_with_all_params(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.cancel(
-            study_id="stu_1234567890abcdef1234567890abcdef",
+            study_id="stu_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
             study_instance_uid=".16...2511..",
         )
         assert_matches_type(StudyCancelResponse, study, path=["response"])
@@ -617,7 +617,7 @@ class TestAsyncStudies:
     @parametrize
     async def test_method_reroute_url_with_all_params(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.reroute_url(
-            study_id="stu_1234567890abcdef1234567890abcdef",
+            study_id="stu_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
             study_instance_uid=".16...2511..",
         )
         assert_matches_type(StudyRerouteURLResponse, study, path=["response"])
@@ -696,7 +696,7 @@ class TestAsyncStudies:
     @parametrize
     async def test_method_uncancel_with_all_params(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.uncancel(
-            study_id="stu_1234567890abcdef1234567890abcdef",
+            study_id="stu_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
             study_instance_uid=".16...2511..",
         )
         assert_matches_type(StudyUncancelResponse, study, path=["response"])

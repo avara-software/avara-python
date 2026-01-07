@@ -59,14 +59,10 @@ class InvitationsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> InvitationRetrieveResponse:
-        """Retrieves a single invitation by its unique invitation ID.
+        """Args:
+          invitation_id: Invitation ID.
 
-        Returns the complete
-        invitation details including status, expiration, and associated user
-        information.
-
-        Args:
-          invitation_id: Invitation ID. Format: inv\\__<32-hex-chars>
+        Format: inv\\__<32-hex-chars>
 
           extra_headers: Send extra headers
 
@@ -132,12 +128,10 @@ class InvitationsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> InvitationUpdateResponse:
-        """
-        Updates a pending invitation's user details and permissions before it is
-        accepted. Only valid for invitations that have not expired or been processed.
+        """Args:
+          invitation_id: Invitation ID.
 
-        Args:
-          invitation_id: Invitation ID. Format: inv\\__<32-hex-chars>
+        Format: inv\\__<32-hex-chars>
 
           extra_headers: Send extra headers
 
@@ -190,10 +184,6 @@ class InvitationsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursorInvitations[InvitationListResponse]:
         """
-        Retrieves a paginated list of user invitations with optional filtering by
-        status, expiration, date range, and user ID. Returns up to 100 invitations per
-        request.
-
         Args:
           cursor: Base64 encoded cursor from previous response
 
@@ -253,12 +243,7 @@ class InvitationsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> InvitationRevokeResponse:
-        """Revokes a pending invitation, preventing it from being accepted.
-
-        Can revoke by
-        invitation ID, user ID, or both. Useful for cancelling invitations sent in
-        error.
-
+        """
         Args:
           extra_headers: Send extra headers
 
@@ -315,14 +300,10 @@ class AsyncInvitationsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> InvitationRetrieveResponse:
-        """Retrieves a single invitation by its unique invitation ID.
+        """Args:
+          invitation_id: Invitation ID.
 
-        Returns the complete
-        invitation details including status, expiration, and associated user
-        information.
-
-        Args:
-          invitation_id: Invitation ID. Format: inv\\__<32-hex-chars>
+        Format: inv\\__<32-hex-chars>
 
           extra_headers: Send extra headers
 
@@ -388,12 +369,10 @@ class AsyncInvitationsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> InvitationUpdateResponse:
-        """
-        Updates a pending invitation's user details and permissions before it is
-        accepted. Only valid for invitations that have not expired or been processed.
+        """Args:
+          invitation_id: Invitation ID.
 
-        Args:
-          invitation_id: Invitation ID. Format: inv\\__<32-hex-chars>
+        Format: inv\\__<32-hex-chars>
 
           extra_headers: Send extra headers
 
@@ -446,10 +425,6 @@ class AsyncInvitationsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[InvitationListResponse, AsyncCursorInvitations[InvitationListResponse]]:
         """
-        Retrieves a paginated list of user invitations with optional filtering by
-        status, expiration, date range, and user ID. Returns up to 100 invitations per
-        request.
-
         Args:
           cursor: Base64 encoded cursor from previous response
 
@@ -509,12 +484,7 @@ class AsyncInvitationsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> InvitationRevokeResponse:
-        """Revokes a pending invitation, preventing it from being accepted.
-
-        Can revoke by
-        invitation ID, user ID, or both. Useful for cancelling invitations sent in
-        error.
-
+        """
         Args:
           extra_headers: Send extra headers
 
