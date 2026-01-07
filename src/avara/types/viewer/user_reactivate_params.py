@@ -11,3 +11,4 @@ __all__ = ["UserReactivateParams"]
 
 class UserReactivateParams(TypedDict, total=False):
     user_id: Required[Annotated[str, PropertyInfo(alias="userId")]]
+    """User ID to reactivate. Format: usr\\__{32-hex-chars}"""

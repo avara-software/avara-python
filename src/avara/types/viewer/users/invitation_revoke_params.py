@@ -11,5 +11,7 @@ __all__ = ["InvitationRevokeParams"]
 
 class InvitationRevokeParams(TypedDict, total=False):
     invitation_id: Annotated[str, PropertyInfo(alias="invitationId")]
+    """Invitation ID to revoke. Format: inv\\__{32-hex-chars}"""
 
     user_id: Annotated[str, PropertyInfo(alias="userId")]
+    """User ID whose pending invitation to revoke. Format: usr\\__{32-hex-chars}"""

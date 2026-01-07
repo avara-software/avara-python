@@ -11,3 +11,4 @@ __all__ = ["UserRevokeAccessParams"]
 
 class UserRevokeAccessParams(TypedDict, total=False):
     user_id: Required[Annotated[str, PropertyInfo(alias="userId")]]
+    """User ID to revoke access for. Format: usr\\__{32-hex-chars}"""

@@ -11,5 +11,7 @@ __all__ = ["StudyUncancelParams"]
 
 class StudyUncancelParams(TypedDict, total=False):
     study_id: Annotated[str, PropertyInfo(alias="studyId")]
+    """Unique study identifier. Format: stu\\__{32-hex-chars}"""
 
     study_instance_uid: Annotated[str, PropertyInfo(alias="studyInstanceUid")]
+    """DICOM Study Instance UID"""

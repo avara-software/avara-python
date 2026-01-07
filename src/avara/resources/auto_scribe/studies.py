@@ -320,6 +320,10 @@ class StudiesResource(SyncAPIResource):
         inactive. Can be identified by either study ID or DICOM Study Instance UID.
 
         Args:
+          study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
+          study_instance_uid: DICOM Study Instance UID
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -362,6 +366,12 @@ class StudiesResource(SyncAPIResource):
         authentication and is time-limited for security.
 
         Args:
+          assigned_to_user_id: User ID to assign study to. Format: usr\\__{32-hex-chars}
+
+          study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
+          study_instance_uid: DICOM Study Instance UID
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -442,6 +452,10 @@ class StudiesResource(SyncAPIResource):
         cancelled. Can be identified by either study ID or DICOM Study Instance UID.
 
         Args:
+          study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
+          study_instance_uid: DICOM Study Instance UID
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -484,6 +498,12 @@ class StudiesResource(SyncAPIResource):
         physicians. The URL includes authentication and is time-limited.
 
         Args:
+          study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
+          study_instance_uid: DICOM Study Instance UID
+
+          user_id: Optional user ID for audit tracking. Format: usr\\__{32-hex-chars}
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -787,6 +807,10 @@ class AsyncStudiesResource(AsyncAPIResource):
         inactive. Can be identified by either study ID or DICOM Study Instance UID.
 
         Args:
+          study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
+          study_instance_uid: DICOM Study Instance UID
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -829,6 +853,12 @@ class AsyncStudiesResource(AsyncAPIResource):
         authentication and is time-limited for security.
 
         Args:
+          assigned_to_user_id: User ID to assign study to. Format: usr\\__{32-hex-chars}
+
+          study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
+          study_instance_uid: DICOM Study Instance UID
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -909,6 +939,10 @@ class AsyncStudiesResource(AsyncAPIResource):
         cancelled. Can be identified by either study ID or DICOM Study Instance UID.
 
         Args:
+          study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
+          study_instance_uid: DICOM Study Instance UID
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -951,6 +985,12 @@ class AsyncStudiesResource(AsyncAPIResource):
         physicians. The URL includes authentication and is time-limited.
 
         Args:
+          study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
+          study_instance_uid: DICOM Study Instance UID
+
+          user_id: Optional user ID for audit tracking. Format: usr\\__{32-hex-chars}
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
