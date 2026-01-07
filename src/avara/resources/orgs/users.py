@@ -59,6 +59,10 @@ class UsersResource(SyncAPIResource):
         organization-specific resources and studies.
 
         Args:
+          org_id: Unique organization identifier. Format: org\\__{32-hex-chars}
+
+          user_id: User ID to add to the organization
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -96,6 +100,10 @@ class UsersResource(SyncAPIResource):
         longer linked to this organization.
 
         Args:
+          org_id: Unique organization identifier. Format: org\\__{32-hex-chars}
+
+          user_id: User ID to remove from the organization
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -153,6 +161,10 @@ class AsyncUsersResource(AsyncAPIResource):
         organization-specific resources and studies.
 
         Args:
+          org_id: Unique organization identifier. Format: org\\__{32-hex-chars}
+
+          user_id: User ID to add to the organization
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -190,6 +202,10 @@ class AsyncUsersResource(AsyncAPIResource):
         longer linked to this organization.
 
         Args:
+          org_id: Unique organization identifier. Format: org\\__{32-hex-chars}
+
+          user_id: User ID to remove from the organization
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

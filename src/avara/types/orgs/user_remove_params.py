@@ -11,3 +11,4 @@ __all__ = ["UserRemoveParams"]
 
 class UserRemoveParams(TypedDict, total=False):
     user_id: Required[Annotated[str, PropertyInfo(alias="userId")]]
+    """User ID to remove from the organization"""

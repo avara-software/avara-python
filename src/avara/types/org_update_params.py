@@ -12,5 +12,7 @@ __all__ = ["OrgUpdateParams"]
 
 class OrgUpdateParams(TypedDict, total=False):
     metadata: Optional[Dict[str, str]]
+    """Updated metadata. Pass null to clear all metadata"""
 
     org_name: Annotated[str, PropertyInfo(alias="orgName")]
+    """Updated name for the organization"""

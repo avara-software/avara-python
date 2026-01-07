@@ -12,5 +12,7 @@ __all__ = ["OrgCreateParams"]
 
 class OrgCreateParams(TypedDict, total=False):
     org_name: Required[Annotated[str, PropertyInfo(alias="orgName")]]
+    """Name of the organization to create"""
 
     metadata: Dict[str, str]
+    """Custom key-value metadata for the organization. Maximum 50 pairs"""
