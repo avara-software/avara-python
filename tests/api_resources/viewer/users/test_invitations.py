@@ -177,8 +177,8 @@ class TestInvitations:
     @parametrize
     def test_method_revoke_with_all_params(self, client: Avara) -> None:
         invitation = client.viewer.users.invitations.revoke(
-            invitation_id="inv_1234567890abcdef1234567890abcdef",
-            user_id="usr_1234567890abcdef1234567890abcdef",
+            invitation_id="inv_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
+            user_id="usr_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
         )
         assert_matches_type(InvitationRevokeResponse, invitation, path=["response"])
 
@@ -364,8 +364,8 @@ class TestAsyncInvitations:
     @parametrize
     async def test_method_revoke_with_all_params(self, async_client: AsyncAvara) -> None:
         invitation = await async_client.viewer.users.invitations.revoke(
-            invitation_id="inv_1234567890abcdef1234567890abcdef",
-            user_id="usr_1234567890abcdef1234567890abcdef",
+            invitation_id="inv_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
+            user_id="usr_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
         )
         assert_matches_type(InvitationRevokeResponse, invitation, path=["response"])
 

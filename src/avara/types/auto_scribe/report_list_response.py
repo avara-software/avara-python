@@ -24,7 +24,7 @@ class Report(BaseModel):
     signed_at: Optional[datetime] = FieldInfo(alias="signedAt", default=None)
 
     snapshot_metadata: StudyReportMetadata = FieldInfo(alias="snapshotMetadata")
-    """Patient demographics and scan information for report generation"""
+    """Metadata for a study report including patient demographics and scan information"""
 
     status: Literal["in_progress", "completed"]
 

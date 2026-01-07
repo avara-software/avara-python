@@ -42,31 +42,23 @@ class UserInviteParams(TypedDict, total=False):
             PropertyInfo(alias="clinicRole"),
         ]
     ]
-    """User's clinical or organizational role"""
 
     email: Required[str]
-    """User's email address for login and notifications"""
 
     first_name: Required[Annotated[str, PropertyInfo(alias="firstName")]]
-    """User's first name"""
 
     has_dashboard_access: Required[Annotated[bool, PropertyInfo(alias="hasDashboardAccess")]]
 
     last_name: Required[Annotated[str, PropertyInfo(alias="lastName")]]
-    """User's last name"""
 
     level: Required[Literal["admin", "member"]]
 
     middle_name: Annotated[str, PropertyInfo(alias="middleName")]
-    """User's middle name (optional)"""
 
     npi_number: Annotated[str, PropertyInfo(alias="npiNumber")]
 
     phone_number: Annotated[str, PropertyInfo(alias="phoneNumber")]
-    """User's phone number (10-15 digits, optional)"""
 
     suffix1: str
-    """Name suffix (e.g., 'Jr.', 'Sr.', 'III') - optional"""
 
     suffix2: str
-    """Additional name suffix (optional)"""

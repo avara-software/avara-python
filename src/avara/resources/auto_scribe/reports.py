@@ -59,13 +59,10 @@ class ReportsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ReportListResponse:
-        """
-        Retrieves all reports (including versions and addendums) for a specific study.
-        Must provide either study ID or DICOM Study Instance UID. Returns report
-        metadata including status, version, and timestamps.
+        """Args:
+          study_id: Study ID.
 
-        Args:
-          study_id: Study ID. Format: stu\\__<32-hex-chars>
+        Format: stu\\__<32-hex-chars>
 
           study_instance_uid: DICOM Study Instance UID
 
@@ -106,14 +103,10 @@ class ReportsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ReportAddendumResponse:
-        """Initiates the creation of an addendum to an existing completed report.
+        """Args:
+          report_id: Report ID.
 
-        The study
-        status will change to 'addendum_active' allowing the radiologist to dictate
-        additional findings.
-
-        Args:
-          report_id: Report ID. Format: rep\\__<32-hex-chars>
+        Format: rep\\__<32-hex-chars>
 
           extra_headers: Send extra headers
 
@@ -144,13 +137,10 @@ class ReportsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ReportCancelAddendumResponse:
-        """Cancels an in-progress addendum and reverts the study status to 'completed'.
+        """Args:
+          report_id: Report ID.
 
-        The
-        original report remains unchanged. Only valid for active addendums.
-
-        Args:
-          report_id: Report ID. Format: rep\\__<32-hex-chars>
+        Format: rep\\__<32-hex-chars>
 
           extra_headers: Send extra headers
 
@@ -183,14 +173,10 @@ class ReportsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ReportPdfResponse:
-        """Retrieves presigned URLs for accessing report PDFs.
+        """Args:
+          report_id: Report ID.
 
-        Can fetch a single report by
-        report ID, or all reports for a study by study ID/DICOM UID. URLs are
-        time-limited for security.
-
-        Args:
-          report_id: Report ID. Format: rep\\__<32-hex-chars>
+        Format: rep\\__<32-hex-chars>
 
           study_id: Study ID. Format: stu\\__<32-hex-chars>
 
@@ -239,14 +225,10 @@ class ReportsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ReportTextResponse:
-        """Retrieves the text content of a report.
+        """Args:
+          report_id: Report ID.
 
-        Can fetch a single report by report ID,
-        or all reports for a study by study ID/DICOM UID. Returns plain text report
-        content.
-
-        Args:
-          report_id: Report ID. Format: rep\\__<32-hex-chars>
+        Format: rep\\__<32-hex-chars>
 
           study_id: Study ID. Format: stu\\__<32-hex-chars>
 
@@ -317,13 +299,10 @@ class AsyncReportsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ReportListResponse:
-        """
-        Retrieves all reports (including versions and addendums) for a specific study.
-        Must provide either study ID or DICOM Study Instance UID. Returns report
-        metadata including status, version, and timestamps.
+        """Args:
+          study_id: Study ID.
 
-        Args:
-          study_id: Study ID. Format: stu\\__<32-hex-chars>
+        Format: stu\\__<32-hex-chars>
 
           study_instance_uid: DICOM Study Instance UID
 
@@ -364,14 +343,10 @@ class AsyncReportsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ReportAddendumResponse:
-        """Initiates the creation of an addendum to an existing completed report.
+        """Args:
+          report_id: Report ID.
 
-        The study
-        status will change to 'addendum_active' allowing the radiologist to dictate
-        additional findings.
-
-        Args:
-          report_id: Report ID. Format: rep\\__<32-hex-chars>
+        Format: rep\\__<32-hex-chars>
 
           extra_headers: Send extra headers
 
@@ -402,13 +377,10 @@ class AsyncReportsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ReportCancelAddendumResponse:
-        """Cancels an in-progress addendum and reverts the study status to 'completed'.
+        """Args:
+          report_id: Report ID.
 
-        The
-        original report remains unchanged. Only valid for active addendums.
-
-        Args:
-          report_id: Report ID. Format: rep\\__<32-hex-chars>
+        Format: rep\\__<32-hex-chars>
 
           extra_headers: Send extra headers
 
@@ -441,14 +413,10 @@ class AsyncReportsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ReportPdfResponse:
-        """Retrieves presigned URLs for accessing report PDFs.
+        """Args:
+          report_id: Report ID.
 
-        Can fetch a single report by
-        report ID, or all reports for a study by study ID/DICOM UID. URLs are
-        time-limited for security.
-
-        Args:
-          report_id: Report ID. Format: rep\\__<32-hex-chars>
+        Format: rep\\__<32-hex-chars>
 
           study_id: Study ID. Format: stu\\__<32-hex-chars>
 
@@ -497,14 +465,10 @@ class AsyncReportsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ReportTextResponse:
-        """Retrieves the text content of a report.
+        """Args:
+          report_id: Report ID.
 
-        Can fetch a single report by report ID,
-        or all reports for a study by study ID/DICOM UID. Returns plain text report
-        content.
-
-        Args:
-          report_id: Report ID. Format: rep\\__<32-hex-chars>
+        Format: rep\\__<32-hex-chars>
 
           study_id: Study ID. Format: stu\\__<32-hex-chars>
 

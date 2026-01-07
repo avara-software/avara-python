@@ -73,12 +73,7 @@ class OrgsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OrgCreateResponse:
-        """Creates a new organization with a unique identifier and name.
-
-        Organizations can
-        be used to group and manage users, studies, and access permissions across the
-        Avara platform.
-
+        """
         Args:
           extra_headers: Send extra headers
 
@@ -114,13 +109,10 @@ class OrgsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OrgRetrieveResponse:
-        """Retrieves a single organization by its unique organization ID.
+        """Args:
+          org_id: Organization ID.
 
-        Returns the
-        complete organization object with name, status, and timestamps.
-
-        Args:
-          org_id: Organization ID. Format: org\\__<32-hex-chars>
+        Format: org\\__<32-hex-chars>
 
           extra_headers: Send extra headers
 
@@ -153,13 +145,10 @@ class OrgsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OrgUpdateResponse:
-        """Updates an organization's properties such as name or other metadata.
+        """Args:
+          org_id: Organization ID.
 
-        All fields
-        are optional - only provided fields will be updated.
-
-        Args:
-          org_id: Organization ID. Format: org\\__<32-hex-chars>
+        Format: org\\__<32-hex-chars>
 
           extra_headers: Send extra headers
 
@@ -199,9 +188,6 @@ class OrgsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncCursorOrganizations[OrgListResponse]:
         """
-        Retrieves a paginated list of organizations with optional filtering by name.
-        Returns up to 100 organizations per request.
-
         Args:
           cursor: Base64 encoded cursor from previous response
 
@@ -245,13 +231,10 @@ class OrgsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OrgDeactivateResponse:
-        """
-        Deactivates an organization, preventing it from being used for new studies or
-        user assignments. Existing data is preserved and the organization can be
-        reactivated later.
+        """Args:
+          org_id: Organization ID.
 
-        Args:
-          org_id: Organization ID. Format: org\\__<32-hex-chars>
+        Format: org\\__<32-hex-chars>
 
           extra_headers: Send extra headers
 
@@ -282,12 +265,10 @@ class OrgsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OrgReactivateResponse:
-        """
-        Restores a deactivated organization to active status, allowing it to be used for
-        new studies and user assignments again.
+        """Args:
+          org_id: Organization ID.
 
-        Args:
-          org_id: Organization ID. Format: org\\__<32-hex-chars>
+        Format: org\\__<32-hex-chars>
 
           extra_headers: Send extra headers
 
@@ -344,12 +325,7 @@ class AsyncOrgsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OrgCreateResponse:
-        """Creates a new organization with a unique identifier and name.
-
-        Organizations can
-        be used to group and manage users, studies, and access permissions across the
-        Avara platform.
-
+        """
         Args:
           extra_headers: Send extra headers
 
@@ -385,13 +361,10 @@ class AsyncOrgsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OrgRetrieveResponse:
-        """Retrieves a single organization by its unique organization ID.
+        """Args:
+          org_id: Organization ID.
 
-        Returns the
-        complete organization object with name, status, and timestamps.
-
-        Args:
-          org_id: Organization ID. Format: org\\__<32-hex-chars>
+        Format: org\\__<32-hex-chars>
 
           extra_headers: Send extra headers
 
@@ -424,13 +397,10 @@ class AsyncOrgsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OrgUpdateResponse:
-        """Updates an organization's properties such as name or other metadata.
+        """Args:
+          org_id: Organization ID.
 
-        All fields
-        are optional - only provided fields will be updated.
-
-        Args:
-          org_id: Organization ID. Format: org\\__<32-hex-chars>
+        Format: org\\__<32-hex-chars>
 
           extra_headers: Send extra headers
 
@@ -470,9 +440,6 @@ class AsyncOrgsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[OrgListResponse, AsyncCursorOrganizations[OrgListResponse]]:
         """
-        Retrieves a paginated list of organizations with optional filtering by name.
-        Returns up to 100 organizations per request.
-
         Args:
           cursor: Base64 encoded cursor from previous response
 
@@ -516,13 +483,10 @@ class AsyncOrgsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OrgDeactivateResponse:
-        """
-        Deactivates an organization, preventing it from being used for new studies or
-        user assignments. Existing data is preserved and the organization can be
-        reactivated later.
+        """Args:
+          org_id: Organization ID.
 
-        Args:
-          org_id: Organization ID. Format: org\\__<32-hex-chars>
+        Format: org\\__<32-hex-chars>
 
           extra_headers: Send extra headers
 
@@ -553,12 +517,10 @@ class AsyncOrgsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OrgReactivateResponse:
-        """
-        Restores a deactivated organization to active status, allowing it to be used for
-        new studies and user assignments again.
+        """Args:
+          org_id: Organization ID.
 
-        Args:
-          org_id: Organization ID. Format: org\\__<32-hex-chars>
+        Format: org\\__<32-hex-chars>
 
           extra_headers: Send extra headers
 

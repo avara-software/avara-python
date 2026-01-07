@@ -134,7 +134,7 @@ client = Avara()
 
 all_studies = []
 # Automatically fetches more pages as needed.
-for study in client.viewer.studies.list():
+for study in client.auto_scribe.studies.list():
     # Do something with study here
     all_studies.append(study)
 print(all_studies)
@@ -152,7 +152,7 @@ client = AsyncAvara()
 async def main() -> None:
     all_studies = []
     # Iterate through items across all pages, issuing requests as needed.
-    async for study in client.viewer.studies.list():
+    async for study in client.auto_scribe.studies.list():
         all_studies.append(study)
     print(all_studies)
 
@@ -163,7 +163,7 @@ asyncio.run(main())
 Alternatively, you can use the `.has_next_page()`, `.next_page_info()`, or `.get_next_page()` methods for more granular control working with pages:
 
 ```python
-first_page = await client.viewer.studies.list()
+first_page = await client.auto_scribe.studies.list()
 if first_page.has_next_page():
     print(f"will fetch next page using these details: {first_page.next_page_info()}")
     next_page = await first_page.get_next_page()
@@ -175,7 +175,7 @@ if first_page.has_next_page():
 Or just work directly with the returned data:
 
 ```python
-first_page = await client.viewer.studies.list()
+first_page = await client.auto_scribe.studies.list()
 
 print(f"next page cursor: {first_page.cursor}")  # => "next page cursor: ..."
 for study in first_page.studies:

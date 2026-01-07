@@ -45,13 +45,10 @@ class UserUpdateParams(TypedDict, total=False):
     ]
 
     first_name: Annotated[str, PropertyInfo(alias="firstName")]
-    """User's first name"""
 
     has_dashboard_access: Annotated[bool, PropertyInfo(alias="hasDashboardAccess")]
-    """Whether the user can access the dashboard interface. Required for admin users"""
 
     last_name: Annotated[str, PropertyInfo(alias="lastName")]
-    """User's last name"""
 
     level: Literal["admin", "member"]
 
