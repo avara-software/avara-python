@@ -194,10 +194,27 @@ from avara import Avara
 client = Avara()
 
 study = client.auto_scribe.studies.create(
-    report_metadata={},
+    report_metadata={
+        "date_of_birth": "1985-07-20",
+        "facility_name": "City Medical Center",
+        "height": {
+            "unit": "cm",
+            "value": 165,
+        },
+        "mrn": "MRN-2024-001234",
+        "patient_name": "Jane Doe",
+        "referring_physician_name": "Dr. Michael Chen",
+        "scan_date": "2024-03-15",
+        "scan_type": "MRI Brain with Contrast",
+        "sex": "female",
+        "weight": {
+            "unit": "kg",
+            "value": 62,
+        },
+    },
     severity="normal",
-    study_description="x",
-    study_instance_uid=".16...2511..",
+    study_description="Brain MRI with Contrast",
+    study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
 )
 print(study.report_metadata)
 ```

@@ -736,7 +736,9 @@ class TestAvara:
 
         with pytest.raises(APITimeoutError):
             client.viewer.studies.with_streaming_response.create(
-                severity="normal", study_description="x", study_instance_uid=".16...2511.."
+                severity="high",
+                study_description="CT Chest/Abdomen/Pelvis",
+                study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
             ).__enter__()
 
         assert _get_open_connections(client) == 0
@@ -748,7 +750,9 @@ class TestAvara:
 
         with pytest.raises(APIStatusError):
             client.viewer.studies.with_streaming_response.create(
-                severity="normal", study_description="x", study_instance_uid=".16...2511.."
+                severity="high",
+                study_description="CT Chest/Abdomen/Pelvis",
+                study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
             ).__enter__()
         assert _get_open_connections(client) == 0
 
@@ -779,7 +783,9 @@ class TestAvara:
         respx_mock.post("/v1/viewer/studies").mock(side_effect=retry_handler)
 
         response = client.viewer.studies.with_raw_response.create(
-            severity="normal", study_description="x", study_instance_uid=".16...2511.."
+            severity="high",
+            study_description="CT Chest/Abdomen/Pelvis",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         )
 
         assert response.retries_taken == failures_before_success
@@ -803,9 +809,9 @@ class TestAvara:
         respx_mock.post("/v1/viewer/studies").mock(side_effect=retry_handler)
 
         response = client.viewer.studies.with_raw_response.create(
-            severity="normal",
-            study_description="x",
-            study_instance_uid=".16...2511..",
+            severity="high",
+            study_description="CT Chest/Abdomen/Pelvis",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
             extra_headers={"x-stainless-retry-count": Omit()},
         )
 
@@ -831,9 +837,9 @@ class TestAvara:
         respx_mock.post("/v1/viewer/studies").mock(side_effect=retry_handler)
 
         response = client.viewer.studies.with_raw_response.create(
-            severity="normal",
-            study_description="x",
-            study_instance_uid=".16...2511..",
+            severity="high",
+            study_description="CT Chest/Abdomen/Pelvis",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
             extra_headers={"x-stainless-retry-count": "42"},
         )
 
@@ -1580,7 +1586,9 @@ class TestAsyncAvara:
 
         with pytest.raises(APITimeoutError):
             await async_client.viewer.studies.with_streaming_response.create(
-                severity="normal", study_description="x", study_instance_uid=".16...2511.."
+                severity="high",
+                study_description="CT Chest/Abdomen/Pelvis",
+                study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
             ).__aenter__()
 
         assert _get_open_connections(async_client) == 0
@@ -1592,7 +1600,9 @@ class TestAsyncAvara:
 
         with pytest.raises(APIStatusError):
             await async_client.viewer.studies.with_streaming_response.create(
-                severity="normal", study_description="x", study_instance_uid=".16...2511.."
+                severity="high",
+                study_description="CT Chest/Abdomen/Pelvis",
+                study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
             ).__aenter__()
         assert _get_open_connections(async_client) == 0
 
@@ -1623,7 +1633,9 @@ class TestAsyncAvara:
         respx_mock.post("/v1/viewer/studies").mock(side_effect=retry_handler)
 
         response = await client.viewer.studies.with_raw_response.create(
-            severity="normal", study_description="x", study_instance_uid=".16...2511.."
+            severity="high",
+            study_description="CT Chest/Abdomen/Pelvis",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         )
 
         assert response.retries_taken == failures_before_success
@@ -1649,9 +1661,9 @@ class TestAsyncAvara:
         respx_mock.post("/v1/viewer/studies").mock(side_effect=retry_handler)
 
         response = await client.viewer.studies.with_raw_response.create(
-            severity="normal",
-            study_description="x",
-            study_instance_uid=".16...2511..",
+            severity="high",
+            study_description="CT Chest/Abdomen/Pelvis",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
             extra_headers={"x-stainless-retry-count": Omit()},
         )
 
@@ -1677,9 +1689,9 @@ class TestAsyncAvara:
         respx_mock.post("/v1/viewer/studies").mock(side_effect=retry_handler)
 
         response = await client.viewer.studies.with_raw_response.create(
-            severity="normal",
-            study_description="x",
-            study_instance_uid=".16...2511..",
+            severity="high",
+            study_description="CT Chest/Abdomen/Pelvis",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
             extra_headers={"x-stainless-retry-count": "42"},
         )
 

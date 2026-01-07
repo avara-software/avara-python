@@ -29,7 +29,7 @@ class TestOrgs:
     @parametrize
     def test_method_create(self, client: Avara) -> None:
         org = client.orgs.create(
-            org_name="x",
+            org_name="City Medical Center - Radiology Department",
         )
         assert_matches_type(OrgCreateResponse, org, path=["response"])
 
@@ -37,8 +37,11 @@ class TestOrgs:
     @parametrize
     def test_method_create_with_all_params(self, client: Avara) -> None:
         org = client.orgs.create(
-            org_name="x",
-            metadata={"foo": "string"},
+            org_name="City Medical Center - Radiology Department",
+            metadata={
+                "department": "radiology",
+                "region": "northeast",
+            },
         )
         assert_matches_type(OrgCreateResponse, org, path=["response"])
 
@@ -46,7 +49,7 @@ class TestOrgs:
     @parametrize
     def test_raw_response_create(self, client: Avara) -> None:
         response = client.orgs.with_raw_response.create(
-            org_name="x",
+            org_name="City Medical Center - Radiology Department",
         )
 
         assert response.is_closed is True
@@ -58,7 +61,7 @@ class TestOrgs:
     @parametrize
     def test_streaming_response_create(self, client: Avara) -> None:
         with client.orgs.with_streaming_response.create(
-            org_name="x",
+            org_name="City Medical Center - Radiology Department",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -123,8 +126,12 @@ class TestOrgs:
     def test_method_update_with_all_params(self, client: Avara) -> None:
         org = client.orgs.update(
             org_id="org_1234567890abcdef1234567890abcdef",
-            metadata={"foo": "string"},
-            org_name="x",
+            metadata={
+                "department": "radiology",
+                "region": "northeast",
+                "wing": "Building A",
+            },
+            org_name="City Medical Center - Radiology & Imaging",
         )
         assert_matches_type(OrgUpdateResponse, org, path=["response"])
 
@@ -293,7 +300,7 @@ class TestAsyncOrgs:
     @parametrize
     async def test_method_create(self, async_client: AsyncAvara) -> None:
         org = await async_client.orgs.create(
-            org_name="x",
+            org_name="City Medical Center - Radiology Department",
         )
         assert_matches_type(OrgCreateResponse, org, path=["response"])
 
@@ -301,8 +308,11 @@ class TestAsyncOrgs:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncAvara) -> None:
         org = await async_client.orgs.create(
-            org_name="x",
-            metadata={"foo": "string"},
+            org_name="City Medical Center - Radiology Department",
+            metadata={
+                "department": "radiology",
+                "region": "northeast",
+            },
         )
         assert_matches_type(OrgCreateResponse, org, path=["response"])
 
@@ -310,7 +320,7 @@ class TestAsyncOrgs:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncAvara) -> None:
         response = await async_client.orgs.with_raw_response.create(
-            org_name="x",
+            org_name="City Medical Center - Radiology Department",
         )
 
         assert response.is_closed is True
@@ -322,7 +332,7 @@ class TestAsyncOrgs:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncAvara) -> None:
         async with async_client.orgs.with_streaming_response.create(
-            org_name="x",
+            org_name="City Medical Center - Radiology Department",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -387,8 +397,12 @@ class TestAsyncOrgs:
     async def test_method_update_with_all_params(self, async_client: AsyncAvara) -> None:
         org = await async_client.orgs.update(
             org_id="org_1234567890abcdef1234567890abcdef",
-            metadata={"foo": "string"},
-            org_name="x",
+            metadata={
+                "department": "radiology",
+                "region": "northeast",
+                "wing": "Building A",
+            },
+            org_name="City Medical Center - Radiology & Imaging",
         )
         assert_matches_type(OrgUpdateResponse, org, path=["response"])
 

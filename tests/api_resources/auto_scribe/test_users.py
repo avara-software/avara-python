@@ -83,13 +83,13 @@ class TestUsers:
             can_create_reports=True,
             can_manage_studies=True,
             clinic_role="Radiologist",
-            first_name="x",
+            first_name="Sarah",
             has_dashboard_access=True,
-            last_name="x",
+            last_name="Johnson-Smith",
             level="admin",
             middle_name="x",
-            npi_number="7321669910",
-            phone_number="321669910225610",
+            npi_number="1234567893",
+            phone_number="5551234567",
             suffix1="x",
             suffix2="x",
         )
@@ -179,11 +179,11 @@ class TestUsers:
             can_create_reports=True,
             can_manage_studies=True,
             clinic_role="Radiologist",
-            email="S%+_FW+l+.n-@1F.-.eVZe",
-            first_name="x",
+            email="dr.johnson@hospital.org",
+            first_name="Sarah",
             has_dashboard_access=True,
-            last_name="x",
-            level="admin",
+            last_name="Johnson",
+            level="member",
         )
         assert_matches_type(UserInviteResponse, user, path=["response"])
 
@@ -194,16 +194,16 @@ class TestUsers:
             can_create_reports=True,
             can_manage_studies=True,
             clinic_role="Radiologist",
-            email="S%+_FW+l+.n-@1F.-.eVZe",
-            first_name="x",
+            email="dr.johnson@hospital.org",
+            first_name="Sarah",
             has_dashboard_access=True,
-            last_name="x",
-            level="admin",
-            middle_name="x",
-            npi_number="7321669910",
-            phone_number="321669910225610",
-            suffix1="x",
-            suffix2="x",
+            last_name="Johnson",
+            level="member",
+            middle_name="Marie",
+            npi_number="1234567893",
+            phone_number="5551234567",
+            suffix1="MD",
+            suffix2="FACR",
         )
         assert_matches_type(UserInviteResponse, user, path=["response"])
 
@@ -214,11 +214,11 @@ class TestUsers:
             can_create_reports=True,
             can_manage_studies=True,
             clinic_role="Radiologist",
-            email="S%+_FW+l+.n-@1F.-.eVZe",
-            first_name="x",
+            email="dr.johnson@hospital.org",
+            first_name="Sarah",
             has_dashboard_access=True,
-            last_name="x",
-            level="admin",
+            last_name="Johnson",
+            level="member",
         )
 
         assert response.is_closed is True
@@ -233,11 +233,11 @@ class TestUsers:
             can_create_reports=True,
             can_manage_studies=True,
             clinic_role="Radiologist",
-            email="S%+_FW+l+.n-@1F.-.eVZe",
-            first_name="x",
+            email="dr.johnson@hospital.org",
+            first_name="Sarah",
             has_dashboard_access=True,
-            last_name="x",
-            level="admin",
+            last_name="Johnson",
+            level="member",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -379,13 +379,13 @@ class TestAsyncUsers:
             can_create_reports=True,
             can_manage_studies=True,
             clinic_role="Radiologist",
-            first_name="x",
+            first_name="Sarah",
             has_dashboard_access=True,
-            last_name="x",
+            last_name="Johnson-Smith",
             level="admin",
             middle_name="x",
-            npi_number="7321669910",
-            phone_number="321669910225610",
+            npi_number="1234567893",
+            phone_number="5551234567",
             suffix1="x",
             suffix2="x",
         )
@@ -475,11 +475,11 @@ class TestAsyncUsers:
             can_create_reports=True,
             can_manage_studies=True,
             clinic_role="Radiologist",
-            email="S%+_FW+l+.n-@1F.-.eVZe",
-            first_name="x",
+            email="dr.johnson@hospital.org",
+            first_name="Sarah",
             has_dashboard_access=True,
-            last_name="x",
-            level="admin",
+            last_name="Johnson",
+            level="member",
         )
         assert_matches_type(UserInviteResponse, user, path=["response"])
 
@@ -490,16 +490,16 @@ class TestAsyncUsers:
             can_create_reports=True,
             can_manage_studies=True,
             clinic_role="Radiologist",
-            email="S%+_FW+l+.n-@1F.-.eVZe",
-            first_name="x",
+            email="dr.johnson@hospital.org",
+            first_name="Sarah",
             has_dashboard_access=True,
-            last_name="x",
-            level="admin",
-            middle_name="x",
-            npi_number="7321669910",
-            phone_number="321669910225610",
-            suffix1="x",
-            suffix2="x",
+            last_name="Johnson",
+            level="member",
+            middle_name="Marie",
+            npi_number="1234567893",
+            phone_number="5551234567",
+            suffix1="MD",
+            suffix2="FACR",
         )
         assert_matches_type(UserInviteResponse, user, path=["response"])
 
@@ -510,11 +510,11 @@ class TestAsyncUsers:
             can_create_reports=True,
             can_manage_studies=True,
             clinic_role="Radiologist",
-            email="S%+_FW+l+.n-@1F.-.eVZe",
-            first_name="x",
+            email="dr.johnson@hospital.org",
+            first_name="Sarah",
             has_dashboard_access=True,
-            last_name="x",
-            level="admin",
+            last_name="Johnson",
+            level="member",
         )
 
         assert response.is_closed is True
@@ -529,11 +529,11 @@ class TestAsyncUsers:
             can_create_reports=True,
             can_manage_studies=True,
             clinic_role="Radiologist",
-            email="S%+_FW+l+.n-@1F.-.eVZe",
-            first_name="x",
+            email="dr.johnson@hospital.org",
+            first_name="Sarah",
             has_dashboard_access=True,
-            last_name="x",
-            level="admin",
+            last_name="Johnson",
+            level="member",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

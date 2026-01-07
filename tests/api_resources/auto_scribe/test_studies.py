@@ -34,8 +34,8 @@ class TestStudies:
         study = client.auto_scribe.studies.create(
             report_metadata={},
             severity="normal",
-            study_description="x",
-            study_instance_uid=".16...2511..",
+            study_description="Brain MRI with Contrast",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         )
         assert_matches_type(StudyCreateResponse, study, path=["response"])
 
@@ -44,30 +44,33 @@ class TestStudies:
     def test_method_create_with_all_params(self, client: Avara) -> None:
         study = client.auto_scribe.studies.create(
             report_metadata={
-                "age": "age",
-                "date_of_birth": "7321-69-10",
-                "facility_name": "facilityName",
+                "age": "38 years",
+                "date_of_birth": "1985-07-20",
+                "facility_name": "City Medical Center",
                 "height": {
-                    "unit": "in",
-                    "value": 0,
+                    "unit": "cm",
+                    "value": 165,
                 },
-                "mrn": "mrn",
-                "patient_name": "patientName",
-                "referring_physician_name": "referringPhysicianName",
-                "scan_date": "7321-69-10",
-                "scan_time": "scanTime",
-                "scan_type": "scanType",
-                "sex": "male",
+                "mrn": "MRN-2024-001234",
+                "patient_name": "Jane Doe",
+                "referring_physician_name": "Dr. Michael Chen",
+                "scan_date": "2024-03-15",
+                "scan_time": "14:30",
+                "scan_type": "MRI Brain with Contrast",
+                "sex": "female",
                 "weight": {
-                    "unit": "lbs",
-                    "value": 0,
+                    "unit": "kg",
+                    "value": 62,
                 },
             },
             severity="normal",
-            study_description="x",
-            study_instance_uid=".16...2511..",
+            study_description="Brain MRI with Contrast",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
             assigned_to="usr_1234567890abcdef1234567890abcdef",
-            metadata={"foo": "string"},
+            metadata={
+                "department": "radiology",
+                "priority": "routine",
+            },
             org_id="org_1234567890abcdef1234567890abcdef",
             prior_report_texts=["x"],
             prior_study_ids=["string"],
@@ -80,8 +83,8 @@ class TestStudies:
         response = client.auto_scribe.studies.with_raw_response.create(
             report_metadata={},
             severity="normal",
-            study_description="x",
-            study_instance_uid=".16...2511..",
+            study_description="Brain MRI with Contrast",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         )
 
         assert response.is_closed is True
@@ -95,8 +98,8 @@ class TestStudies:
         with client.auto_scribe.studies.with_streaming_response.create(
             report_metadata={},
             severity="normal",
-            study_description="x",
-            study_instance_uid=".16...2511..",
+            study_description="Brain MRI with Contrast",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -171,23 +174,23 @@ class TestStudies:
                 "date_of_birth": "7321-69-10",
                 "facility_name": "facilityName",
                 "height": {
-                    "unit": "in",
-                    "value": 0,
+                    "unit": "cm",
+                    "value": 170,
                 },
                 "mrn": "mrn",
-                "patient_name": "patientName",
+                "patient_name": "Jane M. Doe",
                 "referring_physician_name": "referringPhysicianName",
                 "scan_date": "7321-69-10",
                 "scan_time": "scanTime",
                 "scan_type": "scanType",
-                "sex": "male",
+                "sex": "female",
                 "weight": {
-                    "unit": "lbs",
-                    "value": 0,
+                    "unit": "kg",
+                    "value": 68,
                 },
             },
-            severity="normal",
-            study_description="x",
+            severity="high",
+            study_description="Brain MRI with and without Contrast",
         )
         assert_matches_type(StudyUpdateResponse, study, path=["response"])
 
@@ -278,7 +281,7 @@ class TestStudies:
     def test_method_cancel_with_all_params(self, client: Avara) -> None:
         study = client.auto_scribe.studies.cancel(
             study_id="stu_1234567890abcdef1234567890abcdef",
-            study_instance_uid=".16...2511..",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         )
         assert_matches_type(StudyCancelResponse, study, path=["response"])
 
@@ -318,7 +321,7 @@ class TestStudies:
         study = client.auto_scribe.studies.reroute_url(
             assigned_to_user_id="usr_1234567890abcdef1234567890abcdef",
             study_id="stu_1234567890abcdef1234567890abcdef",
-            study_instance_uid=".16...2511..",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         )
         assert_matches_type(StudyRerouteURLResponse, study, path=["response"])
 
@@ -401,7 +404,7 @@ class TestStudies:
     def test_method_uncancel_with_all_params(self, client: Avara) -> None:
         study = client.auto_scribe.studies.uncancel(
             study_id="stu_1234567890abcdef1234567890abcdef",
-            study_instance_uid=".16...2511..",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         )
         assert_matches_type(StudyUncancelResponse, study, path=["response"])
 
@@ -438,7 +441,7 @@ class TestStudies:
     def test_method_viewer_only_reroute_url_with_all_params(self, client: Avara) -> None:
         study = client.auto_scribe.studies.viewer_only_reroute_url(
             study_id="stu_1234567890abcdef1234567890abcdef",
-            study_instance_uid=".16...2511..",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
             user_id="usr_1234567890abcdef1234567890abcdef",
         )
         assert_matches_type(StudyViewerOnlyRerouteURLResponse, study, path=["response"])
@@ -477,8 +480,8 @@ class TestAsyncStudies:
         study = await async_client.auto_scribe.studies.create(
             report_metadata={},
             severity="normal",
-            study_description="x",
-            study_instance_uid=".16...2511..",
+            study_description="Brain MRI with Contrast",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         )
         assert_matches_type(StudyCreateResponse, study, path=["response"])
 
@@ -487,30 +490,33 @@ class TestAsyncStudies:
     async def test_method_create_with_all_params(self, async_client: AsyncAvara) -> None:
         study = await async_client.auto_scribe.studies.create(
             report_metadata={
-                "age": "age",
-                "date_of_birth": "7321-69-10",
-                "facility_name": "facilityName",
+                "age": "38 years",
+                "date_of_birth": "1985-07-20",
+                "facility_name": "City Medical Center",
                 "height": {
-                    "unit": "in",
-                    "value": 0,
+                    "unit": "cm",
+                    "value": 165,
                 },
-                "mrn": "mrn",
-                "patient_name": "patientName",
-                "referring_physician_name": "referringPhysicianName",
-                "scan_date": "7321-69-10",
-                "scan_time": "scanTime",
-                "scan_type": "scanType",
-                "sex": "male",
+                "mrn": "MRN-2024-001234",
+                "patient_name": "Jane Doe",
+                "referring_physician_name": "Dr. Michael Chen",
+                "scan_date": "2024-03-15",
+                "scan_time": "14:30",
+                "scan_type": "MRI Brain with Contrast",
+                "sex": "female",
                 "weight": {
-                    "unit": "lbs",
-                    "value": 0,
+                    "unit": "kg",
+                    "value": 62,
                 },
             },
             severity="normal",
-            study_description="x",
-            study_instance_uid=".16...2511..",
+            study_description="Brain MRI with Contrast",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
             assigned_to="usr_1234567890abcdef1234567890abcdef",
-            metadata={"foo": "string"},
+            metadata={
+                "department": "radiology",
+                "priority": "routine",
+            },
             org_id="org_1234567890abcdef1234567890abcdef",
             prior_report_texts=["x"],
             prior_study_ids=["string"],
@@ -523,8 +529,8 @@ class TestAsyncStudies:
         response = await async_client.auto_scribe.studies.with_raw_response.create(
             report_metadata={},
             severity="normal",
-            study_description="x",
-            study_instance_uid=".16...2511..",
+            study_description="Brain MRI with Contrast",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         )
 
         assert response.is_closed is True
@@ -538,8 +544,8 @@ class TestAsyncStudies:
         async with async_client.auto_scribe.studies.with_streaming_response.create(
             report_metadata={},
             severity="normal",
-            study_description="x",
-            study_instance_uid=".16...2511..",
+            study_description="Brain MRI with Contrast",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -614,23 +620,23 @@ class TestAsyncStudies:
                 "date_of_birth": "7321-69-10",
                 "facility_name": "facilityName",
                 "height": {
-                    "unit": "in",
-                    "value": 0,
+                    "unit": "cm",
+                    "value": 170,
                 },
                 "mrn": "mrn",
-                "patient_name": "patientName",
+                "patient_name": "Jane M. Doe",
                 "referring_physician_name": "referringPhysicianName",
                 "scan_date": "7321-69-10",
                 "scan_time": "scanTime",
                 "scan_type": "scanType",
-                "sex": "male",
+                "sex": "female",
                 "weight": {
-                    "unit": "lbs",
-                    "value": 0,
+                    "unit": "kg",
+                    "value": 68,
                 },
             },
-            severity="normal",
-            study_description="x",
+            severity="high",
+            study_description="Brain MRI with and without Contrast",
         )
         assert_matches_type(StudyUpdateResponse, study, path=["response"])
 
@@ -721,7 +727,7 @@ class TestAsyncStudies:
     async def test_method_cancel_with_all_params(self, async_client: AsyncAvara) -> None:
         study = await async_client.auto_scribe.studies.cancel(
             study_id="stu_1234567890abcdef1234567890abcdef",
-            study_instance_uid=".16...2511..",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         )
         assert_matches_type(StudyCancelResponse, study, path=["response"])
 
@@ -761,7 +767,7 @@ class TestAsyncStudies:
         study = await async_client.auto_scribe.studies.reroute_url(
             assigned_to_user_id="usr_1234567890abcdef1234567890abcdef",
             study_id="stu_1234567890abcdef1234567890abcdef",
-            study_instance_uid=".16...2511..",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         )
         assert_matches_type(StudyRerouteURLResponse, study, path=["response"])
 
@@ -844,7 +850,7 @@ class TestAsyncStudies:
     async def test_method_uncancel_with_all_params(self, async_client: AsyncAvara) -> None:
         study = await async_client.auto_scribe.studies.uncancel(
             study_id="stu_1234567890abcdef1234567890abcdef",
-            study_instance_uid=".16...2511..",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
         )
         assert_matches_type(StudyUncancelResponse, study, path=["response"])
 
@@ -881,7 +887,7 @@ class TestAsyncStudies:
     async def test_method_viewer_only_reroute_url_with_all_params(self, async_client: AsyncAvara) -> None:
         study = await async_client.auto_scribe.studies.viewer_only_reroute_url(
             study_id="stu_1234567890abcdef1234567890abcdef",
-            study_instance_uid=".16...2511..",
+            study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
             user_id="usr_1234567890abcdef1234567890abcdef",
         )
         assert_matches_type(StudyViewerOnlyRerouteURLResponse, study, path=["response"])
