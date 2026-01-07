@@ -12,11 +12,11 @@ __all__ = ["StudyUpdateParams", "ReportMetadata", "ReportMetadataHeight", "Repor
 
 
 class StudyUpdateParams(TypedDict, total=False):
-    assigned_to: Annotated[Optional[str], PropertyInfo(alias="assignedTo")]
+    assigned_to: Annotated[str, PropertyInfo(alias="assignedTo")]
 
     metadata: Optional[Dict[str, str]]
 
-    org_id: Annotated[Optional[str], PropertyInfo(alias="orgId")]
+    org_id: Annotated[str, PropertyInfo(alias="orgId")]
 
     prior_report_texts: Annotated[Optional[SequenceNotStr[str]], PropertyInfo(alias="priorReportTexts")]
 

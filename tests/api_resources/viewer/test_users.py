@@ -29,7 +29,7 @@ class TestUsers:
     @parametrize
     def test_method_retrieve(self, client: Avara) -> None:
         user = client.viewer.users.retrieve(
-            "usr_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
+            "usr_1234567890abcdef1234567890abcdef",
         )
         assert_matches_type(UserRetrieveResponse, user, path=["response"])
 
@@ -37,7 +37,7 @@ class TestUsers:
     @parametrize
     def test_raw_response_retrieve(self, client: Avara) -> None:
         response = client.viewer.users.with_raw_response.retrieve(
-            "usr_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
+            "usr_1234567890abcdef1234567890abcdef",
         )
 
         assert response.is_closed is True
@@ -49,7 +49,7 @@ class TestUsers:
     @parametrize
     def test_streaming_response_retrieve(self, client: Avara) -> None:
         with client.viewer.users.with_streaming_response.retrieve(
-            "usr_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
+            "usr_1234567890abcdef1234567890abcdef",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -243,7 +243,7 @@ class TestUsers:
     @parametrize
     def test_method_reactivate(self, client: Avara) -> None:
         user = client.viewer.users.reactivate(
-            user_id="usr_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
+            user_id="usr_1234567890abcdef1234567890abcdef",
         )
         assert_matches_type(UserReactivateResponse, user, path=["response"])
 
@@ -251,7 +251,7 @@ class TestUsers:
     @parametrize
     def test_raw_response_reactivate(self, client: Avara) -> None:
         response = client.viewer.users.with_raw_response.reactivate(
-            user_id="usr_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
+            user_id="usr_1234567890abcdef1234567890abcdef",
         )
 
         assert response.is_closed is True
@@ -263,7 +263,7 @@ class TestUsers:
     @parametrize
     def test_streaming_response_reactivate(self, client: Avara) -> None:
         with client.viewer.users.with_streaming_response.reactivate(
-            user_id="usr_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
+            user_id="usr_1234567890abcdef1234567890abcdef",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -277,7 +277,7 @@ class TestUsers:
     @parametrize
     def test_method_revoke_access(self, client: Avara) -> None:
         user = client.viewer.users.revoke_access(
-            user_id="usr_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
+            user_id="usr_1234567890abcdef1234567890abcdef",
         )
         assert_matches_type(UserRevokeAccessResponse, user, path=["response"])
 
@@ -285,7 +285,7 @@ class TestUsers:
     @parametrize
     def test_raw_response_revoke_access(self, client: Avara) -> None:
         response = client.viewer.users.with_raw_response.revoke_access(
-            user_id="usr_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
+            user_id="usr_1234567890abcdef1234567890abcdef",
         )
 
         assert response.is_closed is True
@@ -297,7 +297,7 @@ class TestUsers:
     @parametrize
     def test_streaming_response_revoke_access(self, client: Avara) -> None:
         with client.viewer.users.with_streaming_response.revoke_access(
-            user_id="usr_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
+            user_id="usr_1234567890abcdef1234567890abcdef",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -317,7 +317,7 @@ class TestAsyncUsers:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncAvara) -> None:
         user = await async_client.viewer.users.retrieve(
-            "usr_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
+            "usr_1234567890abcdef1234567890abcdef",
         )
         assert_matches_type(UserRetrieveResponse, user, path=["response"])
 
@@ -325,7 +325,7 @@ class TestAsyncUsers:
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncAvara) -> None:
         response = await async_client.viewer.users.with_raw_response.retrieve(
-            "usr_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
+            "usr_1234567890abcdef1234567890abcdef",
         )
 
         assert response.is_closed is True
@@ -337,7 +337,7 @@ class TestAsyncUsers:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncAvara) -> None:
         async with async_client.viewer.users.with_streaming_response.retrieve(
-            "usr_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
+            "usr_1234567890abcdef1234567890abcdef",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -531,7 +531,7 @@ class TestAsyncUsers:
     @parametrize
     async def test_method_reactivate(self, async_client: AsyncAvara) -> None:
         user = await async_client.viewer.users.reactivate(
-            user_id="usr_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
+            user_id="usr_1234567890abcdef1234567890abcdef",
         )
         assert_matches_type(UserReactivateResponse, user, path=["response"])
 
@@ -539,7 +539,7 @@ class TestAsyncUsers:
     @parametrize
     async def test_raw_response_reactivate(self, async_client: AsyncAvara) -> None:
         response = await async_client.viewer.users.with_raw_response.reactivate(
-            user_id="usr_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
+            user_id="usr_1234567890abcdef1234567890abcdef",
         )
 
         assert response.is_closed is True
@@ -551,7 +551,7 @@ class TestAsyncUsers:
     @parametrize
     async def test_streaming_response_reactivate(self, async_client: AsyncAvara) -> None:
         async with async_client.viewer.users.with_streaming_response.reactivate(
-            user_id="usr_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
+            user_id="usr_1234567890abcdef1234567890abcdef",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -565,7 +565,7 @@ class TestAsyncUsers:
     @parametrize
     async def test_method_revoke_access(self, async_client: AsyncAvara) -> None:
         user = await async_client.viewer.users.revoke_access(
-            user_id="usr_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
+            user_id="usr_1234567890abcdef1234567890abcdef",
         )
         assert_matches_type(UserRevokeAccessResponse, user, path=["response"])
 
@@ -573,7 +573,7 @@ class TestAsyncUsers:
     @parametrize
     async def test_raw_response_revoke_access(self, async_client: AsyncAvara) -> None:
         response = await async_client.viewer.users.with_raw_response.revoke_access(
-            user_id="usr_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
+            user_id="usr_1234567890abcdef1234567890abcdef",
         )
 
         assert response.is_closed is True
@@ -585,7 +585,7 @@ class TestAsyncUsers:
     @parametrize
     async def test_streaming_response_revoke_access(self, async_client: AsyncAvara) -> None:
         async with async_client.viewer.users.with_streaming_response.revoke_access(
-            user_id="usr_E1CB97d8EBbDbaAae6d9B1ca0D1cFaAD",
+            user_id="usr_1234567890abcdef1234567890abcdef",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
