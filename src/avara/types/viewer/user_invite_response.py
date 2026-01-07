@@ -41,7 +41,7 @@ class UserInviteResponse(BaseModel):
     ] = FieldInfo(alias="clinicRole")
     """User's clinical or organizational role"""
 
-    created_at: datetime = FieldInfo(alias="createdAt")
+    created_at: Optional[datetime] = FieldInfo(alias="createdAt", default=None)
     """Timestamp when the user was created"""
 
     email: str

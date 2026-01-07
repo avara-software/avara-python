@@ -15,7 +15,7 @@ __all__ = ["ReportListResponse", "Report"]
 class Report(BaseModel):
     """A radiology report in the AutoScribe system"""
 
-    created_at: datetime = FieldInfo(alias="createdAt")
+    created_at: Optional[datetime] = FieldInfo(alias="createdAt", default=None)
 
     is_addendum: bool = FieldInfo(alias="isAddendum")
 
@@ -30,7 +30,7 @@ class Report(BaseModel):
 
     study_id: str = FieldInfo(alias="studyId")
 
-    updated_at: datetime = FieldInfo(alias="updatedAt")
+    updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
 
     user_id: str = FieldInfo(alias="userId")
 
