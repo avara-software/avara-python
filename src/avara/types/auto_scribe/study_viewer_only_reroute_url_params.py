@@ -14,7 +14,10 @@ class StudyViewerOnlyRerouteURLParams(TypedDict, total=False):
     """Unique study identifier. Format: stu\\__{32-hex-chars}"""
 
     study_instance_uid: Annotated[str, PropertyInfo(alias="studyInstanceUid")]
-    """DICOM Study Instance UID"""
+    """DICOM Study Instance UID.
+
+    Must be a valid DICOM UID format (e.g., '1.2.840.10008.5.1.4.1.1.2')
+    """
 
     user_id: Annotated[str, PropertyInfo(alias="userId")]
     """Optional user ID for audit tracking. Format: usr\\__{32-hex-chars}"""

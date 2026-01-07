@@ -11,4 +11,4 @@ __all__ = ["UserAddParams"]
 
 class UserAddParams(TypedDict, total=False):
     user_id: Required[Annotated[str, PropertyInfo(alias="userId")]]
-    """User ID to add to the organization"""
+    """User ID to add to the organization. Format: usr\\__{32-hex-chars}"""

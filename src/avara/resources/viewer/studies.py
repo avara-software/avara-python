@@ -303,7 +303,8 @@ class StudiesResource(SyncAPIResource):
         Args:
           study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
 
-          study_instance_uid: DICOM Study Instance UID
+          study_instance_uid: DICOM Study Instance UID. Must be a valid DICOM UID format (e.g.,
+              '1.2.840.10008.5.1.4.1.1.2')
 
           extra_headers: Send extra headers
 
@@ -348,7 +349,8 @@ class StudiesResource(SyncAPIResource):
         Args:
           study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
 
-          study_instance_uid: DICOM Study Instance UID
+          study_instance_uid: DICOM Study Instance UID. Must be a valid DICOM UID format (e.g.,
+              '1.2.840.10008.5.1.4.1.1.2')
 
           extra_headers: Send extra headers
 
@@ -431,7 +433,8 @@ class StudiesResource(SyncAPIResource):
         Args:
           study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
 
-          study_instance_uid: DICOM Study Instance UID
+          study_instance_uid: DICOM Study Instance UID. Must be a valid DICOM UID format (e.g.,
+              '1.2.840.10008.5.1.4.1.1.2')
 
           extra_headers: Send extra headers
 
@@ -721,7 +724,8 @@ class AsyncStudiesResource(AsyncAPIResource):
         Args:
           study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
 
-          study_instance_uid: DICOM Study Instance UID
+          study_instance_uid: DICOM Study Instance UID. Must be a valid DICOM UID format (e.g.,
+              '1.2.840.10008.5.1.4.1.1.2')
 
           extra_headers: Send extra headers
 
@@ -766,7 +770,8 @@ class AsyncStudiesResource(AsyncAPIResource):
         Args:
           study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
 
-          study_instance_uid: DICOM Study Instance UID
+          study_instance_uid: DICOM Study Instance UID. Must be a valid DICOM UID format (e.g.,
+              '1.2.840.10008.5.1.4.1.1.2')
 
           extra_headers: Send extra headers
 
@@ -849,7 +854,8 @@ class AsyncStudiesResource(AsyncAPIResource):
         Args:
           study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
 
-          study_instance_uid: DICOM Study Instance UID
+          study_instance_uid: DICOM Study Instance UID. Must be a valid DICOM UID format (e.g.,
+              '1.2.840.10008.5.1.4.1.1.2')
 
           extra_headers: Send extra headers
 
