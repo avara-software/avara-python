@@ -20,7 +20,7 @@ class StudyCreateResponse(BaseModel):
     cancelled_at: Optional[datetime] = FieldInfo(alias="cancelledAt", default=None)
     """Timestamp when the study was cancelled, null if not cancelled"""
 
-    created_at: datetime = FieldInfo(alias="createdAt")
+    created_at: Optional[datetime] = FieldInfo(alias="createdAt", default=None)
     """Timestamp when the study was created"""
 
     is_cancelled: bool = FieldInfo(alias="isCancelled")
@@ -46,7 +46,7 @@ class StudyCreateResponse(BaseModel):
 
     study_viewer_status: Literal["incomplete", "complete"] = FieldInfo(alias="studyViewerStatus")
 
-    updated_at: datetime = FieldInfo(alias="updatedAt")
+    updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
     """Timestamp when the study was last updated"""
 
     assigned_to: Optional[UserReference] = FieldInfo(alias="assignedTo", default=None)

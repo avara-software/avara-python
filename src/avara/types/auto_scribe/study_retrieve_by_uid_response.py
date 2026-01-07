@@ -73,7 +73,7 @@ class StudyRetrieveByUidResponse(BaseModel):
     cancelled_at: Optional[datetime] = FieldInfo(alias="cancelledAt", default=None)
     """Timestamp when the study was cancelled, null if not cancelled"""
 
-    created_at: datetime = FieldInfo(alias="createdAt")
+    created_at: Optional[datetime] = FieldInfo(alias="createdAt", default=None)
     """Timestamp when the study was created"""
 
     is_cancelled: bool = FieldInfo(alias="isCancelled")
@@ -110,7 +110,7 @@ class StudyRetrieveByUidResponse(BaseModel):
     'addendum_active' = addendum in progress
     """
 
-    updated_at: datetime = FieldInfo(alias="updatedAt")
+    updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
     """Timestamp when the study was last updated"""
 
     assigned_to: Optional[AssignedTo] = FieldInfo(alias="assignedTo", default=None)

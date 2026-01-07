@@ -42,7 +42,7 @@ class InvitationRetrieveResponse(BaseModel):
         "Other",
     ] = FieldInfo(alias="clinicRole")
 
-    created_at: datetime = FieldInfo(alias="createdAt")
+    created_at: Optional[datetime] = FieldInfo(alias="createdAt", default=None)
 
     email: str
 

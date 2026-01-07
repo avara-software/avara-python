@@ -13,7 +13,7 @@ __all__ = ["OrgListResponse"]
 class OrgListResponse(BaseModel):
     """An organization entity that groups users and studies"""
 
-    created_at: datetime = FieldInfo(alias="createdAt")
+    created_at: Optional[datetime] = FieldInfo(alias="createdAt", default=None)
 
     is_active: bool = FieldInfo(alias="isActive")
 
@@ -21,7 +21,7 @@ class OrgListResponse(BaseModel):
 
     org_name: str = FieldInfo(alias="orgName")
 
-    updated_at: datetime = FieldInfo(alias="updatedAt")
+    updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
 
     user_count: int = FieldInfo(alias="userCount")
 
