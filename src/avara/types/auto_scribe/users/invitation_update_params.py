@@ -53,10 +53,13 @@ class InvitationUpdateParams(TypedDict, total=False):
     ]
 
     first_name: Annotated[str, PropertyInfo(alias="firstName")]
+    """Invited user's first name"""
 
     has_dashboard_access: Annotated[bool, PropertyInfo(alias="hasDashboardAccess")]
+    """Whether the invited user will have dashboard access"""
 
     last_name: Annotated[str, PropertyInfo(alias="lastName")]
+    """Invited user's last name"""
 
     level: Literal["admin", "member"]
 

@@ -97,8 +97,12 @@ class StudiesResource(SyncAPIResource):
           study_instance_uid: DICOM Study Instance UID. Must be a valid DICOM UID format (e.g.,
               '1.2.840.10008.5.1.4.1.1.2')
 
+          assigned_to: User ID to assign the study to. Format: usr\\__{32-hex-chars}
+
           metadata: Custom key-value metadata for the study. Maximum 50 pairs, keys up to 100 chars,
               values up to 1000 chars
+
+          org_id: Organization ID for the study. Format: org\\__{32-hex-chars}
 
           extra_headers: Send extra headers
 
@@ -193,6 +197,10 @@ class StudiesResource(SyncAPIResource):
 
         Args:
           study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
+          assigned_to: User ID to assign the study to, or null to unassign. Format: usr\\__{32-hex-chars}
+
+          org_id: Organization ID for the study, or null to remove. Format: org\\__{32-hex-chars}
 
           severity: Priority level of the study. 'normal' for routine, 'high' for urgent, 'stat' for
               immediate attention
@@ -588,8 +596,12 @@ class AsyncStudiesResource(AsyncAPIResource):
           study_instance_uid: DICOM Study Instance UID. Must be a valid DICOM UID format (e.g.,
               '1.2.840.10008.5.1.4.1.1.2')
 
+          assigned_to: User ID to assign the study to. Format: usr\\__{32-hex-chars}
+
           metadata: Custom key-value metadata for the study. Maximum 50 pairs, keys up to 100 chars,
               values up to 1000 chars
+
+          org_id: Organization ID for the study. Format: org\\__{32-hex-chars}
 
           extra_headers: Send extra headers
 
@@ -684,6 +696,10 @@ class AsyncStudiesResource(AsyncAPIResource):
 
         Args:
           study_id: Unique study identifier. Format: stu\\__{32-hex-chars}
+
+          assigned_to: User ID to assign the study to, or null to unassign. Format: usr\\__{32-hex-chars}
+
+          org_id: Organization ID for the study, or null to remove. Format: org\\__{32-hex-chars}
 
           severity: Priority level of the study. 'normal' for routine, 'high' for urgent, 'stat' for
               immediate attention

@@ -13,10 +13,15 @@ __all__ = ["StudyUpdateParams", "ReportMetadata", "ReportMetadataHeight", "Repor
 
 class StudyUpdateParams(TypedDict, total=False):
     assigned_to: Annotated[str, PropertyInfo(alias="assignedTo")]
+    """User ID to assign the study to, or null to unassign.
+
+    Format: usr\\__{32-hex-chars}
+    """
 
     metadata: Optional[Dict[str, str]]
 
     org_id: Annotated[str, PropertyInfo(alias="orgId")]
+    """Organization ID for the study, or null to remove. Format: org\\__{32-hex-chars}"""
 
     prior_report_texts: Annotated[Optional[SequenceNotStr[str]], PropertyInfo(alias="priorReportTexts")]
 

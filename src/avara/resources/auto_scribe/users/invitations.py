@@ -66,7 +66,7 @@ class InvitationsResource(SyncAPIResource):
         and AutoScribe-specific permissions.
 
         Args:
-          invitation_id: Invitation ID. Format: inv\\__<32-hex-chars>
+          invitation_id: Unique invitation identifier. Format: inv\\__{32-hex-chars}
 
           extra_headers: Send extra headers
 
@@ -141,13 +141,19 @@ class InvitationsResource(SyncAPIResource):
         report creation.
 
         Args:
-          invitation_id: Invitation ID. Format: inv\\__<32-hex-chars>
+          invitation_id: Unique invitation identifier. Format: inv\\__{32-hex-chars}
 
           can_create_reports: Whether the invited user can generate and sign radiology reports. Requires NPI
               number
 
           can_manage_studies: Whether the invited user will have permission to create, update, and manage
               studies
+
+          first_name: Invited user's first name
+
+          has_dashboard_access: Whether the invited user will have dashboard access
+
+          last_name: Invited user's last name
 
           extra_headers: Send extra headers
 
@@ -338,7 +344,7 @@ class AsyncInvitationsResource(AsyncAPIResource):
         and AutoScribe-specific permissions.
 
         Args:
-          invitation_id: Invitation ID. Format: inv\\__<32-hex-chars>
+          invitation_id: Unique invitation identifier. Format: inv\\__{32-hex-chars}
 
           extra_headers: Send extra headers
 
@@ -413,13 +419,19 @@ class AsyncInvitationsResource(AsyncAPIResource):
         report creation.
 
         Args:
-          invitation_id: Invitation ID. Format: inv\\__<32-hex-chars>
+          invitation_id: Unique invitation identifier. Format: inv\\__{32-hex-chars}
 
           can_create_reports: Whether the invited user can generate and sign radiology reports. Requires NPI
               number
 
           can_manage_studies: Whether the invited user will have permission to create, update, and manage
               studies
+
+          first_name: Invited user's first name
+
+          has_dashboard_access: Whether the invited user will have dashboard access
+
+          last_name: Invited user's last name
 
           extra_headers: Send extra headers
 

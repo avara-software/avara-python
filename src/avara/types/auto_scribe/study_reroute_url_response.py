@@ -6,6 +6,8 @@ __all__ = ["StudyRerouteURLResponse"]
 
 
 class StudyRerouteURLResponse(BaseModel):
-    """Response containing the generated reroute URL for a study in AutoScribe"""
+    """
+    Response containing the generated reroute URL for AutoScribe (viewer + dictation)
+    """
 
     url: str

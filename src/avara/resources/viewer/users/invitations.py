@@ -66,7 +66,7 @@ class InvitationsResource(SyncAPIResource):
         information.
 
         Args:
-          invitation_id: Invitation ID. Format: inv\\__<32-hex-chars>
+          invitation_id: Unique invitation identifier. Format: inv\\__{32-hex-chars}
 
           extra_headers: Send extra headers
 
@@ -137,7 +137,13 @@ class InvitationsResource(SyncAPIResource):
         accepted. Only valid for invitations that have not expired or been processed.
 
         Args:
-          invitation_id: Invitation ID. Format: inv\\__<32-hex-chars>
+          invitation_id: Unique invitation identifier. Format: inv\\__{32-hex-chars}
+
+          first_name: Invited user's first name
+
+          has_dashboard_access: Whether the invited user will have dashboard access
+
+          last_name: Invited user's last name
 
           extra_headers: Send extra headers
 
@@ -326,7 +332,7 @@ class AsyncInvitationsResource(AsyncAPIResource):
         information.
 
         Args:
-          invitation_id: Invitation ID. Format: inv\\__<32-hex-chars>
+          invitation_id: Unique invitation identifier. Format: inv\\__{32-hex-chars}
 
           extra_headers: Send extra headers
 
@@ -397,7 +403,13 @@ class AsyncInvitationsResource(AsyncAPIResource):
         accepted. Only valid for invitations that have not expired or been processed.
 
         Args:
-          invitation_id: Invitation ID. Format: inv\\__<32-hex-chars>
+          invitation_id: Unique invitation identifier. Format: inv\\__{32-hex-chars}
+
+          first_name: Invited user's first name
+
+          has_dashboard_access: Whether the invited user will have dashboard access
+
+          last_name: Invited user's last name
 
           extra_headers: Send extra headers
 
