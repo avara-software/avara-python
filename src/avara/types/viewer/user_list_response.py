@@ -15,6 +15,7 @@ class UserListResponse(BaseModel):
     """A user in the Viewer system with study management permissions"""
 
     can_manage_studies: bool = FieldInfo(alias="canManageStudies")
+    """Whether the user has permission to create, update, and manage studies"""
 
     clinic_role: Literal[
         "Radiologist",

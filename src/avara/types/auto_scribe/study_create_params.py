@@ -32,6 +32,7 @@ class StudyCreateParams(TypedDict, total=False):
     """
 
     assigned_to: Annotated[str, PropertyInfo(alias="assignedTo")]
+    """User ID to assign the study to. Format: usr\\__{32-hex-chars}"""
 
     metadata: Dict[str, str]
     """Custom key-value metadata for the study.
@@ -40,6 +41,7 @@ class StudyCreateParams(TypedDict, total=False):
     """
 
     org_id: Annotated[str, PropertyInfo(alias="orgId")]
+    """Organization ID for the study. Format: org\\__{32-hex-chars}"""
 
     prior_report_texts: Annotated[SequenceNotStr[str], PropertyInfo(alias="priorReportTexts")]
 

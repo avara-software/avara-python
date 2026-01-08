@@ -6,8 +6,9 @@ __all__ = ["StudyViewerOnlyRerouteURLResponse"]
 
 
 class StudyViewerOnlyRerouteURLResponse(BaseModel):
-    """
-    Response containing the generated viewer-only reroute URL for a study in AutoScribe
+    """Response containing the generated viewer-only reroute URL.
+
+    Requires viewer to be configured.
     """
 
     url: str

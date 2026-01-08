@@ -12,9 +12,13 @@ __all__ = ["UserInviteResponse"]
 
 
 class UserInviteResponse(BaseModel):
-    """A user in the Viewer system with study management permissions"""
+    """Response for inviting a user to Viewer.
+
+    Level is restricted to admin/member since owners cannot be invited via API.
+    """
 
     can_manage_studies: bool = FieldInfo(alias="canManageStudies")
+    """Whether the user has permission to create, update, and manage studies"""
 
     clinic_role: Literal[
         "Radiologist",
@@ -62,11 +66,10 @@ class UserInviteResponse(BaseModel):
     last_name: str = FieldInfo(alias="lastName")
     """User's last name"""
 
-    level: Literal["owner", "admin", "member"]
+    level: Literal["admin", "member"]
     """User access level.
 
-    'owner' has full control, 'admin' can manage users/settings, 'member' has
-    standard access
+    'admin' can manage users/settings, 'member' has standard access
     """
 
     user_id: str = FieldInfo(alias="userId")

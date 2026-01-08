@@ -12,6 +12,10 @@ __all__ = ["StudyUpdateParams"]
 
 class StudyUpdateParams(TypedDict, total=False):
     assigned_to: Annotated[str, PropertyInfo(alias="assignedTo")]
+    """User ID to assign the study to, or null to unassign.
+
+    Format: usr\\__{32-hex-chars}
+    """
 
     metadata: Optional[Dict[str, str]]
 

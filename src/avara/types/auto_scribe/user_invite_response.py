@@ -12,7 +12,10 @@ __all__ = ["UserInviteResponse"]
 
 
 class UserInviteResponse(BaseModel):
-    """A user in the AutoScribe system with report creation permissions"""
+    """Response for inviting a user to AutoScribe.
+
+    Level is restricted to admin/member since owners cannot be invited via API.
+    """
 
     can_create_reports: bool = FieldInfo(alias="canCreateReports")
     """Whether the user can generate and sign radiology reports. Requires NPI number"""
@@ -66,11 +69,10 @@ class UserInviteResponse(BaseModel):
     last_name: str = FieldInfo(alias="lastName")
     """User's last name"""
 
-    level: Literal["owner", "admin", "member"]
+    level: Literal["admin", "member"]
     """User access level.
 
-    'owner' has full control, 'admin' can manage users/settings, 'member' has
-    standard access
+    'admin' can manage users/settings, 'member' has standard access
     """
 
     user_id: str = FieldInfo(alias="userId")
