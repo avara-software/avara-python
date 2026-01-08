@@ -94,9 +94,10 @@ class InvitationRetrieveResponse(BaseModel):
     """Timestamp when the invitation was last updated"""
 
     user_id: str = FieldInfo(alias="userId")
-    """User ID if this invitation has been accepted and linked to a user account.
+    """Pre-generated user ID for this invitation.
 
-    Null while pending
+    Format: usr\\__{32-hex-chars}. This ID is assigned at invitation creation and will
+    become the user's permanent ID upon acceptance
     """
 
     invited_by_api_key_id: Optional[str] = FieldInfo(alias="invitedByApiKeyId", default=None)
