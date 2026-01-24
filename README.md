@@ -11,7 +11,7 @@ It is generated with [Stainless](https://www.stainless.com/).
 
 ## Documentation
 
-The REST API documentation can be found on [avarasoftware.com](https://avarasoftware.com/docs/sdk). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [docs.avarasoftware.com](https://docs.avarasoftware.com). The full API of this library can be found in [api.md](api.md).
 
 ## Installation
 

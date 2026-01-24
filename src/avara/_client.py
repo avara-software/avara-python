@@ -31,9 +31,10 @@ from ._base_client import (
 )
 
 if TYPE_CHECKING:
-    from .resources import viewer, auto_scribe
+    from .resources import viewer, express, auto_scribe
     from .resources.webhooks import WebhooksResource, AsyncWebhooksResource
     from .resources.viewer.viewer import ViewerResource, AsyncViewerResource
+    from .resources.express.express import ExpressResource, AsyncExpressResource
     from .resources.auto_scribe.auto_scribe import AutoScribeResource, AsyncAutoScribeResource
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Avara", "AsyncAvara", "Client", "AsyncClient"]
@@ -113,6 +114,12 @@ class Avara(SyncAPIClient):
         from .resources.viewer import ViewerResource
 
         return ViewerResource(self)
+
+    @cached_property
+    def express(self) -> ExpressResource:
+        from .resources.express import ExpressResource
+
+        return ExpressResource(self)
 
     @cached_property
     def webhooks(self) -> WebhooksResource:
@@ -311,6 +318,12 @@ class AsyncAvara(AsyncAPIClient):
         return AsyncViewerResource(self)
 
     @cached_property
+    def express(self) -> AsyncExpressResource:
+        from .resources.express import AsyncExpressResource
+
+        return AsyncExpressResource(self)
+
+    @cached_property
     def webhooks(self) -> AsyncWebhooksResource:
         from .resources.webhooks import AsyncWebhooksResource
 
@@ -449,6 +462,12 @@ class AvaraWithRawResponse:
 
         return ViewerResourceWithRawResponse(self._client.viewer)
 
+    @cached_property
+    def express(self) -> express.ExpressResourceWithRawResponse:
+        from .resources.express import ExpressResourceWithRawResponse
+
+        return ExpressResourceWithRawResponse(self._client.express)
+
 
 class AsyncAvaraWithRawResponse:
     _client: AsyncAvara
@@ -467,6 +486,12 @@ class AsyncAvaraWithRawResponse:
         from .resources.viewer import AsyncViewerResourceWithRawResponse
 
         return AsyncViewerResourceWithRawResponse(self._client.viewer)
+
+    @cached_property
+    def express(self) -> express.AsyncExpressResourceWithRawResponse:
+        from .resources.express import AsyncExpressResourceWithRawResponse
+
+        return AsyncExpressResourceWithRawResponse(self._client.express)
 
 
 class AvaraWithStreamedResponse:
@@ -487,6 +512,12 @@ class AvaraWithStreamedResponse:
 
         return ViewerResourceWithStreamingResponse(self._client.viewer)
 
+    @cached_property
+    def express(self) -> express.ExpressResourceWithStreamingResponse:
+        from .resources.express import ExpressResourceWithStreamingResponse
+
+        return ExpressResourceWithStreamingResponse(self._client.express)
+
 
 class AsyncAvaraWithStreamedResponse:
     _client: AsyncAvara
@@ -505,6 +536,12 @@ class AsyncAvaraWithStreamedResponse:
         from .resources.viewer import AsyncViewerResourceWithStreamingResponse
 
         return AsyncViewerResourceWithStreamingResponse(self._client.viewer)
+
+    @cached_property
+    def express(self) -> express.AsyncExpressResourceWithStreamingResponse:
+        from .resources.express import AsyncExpressResourceWithStreamingResponse
+
+        return AsyncExpressResourceWithStreamingResponse(self._client.express)
 
 
 Client = Avara

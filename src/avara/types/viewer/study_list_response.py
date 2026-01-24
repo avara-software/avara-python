@@ -9,18 +9,9 @@ from pydantic import Field as FieldInfo
 from ..._models import BaseModel
 from ..shared.user_reference import UserReference
 from ..shared.api_key_reference import APIKeyReference
+from ..shared.express_customer_reference import ExpressCustomerReference
 
-__all__ = ["StudyListResponse", "ExpressCustomer"]
-
-
-class ExpressCustomer(BaseModel):
-    """A reference to an Express customer with basic identifying information"""
-
-    express_customer_id: str = FieldInfo(alias="expressCustomerId")
-    """Unique Express customer identifier. Format: cus\\__{32-hex-chars}"""
-
-    express_customer_name: str = FieldInfo(alias="expressCustomerName")
-    """Name of the Express customer"""
+__all__ = ["StudyListResponse"]
 
 
 class StudyListResponse(BaseModel):
@@ -67,7 +58,7 @@ class StudyListResponse(BaseModel):
     created_by_user: Optional[UserReference] = FieldInfo(alias="createdByUser", default=None)
     """A reference to a user with basic identifying information"""
 
-    express_customer: Optional[ExpressCustomer] = FieldInfo(alias="expressCustomer", default=None)
+    express_customer: Optional[ExpressCustomerReference] = FieldInfo(alias="expressCustomer", default=None)
     """A reference to an Express customer with basic identifying information"""
 
     metadata: Optional[Dict[str, str]] = None

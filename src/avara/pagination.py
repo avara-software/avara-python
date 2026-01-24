@@ -14,8 +14,8 @@ __all__ = [
     "AsyncCursorStudies",
     "SyncCursorInvitations",
     "AsyncCursorInvitations",
-    "SyncCursorOrganizations",
-    "AsyncCursorOrganizations",
+    "SyncCursorExpressCustomers",
+    "AsyncCursorExpressCustomers",
 ]
 
 _T = TypeVar("_T")
@@ -213,9 +213,9 @@ class AsyncCursorInvitations(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
         return PageInfo(params={"cursor": cursor})
 
 
-class SyncCursorOrganizations(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
-    organizations: List[_T]
-    """Array of organization objects"""
+class SyncCursorExpressCustomers(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
+    express_customers: List[_T] = FieldInfo(alias="expressCustomers")
+    """Array of Express customer objects"""
     cursor: Optional[str] = None
     """Next page cursor. Pass this to the next request to get the next page of results"""
     has_more: Optional[bool] = FieldInfo(alias="hasMore", default=None)
@@ -223,10 +223,10 @@ class SyncCursorOrganizations(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
 
     @override
     def _get_page_items(self) -> List[_T]:
-        organizations = self.organizations
-        if not organizations:
+        express_customers = self.express_customers
+        if not express_customers:
             return []
-        return organizations
+        return express_customers
 
     @override
     def has_next_page(self) -> bool:
@@ -245,9 +245,9 @@ class SyncCursorOrganizations(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
         return PageInfo(params={"cursor": cursor})
 
 
-class AsyncCursorOrganizations(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
-    organizations: List[_T]
-    """Array of organization objects"""
+class AsyncCursorExpressCustomers(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
+    express_customers: List[_T] = FieldInfo(alias="expressCustomers")
+    """Array of Express customer objects"""
     cursor: Optional[str] = None
     """Next page cursor. Pass this to the next request to get the next page of results"""
     has_more: Optional[bool] = FieldInfo(alias="hasMore", default=None)
@@ -255,10 +255,10 @@ class AsyncCursorOrganizations(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
 
     @override
     def _get_page_items(self) -> List[_T]:
-        organizations = self.organizations
-        if not organizations:
+        express_customers = self.express_customers
+        if not express_customers:
             return []
-        return organizations
+        return express_customers
 
     @override
     def has_next_page(self) -> bool:

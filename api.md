@@ -1,7 +1,7 @@
 # Shared Types
 
 ```python
-from avara.types import APIKeyReference, UserReference
+from avara.types import APIKeyReference, ExpressCustomerReference, UserReference
 ```
 
 # AutoScribe
@@ -182,6 +182,43 @@ Methods:
 - <code title="patch /v1/viewer/users/invitations/{invitationId}">client.viewer.users.invitations.<a href="./src/avara/resources/viewer/users/invitations.py">update</a>(invitation_id, \*\*<a href="src/avara/types/viewer/users/invitation_update_params.py">params</a>) -> <a href="./src/avara/types/viewer/users/invitation_update_response.py">InvitationUpdateResponse</a></code>
 - <code title="get /v1/viewer/users/invitations">client.viewer.users.invitations.<a href="./src/avara/resources/viewer/users/invitations.py">list</a>(\*\*<a href="src/avara/types/viewer/users/invitation_list_params.py">params</a>) -> <a href="./src/avara/types/viewer/users/invitation_list_response.py">SyncCursorInvitations[InvitationListResponse]</a></code>
 - <code title="post /v1/viewer/users/invitations/revoke">client.viewer.users.invitations.<a href="./src/avara/resources/viewer/users/invitations.py">revoke</a>(\*\*<a href="src/avara/types/viewer/users/invitation_revoke_params.py">params</a>) -> <a href="./src/avara/types/viewer/users/invitation_revoke_response.py">InvitationRevokeResponse</a></code>
+
+# Express
+
+Types:
+
+```python
+from avara.types import (
+    ExpressCreateResponse,
+    ExpressRetrieveResponse,
+    ExpressUpdateResponse,
+    ExpressListResponse,
+    ExpressDeactivateResponse,
+    ExpressReactivateResponse,
+)
+```
+
+Methods:
+
+- <code title="post /v1/express">client.express.<a href="./src/avara/resources/express/express.py">create</a>(\*\*<a href="src/avara/types/express_create_params.py">params</a>) -> <a href="./src/avara/types/express_create_response.py">ExpressCreateResponse</a></code>
+- <code title="get /v1/express/{expressCustomerId}">client.express.<a href="./src/avara/resources/express/express.py">retrieve</a>(express_customer_id) -> <a href="./src/avara/types/express_retrieve_response.py">ExpressRetrieveResponse</a></code>
+- <code title="patch /v1/express/{expressCustomerId}">client.express.<a href="./src/avara/resources/express/express.py">update</a>(express_customer_id, \*\*<a href="src/avara/types/express_update_params.py">params</a>) -> <a href="./src/avara/types/express_update_response.py">ExpressUpdateResponse</a></code>
+- <code title="get /v1/express">client.express.<a href="./src/avara/resources/express/express.py">list</a>(\*\*<a href="src/avara/types/express_list_params.py">params</a>) -> <a href="./src/avara/types/express_list_response.py">SyncCursorExpressCustomers[ExpressListResponse]</a></code>
+- <code title="post /v1/express/{expressCustomerId}/deactivate">client.express.<a href="./src/avara/resources/express/express.py">deactivate</a>(express_customer_id) -> <a href="./src/avara/types/express_deactivate_response.py">ExpressDeactivateResponse</a></code>
+- <code title="post /v1/express/{expressCustomerId}/reactivate">client.express.<a href="./src/avara/resources/express/express.py">reactivate</a>(express_customer_id) -> <a href="./src/avara/types/express_reactivate_response.py">ExpressReactivateResponse</a></code>
+
+## Users
+
+Types:
+
+```python
+from avara.types.express import UserAddResponse, UserRemoveResponse
+```
+
+Methods:
+
+- <code title="post /v1/express/{expressCustomerId}/users">client.express.users.<a href="./src/avara/resources/express/users.py">add</a>(express_customer_id, \*\*<a href="src/avara/types/express/user_add_params.py">params</a>) -> <a href="./src/avara/types/express/user_add_response.py">UserAddResponse</a></code>
+- <code title="delete /v1/express/{expressCustomerId}/users">client.express.users.<a href="./src/avara/resources/express/users.py">remove</a>(express_customer_id, \*\*<a href="src/avara/types/express/user_remove_params.py">params</a>) -> <a href="./src/avara/types/express/user_remove_response.py">UserRemoveResponse</a></code>
 
 # Webhooks
 
