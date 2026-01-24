@@ -8,6 +8,14 @@ from .viewer import (
     ViewerResourceWithStreamingResponse,
     AsyncViewerResourceWithStreamingResponse,
 )
+from .express import (
+    ExpressResource,
+    AsyncExpressResource,
+    ExpressResourceWithRawResponse,
+    AsyncExpressResourceWithRawResponse,
+    ExpressResourceWithStreamingResponse,
+    AsyncExpressResourceWithStreamingResponse,
+)
 from .webhooks import WebhooksResource, AsyncWebhooksResource
 from .auto_scribe import (
     AutoScribeResource,
@@ -31,6 +39,12 @@ __all__ = [
     "AsyncViewerResourceWithRawResponse",
     "ViewerResourceWithStreamingResponse",
     "AsyncViewerResourceWithStreamingResponse",
+    "ExpressResource",
+    "AsyncExpressResource",
+    "ExpressResourceWithRawResponse",
+    "AsyncExpressResourceWithRawResponse",
+    "ExpressResourceWithStreamingResponse",
+    "AsyncExpressResourceWithStreamingResponse",
     "WebhooksResource",
     "AsyncWebhooksResource",
 ]
