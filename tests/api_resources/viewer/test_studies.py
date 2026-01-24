@@ -45,11 +45,11 @@ class TestStudies:
             study_description="CT Chest/Abdomen/Pelvis",
             study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
             assigned_to="usr_1234567890abcdef1234567890abcdef",
+            express_customer_id="cus_1234567890abcdef1234567890abcdef",
             metadata={
                 "department": "radiology",
                 "priority": "urgent",
             },
-            org_id="org_1234567890abcdef1234567890abcdef",
         )
         assert_matches_type(StudyCreateResponse, study, path=["response"])
 
@@ -399,11 +399,11 @@ class TestAsyncStudies:
             study_description="CT Chest/Abdomen/Pelvis",
             study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
             assigned_to="usr_1234567890abcdef1234567890abcdef",
+            express_customer_id="cus_1234567890abcdef1234567890abcdef",
             metadata={
                 "department": "radiology",
                 "priority": "urgent",
             },
-            org_id="org_1234567890abcdef1234567890abcdef",
         )
         assert_matches_type(StudyCreateResponse, study, path=["response"])
 
