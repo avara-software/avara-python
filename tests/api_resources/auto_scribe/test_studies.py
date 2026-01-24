@@ -67,11 +67,11 @@ class TestStudies:
             study_description="Brain MRI with Contrast",
             study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
             assigned_to="usr_1234567890abcdef1234567890abcdef",
+            express_customer_id="cus_1234567890abcdef1234567890abcdef",
             metadata={
                 "department": "radiology",
                 "priority": "routine",
             },
-            org_id="org_1234567890abcdef1234567890abcdef",
             prior_report_texts=["x"],
             prior_study_ids=["string"],
         )
@@ -165,8 +165,8 @@ class TestStudies:
         study = client.auto_scribe.studies.update(
             study_id="stu_1234567890abcdef1234567890abcdef",
             assigned_to="usr_1234567890abcdef1234567890abcdef",
+            express_customer_id="cus_1234567890abcdef1234567890abcdef",
             metadata={"foo": "string"},
-            org_id="org_1234567890abcdef1234567890abcdef",
             prior_report_texts=["x"],
             prior_study_ids=["string"],
             report_metadata={
@@ -513,11 +513,11 @@ class TestAsyncStudies:
             study_description="Brain MRI with Contrast",
             study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
             assigned_to="usr_1234567890abcdef1234567890abcdef",
+            express_customer_id="cus_1234567890abcdef1234567890abcdef",
             metadata={
                 "department": "radiology",
                 "priority": "routine",
             },
-            org_id="org_1234567890abcdef1234567890abcdef",
             prior_report_texts=["x"],
             prior_study_ids=["string"],
         )
@@ -611,8 +611,8 @@ class TestAsyncStudies:
         study = await async_client.auto_scribe.studies.update(
             study_id="stu_1234567890abcdef1234567890abcdef",
             assigned_to="usr_1234567890abcdef1234567890abcdef",
+            express_customer_id="cus_1234567890abcdef1234567890abcdef",
             metadata={"foo": "string"},
-            org_id="org_1234567890abcdef1234567890abcdef",
             prior_report_texts=["x"],
             prior_study_ids=["string"],
             report_metadata={

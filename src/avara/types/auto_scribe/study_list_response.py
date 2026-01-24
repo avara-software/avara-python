@@ -10,7 +10,7 @@ from ..._models import BaseModel
 from .report_id_with_status import ReportIDWithStatus
 from ..study_report_metadata import StudyReportMetadata
 
-__all__ = ["StudyListResponse", "AssignedTo", "CreatedByAPIKey", "CreatedByUser", "Org"]
+__all__ = ["StudyListResponse", "AssignedTo", "CreatedByAPIKey", "CreatedByUser", "ExpressCustomer"]
 
 
 class AssignedTo(BaseModel):
@@ -76,14 +76,14 @@ class CreatedByUser(BaseModel):
     """Additional name suffix"""
 
 
-class Org(BaseModel):
-    """Reference to the organization this study belongs to"""
+class ExpressCustomer(BaseModel):
+    """Reference to the Express customer this study belongs to"""
 
-    org_id: str = FieldInfo(alias="orgId")
-    """Unique organization identifier. Format: org\\__{32-hex-chars}"""
+    express_customer_id: str = FieldInfo(alias="expressCustomerId")
+    """Unique Express customer identifier. Format: cus\\__{32-hex-chars}"""
 
-    org_name: str = FieldInfo(alias="orgName")
-    """Name of the organization"""
+    express_customer_name: str = FieldInfo(alias="expressCustomerName")
+    """Name of the Express customer"""
 
 
 class StudyListResponse(BaseModel):
@@ -141,14 +141,14 @@ class StudyListResponse(BaseModel):
     created_by_user: Optional[CreatedByUser] = FieldInfo(alias="createdByUser", default=None)
     """Reference to the user who created this study via dashboard"""
 
+    express_customer: Optional[ExpressCustomer] = FieldInfo(alias="expressCustomer", default=None)
+    """Reference to the Express customer this study belongs to"""
+
     metadata: Optional[Dict[str, str]] = None
     """Custom key-value metadata for the study.
 
     Maximum 50 pairs, keys up to 100 chars, values up to 1000 chars
     """
-
-    org: Optional[Org] = None
-    """Reference to the organization this study belongs to"""
 
     prior_report_texts: Optional[List[str]] = FieldInfo(alias="priorReportTexts", default=None)
     """Array of prior report texts to provide clinical context"""

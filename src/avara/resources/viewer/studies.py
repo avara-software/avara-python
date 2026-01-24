@@ -66,8 +66,8 @@ class StudiesResource(SyncAPIResource):
         study_description: str,
         study_instance_uid: str,
         assigned_to: str | Omit = omit,
+        express_customer_id: str | Omit = omit,
         metadata: Dict[str, str] | Omit = omit,
-        org_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -90,10 +90,10 @@ class StudiesResource(SyncAPIResource):
 
           assigned_to: User ID to assign the study to. Format: usr\\__{32-hex-chars}
 
+          express_customer_id: Express customer ID for the study. Format: cus\\__{32-hex-chars}
+
           metadata: Custom key-value metadata for the study. Maximum 50 pairs, keys up to 100 chars,
               values up to 1000 chars
-
-          org_id: Organization ID for the study. Format: org\\__{32-hex-chars}
 
           extra_headers: Send extra headers
 
@@ -111,8 +111,8 @@ class StudiesResource(SyncAPIResource):
                     "study_description": study_description,
                     "study_instance_uid": study_instance_uid,
                     "assigned_to": assigned_to,
+                    "express_customer_id": express_customer_id,
                     "metadata": metadata,
-                    "org_id": org_id,
                 },
                 study_create_params.StudyCreateParams,
             ),
@@ -493,8 +493,8 @@ class AsyncStudiesResource(AsyncAPIResource):
         study_description: str,
         study_instance_uid: str,
         assigned_to: str | Omit = omit,
+        express_customer_id: str | Omit = omit,
         metadata: Dict[str, str] | Omit = omit,
-        org_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -517,10 +517,10 @@ class AsyncStudiesResource(AsyncAPIResource):
 
           assigned_to: User ID to assign the study to. Format: usr\\__{32-hex-chars}
 
+          express_customer_id: Express customer ID for the study. Format: cus\\__{32-hex-chars}
+
           metadata: Custom key-value metadata for the study. Maximum 50 pairs, keys up to 100 chars,
               values up to 1000 chars
-
-          org_id: Organization ID for the study. Format: org\\__{32-hex-chars}
 
           extra_headers: Send extra headers
 
@@ -538,8 +538,8 @@ class AsyncStudiesResource(AsyncAPIResource):
                     "study_description": study_description,
                     "study_instance_uid": study_instance_uid,
                     "assigned_to": assigned_to,
+                    "express_customer_id": express_customer_id,
                     "metadata": metadata,
-                    "org_id": org_id,
                 },
                 study_create_params.StudyCreateParams,
             ),

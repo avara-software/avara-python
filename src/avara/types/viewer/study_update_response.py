@@ -7,11 +7,20 @@ from typing_extensions import Literal
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
-from ..shared.org_reference import OrgReference
 from ..shared.user_reference import UserReference
 from ..shared.api_key_reference import APIKeyReference
 
-__all__ = ["StudyUpdateResponse"]
+__all__ = ["StudyUpdateResponse", "ExpressCustomer"]
+
+
+class ExpressCustomer(BaseModel):
+    """A reference to an Express customer with basic identifying information"""
+
+    express_customer_id: str = FieldInfo(alias="expressCustomerId")
+    """Unique Express customer identifier. Format: cus\\__{32-hex-chars}"""
+
+    express_customer_name: str = FieldInfo(alias="expressCustomerName")
+    """Name of the Express customer"""
 
 
 class StudyUpdateResponse(BaseModel):
@@ -58,11 +67,11 @@ class StudyUpdateResponse(BaseModel):
     created_by_user: Optional[UserReference] = FieldInfo(alias="createdByUser", default=None)
     """A reference to a user with basic identifying information"""
 
+    express_customer: Optional[ExpressCustomer] = FieldInfo(alias="expressCustomer", default=None)
+    """A reference to an Express customer with basic identifying information"""
+
     metadata: Optional[Dict[str, str]] = None
     """Custom key-value metadata for the study.
 
     Maximum 50 pairs, keys up to 100 chars, values up to 1000 chars
     """
-
-    org: Optional[OrgReference] = None
-    """A reference to an organization with basic identifying information"""

@@ -1,7 +1,7 @@
 # Shared Types
 
 ```python
-from avara.types import APIKeyReference, OrgReference, UserReference
+from avara.types import APIKeyReference, UserReference
 ```
 
 # AutoScribe
@@ -182,43 +182,6 @@ Methods:
 - <code title="patch /v1/viewer/users/invitations/{invitationId}">client.viewer.users.invitations.<a href="./src/avara/resources/viewer/users/invitations.py">update</a>(invitation_id, \*\*<a href="src/avara/types/viewer/users/invitation_update_params.py">params</a>) -> <a href="./src/avara/types/viewer/users/invitation_update_response.py">InvitationUpdateResponse</a></code>
 - <code title="get /v1/viewer/users/invitations">client.viewer.users.invitations.<a href="./src/avara/resources/viewer/users/invitations.py">list</a>(\*\*<a href="src/avara/types/viewer/users/invitation_list_params.py">params</a>) -> <a href="./src/avara/types/viewer/users/invitation_list_response.py">SyncCursorInvitations[InvitationListResponse]</a></code>
 - <code title="post /v1/viewer/users/invitations/revoke">client.viewer.users.invitations.<a href="./src/avara/resources/viewer/users/invitations.py">revoke</a>(\*\*<a href="src/avara/types/viewer/users/invitation_revoke_params.py">params</a>) -> <a href="./src/avara/types/viewer/users/invitation_revoke_response.py">InvitationRevokeResponse</a></code>
-
-# Orgs
-
-Types:
-
-```python
-from avara.types import (
-    OrgCreateResponse,
-    OrgRetrieveResponse,
-    OrgUpdateResponse,
-    OrgListResponse,
-    OrgDeactivateResponse,
-    OrgReactivateResponse,
-)
-```
-
-Methods:
-
-- <code title="post /v1/orgs">client.orgs.<a href="./src/avara/resources/orgs/orgs.py">create</a>(\*\*<a href="src/avara/types/org_create_params.py">params</a>) -> <a href="./src/avara/types/org_create_response.py">OrgCreateResponse</a></code>
-- <code title="get /v1/orgs/{orgId}">client.orgs.<a href="./src/avara/resources/orgs/orgs.py">retrieve</a>(org_id) -> <a href="./src/avara/types/org_retrieve_response.py">OrgRetrieveResponse</a></code>
-- <code title="patch /v1/orgs/{orgId}">client.orgs.<a href="./src/avara/resources/orgs/orgs.py">update</a>(org_id, \*\*<a href="src/avara/types/org_update_params.py">params</a>) -> <a href="./src/avara/types/org_update_response.py">OrgUpdateResponse</a></code>
-- <code title="get /v1/orgs">client.orgs.<a href="./src/avara/resources/orgs/orgs.py">list</a>(\*\*<a href="src/avara/types/org_list_params.py">params</a>) -> <a href="./src/avara/types/org_list_response.py">SyncCursorOrganizations[OrgListResponse]</a></code>
-- <code title="post /v1/orgs/{orgId}/deactivate">client.orgs.<a href="./src/avara/resources/orgs/orgs.py">deactivate</a>(org_id) -> <a href="./src/avara/types/org_deactivate_response.py">OrgDeactivateResponse</a></code>
-- <code title="post /v1/orgs/{orgId}/reactivate">client.orgs.<a href="./src/avara/resources/orgs/orgs.py">reactivate</a>(org_id) -> <a href="./src/avara/types/org_reactivate_response.py">OrgReactivateResponse</a></code>
-
-## Users
-
-Types:
-
-```python
-from avara.types.orgs import UserAddResponse, UserRemoveResponse
-```
-
-Methods:
-
-- <code title="post /v1/orgs/{orgId}/users">client.orgs.users.<a href="./src/avara/resources/orgs/users.py">add</a>(org_id, \*\*<a href="src/avara/types/orgs/user_add_params.py">params</a>) -> <a href="./src/avara/types/orgs/user_add_response.py">UserAddResponse</a></code>
-- <code title="delete /v1/orgs/{orgId}/users">client.orgs.users.<a href="./src/avara/resources/orgs/users.py">remove</a>(org_id, \*\*<a href="src/avara/types/orgs/user_remove_params.py">params</a>) -> <a href="./src/avara/types/orgs/user_remove_response.py">UserRemoveResponse</a></code>
 
 # Webhooks
 

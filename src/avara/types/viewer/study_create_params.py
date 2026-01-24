@@ -29,11 +29,11 @@ class StudyCreateParams(TypedDict, total=False):
     assigned_to: Annotated[str, PropertyInfo(alias="assignedTo")]
     """User ID to assign the study to. Format: usr\\__{32-hex-chars}"""
 
+    express_customer_id: Annotated[str, PropertyInfo(alias="expressCustomerId")]
+    """Express customer ID for the study. Format: cus\\__{32-hex-chars}"""
+
     metadata: Dict[str, str]
     """Custom key-value metadata for the study.
 
     Maximum 50 pairs, keys up to 100 chars, values up to 1000 chars
     """
-
-    org_id: Annotated[str, PropertyInfo(alias="orgId")]
-    """Organization ID for the study. Format: org\\__{32-hex-chars}"""

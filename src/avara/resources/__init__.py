@@ -1,13 +1,5 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from .orgs import (
-    OrgsResource,
-    AsyncOrgsResource,
-    OrgsResourceWithRawResponse,
-    AsyncOrgsResourceWithRawResponse,
-    OrgsResourceWithStreamingResponse,
-    AsyncOrgsResourceWithStreamingResponse,
-)
 from .viewer import (
     ViewerResource,
     AsyncViewerResource,
@@ -39,12 +31,6 @@ __all__ = [
     "AsyncViewerResourceWithRawResponse",
     "ViewerResourceWithStreamingResponse",
     "AsyncViewerResourceWithStreamingResponse",
-    "OrgsResource",
-    "AsyncOrgsResource",
-    "OrgsResourceWithRawResponse",
-    "AsyncOrgsResourceWithRawResponse",
-    "OrgsResourceWithStreamingResponse",
-    "AsyncOrgsResourceWithStreamingResponse",
     "WebhooksResource",
     "AsyncWebhooksResource",
 ]

@@ -31,9 +31,8 @@ from ._base_client import (
 )
 
 if TYPE_CHECKING:
-    from .resources import orgs, viewer, auto_scribe
+    from .resources import viewer, auto_scribe
     from .resources.webhooks import WebhooksResource, AsyncWebhooksResource
-    from .resources.orgs.orgs import OrgsResource, AsyncOrgsResource
     from .resources.viewer.viewer import ViewerResource, AsyncViewerResource
     from .resources.auto_scribe.auto_scribe import AutoScribeResource, AsyncAutoScribeResource
 
@@ -114,12 +113,6 @@ class Avara(SyncAPIClient):
         from .resources.viewer import ViewerResource
 
         return ViewerResource(self)
-
-    @cached_property
-    def orgs(self) -> OrgsResource:
-        from .resources.orgs import OrgsResource
-
-        return OrgsResource(self)
 
     @cached_property
     def webhooks(self) -> WebhooksResource:
@@ -318,12 +311,6 @@ class AsyncAvara(AsyncAPIClient):
         return AsyncViewerResource(self)
 
     @cached_property
-    def orgs(self) -> AsyncOrgsResource:
-        from .resources.orgs import AsyncOrgsResource
-
-        return AsyncOrgsResource(self)
-
-    @cached_property
     def webhooks(self) -> AsyncWebhooksResource:
         from .resources.webhooks import AsyncWebhooksResource
 
@@ -462,12 +449,6 @@ class AvaraWithRawResponse:
 
         return ViewerResourceWithRawResponse(self._client.viewer)
 
-    @cached_property
-    def orgs(self) -> orgs.OrgsResourceWithRawResponse:
-        from .resources.orgs import OrgsResourceWithRawResponse
-
-        return OrgsResourceWithRawResponse(self._client.orgs)
-
 
 class AsyncAvaraWithRawResponse:
     _client: AsyncAvara
@@ -486,12 +467,6 @@ class AsyncAvaraWithRawResponse:
         from .resources.viewer import AsyncViewerResourceWithRawResponse
 
         return AsyncViewerResourceWithRawResponse(self._client.viewer)
-
-    @cached_property
-    def orgs(self) -> orgs.AsyncOrgsResourceWithRawResponse:
-        from .resources.orgs import AsyncOrgsResourceWithRawResponse
-
-        return AsyncOrgsResourceWithRawResponse(self._client.orgs)
 
 
 class AvaraWithStreamedResponse:
@@ -512,12 +487,6 @@ class AvaraWithStreamedResponse:
 
         return ViewerResourceWithStreamingResponse(self._client.viewer)
 
-    @cached_property
-    def orgs(self) -> orgs.OrgsResourceWithStreamingResponse:
-        from .resources.orgs import OrgsResourceWithStreamingResponse
-
-        return OrgsResourceWithStreamingResponse(self._client.orgs)
-
 
 class AsyncAvaraWithStreamedResponse:
     _client: AsyncAvara
@@ -536,12 +505,6 @@ class AsyncAvaraWithStreamedResponse:
         from .resources.viewer import AsyncViewerResourceWithStreamingResponse
 
         return AsyncViewerResourceWithStreamingResponse(self._client.viewer)
-
-    @cached_property
-    def orgs(self) -> orgs.AsyncOrgsResourceWithStreamingResponse:
-        from .resources.orgs import AsyncOrgsResourceWithStreamingResponse
-
-        return AsyncOrgsResourceWithStreamingResponse(self._client.orgs)
 
 
 Client = Avara

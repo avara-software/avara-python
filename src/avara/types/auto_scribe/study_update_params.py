@@ -18,10 +18,13 @@ class StudyUpdateParams(TypedDict, total=False):
     Format: usr\\__{32-hex-chars}
     """
 
-    metadata: Optional[Dict[str, str]]
+    express_customer_id: Annotated[str, PropertyInfo(alias="expressCustomerId")]
+    """Express Customer ID for the study, or null to remove.
 
-    org_id: Annotated[str, PropertyInfo(alias="orgId")]
-    """Organization ID for the study, or null to remove. Format: org\\__{32-hex-chars}"""
+    Format: cus\\__{32-hex-chars}
+    """
+
+    metadata: Optional[Dict[str, str]]
 
     prior_report_texts: Annotated[Optional[SequenceNotStr[str]], PropertyInfo(alias="priorReportTexts")]
 

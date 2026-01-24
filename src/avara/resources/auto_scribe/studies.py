@@ -70,8 +70,8 @@ class StudiesResource(SyncAPIResource):
         study_description: str,
         study_instance_uid: str,
         assigned_to: str | Omit = omit,
+        express_customer_id: str | Omit = omit,
         metadata: Dict[str, str] | Omit = omit,
-        org_id: str | Omit = omit,
         prior_report_texts: SequenceNotStr[str] | Omit = omit,
         prior_study_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -99,10 +99,10 @@ class StudiesResource(SyncAPIResource):
 
           assigned_to: User ID to assign the study to. Format: usr\\__{32-hex-chars}
 
+          express_customer_id: Express customer ID for the study. Format: cus\\__{32-hex-chars}
+
           metadata: Custom key-value metadata for the study. Maximum 50 pairs, keys up to 100 chars,
               values up to 1000 chars
-
-          org_id: Organization ID for the study. Format: org\\__{32-hex-chars}
 
           extra_headers: Send extra headers
 
@@ -121,8 +121,8 @@ class StudiesResource(SyncAPIResource):
                     "study_description": study_description,
                     "study_instance_uid": study_instance_uid,
                     "assigned_to": assigned_to,
+                    "express_customer_id": express_customer_id,
                     "metadata": metadata,
-                    "org_id": org_id,
                     "prior_report_texts": prior_report_texts,
                     "prior_study_ids": prior_study_ids,
                 },
@@ -176,8 +176,8 @@ class StudiesResource(SyncAPIResource):
         study_id: str,
         *,
         assigned_to: str | Omit = omit,
+        express_customer_id: str | Omit = omit,
         metadata: Optional[Dict[str, str]] | Omit = omit,
-        org_id: str | Omit = omit,
         prior_report_texts: Optional[SequenceNotStr[str]] | Omit = omit,
         prior_study_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         report_metadata: study_update_params.ReportMetadata | Omit = omit,
@@ -200,7 +200,9 @@ class StudiesResource(SyncAPIResource):
 
           assigned_to: User ID to assign the study to, or null to unassign. Format: usr\\__{32-hex-chars}
 
-          org_id: Organization ID for the study, or null to remove. Format: org\\__{32-hex-chars}
+          express_customer_id:
+              Express Customer ID for the study, or null to remove. Format:
+              cus\\__{32-hex-chars}
 
           severity: Priority level of the study. 'normal' for routine, 'high' for urgent, 'stat' for
               immediate attention
@@ -222,8 +224,8 @@ class StudiesResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "assigned_to": assigned_to,
+                    "express_customer_id": express_customer_id,
                     "metadata": metadata,
-                    "org_id": org_id,
                     "prior_report_texts": prior_report_texts,
                     "prior_study_ids": prior_study_ids,
                     "report_metadata": report_metadata,
@@ -569,8 +571,8 @@ class AsyncStudiesResource(AsyncAPIResource):
         study_description: str,
         study_instance_uid: str,
         assigned_to: str | Omit = omit,
+        express_customer_id: str | Omit = omit,
         metadata: Dict[str, str] | Omit = omit,
-        org_id: str | Omit = omit,
         prior_report_texts: SequenceNotStr[str] | Omit = omit,
         prior_study_ids: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -598,10 +600,10 @@ class AsyncStudiesResource(AsyncAPIResource):
 
           assigned_to: User ID to assign the study to. Format: usr\\__{32-hex-chars}
 
+          express_customer_id: Express customer ID for the study. Format: cus\\__{32-hex-chars}
+
           metadata: Custom key-value metadata for the study. Maximum 50 pairs, keys up to 100 chars,
               values up to 1000 chars
-
-          org_id: Organization ID for the study. Format: org\\__{32-hex-chars}
 
           extra_headers: Send extra headers
 
@@ -620,8 +622,8 @@ class AsyncStudiesResource(AsyncAPIResource):
                     "study_description": study_description,
                     "study_instance_uid": study_instance_uid,
                     "assigned_to": assigned_to,
+                    "express_customer_id": express_customer_id,
                     "metadata": metadata,
-                    "org_id": org_id,
                     "prior_report_texts": prior_report_texts,
                     "prior_study_ids": prior_study_ids,
                 },
@@ -675,8 +677,8 @@ class AsyncStudiesResource(AsyncAPIResource):
         study_id: str,
         *,
         assigned_to: str | Omit = omit,
+        express_customer_id: str | Omit = omit,
         metadata: Optional[Dict[str, str]] | Omit = omit,
-        org_id: str | Omit = omit,
         prior_report_texts: Optional[SequenceNotStr[str]] | Omit = omit,
         prior_study_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         report_metadata: study_update_params.ReportMetadata | Omit = omit,
@@ -699,7 +701,9 @@ class AsyncStudiesResource(AsyncAPIResource):
 
           assigned_to: User ID to assign the study to, or null to unassign. Format: usr\\__{32-hex-chars}
 
-          org_id: Organization ID for the study, or null to remove. Format: org\\__{32-hex-chars}
+          express_customer_id:
+              Express Customer ID for the study, or null to remove. Format:
+              cus\\__{32-hex-chars}
 
           severity: Priority level of the study. 'normal' for routine, 'high' for urgent, 'stat' for
               immediate attention
@@ -721,8 +725,8 @@ class AsyncStudiesResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "assigned_to": assigned_to,
+                    "express_customer_id": express_customer_id,
                     "metadata": metadata,
-                    "org_id": org_id,
                     "prior_report_texts": prior_report_texts,
                     "prior_study_ids": prior_study_ids,
                     "report_metadata": report_metadata,
