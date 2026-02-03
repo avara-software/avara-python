@@ -240,6 +240,7 @@ class TestStudies:
         study = client.auto_scribe.studies.list(
             assigned_to="usr_1234567890abcdef1234567890abcdef",
             cursor="eyJvZmZzZXQiOjIwfQ==",
+            express_customer_id="cus_1234567890abcdef1234567890abcdef",
             is_cancelled=False,
             limit=20,
             severity="normal",
@@ -686,6 +687,7 @@ class TestAsyncStudies:
         study = await async_client.auto_scribe.studies.list(
             assigned_to="usr_1234567890abcdef1234567890abcdef",
             cursor="eyJvZmZzZXQiOjIwfQ==",
+            express_customer_id="cus_1234567890abcdef1234567890abcdef",
             is_cancelled=False,
             limit=20,
             severity="normal",

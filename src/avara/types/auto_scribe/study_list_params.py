@@ -20,6 +20,12 @@ class StudyListParams(TypedDict, total=False):
     cursor: str
     """Base64 encoded cursor from previous response"""
 
+    express_customer_id: Annotated[Optional[str], PropertyInfo(alias="expressCustomerId")]
+    """Filter by Express customer ID (null = studies with no customer).
+
+    Format: cus\\__{32-hex-chars}
+    """
+
     is_cancelled: Annotated[Optional[bool], PropertyInfo(alias="isCancelled")]
     """Filter by cancellation status"""
 
