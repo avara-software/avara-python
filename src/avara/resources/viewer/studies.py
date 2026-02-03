@@ -223,6 +223,7 @@ class StudiesResource(SyncAPIResource):
         *,
         assigned_to: Optional[str] | Omit = omit,
         cursor: str | Omit = omit,
+        express_customer_id: Optional[str] | Omit = omit,
         is_cancelled: Optional[bool] | Omit = omit,
         limit: float | Omit = omit,
         severity: Literal["normal", "high", "stat"] | Omit = omit,
@@ -246,6 +247,10 @@ class StudiesResource(SyncAPIResource):
               usr\\__<32-hex-chars>
 
           cursor: Base64 encoded cursor from previous response
+
+          express_customer_id:
+              Filter by Express customer ID (null = studies with no customer). Format:
+              cus\\__{32-hex-chars}
 
           is_cancelled: Filter by cancellation status
 
@@ -277,6 +282,7 @@ class StudiesResource(SyncAPIResource):
                     {
                         "assigned_to": assigned_to,
                         "cursor": cursor,
+                        "express_customer_id": express_customer_id,
                         "is_cancelled": is_cancelled,
                         "limit": limit,
                         "severity": severity,
@@ -650,6 +656,7 @@ class AsyncStudiesResource(AsyncAPIResource):
         *,
         assigned_to: Optional[str] | Omit = omit,
         cursor: str | Omit = omit,
+        express_customer_id: Optional[str] | Omit = omit,
         is_cancelled: Optional[bool] | Omit = omit,
         limit: float | Omit = omit,
         severity: Literal["normal", "high", "stat"] | Omit = omit,
@@ -673,6 +680,10 @@ class AsyncStudiesResource(AsyncAPIResource):
               usr\\__<32-hex-chars>
 
           cursor: Base64 encoded cursor from previous response
+
+          express_customer_id:
+              Filter by Express customer ID (null = studies with no customer). Format:
+              cus\\__{32-hex-chars}
 
           is_cancelled: Filter by cancellation status
 
@@ -704,6 +715,7 @@ class AsyncStudiesResource(AsyncAPIResource):
                     {
                         "assigned_to": assigned_to,
                         "cursor": cursor,
+                        "express_customer_id": express_customer_id,
                         "is_cancelled": is_cancelled,
                         "limit": limit,
                         "severity": severity,
