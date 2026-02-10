@@ -139,11 +139,15 @@ class InvitationsResource(SyncAPIResource):
         Args:
           invitation_id: Unique invitation identifier. Format: inv\\__{32-hex-chars}
 
+          clinic_role: User's clinical or organizational role
+
           first_name: Invited user's first name
 
           has_dashboard_access: Whether the invited user will have dashboard access
 
           last_name: Invited user's last name
+
+          level: User access level for invite/update (owner cannot be set via API)
 
           extra_headers: Send extra headers
 
@@ -405,11 +409,15 @@ class AsyncInvitationsResource(AsyncAPIResource):
         Args:
           invitation_id: Unique invitation identifier. Format: inv\\__{32-hex-chars}
 
+          clinic_role: User's clinical or organizational role
+
           first_name: Invited user's first name
 
           has_dashboard_access: Whether the invited user will have dashboard access
 
           last_name: Invited user's last name
+
+          level: User access level for invite/update (owner cannot be set via API)
 
           extra_headers: Send extra headers
 

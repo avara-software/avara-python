@@ -45,6 +45,7 @@ class StudyListResponse(BaseModel):
     """
 
     study_viewer_status: Literal["incomplete", "complete"] = FieldInfo(alias="studyViewerStatus")
+    """Study viewer completion status"""
 
     updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
     """Timestamp when the study was last updated"""

@@ -160,11 +160,15 @@ class UsersResource(SyncAPIResource):
         Args:
           user_id: Unique user identifier. Format: usr\\__{32-hex-chars}
 
+          clinic_role: User's clinical or organizational role
+
           first_name: User's first name
 
           has_dashboard_access: Whether the user can access the dashboard interface. Required for admin users
 
           last_name: User's last name
+
+          level: User access level for invite/update (owner cannot be set via API)
 
           extra_headers: Send extra headers
 
@@ -324,6 +328,8 @@ class UsersResource(SyncAPIResource):
           first_name: User's first name
 
           last_name: User's last name
+
+          level: User access level for invite/update (owner cannot be set via API)
 
           middle_name: User's middle name (optional)
 
@@ -554,11 +560,15 @@ class AsyncUsersResource(AsyncAPIResource):
         Args:
           user_id: Unique user identifier. Format: usr\\__{32-hex-chars}
 
+          clinic_role: User's clinical or organizational role
+
           first_name: User's first name
 
           has_dashboard_access: Whether the user can access the dashboard interface. Required for admin users
 
           last_name: User's last name
+
+          level: User access level for invite/update (owner cannot be set via API)
 
           extra_headers: Send extra headers
 
@@ -718,6 +728,8 @@ class AsyncUsersResource(AsyncAPIResource):
           first_name: User's first name
 
           last_name: User's last name
+
+          level: User access level for invite/update (owner cannot be set via API)
 
           middle_name: User's middle name (optional)
 

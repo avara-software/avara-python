@@ -67,10 +67,7 @@ class UserInviteResponse(BaseModel):
     """User's last name"""
 
     level: Literal["admin", "member"]
-    """User access level.
-
-    'admin' can manage users/settings, 'member' has standard access
-    """
+    """User access level for invite/update (owner cannot be set via API)"""
 
     user_id: str = FieldInfo(alias="userId")
     """Unique user identifier. Format: usr\\__{32-hex-chars}"""
