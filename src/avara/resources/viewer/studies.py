@@ -190,8 +190,6 @@ class StudiesResource(SyncAPIResource):
 
           study_description: Description of the study/scan (e.g., 'Brain MRI with Contrast', 'Chest CT')
 
-          study_viewer_status: Study viewer completion status
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -624,8 +622,6 @@ class AsyncStudiesResource(AsyncAPIResource):
               immediate attention
 
           study_description: Description of the study/scan (e.g., 'Brain MRI with Contrast', 'Chest CT')
-
-          study_viewer_status: Study viewer completion status
 
           extra_headers: Send extra headers
 

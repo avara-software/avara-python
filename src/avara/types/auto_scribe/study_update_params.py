@@ -44,14 +44,12 @@ class StudyUpdateParams(TypedDict, total=False):
 
 class ReportMetadataHeight(TypedDict, total=False):
     unit: Required[Literal["in", "cm"]]
-    """Height unit"""
 
     value: Required[float]
 
 
 class ReportMetadataWeight(TypedDict, total=False):
     unit: Required[Literal["lbs", "kg"]]
-    """Weight unit"""
 
     value: Required[float]
 
@@ -78,6 +76,5 @@ class ReportMetadata(TypedDict, total=False):
     scan_type: Annotated[Optional[str], PropertyInfo(alias="scanType")]
 
     sex: Optional[Literal["male", "female", "other"]]
-    """Patient's biological sex"""
 
     weight: Optional[ReportMetadataWeight]

@@ -122,7 +122,12 @@ class StudyUpdateResponse(BaseModel):
     study_report_status: Literal["unassigned", "assigned", "in_progress", "completed", "addendum_active"] = FieldInfo(
         alias="studyReportStatus"
     )
-    """Report workflow status"""
+    """Report workflow status.
+
+    'unassigned' = no radiologist assigned, 'assigned' = assigned but not started,
+    'in_progress' = actively being dictated, 'completed' = report signed,
+    'addendum_active' = addendum in progress
+    """
 
     updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
     """Timestamp when the study was last updated"""

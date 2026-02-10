@@ -16,7 +16,6 @@ class Height(BaseModel):
     """
 
     unit: Literal["in", "cm"]
-    """Height unit"""
 
     value: float
 
@@ -27,7 +26,6 @@ class Weight(BaseModel):
     """
 
     unit: Literal["lbs", "kg"]
-    """Weight unit"""
 
     value: float
 
@@ -69,7 +67,7 @@ class StudyReportMetadata(BaseModel):
     """Type of scan or imaging modality (e.g., 'MRI', 'CT', 'X-Ray', 'Ultrasound')"""
 
     sex: Optional[Literal["male", "female", "other"]] = None
-    """Patient's biological sex"""
+    """Patient's biological sex. Options: 'male', 'female', 'other'"""
 
     weight: Optional[Weight] = None
     """

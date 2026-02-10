@@ -31,7 +31,7 @@ class Report(BaseModel):
     """Patient demographics and scan information for report generation"""
 
     status: Literal["in_progress", "completed"]
-    """Report status"""
+    """Report status: 'in_progress' or 'completed'"""
 
     study_id: str = FieldInfo(alias="studyId")
     """Study ID this report belongs to. Format: stu\\__{32-hex-chars}"""
