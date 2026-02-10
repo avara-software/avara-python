@@ -20,4 +20,5 @@ from .express_retrieve_response import ExpressRetrieveResponse as ExpressRetriev
 from .express_deactivate_response import ExpressDeactivateResponse as ExpressDeactivateResponse
 from .express_reactivate_response import ExpressReactivateResponse as ExpressReactivateResponse
 from .study_report_metadata_param import StudyReportMetadataParam as StudyReportMetadataParam
+from .unsafe_unwrap_webhook_event import UnsafeUnwrapWebhookEvent as UnsafeUnwrapWebhookEvent
 from .study_access_requested_event import StudyAccessRequestedEvent as StudyAccessRequestedEvent
