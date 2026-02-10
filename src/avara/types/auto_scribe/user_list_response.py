@@ -67,7 +67,11 @@ class UserListResponse(BaseModel):
     """User's last name"""
 
     level: Literal["owner", "admin", "member"]
-    """User access level"""
+    """User access level.
+
+    'owner' has full control, 'admin' can manage users/settings, 'member' has
+    standard access
+    """
 
     user_id: str = FieldInfo(alias="userId")
     """Unique user identifier. Format: usr\\__{32-hex-chars}"""

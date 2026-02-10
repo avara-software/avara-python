@@ -29,4 +29,3 @@ class StudyUpdateParams(TypedDict, total=False):
     """Description of the study/scan (e.g., 'Brain MRI with Contrast', 'Chest CT')"""
 
     study_viewer_status: Annotated[Literal["incomplete", "complete"], PropertyInfo(alias="studyViewerStatus")]
-    """Study viewer completion status"""

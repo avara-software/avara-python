@@ -149,15 +149,11 @@ class InvitationsResource(SyncAPIResource):
           can_manage_studies: Whether the invited user will have permission to create, update, and manage
               studies
 
-          clinic_role: User's clinical or organizational role
-
           first_name: Invited user's first name
 
           has_dashboard_access: Whether the invited user will have dashboard access
 
           last_name: Invited user's last name
-
-          level: User access level for invite/update (owner cannot be set via API)
 
           extra_headers: Send extra headers
 
@@ -431,15 +427,11 @@ class AsyncInvitationsResource(AsyncAPIResource):
           can_manage_studies: Whether the invited user will have permission to create, update, and manage
               studies
 
-          clinic_role: User's clinical or organizational role
-
           first_name: Invited user's first name
 
           has_dashboard_access: Whether the invited user will have dashboard access
 
           last_name: Invited user's last name
-
-          level: User access level for invite/update (owner cannot be set via API)
 
           extra_headers: Send extra headers
 

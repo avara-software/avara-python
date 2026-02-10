@@ -15,7 +15,6 @@ class Height(TypedDict, total=False):
     """
 
     unit: Required[Literal["in", "cm"]]
-    """Height unit"""
 
     value: Required[float]
 
@@ -26,7 +25,6 @@ class Weight(TypedDict, total=False):
     """
 
     unit: Required[Literal["lbs", "kg"]]
-    """Weight unit"""
 
     value: Required[float]
 
@@ -68,7 +66,7 @@ class StudyReportMetadataParam(TypedDict, total=False):
     """Type of scan or imaging modality (e.g., 'MRI', 'CT', 'X-Ray', 'Ultrasound')"""
 
     sex: Literal["male", "female", "other"]
-    """Patient's biological sex"""
+    """Patient's biological sex. Options: 'male', 'female', 'other'"""
 
     weight: Weight
     """

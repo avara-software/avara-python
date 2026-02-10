@@ -16,4 +16,4 @@ class ReportIDWithStatus(BaseModel):
     """Unique report identifier. Format: rep\\__{32-hex-chars}"""
 
     status: Literal["in_progress", "completed"]
-    """Report status"""
+    """Current status of the report"""

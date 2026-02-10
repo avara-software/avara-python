@@ -41,7 +41,6 @@ class UserUpdateParams(TypedDict, total=False):
         ],
         PropertyInfo(alias="clinicRole"),
     ]
-    """User's clinical or organizational role"""
 
     first_name: Annotated[str, PropertyInfo(alias="firstName")]
     """User's first name"""
@@ -53,7 +52,6 @@ class UserUpdateParams(TypedDict, total=False):
     """User's last name"""
 
     level: Literal["admin", "member"]
-    """User access level for invite/update (owner cannot be set via API)"""
 
     middle_name: Annotated[Optional[str], PropertyInfo(alias="middleName")]
 
