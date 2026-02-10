@@ -52,7 +52,7 @@ class InvitationRetrieveResponse(BaseModel):
         "Administrative Assistant",
         "Other",
     ] = FieldInfo(alias="clinicRole")
-    """Clinical or organizational role for the invited user"""
+    """User's clinical or organizational role"""
 
     created_at: Optional[datetime] = FieldInfo(alias="createdAt", default=None)
     """Timestamp when the invitation was created"""
@@ -73,7 +73,7 @@ class InvitationRetrieveResponse(BaseModel):
     """Unique invitation identifier. Format: inv\\__{32-hex-chars}"""
 
     invited_source: Literal["dashboard", "api"] = FieldInfo(alias="invitedSource")
-    """How the invitation was created - 'dashboard' or 'api'"""
+    """How the user was invited - via dashboard UI or API"""
 
     inviter_id: str = FieldInfo(alias="inviterId")
     """User ID of the person who sent the invitation.
@@ -85,10 +85,10 @@ class InvitationRetrieveResponse(BaseModel):
     """Invited user's last name"""
 
     level: Literal["owner", "admin", "member"]
-    """Access level for the invited user. 'admin' or 'member' when created via API"""
+    """User access level"""
 
     status: Literal["sent", "accepted", "rejected", "revoked"]
-    """Invitation status: 'sent', 'accepted', 'rejected', or 'revoked'"""
+    """Invitation status"""
 
     updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
     """Timestamp when the invitation was last updated"""

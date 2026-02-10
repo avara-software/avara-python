@@ -56,6 +56,7 @@ class UserInviteParams(TypedDict, total=False):
     """User's last name"""
 
     level: Required[Literal["admin", "member"]]
+    """User access level for invite/update (owner cannot be set via API)"""
 
     middle_name: Annotated[str, PropertyInfo(alias="middleName")]
     """User's middle name (optional)"""
