@@ -231,6 +231,7 @@ from avara.types import (
     StudyAccessRequestedEvent,
     StudyAccessRequestedResponse,
     WebhookEvent,
+    UnsafeUnwrapWebhookEvent,
     UnwrapWebhookEvent,
 )
 ```
