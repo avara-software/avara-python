@@ -23,7 +23,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestInvitations:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_retrieve(self, client: Avara) -> None:
         invitation = client.auto_scribe.users.invitations.retrieve(
@@ -31,7 +31,7 @@ class TestInvitations:
         )
         assert_matches_type(InvitationRetrieveResponse, invitation, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: Avara) -> None:
         response = client.auto_scribe.users.invitations.with_raw_response.retrieve(
@@ -43,7 +43,7 @@ class TestInvitations:
         invitation = response.parse()
         assert_matches_type(InvitationRetrieveResponse, invitation, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_retrieve(self, client: Avara) -> None:
         with client.auto_scribe.users.invitations.with_streaming_response.retrieve(
@@ -57,7 +57,7 @@ class TestInvitations:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_retrieve(self, client: Avara) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `invitation_id` but received ''"):
@@ -65,7 +65,7 @@ class TestInvitations:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_update(self, client: Avara) -> None:
         invitation = client.auto_scribe.users.invitations.update(
@@ -73,7 +73,7 @@ class TestInvitations:
         )
         assert_matches_type(InvitationUpdateResponse, invitation, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_update_with_all_params(self, client: Avara) -> None:
         invitation = client.auto_scribe.users.invitations.update(
@@ -93,7 +93,7 @@ class TestInvitations:
         )
         assert_matches_type(InvitationUpdateResponse, invitation, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: Avara) -> None:
         response = client.auto_scribe.users.invitations.with_raw_response.update(
@@ -105,7 +105,7 @@ class TestInvitations:
         invitation = response.parse()
         assert_matches_type(InvitationUpdateResponse, invitation, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: Avara) -> None:
         with client.auto_scribe.users.invitations.with_streaming_response.update(
@@ -119,7 +119,7 @@ class TestInvitations:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_update(self, client: Avara) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `invitation_id` but received ''"):
@@ -127,13 +127,13 @@ class TestInvitations:
                 invitation_id="",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list(self, client: Avara) -> None:
         invitation = client.auto_scribe.users.invitations.list()
         assert_matches_type(SyncCursorInvitations[InvitationListResponse], invitation, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_with_all_params(self, client: Avara) -> None:
         invitation = client.auto_scribe.users.invitations.list(
@@ -147,7 +147,7 @@ class TestInvitations:
         )
         assert_matches_type(SyncCursorInvitations[InvitationListResponse], invitation, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Avara) -> None:
         response = client.auto_scribe.users.invitations.with_raw_response.list()
@@ -157,7 +157,7 @@ class TestInvitations:
         invitation = response.parse()
         assert_matches_type(SyncCursorInvitations[InvitationListResponse], invitation, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Avara) -> None:
         with client.auto_scribe.users.invitations.with_streaming_response.list() as response:
@@ -169,13 +169,13 @@ class TestInvitations:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_revoke(self, client: Avara) -> None:
         invitation = client.auto_scribe.users.invitations.revoke()
         assert_matches_type(InvitationRevokeResponse, invitation, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_revoke_with_all_params(self, client: Avara) -> None:
         invitation = client.auto_scribe.users.invitations.revoke(
@@ -184,7 +184,7 @@ class TestInvitations:
         )
         assert_matches_type(InvitationRevokeResponse, invitation, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_revoke(self, client: Avara) -> None:
         response = client.auto_scribe.users.invitations.with_raw_response.revoke()
@@ -194,7 +194,7 @@ class TestInvitations:
         invitation = response.parse()
         assert_matches_type(InvitationRevokeResponse, invitation, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_revoke(self, client: Avara) -> None:
         with client.auto_scribe.users.invitations.with_streaming_response.revoke() as response:
@@ -212,7 +212,7 @@ class TestAsyncInvitations:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncAvara) -> None:
         invitation = await async_client.auto_scribe.users.invitations.retrieve(
@@ -220,7 +220,7 @@ class TestAsyncInvitations:
         )
         assert_matches_type(InvitationRetrieveResponse, invitation, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncAvara) -> None:
         response = await async_client.auto_scribe.users.invitations.with_raw_response.retrieve(
@@ -232,7 +232,7 @@ class TestAsyncInvitations:
         invitation = await response.parse()
         assert_matches_type(InvitationRetrieveResponse, invitation, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncAvara) -> None:
         async with async_client.auto_scribe.users.invitations.with_streaming_response.retrieve(
@@ -246,7 +246,7 @@ class TestAsyncInvitations:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncAvara) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `invitation_id` but received ''"):
@@ -254,7 +254,7 @@ class TestAsyncInvitations:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_update(self, async_client: AsyncAvara) -> None:
         invitation = await async_client.auto_scribe.users.invitations.update(
@@ -262,7 +262,7 @@ class TestAsyncInvitations:
         )
         assert_matches_type(InvitationUpdateResponse, invitation, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncAvara) -> None:
         invitation = await async_client.auto_scribe.users.invitations.update(
@@ -282,7 +282,7 @@ class TestAsyncInvitations:
         )
         assert_matches_type(InvitationUpdateResponse, invitation, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncAvara) -> None:
         response = await async_client.auto_scribe.users.invitations.with_raw_response.update(
@@ -294,7 +294,7 @@ class TestAsyncInvitations:
         invitation = await response.parse()
         assert_matches_type(InvitationUpdateResponse, invitation, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncAvara) -> None:
         async with async_client.auto_scribe.users.invitations.with_streaming_response.update(
@@ -308,7 +308,7 @@ class TestAsyncInvitations:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_update(self, async_client: AsyncAvara) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `invitation_id` but received ''"):
@@ -316,13 +316,13 @@ class TestAsyncInvitations:
                 invitation_id="",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncAvara) -> None:
         invitation = await async_client.auto_scribe.users.invitations.list()
         assert_matches_type(AsyncCursorInvitations[InvitationListResponse], invitation, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncAvara) -> None:
         invitation = await async_client.auto_scribe.users.invitations.list(
@@ -336,7 +336,7 @@ class TestAsyncInvitations:
         )
         assert_matches_type(AsyncCursorInvitations[InvitationListResponse], invitation, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncAvara) -> None:
         response = await async_client.auto_scribe.users.invitations.with_raw_response.list()
@@ -346,7 +346,7 @@ class TestAsyncInvitations:
         invitation = await response.parse()
         assert_matches_type(AsyncCursorInvitations[InvitationListResponse], invitation, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncAvara) -> None:
         async with async_client.auto_scribe.users.invitations.with_streaming_response.list() as response:
@@ -358,13 +358,13 @@ class TestAsyncInvitations:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_revoke(self, async_client: AsyncAvara) -> None:
         invitation = await async_client.auto_scribe.users.invitations.revoke()
         assert_matches_type(InvitationRevokeResponse, invitation, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_revoke_with_all_params(self, async_client: AsyncAvara) -> None:
         invitation = await async_client.auto_scribe.users.invitations.revoke(
@@ -373,7 +373,7 @@ class TestAsyncInvitations:
         )
         assert_matches_type(InvitationRevokeResponse, invitation, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_revoke(self, async_client: AsyncAvara) -> None:
         response = await async_client.auto_scribe.users.invitations.with_raw_response.revoke()
@@ -383,7 +383,7 @@ class TestAsyncInvitations:
         invitation = await response.parse()
         assert_matches_type(InvitationRevokeResponse, invitation, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_revoke(self, async_client: AsyncAvara) -> None:
         async with async_client.auto_scribe.users.invitations.with_streaming_response.revoke() as response:

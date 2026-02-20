@@ -17,7 +17,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestUsers:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_add(self, client: Avara) -> None:
         user = client.express.users.add(
@@ -26,7 +26,7 @@ class TestUsers:
         )
         assert_matches_type(UserAddResponse, user, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_add(self, client: Avara) -> None:
         response = client.express.users.with_raw_response.add(
@@ -39,7 +39,7 @@ class TestUsers:
         user = response.parse()
         assert_matches_type(UserAddResponse, user, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_add(self, client: Avara) -> None:
         with client.express.users.with_streaming_response.add(
@@ -54,7 +54,7 @@ class TestUsers:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_add(self, client: Avara) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `express_customer_id` but received ''"):
@@ -63,7 +63,7 @@ class TestUsers:
                 user_id="usr_1234567890abcdef1234567890abcdef",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_remove(self, client: Avara) -> None:
         user = client.express.users.remove(
@@ -72,7 +72,7 @@ class TestUsers:
         )
         assert_matches_type(UserRemoveResponse, user, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_remove(self, client: Avara) -> None:
         response = client.express.users.with_raw_response.remove(
@@ -85,7 +85,7 @@ class TestUsers:
         user = response.parse()
         assert_matches_type(UserRemoveResponse, user, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_remove(self, client: Avara) -> None:
         with client.express.users.with_streaming_response.remove(
@@ -100,7 +100,7 @@ class TestUsers:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_remove(self, client: Avara) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `express_customer_id` but received ''"):
@@ -115,7 +115,7 @@ class TestAsyncUsers:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_add(self, async_client: AsyncAvara) -> None:
         user = await async_client.express.users.add(
@@ -124,7 +124,7 @@ class TestAsyncUsers:
         )
         assert_matches_type(UserAddResponse, user, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_add(self, async_client: AsyncAvara) -> None:
         response = await async_client.express.users.with_raw_response.add(
@@ -137,7 +137,7 @@ class TestAsyncUsers:
         user = await response.parse()
         assert_matches_type(UserAddResponse, user, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_add(self, async_client: AsyncAvara) -> None:
         async with async_client.express.users.with_streaming_response.add(
@@ -152,7 +152,7 @@ class TestAsyncUsers:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_add(self, async_client: AsyncAvara) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `express_customer_id` but received ''"):
@@ -161,7 +161,7 @@ class TestAsyncUsers:
                 user_id="usr_1234567890abcdef1234567890abcdef",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_remove(self, async_client: AsyncAvara) -> None:
         user = await async_client.express.users.remove(
@@ -170,7 +170,7 @@ class TestAsyncUsers:
         )
         assert_matches_type(UserRemoveResponse, user, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_remove(self, async_client: AsyncAvara) -> None:
         response = await async_client.express.users.with_raw_response.remove(
@@ -183,7 +183,7 @@ class TestAsyncUsers:
         user = await response.parse()
         assert_matches_type(UserRemoveResponse, user, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_remove(self, async_client: AsyncAvara) -> None:
         async with async_client.express.users.with_streaming_response.remove(
@@ -198,7 +198,7 @@ class TestAsyncUsers:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_remove(self, async_client: AsyncAvara) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `express_customer_id` but received ''"):

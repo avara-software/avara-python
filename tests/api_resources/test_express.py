@@ -25,7 +25,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestExpress:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create(self, client: Avara) -> None:
         express = client.express.create(
@@ -33,7 +33,7 @@ class TestExpress:
         )
         assert_matches_type(ExpressCreateResponse, express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_with_all_params(self, client: Avara) -> None:
         express = client.express.create(
@@ -45,7 +45,7 @@ class TestExpress:
         )
         assert_matches_type(ExpressCreateResponse, express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Avara) -> None:
         response = client.express.with_raw_response.create(
@@ -57,7 +57,7 @@ class TestExpress:
         express = response.parse()
         assert_matches_type(ExpressCreateResponse, express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: Avara) -> None:
         with client.express.with_streaming_response.create(
@@ -71,7 +71,7 @@ class TestExpress:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_retrieve(self, client: Avara) -> None:
         express = client.express.retrieve(
@@ -79,7 +79,7 @@ class TestExpress:
         )
         assert_matches_type(ExpressRetrieveResponse, express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: Avara) -> None:
         response = client.express.with_raw_response.retrieve(
@@ -91,7 +91,7 @@ class TestExpress:
         express = response.parse()
         assert_matches_type(ExpressRetrieveResponse, express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_retrieve(self, client: Avara) -> None:
         with client.express.with_streaming_response.retrieve(
@@ -105,7 +105,7 @@ class TestExpress:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_retrieve(self, client: Avara) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `express_customer_id` but received ''"):
@@ -113,7 +113,7 @@ class TestExpress:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_update(self, client: Avara) -> None:
         express = client.express.update(
@@ -121,7 +121,7 @@ class TestExpress:
         )
         assert_matches_type(ExpressUpdateResponse, express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_update_with_all_params(self, client: Avara) -> None:
         express = client.express.update(
@@ -135,7 +135,7 @@ class TestExpress:
         )
         assert_matches_type(ExpressUpdateResponse, express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: Avara) -> None:
         response = client.express.with_raw_response.update(
@@ -147,7 +147,7 @@ class TestExpress:
         express = response.parse()
         assert_matches_type(ExpressUpdateResponse, express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: Avara) -> None:
         with client.express.with_streaming_response.update(
@@ -161,7 +161,7 @@ class TestExpress:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_update(self, client: Avara) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `express_customer_id` but received ''"):
@@ -169,13 +169,13 @@ class TestExpress:
                 express_customer_id="",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list(self, client: Avara) -> None:
         express = client.express.list()
         assert_matches_type(SyncCursorExpressCustomers[ExpressListResponse], express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_with_all_params(self, client: Avara) -> None:
         express = client.express.list(
@@ -184,7 +184,7 @@ class TestExpress:
         )
         assert_matches_type(SyncCursorExpressCustomers[ExpressListResponse], express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Avara) -> None:
         response = client.express.with_raw_response.list()
@@ -194,7 +194,7 @@ class TestExpress:
         express = response.parse()
         assert_matches_type(SyncCursorExpressCustomers[ExpressListResponse], express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Avara) -> None:
         with client.express.with_streaming_response.list() as response:
@@ -206,7 +206,7 @@ class TestExpress:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_deactivate(self, client: Avara) -> None:
         express = client.express.deactivate(
@@ -214,7 +214,7 @@ class TestExpress:
         )
         assert_matches_type(ExpressDeactivateResponse, express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_deactivate(self, client: Avara) -> None:
         response = client.express.with_raw_response.deactivate(
@@ -226,7 +226,7 @@ class TestExpress:
         express = response.parse()
         assert_matches_type(ExpressDeactivateResponse, express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_deactivate(self, client: Avara) -> None:
         with client.express.with_streaming_response.deactivate(
@@ -240,7 +240,7 @@ class TestExpress:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_deactivate(self, client: Avara) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `express_customer_id` but received ''"):
@@ -248,7 +248,7 @@ class TestExpress:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_reactivate(self, client: Avara) -> None:
         express = client.express.reactivate(
@@ -256,7 +256,7 @@ class TestExpress:
         )
         assert_matches_type(ExpressReactivateResponse, express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_reactivate(self, client: Avara) -> None:
         response = client.express.with_raw_response.reactivate(
@@ -268,7 +268,7 @@ class TestExpress:
         express = response.parse()
         assert_matches_type(ExpressReactivateResponse, express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_reactivate(self, client: Avara) -> None:
         with client.express.with_streaming_response.reactivate(
@@ -282,7 +282,7 @@ class TestExpress:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_reactivate(self, client: Avara) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `express_customer_id` but received ''"):
@@ -296,7 +296,7 @@ class TestAsyncExpress:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncAvara) -> None:
         express = await async_client.express.create(
@@ -304,7 +304,7 @@ class TestAsyncExpress:
         )
         assert_matches_type(ExpressCreateResponse, express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncAvara) -> None:
         express = await async_client.express.create(
@@ -316,7 +316,7 @@ class TestAsyncExpress:
         )
         assert_matches_type(ExpressCreateResponse, express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncAvara) -> None:
         response = await async_client.express.with_raw_response.create(
@@ -328,7 +328,7 @@ class TestAsyncExpress:
         express = await response.parse()
         assert_matches_type(ExpressCreateResponse, express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncAvara) -> None:
         async with async_client.express.with_streaming_response.create(
@@ -342,7 +342,7 @@ class TestAsyncExpress:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncAvara) -> None:
         express = await async_client.express.retrieve(
@@ -350,7 +350,7 @@ class TestAsyncExpress:
         )
         assert_matches_type(ExpressRetrieveResponse, express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncAvara) -> None:
         response = await async_client.express.with_raw_response.retrieve(
@@ -362,7 +362,7 @@ class TestAsyncExpress:
         express = await response.parse()
         assert_matches_type(ExpressRetrieveResponse, express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncAvara) -> None:
         async with async_client.express.with_streaming_response.retrieve(
@@ -376,7 +376,7 @@ class TestAsyncExpress:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncAvara) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `express_customer_id` but received ''"):
@@ -384,7 +384,7 @@ class TestAsyncExpress:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_update(self, async_client: AsyncAvara) -> None:
         express = await async_client.express.update(
@@ -392,7 +392,7 @@ class TestAsyncExpress:
         )
         assert_matches_type(ExpressUpdateResponse, express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncAvara) -> None:
         express = await async_client.express.update(
@@ -406,7 +406,7 @@ class TestAsyncExpress:
         )
         assert_matches_type(ExpressUpdateResponse, express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncAvara) -> None:
         response = await async_client.express.with_raw_response.update(
@@ -418,7 +418,7 @@ class TestAsyncExpress:
         express = await response.parse()
         assert_matches_type(ExpressUpdateResponse, express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncAvara) -> None:
         async with async_client.express.with_streaming_response.update(
@@ -432,7 +432,7 @@ class TestAsyncExpress:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_update(self, async_client: AsyncAvara) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `express_customer_id` but received ''"):
@@ -440,13 +440,13 @@ class TestAsyncExpress:
                 express_customer_id="",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncAvara) -> None:
         express = await async_client.express.list()
         assert_matches_type(AsyncCursorExpressCustomers[ExpressListResponse], express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncAvara) -> None:
         express = await async_client.express.list(
@@ -455,7 +455,7 @@ class TestAsyncExpress:
         )
         assert_matches_type(AsyncCursorExpressCustomers[ExpressListResponse], express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncAvara) -> None:
         response = await async_client.express.with_raw_response.list()
@@ -465,7 +465,7 @@ class TestAsyncExpress:
         express = await response.parse()
         assert_matches_type(AsyncCursorExpressCustomers[ExpressListResponse], express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncAvara) -> None:
         async with async_client.express.with_streaming_response.list() as response:
@@ -477,7 +477,7 @@ class TestAsyncExpress:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_deactivate(self, async_client: AsyncAvara) -> None:
         express = await async_client.express.deactivate(
@@ -485,7 +485,7 @@ class TestAsyncExpress:
         )
         assert_matches_type(ExpressDeactivateResponse, express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_deactivate(self, async_client: AsyncAvara) -> None:
         response = await async_client.express.with_raw_response.deactivate(
@@ -497,7 +497,7 @@ class TestAsyncExpress:
         express = await response.parse()
         assert_matches_type(ExpressDeactivateResponse, express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_deactivate(self, async_client: AsyncAvara) -> None:
         async with async_client.express.with_streaming_response.deactivate(
@@ -511,7 +511,7 @@ class TestAsyncExpress:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_deactivate(self, async_client: AsyncAvara) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `express_customer_id` but received ''"):
@@ -519,7 +519,7 @@ class TestAsyncExpress:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_reactivate(self, async_client: AsyncAvara) -> None:
         express = await async_client.express.reactivate(
@@ -527,7 +527,7 @@ class TestAsyncExpress:
         )
         assert_matches_type(ExpressReactivateResponse, express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_reactivate(self, async_client: AsyncAvara) -> None:
         response = await async_client.express.with_raw_response.reactivate(
@@ -539,7 +539,7 @@ class TestAsyncExpress:
         express = await response.parse()
         assert_matches_type(ExpressReactivateResponse, express, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_reactivate(self, async_client: AsyncAvara) -> None:
         async with async_client.express.with_streaming_response.reactivate(
@@ -553,7 +553,7 @@ class TestAsyncExpress:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_reactivate(self, async_client: AsyncAvara) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `express_customer_id` but received ''"):

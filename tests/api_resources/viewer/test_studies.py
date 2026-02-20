@@ -27,7 +27,7 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestStudies:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create(self, client: Avara) -> None:
         study = client.viewer.studies.create(
@@ -37,7 +37,7 @@ class TestStudies:
         )
         assert_matches_type(StudyCreateResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_create_with_all_params(self, client: Avara) -> None:
         study = client.viewer.studies.create(
@@ -53,7 +53,7 @@ class TestStudies:
         )
         assert_matches_type(StudyCreateResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_create(self, client: Avara) -> None:
         response = client.viewer.studies.with_raw_response.create(
@@ -67,7 +67,7 @@ class TestStudies:
         study = response.parse()
         assert_matches_type(StudyCreateResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_create(self, client: Avara) -> None:
         with client.viewer.studies.with_streaming_response.create(
@@ -83,7 +83,7 @@ class TestStudies:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_retrieve(self, client: Avara) -> None:
         study = client.viewer.studies.retrieve(
@@ -91,7 +91,7 @@ class TestStudies:
         )
         assert_matches_type(StudyRetrieveResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_retrieve(self, client: Avara) -> None:
         response = client.viewer.studies.with_raw_response.retrieve(
@@ -103,7 +103,7 @@ class TestStudies:
         study = response.parse()
         assert_matches_type(StudyRetrieveResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_retrieve(self, client: Avara) -> None:
         with client.viewer.studies.with_streaming_response.retrieve(
@@ -117,7 +117,7 @@ class TestStudies:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_retrieve(self, client: Avara) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `study_id` but received ''"):
@@ -125,7 +125,7 @@ class TestStudies:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_update(self, client: Avara) -> None:
         study = client.viewer.studies.update(
@@ -133,7 +133,7 @@ class TestStudies:
         )
         assert_matches_type(StudyUpdateResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_update_with_all_params(self, client: Avara) -> None:
         study = client.viewer.studies.update(
@@ -146,7 +146,7 @@ class TestStudies:
         )
         assert_matches_type(StudyUpdateResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_update(self, client: Avara) -> None:
         response = client.viewer.studies.with_raw_response.update(
@@ -158,7 +158,7 @@ class TestStudies:
         study = response.parse()
         assert_matches_type(StudyUpdateResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_update(self, client: Avara) -> None:
         with client.viewer.studies.with_streaming_response.update(
@@ -172,7 +172,7 @@ class TestStudies:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_update(self, client: Avara) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `study_id` but received ''"):
@@ -180,13 +180,13 @@ class TestStudies:
                 study_id="",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list(self, client: Avara) -> None:
         study = client.viewer.studies.list()
         assert_matches_type(SyncCursorStudies[StudyListResponse], study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_list_with_all_params(self, client: Avara) -> None:
         study = client.viewer.studies.list(
@@ -201,7 +201,7 @@ class TestStudies:
         )
         assert_matches_type(SyncCursorStudies[StudyListResponse], study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_list(self, client: Avara) -> None:
         response = client.viewer.studies.with_raw_response.list()
@@ -211,7 +211,7 @@ class TestStudies:
         study = response.parse()
         assert_matches_type(SyncCursorStudies[StudyListResponse], study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_list(self, client: Avara) -> None:
         with client.viewer.studies.with_streaming_response.list() as response:
@@ -223,13 +223,13 @@ class TestStudies:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_cancel(self, client: Avara) -> None:
         study = client.viewer.studies.cancel()
         assert_matches_type(StudyCancelResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_cancel_with_all_params(self, client: Avara) -> None:
         study = client.viewer.studies.cancel(
@@ -238,7 +238,7 @@ class TestStudies:
         )
         assert_matches_type(StudyCancelResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_cancel(self, client: Avara) -> None:
         response = client.viewer.studies.with_raw_response.cancel()
@@ -248,7 +248,7 @@ class TestStudies:
         study = response.parse()
         assert_matches_type(StudyCancelResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_cancel(self, client: Avara) -> None:
         with client.viewer.studies.with_streaming_response.cancel() as response:
@@ -260,13 +260,13 @@ class TestStudies:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_reroute_url(self, client: Avara) -> None:
         study = client.viewer.studies.reroute_url()
         assert_matches_type(StudyRerouteURLResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_reroute_url_with_all_params(self, client: Avara) -> None:
         study = client.viewer.studies.reroute_url(
@@ -275,7 +275,7 @@ class TestStudies:
         )
         assert_matches_type(StudyRerouteURLResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_reroute_url(self, client: Avara) -> None:
         response = client.viewer.studies.with_raw_response.reroute_url()
@@ -285,7 +285,7 @@ class TestStudies:
         study = response.parse()
         assert_matches_type(StudyRerouteURLResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_reroute_url(self, client: Avara) -> None:
         with client.viewer.studies.with_streaming_response.reroute_url() as response:
@@ -297,7 +297,7 @@ class TestStudies:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_retrieve_by_uid(self, client: Avara) -> None:
         study = client.viewer.studies.retrieve_by_uid(
@@ -305,7 +305,7 @@ class TestStudies:
         )
         assert_matches_type(StudyRetrieveByUidResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_retrieve_by_uid(self, client: Avara) -> None:
         response = client.viewer.studies.with_raw_response.retrieve_by_uid(
@@ -317,7 +317,7 @@ class TestStudies:
         study = response.parse()
         assert_matches_type(StudyRetrieveByUidResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_retrieve_by_uid(self, client: Avara) -> None:
         with client.viewer.studies.with_streaming_response.retrieve_by_uid(
@@ -331,7 +331,7 @@ class TestStudies:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_retrieve_by_uid(self, client: Avara) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `study_instance_uid` but received ''"):
@@ -339,13 +339,13 @@ class TestStudies:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_uncancel(self, client: Avara) -> None:
         study = client.viewer.studies.uncancel()
         assert_matches_type(StudyUncancelResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_uncancel_with_all_params(self, client: Avara) -> None:
         study = client.viewer.studies.uncancel(
@@ -354,7 +354,7 @@ class TestStudies:
         )
         assert_matches_type(StudyUncancelResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_uncancel(self, client: Avara) -> None:
         response = client.viewer.studies.with_raw_response.uncancel()
@@ -364,7 +364,7 @@ class TestStudies:
         study = response.parse()
         assert_matches_type(StudyUncancelResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_uncancel(self, client: Avara) -> None:
         with client.viewer.studies.with_streaming_response.uncancel() as response:
@@ -382,7 +382,7 @@ class TestAsyncStudies:
         "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
     )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.create(
@@ -392,7 +392,7 @@ class TestAsyncStudies:
         )
         assert_matches_type(StudyCreateResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.create(
@@ -408,7 +408,7 @@ class TestAsyncStudies:
         )
         assert_matches_type(StudyCreateResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncAvara) -> None:
         response = await async_client.viewer.studies.with_raw_response.create(
@@ -422,7 +422,7 @@ class TestAsyncStudies:
         study = await response.parse()
         assert_matches_type(StudyCreateResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncAvara) -> None:
         async with async_client.viewer.studies.with_streaming_response.create(
@@ -438,7 +438,7 @@ class TestAsyncStudies:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.retrieve(
@@ -446,7 +446,7 @@ class TestAsyncStudies:
         )
         assert_matches_type(StudyRetrieveResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncAvara) -> None:
         response = await async_client.viewer.studies.with_raw_response.retrieve(
@@ -458,7 +458,7 @@ class TestAsyncStudies:
         study = await response.parse()
         assert_matches_type(StudyRetrieveResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncAvara) -> None:
         async with async_client.viewer.studies.with_streaming_response.retrieve(
@@ -472,7 +472,7 @@ class TestAsyncStudies:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncAvara) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `study_id` but received ''"):
@@ -480,7 +480,7 @@ class TestAsyncStudies:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_update(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.update(
@@ -488,7 +488,7 @@ class TestAsyncStudies:
         )
         assert_matches_type(StudyUpdateResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.update(
@@ -501,7 +501,7 @@ class TestAsyncStudies:
         )
         assert_matches_type(StudyUpdateResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncAvara) -> None:
         response = await async_client.viewer.studies.with_raw_response.update(
@@ -513,7 +513,7 @@ class TestAsyncStudies:
         study = await response.parse()
         assert_matches_type(StudyUpdateResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncAvara) -> None:
         async with async_client.viewer.studies.with_streaming_response.update(
@@ -527,7 +527,7 @@ class TestAsyncStudies:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_update(self, async_client: AsyncAvara) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `study_id` but received ''"):
@@ -535,13 +535,13 @@ class TestAsyncStudies:
                 study_id="",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.list()
         assert_matches_type(AsyncCursorStudies[StudyListResponse], study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.list(
@@ -556,7 +556,7 @@ class TestAsyncStudies:
         )
         assert_matches_type(AsyncCursorStudies[StudyListResponse], study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncAvara) -> None:
         response = await async_client.viewer.studies.with_raw_response.list()
@@ -566,7 +566,7 @@ class TestAsyncStudies:
         study = await response.parse()
         assert_matches_type(AsyncCursorStudies[StudyListResponse], study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncAvara) -> None:
         async with async_client.viewer.studies.with_streaming_response.list() as response:
@@ -578,13 +578,13 @@ class TestAsyncStudies:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_cancel(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.cancel()
         assert_matches_type(StudyCancelResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_cancel_with_all_params(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.cancel(
@@ -593,7 +593,7 @@ class TestAsyncStudies:
         )
         assert_matches_type(StudyCancelResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_cancel(self, async_client: AsyncAvara) -> None:
         response = await async_client.viewer.studies.with_raw_response.cancel()
@@ -603,7 +603,7 @@ class TestAsyncStudies:
         study = await response.parse()
         assert_matches_type(StudyCancelResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_cancel(self, async_client: AsyncAvara) -> None:
         async with async_client.viewer.studies.with_streaming_response.cancel() as response:
@@ -615,13 +615,13 @@ class TestAsyncStudies:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_reroute_url(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.reroute_url()
         assert_matches_type(StudyRerouteURLResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_reroute_url_with_all_params(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.reroute_url(
@@ -630,7 +630,7 @@ class TestAsyncStudies:
         )
         assert_matches_type(StudyRerouteURLResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_reroute_url(self, async_client: AsyncAvara) -> None:
         response = await async_client.viewer.studies.with_raw_response.reroute_url()
@@ -640,7 +640,7 @@ class TestAsyncStudies:
         study = await response.parse()
         assert_matches_type(StudyRerouteURLResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_reroute_url(self, async_client: AsyncAvara) -> None:
         async with async_client.viewer.studies.with_streaming_response.reroute_url() as response:
@@ -652,7 +652,7 @@ class TestAsyncStudies:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_retrieve_by_uid(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.retrieve_by_uid(
@@ -660,7 +660,7 @@ class TestAsyncStudies:
         )
         assert_matches_type(StudyRetrieveByUidResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_retrieve_by_uid(self, async_client: AsyncAvara) -> None:
         response = await async_client.viewer.studies.with_raw_response.retrieve_by_uid(
@@ -672,7 +672,7 @@ class TestAsyncStudies:
         study = await response.parse()
         assert_matches_type(StudyRetrieveByUidResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_retrieve_by_uid(self, async_client: AsyncAvara) -> None:
         async with async_client.viewer.studies.with_streaming_response.retrieve_by_uid(
@@ -686,7 +686,7 @@ class TestAsyncStudies:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_retrieve_by_uid(self, async_client: AsyncAvara) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `study_instance_uid` but received ''"):
@@ -694,13 +694,13 @@ class TestAsyncStudies:
                 "",
             )
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_uncancel(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.uncancel()
         assert_matches_type(StudyUncancelResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_uncancel_with_all_params(self, async_client: AsyncAvara) -> None:
         study = await async_client.viewer.studies.uncancel(
@@ -709,7 +709,7 @@ class TestAsyncStudies:
         )
         assert_matches_type(StudyUncancelResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_uncancel(self, async_client: AsyncAvara) -> None:
         response = await async_client.viewer.studies.with_raw_response.uncancel()
@@ -719,7 +719,7 @@ class TestAsyncStudies:
         study = await response.parse()
         assert_matches_type(StudyUncancelResponse, study, path=["response"])
 
-    @pytest.mark.skip(reason="Prism tests are disabled")
+    @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_uncancel(self, async_client: AsyncAvara) -> None:
         async with async_client.viewer.studies.with_streaming_response.uncancel() as response:
