@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..._types import Body, Query, Headers, NotGiven, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -76,7 +76,7 @@ class UsersResource(SyncAPIResource):
                 f"Expected a non-empty value for `express_customer_id` but received {express_customer_id!r}"
             )
         return self._post(
-            f"/v1/express/{express_customer_id}/users",
+            path_template("/v1/express/{express_customer_id}/users", express_customer_id=express_customer_id),
             body=maybe_transform({"user_id": user_id}, user_add_params.UserAddParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -119,7 +119,7 @@ class UsersResource(SyncAPIResource):
                 f"Expected a non-empty value for `express_customer_id` but received {express_customer_id!r}"
             )
         return self._delete(
-            f"/v1/express/{express_customer_id}/users",
+            path_template("/v1/express/{express_customer_id}/users", express_customer_id=express_customer_id),
             body=maybe_transform({"user_id": user_id}, user_remove_params.UserRemoveParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -182,7 +182,7 @@ class AsyncUsersResource(AsyncAPIResource):
                 f"Expected a non-empty value for `express_customer_id` but received {express_customer_id!r}"
             )
         return await self._post(
-            f"/v1/express/{express_customer_id}/users",
+            path_template("/v1/express/{express_customer_id}/users", express_customer_id=express_customer_id),
             body=await async_maybe_transform({"user_id": user_id}, user_add_params.UserAddParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -225,7 +225,7 @@ class AsyncUsersResource(AsyncAPIResource):
                 f"Expected a non-empty value for `express_customer_id` but received {express_customer_id!r}"
             )
         return await self._delete(
-            f"/v1/express/{express_customer_id}/users",
+            path_template("/v1/express/{express_customer_id}/users", express_customer_id=express_customer_id),
             body=await async_maybe_transform({"user_id": user_id}, user_remove_params.UserRemoveParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout

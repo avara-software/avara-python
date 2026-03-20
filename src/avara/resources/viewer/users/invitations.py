@@ -8,7 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ...._utils import maybe_transform, async_maybe_transform
+from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
@@ -79,7 +79,7 @@ class InvitationsResource(SyncAPIResource):
         if not invitation_id:
             raise ValueError(f"Expected a non-empty value for `invitation_id` but received {invitation_id!r}")
         return self._get(
-            f"/v1/viewer/users/invitations/{invitation_id}",
+            path_template("/v1/viewer/users/invitations/{invitation_id}", invitation_id=invitation_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -156,7 +156,7 @@ class InvitationsResource(SyncAPIResource):
         if not invitation_id:
             raise ValueError(f"Expected a non-empty value for `invitation_id` but received {invitation_id!r}")
         return self._patch(
-            f"/v1/viewer/users/invitations/{invitation_id}",
+            path_template("/v1/viewer/users/invitations/{invitation_id}", invitation_id=invitation_id),
             body=maybe_transform(
                 {
                     "can_manage_studies": can_manage_studies,
@@ -345,7 +345,7 @@ class AsyncInvitationsResource(AsyncAPIResource):
         if not invitation_id:
             raise ValueError(f"Expected a non-empty value for `invitation_id` but received {invitation_id!r}")
         return await self._get(
-            f"/v1/viewer/users/invitations/{invitation_id}",
+            path_template("/v1/viewer/users/invitations/{invitation_id}", invitation_id=invitation_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -422,7 +422,7 @@ class AsyncInvitationsResource(AsyncAPIResource):
         if not invitation_id:
             raise ValueError(f"Expected a non-empty value for `invitation_id` but received {invitation_id!r}")
         return await self._patch(
-            f"/v1/viewer/users/invitations/{invitation_id}",
+            path_template("/v1/viewer/users/invitations/{invitation_id}", invitation_id=invitation_id),
             body=await async_maybe_transform(
                 {
                     "can_manage_studies": can_manage_studies,
