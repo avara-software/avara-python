@@ -16,7 +16,7 @@ from .users import (
 )
 from ...types import express_list_params, express_create_params, express_update_params
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -139,7 +139,7 @@ class ExpressResource(SyncAPIResource):
                 f"Expected a non-empty value for `express_customer_id` but received {express_customer_id!r}"
             )
         return self._get(
-            f"/v1/express/{express_customer_id}",
+            path_template("/v1/express/{express_customer_id}", express_customer_id=express_customer_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -184,7 +184,7 @@ class ExpressResource(SyncAPIResource):
                 f"Expected a non-empty value for `express_customer_id` but received {express_customer_id!r}"
             )
         return self._patch(
-            f"/v1/express/{express_customer_id}",
+            path_template("/v1/express/{express_customer_id}", express_customer_id=express_customer_id),
             body=maybe_transform(
                 {
                     "express_customer_name": express_customer_name,
@@ -279,7 +279,7 @@ class ExpressResource(SyncAPIResource):
                 f"Expected a non-empty value for `express_customer_id` but received {express_customer_id!r}"
             )
         return self._post(
-            f"/v1/express/{express_customer_id}/deactivate",
+            path_template("/v1/express/{express_customer_id}/deactivate", express_customer_id=express_customer_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -317,7 +317,7 @@ class ExpressResource(SyncAPIResource):
                 f"Expected a non-empty value for `express_customer_id` but received {express_customer_id!r}"
             )
         return self._post(
-            f"/v1/express/{express_customer_id}/reactivate",
+            path_template("/v1/express/{express_customer_id}/reactivate", express_customer_id=express_customer_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -427,7 +427,7 @@ class AsyncExpressResource(AsyncAPIResource):
                 f"Expected a non-empty value for `express_customer_id` but received {express_customer_id!r}"
             )
         return await self._get(
-            f"/v1/express/{express_customer_id}",
+            path_template("/v1/express/{express_customer_id}", express_customer_id=express_customer_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -472,7 +472,7 @@ class AsyncExpressResource(AsyncAPIResource):
                 f"Expected a non-empty value for `express_customer_id` but received {express_customer_id!r}"
             )
         return await self._patch(
-            f"/v1/express/{express_customer_id}",
+            path_template("/v1/express/{express_customer_id}", express_customer_id=express_customer_id),
             body=await async_maybe_transform(
                 {
                     "express_customer_name": express_customer_name,
@@ -567,7 +567,7 @@ class AsyncExpressResource(AsyncAPIResource):
                 f"Expected a non-empty value for `express_customer_id` but received {express_customer_id!r}"
             )
         return await self._post(
-            f"/v1/express/{express_customer_id}/deactivate",
+            path_template("/v1/express/{express_customer_id}/deactivate", express_customer_id=express_customer_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -605,7 +605,7 @@ class AsyncExpressResource(AsyncAPIResource):
                 f"Expected a non-empty value for `express_customer_id` but received {express_customer_id!r}"
             )
         return await self._post(
-            f"/v1/express/{express_customer_id}/reactivate",
+            path_template("/v1/express/{express_customer_id}/reactivate", express_customer_id=express_customer_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
