@@ -1,7 +1,18 @@
 # Shared Types
 
 ```python
-from avara.types import APIKeyReference, ExpressCustomerReference, UserReference
+from avara.types import (
+    APIKeyReference,
+    AssignableUserLevel,
+    ClinicRole,
+    ExpressCustomerReference,
+    InvitationExpiredFilter,
+    InvitationStatus,
+    InvitedSource,
+    Severity,
+    UserLevel,
+    UserReference,
+)
 ```
 
 # AutoScribe
@@ -9,7 +20,14 @@ from avara.types import APIKeyReference, ExpressCustomerReference, UserReference
 Types:
 
 ```python
-from avara.types import StudyReportMetadata
+from avara.types import (
+    HeightUnit,
+    ReportStatus,
+    Sex,
+    StudyReportMetadata,
+    StudyReportStatus,
+    WeightUnit,
+)
 ```
 
 ## Studies
@@ -18,6 +36,7 @@ Types:
 
 ```python
 from avara.types.auto_scribe import (
+    PriorReport,
     ReportIDWithStatus,
     StudyCreateResponse,
     StudyRetrieveResponse,
@@ -110,6 +129,12 @@ Methods:
 - <code title="get /v1/autoScribe/reports/text">client.auto_scribe.reports.<a href="./src/avara/resources/auto_scribe/reports.py">text</a>(\*\*<a href="src/avara/types/auto_scribe/report_text_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/report_text_response.py">ReportTextResponse</a></code>
 
 # Viewer
+
+Types:
+
+```python
+from avara.types import StudyViewerStatus
+```
 
 ## Studies
 

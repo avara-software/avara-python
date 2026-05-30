@@ -3,9 +3,11 @@
 from __future__ import annotations
 
 from typing import List, Optional
-from typing_extensions import Literal, Annotated, TypedDict
+from typing_extensions import Annotated, TypedDict
 
 from ..._utils import PropertyInfo
+from ..shared.severity import Severity
+from ..study_report_status import StudyReportStatus
 
 __all__ = ["StudyListParams"]
 
@@ -32,14 +34,11 @@ class StudyListParams(TypedDict, total=False):
     limit: float
     """Number of results to return (1-100)"""
 
-    severity: Literal["normal", "high", "stat"]
+    severity: Severity
     """Filter by study severity"""
 
     study_description: Annotated[str, PropertyInfo(alias="studyDescription")]
     """Filter by study description (contains match)"""
 
-    study_report_status: Annotated[
-        List[Literal["unassigned", "assigned", "in_progress", "completed", "addendum_active"]],
-        PropertyInfo(alias="studyReportStatus"),
-    ]
+    study_report_status: Annotated[List[StudyReportStatus], PropertyInfo(alias="studyReportStatus")]
     """Filter by report status(es)"""

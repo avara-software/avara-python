@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from typing import Optional
-from typing_extensions import Literal
 
 import httpx
 
@@ -34,9 +33,13 @@ from ....types.viewer import (
     user_reactivate_params,
     user_revoke_access_params,
 )
+from ....types.shared.user_level import UserLevel
+from ....types.shared.clinic_role import ClinicRole
+from ....types.shared.invited_source import InvitedSource
 from ....types.viewer.user_list_response import UserListResponse
 from ....types.viewer.user_invite_response import UserInviteResponse
 from ....types.viewer.user_update_response import UserUpdateResponse
+from ....types.shared.assignable_user_level import AssignableUserLevel
 from ....types.viewer.user_retrieve_response import UserRetrieveResponse
 from ....types.viewer.user_reactivate_response import UserReactivateResponse
 from ....types.viewer.user_revoke_access_response import UserRevokeAccessResponse
@@ -110,36 +113,11 @@ class UsersResource(SyncAPIResource):
         user_id: str,
         *,
         can_manage_studies: bool | Omit = omit,
-        clinic_role: Optional[
-            Literal[
-                "Radiologist",
-                "Cardiologist",
-                "Neurologist",
-                "Urologist",
-                "Gynecologist",
-                "Endocrinologist",
-                "Doctor",
-                "Surgeon",
-                "Physician",
-                "Physician Assistant",
-                "Nurse Practitioner",
-                "Registered Nurse",
-                "Patient Care Coordinator",
-                "Front Desk Operator",
-                "Imaging Technologist",
-                "PACS Administrator",
-                "Software Engineer",
-                "Revenue Cycle Manager",
-                "Administrative Director",
-                "Administrative Assistant",
-                "Other",
-            ]
-        ]
-        | Omit = omit,
+        clinic_role: Optional[ClinicRole] | Omit = omit,
         first_name: str | Omit = omit,
         has_dashboard_access: bool | Omit = omit,
         last_name: str | Omit = omit,
-        level: Literal["admin", "member"] | Omit = omit,
+        level: AssignableUserLevel | Omit = omit,
         middle_name: Optional[str] | Omit = omit,
         phone_number: Optional[str] | Omit = omit,
         suffix1: Optional[str] | Omit = omit,
@@ -160,11 +138,17 @@ class UsersResource(SyncAPIResource):
         Args:
           user_id: Unique user identifier. Format: usr\\__{32-hex-chars}
 
+          clinic_role: A user's clinical or organizational role within the clinic.
+
           first_name: User's first name
 
           has_dashboard_access: Whether the user can access the dashboard interface. Required for admin users
 
           last_name: User's last name
+
+          level: User access level assignable via the API. 'admin' can manage users/settings,
+              'member' has standard access. 'owner' is dashboard-only and cannot be assigned
+              via the API.
 
           extra_headers: Send extra headers
 
@@ -205,9 +189,9 @@ class UsersResource(SyncAPIResource):
         cursor: str | Omit = omit,
         email: str | Omit = omit,
         first_name: str | Omit = omit,
-        invited_source: Literal["dashboard", "api"] | Omit = omit,
+        invited_source: InvitedSource | Omit = omit,
         last_name: str | Omit = omit,
-        level: Literal["owner", "admin", "member"] | Omit = omit,
+        level: UserLevel | Omit = omit,
         limit: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -271,34 +255,12 @@ class UsersResource(SyncAPIResource):
         self,
         *,
         can_manage_studies: bool,
-        clinic_role: Literal[
-            "Radiologist",
-            "Cardiologist",
-            "Neurologist",
-            "Urologist",
-            "Gynecologist",
-            "Endocrinologist",
-            "Doctor",
-            "Surgeon",
-            "Physician",
-            "Physician Assistant",
-            "Nurse Practitioner",
-            "Registered Nurse",
-            "Patient Care Coordinator",
-            "Front Desk Operator",
-            "Imaging Technologist",
-            "PACS Administrator",
-            "Software Engineer",
-            "Revenue Cycle Manager",
-            "Administrative Director",
-            "Administrative Assistant",
-            "Other",
-        ],
+        clinic_role: ClinicRole,
         email: str,
         first_name: str,
         has_dashboard_access: bool,
         last_name: str,
-        level: Literal["admin", "member"],
+        level: AssignableUserLevel,
         middle_name: str | Omit = omit,
         phone_number: str | Omit = omit,
         suffix1: str | Omit = omit,
@@ -317,13 +279,17 @@ class UsersResource(SyncAPIResource):
         be enabled to allow login.
 
         Args:
-          clinic_role: User's clinical or organizational role
+          clinic_role: A user's clinical or organizational role within the clinic.
 
           email: User's email address for login and notifications
 
           first_name: User's first name
 
           last_name: User's last name
+
+          level: User access level assignable via the API. 'admin' can manage users/settings,
+              'member' has standard access. 'owner' is dashboard-only and cannot be assigned
+              via the API.
 
           middle_name: User's middle name (optional)
 
@@ -504,36 +470,11 @@ class AsyncUsersResource(AsyncAPIResource):
         user_id: str,
         *,
         can_manage_studies: bool | Omit = omit,
-        clinic_role: Optional[
-            Literal[
-                "Radiologist",
-                "Cardiologist",
-                "Neurologist",
-                "Urologist",
-                "Gynecologist",
-                "Endocrinologist",
-                "Doctor",
-                "Surgeon",
-                "Physician",
-                "Physician Assistant",
-                "Nurse Practitioner",
-                "Registered Nurse",
-                "Patient Care Coordinator",
-                "Front Desk Operator",
-                "Imaging Technologist",
-                "PACS Administrator",
-                "Software Engineer",
-                "Revenue Cycle Manager",
-                "Administrative Director",
-                "Administrative Assistant",
-                "Other",
-            ]
-        ]
-        | Omit = omit,
+        clinic_role: Optional[ClinicRole] | Omit = omit,
         first_name: str | Omit = omit,
         has_dashboard_access: bool | Omit = omit,
         last_name: str | Omit = omit,
-        level: Literal["admin", "member"] | Omit = omit,
+        level: AssignableUserLevel | Omit = omit,
         middle_name: Optional[str] | Omit = omit,
         phone_number: Optional[str] | Omit = omit,
         suffix1: Optional[str] | Omit = omit,
@@ -554,11 +495,17 @@ class AsyncUsersResource(AsyncAPIResource):
         Args:
           user_id: Unique user identifier. Format: usr\\__{32-hex-chars}
 
+          clinic_role: A user's clinical or organizational role within the clinic.
+
           first_name: User's first name
 
           has_dashboard_access: Whether the user can access the dashboard interface. Required for admin users
 
           last_name: User's last name
+
+          level: User access level assignable via the API. 'admin' can manage users/settings,
+              'member' has standard access. 'owner' is dashboard-only and cannot be assigned
+              via the API.
 
           extra_headers: Send extra headers
 
@@ -599,9 +546,9 @@ class AsyncUsersResource(AsyncAPIResource):
         cursor: str | Omit = omit,
         email: str | Omit = omit,
         first_name: str | Omit = omit,
-        invited_source: Literal["dashboard", "api"] | Omit = omit,
+        invited_source: InvitedSource | Omit = omit,
         last_name: str | Omit = omit,
-        level: Literal["owner", "admin", "member"] | Omit = omit,
+        level: UserLevel | Omit = omit,
         limit: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -665,34 +612,12 @@ class AsyncUsersResource(AsyncAPIResource):
         self,
         *,
         can_manage_studies: bool,
-        clinic_role: Literal[
-            "Radiologist",
-            "Cardiologist",
-            "Neurologist",
-            "Urologist",
-            "Gynecologist",
-            "Endocrinologist",
-            "Doctor",
-            "Surgeon",
-            "Physician",
-            "Physician Assistant",
-            "Nurse Practitioner",
-            "Registered Nurse",
-            "Patient Care Coordinator",
-            "Front Desk Operator",
-            "Imaging Technologist",
-            "PACS Administrator",
-            "Software Engineer",
-            "Revenue Cycle Manager",
-            "Administrative Director",
-            "Administrative Assistant",
-            "Other",
-        ],
+        clinic_role: ClinicRole,
         email: str,
         first_name: str,
         has_dashboard_access: bool,
         last_name: str,
-        level: Literal["admin", "member"],
+        level: AssignableUserLevel,
         middle_name: str | Omit = omit,
         phone_number: str | Omit = omit,
         suffix1: str | Omit = omit,
@@ -711,13 +636,17 @@ class AsyncUsersResource(AsyncAPIResource):
         be enabled to allow login.
 
         Args:
-          clinic_role: User's clinical or organizational role
+          clinic_role: A user's clinical or organizational role within the clinic.
 
           email: User's email address for login and notifications
 
           first_name: User's first name
 
           last_name: User's last name
+
+          level: User access level assignable via the API. 'admin' can manage users/settings,
+              'member' has standard access. 'owner' is dashboard-only and cannot be assigned
+              via the API.
 
           middle_name: User's middle name (optional)
 

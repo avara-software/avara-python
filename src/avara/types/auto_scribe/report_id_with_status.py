@@ -1,10 +1,9 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing_extensions import Literal
-
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
+from ..report_status import ReportStatus
 
 __all__ = ["ReportIDWithStatus"]
 
@@ -15,5 +14,8 @@ class ReportIDWithStatus(BaseModel):
     report_id: str = FieldInfo(alias="reportId")
     """Unique report identifier. Format: rep\\__{32-hex-chars}"""
 
-    status: Literal["in_progress", "completed"]
-    """Current status of the report"""
+    status: ReportStatus
+    """Status of an individual report.
+
+    'in_progress' = actively being dictated, 'completed' = signed.
+    """

@@ -2,22 +2,17 @@
 
 from typing import Dict, List, Optional
 from datetime import datetime
-from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
+from .prior_report import PriorReport
+from ..shared.severity import Severity
+from ..study_report_status import StudyReportStatus
 from .report_id_with_status import ReportIDWithStatus
 from ..study_report_metadata import StudyReportMetadata
 
-__all__ = [
-    "StudyRetrieveByUidResponse",
-    "AssignedTo",
-    "CreatedByAPIKey",
-    "CreatedByUser",
-    "ExpressCustomer",
-    "PriorReport",
-]
+__all__ = ["StudyRetrieveByUidResponse", "AssignedTo", "CreatedByAPIKey", "CreatedByUser", "ExpressCustomer"]
 
 
 class AssignedTo(BaseModel):
@@ -93,25 +88,6 @@ class ExpressCustomer(BaseModel):
     """Name of the Express customer"""
 
 
-class PriorReport(BaseModel):
-    """External prior report metadata and text stored on a study"""
-
-    report_text: str = FieldInfo(alias="reportText")
-    """Full prior report text"""
-
-    external_study_id: Optional[str] = FieldInfo(alias="externalStudyId", default=None)
-    """Integrator's external study identifier"""
-
-    modality: Optional[str] = None
-    """Imaging modality for the prior study"""
-
-    study_date: Optional[str] = FieldInfo(alias="studyDate", default=None)
-    """Prior study date (YYYY-MM-DD)"""
-
-    study_description: Optional[str] = FieldInfo(alias="studyDescription", default=None)
-    """Description of the prior study"""
-
-
 class StudyRetrieveByUidResponse(BaseModel):
     """A study entity in the AutoScribe system with report workflow status"""
 
@@ -127,10 +103,10 @@ class StudyRetrieveByUidResponse(BaseModel):
     report_metadata: StudyReportMetadata = FieldInfo(alias="reportMetadata")
     """Patient demographics and scan information for report generation"""
 
-    severity: Literal["normal", "high", "stat"]
-    """Priority level of the study.
+    severity: Severity
+    """Priority level of a study.
 
-    'normal' for routine, 'high' for urgent, 'stat' for immediate attention
+    'normal' for routine, 'high' for urgent, 'stat' for immediate attention.
     """
 
     study_description: str = FieldInfo(alias="studyDescription")
@@ -145,14 +121,12 @@ class StudyRetrieveByUidResponse(BaseModel):
     Must be a valid DICOM UID format (e.g., '1.2.840.10008.5.1.4.1.1.2')
     """
 
-    study_report_status: Literal["unassigned", "assigned", "in_progress", "completed", "addendum_active"] = FieldInfo(
-        alias="studyReportStatus"
-    )
-    """Report workflow status.
+    study_report_status: StudyReportStatus = FieldInfo(alias="studyReportStatus")
+    """AutoScribe report workflow status for a study.
 
     'unassigned' = no radiologist assigned, 'assigned' = assigned but not started,
     'in_progress' = actively being dictated, 'completed' = report signed,
-    'addendum_active' = addendum in progress
+    'addendum_active' = addendum in progress.
     """
 
     updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)

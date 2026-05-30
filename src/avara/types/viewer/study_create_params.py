@@ -3,18 +3,19 @@
 from __future__ import annotations
 
 from typing import Dict
-from typing_extensions import Literal, Required, Annotated, TypedDict
+from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
+from ..shared.severity import Severity
 
 __all__ = ["StudyCreateParams"]
 
 
 class StudyCreateParams(TypedDict, total=False):
-    severity: Required[Literal["normal", "high", "stat"]]
-    """Priority level of the study.
+    severity: Required[Severity]
+    """Priority level of a study.
 
-    'normal' for routine, 'high' for urgent, 'stat' for immediate attention
+    'normal' for routine, 'high' for urgent, 'stat' for immediate attention.
     """
 
     study_description: Required[Annotated[str, PropertyInfo(alias="studyDescription")]]

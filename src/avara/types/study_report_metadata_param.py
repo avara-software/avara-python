@@ -2,9 +2,12 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal, Required, Annotated, TypedDict
+from typing_extensions import Required, Annotated, TypedDict
 
+from .sex import Sex
 from .._utils import PropertyInfo
+from .height_unit import HeightUnit
+from .weight_unit import WeightUnit
 
 __all__ = ["StudyReportMetadataParam", "Height", "Weight"]
 
@@ -14,7 +17,8 @@ class Height(TypedDict, total=False):
     Patient's height with unit (e.g., {value: 70, unit: 'inches'} or {value: 178, unit: 'cm'})
     """
 
-    unit: Required[Literal["in", "cm"]]
+    unit: Required[HeightUnit]
+    """Unit of measure for a height value. 'in' = inches, 'cm' = centimeters."""
 
     value: Required[float]
 
@@ -24,7 +28,8 @@ class Weight(TypedDict, total=False):
     Patient's weight with unit (e.g., {value: 150, unit: 'lbs'} or {value: 68, unit: 'kg'})
     """
 
-    unit: Required[Literal["lbs", "kg"]]
+    unit: Required[WeightUnit]
+    """Unit of measure for a weight value. 'lbs' = pounds, 'kg' = kilograms."""
 
     value: Required[float]
 
@@ -62,7 +67,7 @@ class StudyReportMetadataParam(TypedDict, total=False):
     referring_physician_name: Annotated[str, PropertyInfo(alias="referringPhysicianName")]
     """Name of the physician who referred the patient for this scan"""
 
-    sex: Literal["male", "female", "other"]
+    sex: Sex
     """Patient's biological sex. Options: 'male', 'female', 'other'"""
 
     study_date: Annotated[str, PropertyInfo(alias="studyDate")]

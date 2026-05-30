@@ -2,11 +2,14 @@
 
 from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from ...._models import BaseModel
+from ...shared.user_level import UserLevel
+from ...shared.clinic_role import ClinicRole
+from ...shared.invited_source import InvitedSource
+from ...shared.invitation_status import InvitationStatus
 
 __all__ = ["InvitationListResponse"]
 
@@ -20,30 +23,8 @@ class InvitationListResponse(BaseModel):
     clinic_id: str = FieldInfo(alias="clinicId")
     """UUID of the clinic this invitation belongs to"""
 
-    clinic_role: Literal[
-        "Radiologist",
-        "Cardiologist",
-        "Neurologist",
-        "Urologist",
-        "Gynecologist",
-        "Endocrinologist",
-        "Doctor",
-        "Surgeon",
-        "Physician",
-        "Physician Assistant",
-        "Nurse Practitioner",
-        "Registered Nurse",
-        "Patient Care Coordinator",
-        "Front Desk Operator",
-        "Imaging Technologist",
-        "PACS Administrator",
-        "Software Engineer",
-        "Revenue Cycle Manager",
-        "Administrative Director",
-        "Administrative Assistant",
-        "Other",
-    ] = FieldInfo(alias="clinicRole")
-    """Clinical or organizational role for the invited user"""
+    clinic_role: ClinicRole = FieldInfo(alias="clinicRole")
+    """A user's clinical or organizational role within the clinic."""
 
     created_at: Optional[datetime] = FieldInfo(alias="createdAt", default=None)
     """Timestamp when the invitation was created"""
@@ -63,8 +44,11 @@ class InvitationListResponse(BaseModel):
     invitation_id: str = FieldInfo(alias="invitationId")
     """Unique invitation identifier. Format: inv\\__{32-hex-chars}"""
 
-    invited_source: Literal["dashboard", "api"] = FieldInfo(alias="invitedSource")
-    """How the invitation was created - 'dashboard' or 'api'"""
+    invited_source: InvitedSource = FieldInfo(alias="invitedSource")
+    """
+    How a user/invitation was created - via the dashboard UI ('dashboard') or the
+    API ('api').
+    """
 
     inviter_id: str = FieldInfo(alias="inviterId")
     """User ID of the person who sent the invitation.
@@ -75,11 +59,17 @@ class InvitationListResponse(BaseModel):
     last_name: str = FieldInfo(alias="lastName")
     """Invited user's last name"""
 
-    level: Literal["owner", "admin", "member"]
-    """Access level for the invited user. 'admin' or 'member' when created via API"""
+    level: UserLevel
+    """User access level.
 
-    status: Literal["sent", "accepted", "rejected", "revoked"]
-    """Invitation status: 'sent', 'accepted', 'rejected', or 'revoked'"""
+    'owner' has full control (dashboard-only, not assignable via API), 'admin' can
+    manage users/settings, 'member' has standard access.
+    """
+
+    status: InvitationStatus
+    """
+    Lifecycle status of an invitation: 'sent', 'accepted', 'rejected', or 'revoked'.
+    """
 
     updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
     """Timestamp when the invitation was last updated"""

@@ -3,9 +3,11 @@
 from __future__ import annotations
 
 from typing import Optional
-from typing_extensions import Literal, Annotated, TypedDict
+from typing_extensions import Annotated, TypedDict
 
 from ..._utils import PropertyInfo
+from ..shared.clinic_role import ClinicRole
+from ..shared.assignable_user_level import AssignableUserLevel
 
 __all__ = ["UserUpdateParams"]
 
@@ -13,34 +15,8 @@ __all__ = ["UserUpdateParams"]
 class UserUpdateParams(TypedDict, total=False):
     can_manage_studies: Annotated[bool, PropertyInfo(alias="canManageStudies")]
 
-    clinic_role: Annotated[
-        Optional[
-            Literal[
-                "Radiologist",
-                "Cardiologist",
-                "Neurologist",
-                "Urologist",
-                "Gynecologist",
-                "Endocrinologist",
-                "Doctor",
-                "Surgeon",
-                "Physician",
-                "Physician Assistant",
-                "Nurse Practitioner",
-                "Registered Nurse",
-                "Patient Care Coordinator",
-                "Front Desk Operator",
-                "Imaging Technologist",
-                "PACS Administrator",
-                "Software Engineer",
-                "Revenue Cycle Manager",
-                "Administrative Director",
-                "Administrative Assistant",
-                "Other",
-            ]
-        ],
-        PropertyInfo(alias="clinicRole"),
-    ]
+    clinic_role: Annotated[Optional[ClinicRole], PropertyInfo(alias="clinicRole")]
+    """A user's clinical or organizational role within the clinic."""
 
     first_name: Annotated[str, PropertyInfo(alias="firstName")]
     """User's first name"""
@@ -51,7 +27,12 @@ class UserUpdateParams(TypedDict, total=False):
     last_name: Annotated[str, PropertyInfo(alias="lastName")]
     """User's last name"""
 
-    level: Literal["admin", "member"]
+    level: AssignableUserLevel
+    """User access level assignable via the API.
+
+    'admin' can manage users/settings, 'member' has standard access. 'owner' is
+    dashboard-only and cannot be assigned via the API.
+    """
 
     middle_name: Annotated[Optional[str], PropertyInfo(alias="middleName")]
 

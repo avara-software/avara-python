@@ -2,11 +2,12 @@
 
 from typing import Dict, Optional
 from datetime import datetime
-from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
+from ..shared.severity import Severity
+from ..study_viewer_status import StudyViewerStatus
 from ..shared.user_reference import UserReference
 from ..shared.api_key_reference import APIKeyReference
 from ..shared.express_customer_reference import ExpressCustomerReference
@@ -26,10 +27,10 @@ class StudyRetrieveResponse(BaseModel):
     is_cancelled: bool = FieldInfo(alias="isCancelled")
     """Whether the study has been cancelled"""
 
-    severity: Literal["normal", "high", "stat"]
-    """Priority level of the study.
+    severity: Severity
+    """Priority level of a study.
 
-    'normal' for routine, 'high' for urgent, 'stat' for immediate attention
+    'normal' for routine, 'high' for urgent, 'stat' for immediate attention.
     """
 
     study_description: str = FieldInfo(alias="studyDescription")
@@ -44,7 +45,11 @@ class StudyRetrieveResponse(BaseModel):
     Must be a valid DICOM UID format (e.g., '1.2.840.10008.5.1.4.1.1.2')
     """
 
-    study_viewer_status: Literal["incomplete", "complete"] = FieldInfo(alias="studyViewerStatus")
+    study_viewer_status: StudyViewerStatus = FieldInfo(alias="studyViewerStatus")
+    """Viewer completion status for a study.
+
+    'incomplete' = not yet finished in the viewer, 'complete' = finished.
+    """
 
     updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
     """Timestamp when the study was last updated"""

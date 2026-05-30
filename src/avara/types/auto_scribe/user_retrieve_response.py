@@ -2,11 +2,13 @@
 
 from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
+from ..shared.user_level import UserLevel
+from ..shared.clinic_role import ClinicRole
+from ..shared.invited_source import InvitedSource
 
 __all__ = ["UserRetrieveResponse"]
 
@@ -20,30 +22,8 @@ class UserRetrieveResponse(BaseModel):
     can_manage_studies: bool = FieldInfo(alias="canManageStudies")
     """Whether the user has permission to create, update, and manage studies"""
 
-    clinic_role: Literal[
-        "Radiologist",
-        "Cardiologist",
-        "Neurologist",
-        "Urologist",
-        "Gynecologist",
-        "Endocrinologist",
-        "Doctor",
-        "Surgeon",
-        "Physician",
-        "Physician Assistant",
-        "Nurse Practitioner",
-        "Registered Nurse",
-        "Patient Care Coordinator",
-        "Front Desk Operator",
-        "Imaging Technologist",
-        "PACS Administrator",
-        "Software Engineer",
-        "Revenue Cycle Manager",
-        "Administrative Director",
-        "Administrative Assistant",
-        "Other",
-    ] = FieldInfo(alias="clinicRole")
-    """User's clinical or organizational role"""
+    clinic_role: ClinicRole = FieldInfo(alias="clinicRole")
+    """A user's clinical or organizational role within the clinic."""
 
     created_at: Optional[datetime] = FieldInfo(alias="createdAt", default=None)
     """Timestamp when the user was created"""
@@ -57,8 +37,11 @@ class UserRetrieveResponse(BaseModel):
     has_dashboard_access: bool = FieldInfo(alias="hasDashboardAccess")
     """Whether the user can access the dashboard interface. Required for admin users"""
 
-    invited_source: Literal["dashboard", "api"] = FieldInfo(alias="invitedSource")
-    """How the user was invited - via dashboard UI or API"""
+    invited_source: InvitedSource = FieldInfo(alias="invitedSource")
+    """
+    How a user/invitation was created - via the dashboard UI ('dashboard') or the
+    API ('api').
+    """
 
     last_login_at: Optional[datetime] = FieldInfo(alias="lastLoginAt", default=None)
     """Timestamp of user's last login, null if never logged in"""
@@ -66,11 +49,11 @@ class UserRetrieveResponse(BaseModel):
     last_name: str = FieldInfo(alias="lastName")
     """User's last name"""
 
-    level: Literal["owner", "admin", "member"]
+    level: UserLevel
     """User access level.
 
-    'owner' has full control, 'admin' can manage users/settings, 'member' has
-    standard access
+    'owner' has full control (dashboard-only, not assignable via API), 'admin' can
+    manage users/settings, 'member' has standard access.
     """
 
     user_id: str = FieldInfo(alias="userId")
