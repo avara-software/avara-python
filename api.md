@@ -112,6 +112,8 @@ Types:
 
 ```python
 from avara.types.auto_scribe import (
+    ReportPdfItem,
+    ReportTextItem,
     ReportListResponse,
     ReportAddendumResponse,
     ReportCancelAddendumResponse,
@@ -252,8 +254,10 @@ Types:
 ```python
 from avara.types import (
     ReportDeliveredEvent,
+    ReportDeliveredEventData,
     ReportDeliveredResponse,
     StudyAccessRequestedEvent,
+    StudyAccessRequestedEventData,
     StudyAccessRequestedResponse,
     WebhookEvent,
     UnsafeUnwrapWebhookEvent,

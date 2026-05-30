@@ -2,24 +2,10 @@
 
 from typing_extensions import Literal
 
-from pydantic import Field as FieldInfo
-
 from .._models import BaseModel
+from .study_access_requested_event_data import StudyAccessRequestedEventData
 
-__all__ = ["StudyAccessRequestedEvent", "Data"]
-
-
-class Data(BaseModel):
-    """Event payload containing study information"""
-
-    study_id: str = FieldInfo(alias="studyId")
-    """Avara study ID. Format: stu\\__{32-hex-chars}"""
-
-    study_instance_uid: str = FieldInfo(alias="studyInstanceUid")
-    """DICOM Study Instance UID.
-
-    Must be a valid DICOM UID format (e.g., '1.2.840.10008.5.1.4.1.1.2')
-    """
+__all__ = ["StudyAccessRequestedEvent"]
 
 
 class StudyAccessRequestedEvent(BaseModel):
@@ -31,7 +17,7 @@ class StudyAccessRequestedEvent(BaseModel):
     id: str
     """Unique webhook event ID. Format: whe\\__{32-hex-chars}"""
 
-    data: Data
+    data: StudyAccessRequestedEventData
     """Event payload containing study information"""
 
     type: Literal["study.access_requested"]
