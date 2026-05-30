@@ -112,6 +112,7 @@ Types:
 
 ```python
 from avara.types.auto_scribe import (
+    Report,
     ReportPdfItem,
     ReportTextItem,
     ReportListResponse,
