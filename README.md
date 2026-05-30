@@ -203,10 +203,10 @@ study = client.auto_scribe.studies.create(
         },
         "mrn": "MRN-2024-001234",
         "patient_name": "Jane Doe",
+        "procedure": "MRI Brain with Contrast",
         "referring_physician_name": "Dr. Michael Chen",
-        "scan_date": "2024-03-15",
-        "scan_type": "MRI Brain with Contrast",
         "sex": "female",
+        "study_date": "2024-03-15",
         "weight": {
             "unit": "kg",
             "value": 62,

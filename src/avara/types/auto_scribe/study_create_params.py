@@ -2,14 +2,14 @@
 
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, Iterable, Optional
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
 from ..study_report_metadata_param import StudyReportMetadataParam
 
-__all__ = ["StudyCreateParams"]
+__all__ = ["StudyCreateParams", "PriorReport"]
 
 
 class StudyCreateParams(TypedDict, total=False):
@@ -34,8 +34,20 @@ class StudyCreateParams(TypedDict, total=False):
     assigned_to: Annotated[str, PropertyInfo(alias="assignedTo")]
     """User ID to assign the study to. Format: usr\\__{32-hex-chars}"""
 
+    clinical_history: Annotated[Optional[str], PropertyInfo(alias="clinicalHistory")]
+    """Relevant clinical history for the patient/study"""
+
+    clinical_indication: Annotated[Optional[str], PropertyInfo(alias="clinicalIndication")]
+    """Clinical indication for the study (reason the study was ordered)"""
+
     express_customer_id: Annotated[str, PropertyInfo(alias="expressCustomerId")]
     """Express customer ID for the study. Format: cus\\__{32-hex-chars}"""
+
+    external_patient_id: Annotated[Optional[str], PropertyInfo(alias="externalPatientId")]
+    """
+    Integrator-provided stable patient identifier used to link studies for the same
+    patient across the AutoScribe system
+    """
 
     metadata: Dict[str, str]
     """Custom key-value metadata for the study.
@@ -43,6 +55,36 @@ class StudyCreateParams(TypedDict, total=False):
     Maximum 50 pairs, keys up to 100 chars, values up to 1000 chars
     """
 
-    prior_report_texts: Annotated[SequenceNotStr[str], PropertyInfo(alias="priorReportTexts")]
+    modality: Optional[str]
+    """Imaging modality for the study (free text, e.g., 'CT', 'MRI', 'X-Ray')"""
 
-    prior_study_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="priorStudyIds")]
+    prior_reports: Annotated[Iterable[PriorReport], PropertyInfo(alias="priorReports")]
+    """
+    External prior reports (metadata + full report text) to provide
+    longitudinal/comparison context for this study. Maximum 50 items
+    """
+
+    technologist_notes: Annotated[SequenceNotStr[str], PropertyInfo(alias="technologistNotes")]
+    """Technologist notes for the study. Maximum 50 items, each up to 1000 characters"""
+
+    technologist_technique: Annotated[Optional[str], PropertyInfo(alias="technologistTechnique")]
+    """Imaging technique description provided by the technologist"""
+
+
+class PriorReport(TypedDict, total=False):
+    """External prior report metadata and text stored on a study"""
+
+    report_text: Required[Annotated[str, PropertyInfo(alias="reportText")]]
+    """Full prior report text"""
+
+    external_study_id: Annotated[str, PropertyInfo(alias="externalStudyId")]
+    """Integrator's external study identifier"""
+
+    modality: str
+    """Imaging modality for the prior study"""
+
+    study_date: Annotated[str, PropertyInfo(alias="studyDate")]
+    """Prior study date (YYYY-MM-DD)"""
+
+    study_description: Annotated[str, PropertyInfo(alias="studyDescription")]
+    """Description of the prior study"""

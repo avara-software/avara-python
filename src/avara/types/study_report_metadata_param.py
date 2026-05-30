@@ -33,7 +33,7 @@ class StudyReportMetadataParam(TypedDict, total=False):
     """Patient demographics and scan information for report generation"""
 
     age: str
-    """Patient's age at time of scan (e.g., '34.5 years', '2 months')"""
+    """Patient's age at study date (e.g., '34.5 years', '2 months')"""
 
     date_of_birth: Annotated[str, PropertyInfo(alias="dateOfBirth")]
     """Patient's date of birth. Format: YYYY-MM-DD (e.g., '1990-05-20')"""
@@ -53,20 +53,29 @@ class StudyReportMetadataParam(TypedDict, total=False):
     patient_name: Annotated[str, PropertyInfo(alias="patientName")]
     """Full name of the patient"""
 
+    procedure: str
+    """Procedure or study type (e.g., 'MRI Brain with Contrast').
+
+    Maps to database scan_type and dictation report_header.scan_type.
+    """
+
     referring_physician_name: Annotated[str, PropertyInfo(alias="referringPhysicianName")]
     """Name of the physician who referred the patient for this scan"""
 
-    scan_date: Annotated[str, PropertyInfo(alias="scanDate")]
-    """Date the scan was performed. Format: YYYY-MM-DD (e.g., '2024-01-15')"""
-
-    scan_time: Annotated[str, PropertyInfo(alias="scanTime")]
-    """Time the scan was performed. Format: HH:MM (e.g., '14:30')"""
-
-    scan_type: Annotated[str, PropertyInfo(alias="scanType")]
-    """Type of scan or imaging modality (e.g., 'MRI', 'CT', 'X-Ray', 'Ultrasound')"""
-
     sex: Literal["male", "female", "other"]
     """Patient's biological sex. Options: 'male', 'female', 'other'"""
+
+    study_date: Annotated[str, PropertyInfo(alias="studyDate")]
+    """Study date (YYYY-MM-DD).
+
+    Maps to database scan_date and dictation report_header.scan_date.
+    """
+
+    study_time: Annotated[str, PropertyInfo(alias="studyTime")]
+    """Study time (HH:MM).
+
+    Maps to database scan_time and dictation report_header.scan_time.
+    """
 
     weight: Weight
     """
