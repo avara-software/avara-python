@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 from .prior_report import PriorReport as PriorReport
+from .report_pdf_item import ReportPdfItem as ReportPdfItem
+from .report_text_item import ReportTextItem as ReportTextItem
 from .user_list_params import UserListParams as UserListParams
 from .report_pdf_params import ReportPdfParams as ReportPdfParams
 from .study_list_params import StudyListParams as StudyListParams

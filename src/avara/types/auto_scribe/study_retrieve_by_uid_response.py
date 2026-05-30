@@ -10,82 +10,12 @@ from .prior_report import PriorReport
 from ..shared.severity import Severity
 from ..study_report_status import StudyReportStatus
 from .report_id_with_status import ReportIDWithStatus
+from ..shared.user_reference import UserReference
 from ..study_report_metadata import StudyReportMetadata
+from ..shared.api_key_reference import APIKeyReference
+from ..shared.express_customer_reference import ExpressCustomerReference
 
-__all__ = ["StudyRetrieveByUidResponse", "AssignedTo", "CreatedByAPIKey", "CreatedByUser", "ExpressCustomer"]
-
-
-class AssignedTo(BaseModel):
-    """Reference to the assigned radiologist, null if unassigned"""
-
-    email: str
-    """User's email address"""
-
-    user_id: str = FieldInfo(alias="userId")
-    """Unique user identifier. Format: usr\\__{32-hex-chars}"""
-
-    first_name: Optional[str] = FieldInfo(alias="firstName", default=None)
-    """User's first name"""
-
-    last_name: Optional[str] = FieldInfo(alias="lastName", default=None)
-    """User's last name"""
-
-    middle_name: Optional[str] = FieldInfo(alias="middleName", default=None)
-    """User's middle name"""
-
-    suffix1: Optional[str] = None
-    """Name suffix (e.g., 'MD', 'Jr.')"""
-
-    suffix2: Optional[str] = None
-    """Additional name suffix"""
-
-
-class CreatedByAPIKey(BaseModel):
-    """Reference to the API key used to create this study"""
-
-    api_key_id: str = FieldInfo(alias="apiKeyId")
-    """Unique API key identifier (UUIDv4 format)"""
-
-    description: str
-    """Human-readable description of the API key"""
-
-    is_viewer_enabled: Optional[bool] = FieldInfo(alias="isViewerEnabled", default=None)
-    """Whether this API key has access to the Viewer product"""
-
-
-class CreatedByUser(BaseModel):
-    """Reference to the user who created this study via dashboard"""
-
-    email: str
-    """User's email address"""
-
-    user_id: str = FieldInfo(alias="userId")
-    """Unique user identifier. Format: usr\\__{32-hex-chars}"""
-
-    first_name: Optional[str] = FieldInfo(alias="firstName", default=None)
-    """User's first name"""
-
-    last_name: Optional[str] = FieldInfo(alias="lastName", default=None)
-    """User's last name"""
-
-    middle_name: Optional[str] = FieldInfo(alias="middleName", default=None)
-    """User's middle name"""
-
-    suffix1: Optional[str] = None
-    """Name suffix (e.g., 'MD', 'Jr.')"""
-
-    suffix2: Optional[str] = None
-    """Additional name suffix"""
-
-
-class ExpressCustomer(BaseModel):
-    """Reference to the Express customer this study belongs to"""
-
-    express_customer_id: str = FieldInfo(alias="expressCustomerId")
-    """Unique Express customer identifier. Format: cus\\__{32-hex-chars}"""
-
-    express_customer_name: str = FieldInfo(alias="expressCustomerName")
-    """Name of the Express customer"""
+__all__ = ["StudyRetrieveByUidResponse"]
 
 
 class StudyRetrieveByUidResponse(BaseModel):
@@ -132,8 +62,8 @@ class StudyRetrieveByUidResponse(BaseModel):
     updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
     """Timestamp when the study was last updated"""
 
-    assigned_to: Optional[AssignedTo] = FieldInfo(alias="assignedTo", default=None)
-    """Reference to the assigned radiologist, null if unassigned"""
+    assigned_to: Optional[UserReference] = FieldInfo(alias="assignedTo", default=None)
+    """A reference to a user with basic identifying information"""
 
     clinical_history: Optional[str] = FieldInfo(alias="clinicalHistory", default=None)
     """Relevant clinical history for the study"""
@@ -141,14 +71,14 @@ class StudyRetrieveByUidResponse(BaseModel):
     clinical_indication: Optional[str] = FieldInfo(alias="clinicalIndication", default=None)
     """Clinical indication for the study"""
 
-    created_by_api_key: Optional[CreatedByAPIKey] = FieldInfo(alias="createdByApiKey", default=None)
-    """Reference to the API key used to create this study"""
+    created_by_api_key: Optional[APIKeyReference] = FieldInfo(alias="createdByApiKey", default=None)
+    """A reference to an API key with basic identifying information"""
 
-    created_by_user: Optional[CreatedByUser] = FieldInfo(alias="createdByUser", default=None)
-    """Reference to the user who created this study via dashboard"""
+    created_by_user: Optional[UserReference] = FieldInfo(alias="createdByUser", default=None)
+    """A reference to a user with basic identifying information"""
 
-    express_customer: Optional[ExpressCustomer] = FieldInfo(alias="expressCustomer", default=None)
-    """Reference to the Express customer this study belongs to"""
+    express_customer: Optional[ExpressCustomerReference] = FieldInfo(alias="expressCustomer", default=None)
+    """A reference to an Express customer with basic identifying information"""
 
     external_patient_id: Optional[str] = FieldInfo(alias="externalPatientId", default=None)
     """Integrator-provided stable patient identifier for linking studies"""
