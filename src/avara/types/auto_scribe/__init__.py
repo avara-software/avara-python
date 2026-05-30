@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from .report import Report as Report
 from .prior_report import PriorReport as PriorReport
 from .report_pdf_item import ReportPdfItem as ReportPdfItem
 from .report_text_item import ReportTextItem as ReportTextItem
