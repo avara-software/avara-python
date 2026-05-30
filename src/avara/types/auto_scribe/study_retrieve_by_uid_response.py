@@ -10,7 +10,14 @@ from ..._models import BaseModel
 from .report_id_with_status import ReportIDWithStatus
 from ..study_report_metadata import StudyReportMetadata
 
-__all__ = ["StudyRetrieveByUidResponse", "AssignedTo", "CreatedByAPIKey", "CreatedByUser", "ExpressCustomer"]
+__all__ = [
+    "StudyRetrieveByUidResponse",
+    "AssignedTo",
+    "CreatedByAPIKey",
+    "CreatedByUser",
+    "ExpressCustomer",
+    "PriorReport",
+]
 
 
 class AssignedTo(BaseModel):
@@ -86,6 +93,25 @@ class ExpressCustomer(BaseModel):
     """Name of the Express customer"""
 
 
+class PriorReport(BaseModel):
+    """External prior report metadata and text stored on a study"""
+
+    report_text: str = FieldInfo(alias="reportText")
+    """Full prior report text"""
+
+    external_study_id: Optional[str] = FieldInfo(alias="externalStudyId", default=None)
+    """Integrator's external study identifier"""
+
+    modality: Optional[str] = None
+    """Imaging modality for the prior study"""
+
+    study_date: Optional[str] = FieldInfo(alias="studyDate", default=None)
+    """Prior study date (YYYY-MM-DD)"""
+
+    study_description: Optional[str] = FieldInfo(alias="studyDescription", default=None)
+    """Description of the prior study"""
+
+
 class StudyRetrieveByUidResponse(BaseModel):
     """A study entity in the AutoScribe system with report workflow status"""
 
@@ -135,6 +161,12 @@ class StudyRetrieveByUidResponse(BaseModel):
     assigned_to: Optional[AssignedTo] = FieldInfo(alias="assignedTo", default=None)
     """Reference to the assigned radiologist, null if unassigned"""
 
+    clinical_history: Optional[str] = FieldInfo(alias="clinicalHistory", default=None)
+    """Relevant clinical history for the study"""
+
+    clinical_indication: Optional[str] = FieldInfo(alias="clinicalIndication", default=None)
+    """Clinical indication for the study"""
+
     created_by_api_key: Optional[CreatedByAPIKey] = FieldInfo(alias="createdByApiKey", default=None)
     """Reference to the API key used to create this study"""
 
@@ -144,17 +176,26 @@ class StudyRetrieveByUidResponse(BaseModel):
     express_customer: Optional[ExpressCustomer] = FieldInfo(alias="expressCustomer", default=None)
     """Reference to the Express customer this study belongs to"""
 
+    external_patient_id: Optional[str] = FieldInfo(alias="externalPatientId", default=None)
+    """Integrator-provided stable patient identifier for linking studies"""
+
     metadata: Optional[Dict[str, str]] = None
     """Custom key-value metadata for the study.
 
     Maximum 50 pairs, keys up to 100 chars, values up to 1000 chars
     """
 
-    prior_report_texts: Optional[List[str]] = FieldInfo(alias="priorReportTexts", default=None)
-    """Array of prior report texts to provide clinical context"""
+    modality: Optional[str] = None
+    """Imaging modality for the study (free text)"""
 
-    prior_study_ids: Optional[List[str]] = FieldInfo(alias="priorStudyIds", default=None)
-    """Array of prior study IDs for comparison context (format: stu\\__{32-hex-chars})"""
+    prior_reports: Optional[List[PriorReport]] = FieldInfo(alias="priorReports", default=None)
+    """External prior reports with metadata and text"""
 
     report_ids: Optional[List[ReportIDWithStatus]] = FieldInfo(alias="reportIds", default=None)
     """Array of report IDs associated with this study, including addendums"""
+
+    technologist_notes: Optional[List[str]] = FieldInfo(alias="technologistNotes", default=None)
+    """Technologist notes for the study"""
+
+    technologist_technique: Optional[str] = FieldInfo(alias="technologistTechnique", default=None)
+    """Imaging technique description"""

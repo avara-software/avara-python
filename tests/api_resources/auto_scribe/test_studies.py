@@ -53,11 +53,11 @@ class TestStudies:
                 },
                 "mrn": "MRN-2024-001234",
                 "patient_name": "Jane Doe",
+                "procedure": "MRI Brain with Contrast",
                 "referring_physician_name": "Dr. Michael Chen",
-                "scan_date": "2024-03-15",
-                "scan_time": "14:30",
-                "scan_type": "MRI Brain with Contrast",
                 "sex": "female",
+                "study_date": "2024-03-15",
+                "study_time": "14:30",
                 "weight": {
                     "unit": "kg",
                     "value": 62,
@@ -67,13 +67,26 @@ class TestStudies:
             study_description="Brain MRI with Contrast",
             study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
             assigned_to="usr_1234567890abcdef1234567890abcdef",
+            clinical_history="Hypertension; prior migraine history",
+            clinical_indication="Persistent headaches, rule out intracranial mass",
             express_customer_id="cus_1234567890abcdef1234567890abcdef",
+            external_patient_id="PAT-2024-7731",
             metadata={
                 "department": "radiology",
                 "priority": "routine",
             },
-            prior_report_texts=["x"],
-            prior_study_ids=["string"],
+            modality="MRI",
+            prior_reports=[
+                {
+                    "report_text": "IMPRESSION: No acute intracranial abnormality.",
+                    "external_study_id": "EXT-2024-001",
+                    "modality": "CT",
+                    "study_date": "2024-01-15",
+                    "study_description": "CT Head without contrast",
+                }
+            ],
+            technologist_notes=["Patient tolerated contrast well", "Slight motion on initial sequence, repeated"],
+            technologist_technique="Multiplanar multisequence MRI of the brain with and without IV contrast",
         )
         assert_matches_type(StudyCreateResponse, study, path=["response"])
 
@@ -165,10 +178,21 @@ class TestStudies:
         study = client.auto_scribe.studies.update(
             study_id="stu_1234567890abcdef1234567890abcdef",
             assigned_to="usr_1234567890abcdef1234567890abcdef",
+            clinical_history="clinicalHistory",
+            clinical_indication="Follow-up of previously noted lesion",
             express_customer_id="cus_1234567890abcdef1234567890abcdef",
+            external_patient_id="externalPatientId",
             metadata={"foo": "string"},
-            prior_report_texts=["x"],
-            prior_study_ids=["string"],
+            modality="MRI",
+            prior_reports=[
+                {
+                    "report_text": "IMPRESSION: No acute cardiopulmonary process.",
+                    "external_study_id": "EXT-2024-001",
+                    "modality": "CT",
+                    "study_date": "2024-01-15",
+                    "study_description": "CT Chest without contrast",
+                }
+            ],
             report_metadata={
                 "age": "age",
                 "date_of_birth": "7321-69-10",
@@ -179,11 +203,11 @@ class TestStudies:
                 },
                 "mrn": "mrn",
                 "patient_name": "Jane M. Doe",
+                "procedure": "procedure",
                 "referring_physician_name": "referringPhysicianName",
-                "scan_date": "7321-69-10",
-                "scan_time": "scanTime",
-                "scan_type": "scanType",
                 "sex": "female",
+                "study_date": "7321-69-10",
+                "study_time": "studyTime",
                 "weight": {
                     "unit": "kg",
                     "value": 68,
@@ -191,6 +215,8 @@ class TestStudies:
             },
             severity="high",
             study_description="Brain MRI with and without Contrast",
+            technologist_notes=["x"],
+            technologist_technique="technologistTechnique",
         )
         assert_matches_type(StudyUpdateResponse, study, path=["response"])
 
@@ -500,11 +526,11 @@ class TestAsyncStudies:
                 },
                 "mrn": "MRN-2024-001234",
                 "patient_name": "Jane Doe",
+                "procedure": "MRI Brain with Contrast",
                 "referring_physician_name": "Dr. Michael Chen",
-                "scan_date": "2024-03-15",
-                "scan_time": "14:30",
-                "scan_type": "MRI Brain with Contrast",
                 "sex": "female",
+                "study_date": "2024-03-15",
+                "study_time": "14:30",
                 "weight": {
                     "unit": "kg",
                     "value": 62,
@@ -514,13 +540,26 @@ class TestAsyncStudies:
             study_description="Brain MRI with Contrast",
             study_instance_uid="1.2.840.113619.2.55.3.604688119.868.1234567890.123",
             assigned_to="usr_1234567890abcdef1234567890abcdef",
+            clinical_history="Hypertension; prior migraine history",
+            clinical_indication="Persistent headaches, rule out intracranial mass",
             express_customer_id="cus_1234567890abcdef1234567890abcdef",
+            external_patient_id="PAT-2024-7731",
             metadata={
                 "department": "radiology",
                 "priority": "routine",
             },
-            prior_report_texts=["x"],
-            prior_study_ids=["string"],
+            modality="MRI",
+            prior_reports=[
+                {
+                    "report_text": "IMPRESSION: No acute intracranial abnormality.",
+                    "external_study_id": "EXT-2024-001",
+                    "modality": "CT",
+                    "study_date": "2024-01-15",
+                    "study_description": "CT Head without contrast",
+                }
+            ],
+            technologist_notes=["Patient tolerated contrast well", "Slight motion on initial sequence, repeated"],
+            technologist_technique="Multiplanar multisequence MRI of the brain with and without IV contrast",
         )
         assert_matches_type(StudyCreateResponse, study, path=["response"])
 
@@ -612,10 +651,21 @@ class TestAsyncStudies:
         study = await async_client.auto_scribe.studies.update(
             study_id="stu_1234567890abcdef1234567890abcdef",
             assigned_to="usr_1234567890abcdef1234567890abcdef",
+            clinical_history="clinicalHistory",
+            clinical_indication="Follow-up of previously noted lesion",
             express_customer_id="cus_1234567890abcdef1234567890abcdef",
+            external_patient_id="externalPatientId",
             metadata={"foo": "string"},
-            prior_report_texts=["x"],
-            prior_study_ids=["string"],
+            modality="MRI",
+            prior_reports=[
+                {
+                    "report_text": "IMPRESSION: No acute cardiopulmonary process.",
+                    "external_study_id": "EXT-2024-001",
+                    "modality": "CT",
+                    "study_date": "2024-01-15",
+                    "study_description": "CT Chest without contrast",
+                }
+            ],
             report_metadata={
                 "age": "age",
                 "date_of_birth": "7321-69-10",
@@ -626,11 +676,11 @@ class TestAsyncStudies:
                 },
                 "mrn": "mrn",
                 "patient_name": "Jane M. Doe",
+                "procedure": "procedure",
                 "referring_physician_name": "referringPhysicianName",
-                "scan_date": "7321-69-10",
-                "scan_time": "scanTime",
-                "scan_type": "scanType",
                 "sex": "female",
+                "study_date": "7321-69-10",
+                "study_time": "studyTime",
                 "weight": {
                     "unit": "kg",
                     "value": 68,
@@ -638,6 +688,8 @@ class TestAsyncStudies:
             },
             severity="high",
             study_description="Brain MRI with and without Contrast",
+            technologist_notes=["x"],
+            technologist_technique="technologistTechnique",
         )
         assert_matches_type(StudyUpdateResponse, study, path=["response"])
 

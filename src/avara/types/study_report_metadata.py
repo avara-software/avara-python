@@ -34,7 +34,7 @@ class StudyReportMetadata(BaseModel):
     """Patient demographics and scan information for report generation"""
 
     age: Optional[str] = None
-    """Patient's age at time of scan (e.g., '34.5 years', '2 months')"""
+    """Patient's age at study date (e.g., '34.5 years', '2 months')"""
 
     date_of_birth: Optional[str] = FieldInfo(alias="dateOfBirth", default=None)
     """Patient's date of birth. Format: YYYY-MM-DD (e.g., '1990-05-20')"""
@@ -54,20 +54,29 @@ class StudyReportMetadata(BaseModel):
     patient_name: Optional[str] = FieldInfo(alias="patientName", default=None)
     """Full name of the patient"""
 
+    procedure: Optional[str] = None
+    """Procedure or study type (e.g., 'MRI Brain with Contrast').
+
+    Maps to database scan_type and dictation report_header.scan_type.
+    """
+
     referring_physician_name: Optional[str] = FieldInfo(alias="referringPhysicianName", default=None)
     """Name of the physician who referred the patient for this scan"""
 
-    scan_date: Optional[str] = FieldInfo(alias="scanDate", default=None)
-    """Date the scan was performed. Format: YYYY-MM-DD (e.g., '2024-01-15')"""
-
-    scan_time: Optional[str] = FieldInfo(alias="scanTime", default=None)
-    """Time the scan was performed. Format: HH:MM (e.g., '14:30')"""
-
-    scan_type: Optional[str] = FieldInfo(alias="scanType", default=None)
-    """Type of scan or imaging modality (e.g., 'MRI', 'CT', 'X-Ray', 'Ultrasound')"""
-
     sex: Optional[Literal["male", "female", "other"]] = None
     """Patient's biological sex. Options: 'male', 'female', 'other'"""
+
+    study_date: Optional[str] = FieldInfo(alias="studyDate", default=None)
+    """Study date (YYYY-MM-DD).
+
+    Maps to database scan_date and dictation report_header.scan_date.
+    """
+
+    study_time: Optional[str] = FieldInfo(alias="studyTime", default=None)
+    """Study time (HH:MM).
+
+    Maps to database scan_time and dictation report_header.scan_time.
+    """
 
     weight: Optional[Weight] = None
     """

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional
+from typing import Dict, List, Iterable, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -70,10 +70,15 @@ class StudiesResource(SyncAPIResource):
         study_description: str,
         study_instance_uid: str,
         assigned_to: str | Omit = omit,
+        clinical_history: Optional[str] | Omit = omit,
+        clinical_indication: Optional[str] | Omit = omit,
         express_customer_id: str | Omit = omit,
+        external_patient_id: Optional[str] | Omit = omit,
         metadata: Dict[str, str] | Omit = omit,
-        prior_report_texts: SequenceNotStr[str] | Omit = omit,
-        prior_study_ids: SequenceNotStr[str] | Omit = omit,
+        modality: Optional[str] | Omit = omit,
+        prior_reports: Iterable[study_create_params.PriorReport] | Omit = omit,
+        technologist_notes: SequenceNotStr[str] | Omit = omit,
+        technologist_technique: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -84,7 +89,9 @@ class StudiesResource(SyncAPIResource):
         """
         Creates a new study in the AutoScribe system with DICOM metadata and report
         generation information. The study can include patient demographics, scan
-        details, and references to prior studies/reports for context.
+        details, clinical context (indication, history, technologist technique/notes),
+        an imaging modality, an external patient identifier for linking studies, and
+        external prior reports for comparison context.
 
         Args:
           report_metadata: Patient demographics and scan information for report generation
@@ -99,10 +106,26 @@ class StudiesResource(SyncAPIResource):
 
           assigned_to: User ID to assign the study to. Format: usr\\__{32-hex-chars}
 
+          clinical_history: Relevant clinical history for the patient/study
+
+          clinical_indication: Clinical indication for the study (reason the study was ordered)
+
           express_customer_id: Express customer ID for the study. Format: cus\\__{32-hex-chars}
+
+          external_patient_id: Integrator-provided stable patient identifier used to link studies for the same
+              patient across the AutoScribe system
 
           metadata: Custom key-value metadata for the study. Maximum 50 pairs, keys up to 100 chars,
               values up to 1000 chars
+
+          modality: Imaging modality for the study (free text, e.g., 'CT', 'MRI', 'X-Ray')
+
+          prior_reports: External prior reports (metadata + full report text) to provide
+              longitudinal/comparison context for this study. Maximum 50 items
+
+          technologist_notes: Technologist notes for the study. Maximum 50 items, each up to 1000 characters
+
+          technologist_technique: Imaging technique description provided by the technologist
 
           extra_headers: Send extra headers
 
@@ -121,10 +144,15 @@ class StudiesResource(SyncAPIResource):
                     "study_description": study_description,
                     "study_instance_uid": study_instance_uid,
                     "assigned_to": assigned_to,
+                    "clinical_history": clinical_history,
+                    "clinical_indication": clinical_indication,
                     "express_customer_id": express_customer_id,
+                    "external_patient_id": external_patient_id,
                     "metadata": metadata,
-                    "prior_report_texts": prior_report_texts,
-                    "prior_study_ids": prior_study_ids,
+                    "modality": modality,
+                    "prior_reports": prior_reports,
+                    "technologist_notes": technologist_notes,
+                    "technologist_technique": technologist_technique,
                 },
                 study_create_params.StudyCreateParams,
             ),
@@ -176,13 +204,18 @@ class StudiesResource(SyncAPIResource):
         study_id: str,
         *,
         assigned_to: str | Omit = omit,
+        clinical_history: Optional[str] | Omit = omit,
+        clinical_indication: Optional[str] | Omit = omit,
         express_customer_id: str | Omit = omit,
+        external_patient_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, str]] | Omit = omit,
-        prior_report_texts: Optional[SequenceNotStr[str]] | Omit = omit,
-        prior_study_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        modality: Optional[str] | Omit = omit,
+        prior_reports: Optional[Iterable[study_update_params.PriorReport]] | Omit = omit,
         report_metadata: study_update_params.ReportMetadata | Omit = omit,
         severity: Literal["normal", "high", "stat"] | Omit = omit,
         study_description: str | Omit = omit,
+        technologist_notes: Optional[SequenceNotStr[str]] | Omit = omit,
+        technologist_technique: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -200,14 +233,31 @@ class StudiesResource(SyncAPIResource):
 
           assigned_to: User ID to assign the study to, or null to unassign. Format: usr\\__{32-hex-chars}
 
+          clinical_history: Relevant clinical history for the patient/study. Null clears.
+
+          clinical_indication: Clinical indication for the study. Null clears.
+
           express_customer_id:
               Express Customer ID for the study, or null to remove. Format:
               cus\\__{32-hex-chars}
+
+          external_patient_id: Integrator-provided stable patient identifier used to link studies for the same
+              patient. Null clears.
+
+          modality: Imaging modality for the study (free text). Null clears.
+
+          prior_reports: External prior reports (metadata + full report text) for comparison context.
+              Null clears; an array replaces the existing set. Maximum 50 items
 
           severity: Priority level of the study. 'normal' for routine, 'high' for urgent, 'stat' for
               immediate attention
 
           study_description: Description of the study/scan (e.g., 'Brain MRI with Contrast', 'Chest CT')
+
+          technologist_notes: Technologist notes for the study. Null clears; an array replaces the existing
+              set. Maximum 50 items, each up to 1000 characters
+
+          technologist_technique: Imaging technique description provided by the technologist. Null clears.
 
           extra_headers: Send extra headers
 
@@ -224,13 +274,18 @@ class StudiesResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "assigned_to": assigned_to,
+                    "clinical_history": clinical_history,
+                    "clinical_indication": clinical_indication,
                     "express_customer_id": express_customer_id,
+                    "external_patient_id": external_patient_id,
                     "metadata": metadata,
-                    "prior_report_texts": prior_report_texts,
-                    "prior_study_ids": prior_study_ids,
+                    "modality": modality,
+                    "prior_reports": prior_reports,
                     "report_metadata": report_metadata,
                     "severity": severity,
                     "study_description": study_description,
+                    "technologist_notes": technologist_notes,
+                    "technologist_technique": technologist_technique,
                 },
                 study_update_params.StudyUpdateParams,
             ),
@@ -577,10 +632,15 @@ class AsyncStudiesResource(AsyncAPIResource):
         study_description: str,
         study_instance_uid: str,
         assigned_to: str | Omit = omit,
+        clinical_history: Optional[str] | Omit = omit,
+        clinical_indication: Optional[str] | Omit = omit,
         express_customer_id: str | Omit = omit,
+        external_patient_id: Optional[str] | Omit = omit,
         metadata: Dict[str, str] | Omit = omit,
-        prior_report_texts: SequenceNotStr[str] | Omit = omit,
-        prior_study_ids: SequenceNotStr[str] | Omit = omit,
+        modality: Optional[str] | Omit = omit,
+        prior_reports: Iterable[study_create_params.PriorReport] | Omit = omit,
+        technologist_notes: SequenceNotStr[str] | Omit = omit,
+        technologist_technique: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -591,7 +651,9 @@ class AsyncStudiesResource(AsyncAPIResource):
         """
         Creates a new study in the AutoScribe system with DICOM metadata and report
         generation information. The study can include patient demographics, scan
-        details, and references to prior studies/reports for context.
+        details, clinical context (indication, history, technologist technique/notes),
+        an imaging modality, an external patient identifier for linking studies, and
+        external prior reports for comparison context.
 
         Args:
           report_metadata: Patient demographics and scan information for report generation
@@ -606,10 +668,26 @@ class AsyncStudiesResource(AsyncAPIResource):
 
           assigned_to: User ID to assign the study to. Format: usr\\__{32-hex-chars}
 
+          clinical_history: Relevant clinical history for the patient/study
+
+          clinical_indication: Clinical indication for the study (reason the study was ordered)
+
           express_customer_id: Express customer ID for the study. Format: cus\\__{32-hex-chars}
+
+          external_patient_id: Integrator-provided stable patient identifier used to link studies for the same
+              patient across the AutoScribe system
 
           metadata: Custom key-value metadata for the study. Maximum 50 pairs, keys up to 100 chars,
               values up to 1000 chars
+
+          modality: Imaging modality for the study (free text, e.g., 'CT', 'MRI', 'X-Ray')
+
+          prior_reports: External prior reports (metadata + full report text) to provide
+              longitudinal/comparison context for this study. Maximum 50 items
+
+          technologist_notes: Technologist notes for the study. Maximum 50 items, each up to 1000 characters
+
+          technologist_technique: Imaging technique description provided by the technologist
 
           extra_headers: Send extra headers
 
@@ -628,10 +706,15 @@ class AsyncStudiesResource(AsyncAPIResource):
                     "study_description": study_description,
                     "study_instance_uid": study_instance_uid,
                     "assigned_to": assigned_to,
+                    "clinical_history": clinical_history,
+                    "clinical_indication": clinical_indication,
                     "express_customer_id": express_customer_id,
+                    "external_patient_id": external_patient_id,
                     "metadata": metadata,
-                    "prior_report_texts": prior_report_texts,
-                    "prior_study_ids": prior_study_ids,
+                    "modality": modality,
+                    "prior_reports": prior_reports,
+                    "technologist_notes": technologist_notes,
+                    "technologist_technique": technologist_technique,
                 },
                 study_create_params.StudyCreateParams,
             ),
@@ -683,13 +766,18 @@ class AsyncStudiesResource(AsyncAPIResource):
         study_id: str,
         *,
         assigned_to: str | Omit = omit,
+        clinical_history: Optional[str] | Omit = omit,
+        clinical_indication: Optional[str] | Omit = omit,
         express_customer_id: str | Omit = omit,
+        external_patient_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, str]] | Omit = omit,
-        prior_report_texts: Optional[SequenceNotStr[str]] | Omit = omit,
-        prior_study_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        modality: Optional[str] | Omit = omit,
+        prior_reports: Optional[Iterable[study_update_params.PriorReport]] | Omit = omit,
         report_metadata: study_update_params.ReportMetadata | Omit = omit,
         severity: Literal["normal", "high", "stat"] | Omit = omit,
         study_description: str | Omit = omit,
+        technologist_notes: Optional[SequenceNotStr[str]] | Omit = omit,
+        technologist_technique: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -707,14 +795,31 @@ class AsyncStudiesResource(AsyncAPIResource):
 
           assigned_to: User ID to assign the study to, or null to unassign. Format: usr\\__{32-hex-chars}
 
+          clinical_history: Relevant clinical history for the patient/study. Null clears.
+
+          clinical_indication: Clinical indication for the study. Null clears.
+
           express_customer_id:
               Express Customer ID for the study, or null to remove. Format:
               cus\\__{32-hex-chars}
+
+          external_patient_id: Integrator-provided stable patient identifier used to link studies for the same
+              patient. Null clears.
+
+          modality: Imaging modality for the study (free text). Null clears.
+
+          prior_reports: External prior reports (metadata + full report text) for comparison context.
+              Null clears; an array replaces the existing set. Maximum 50 items
 
           severity: Priority level of the study. 'normal' for routine, 'high' for urgent, 'stat' for
               immediate attention
 
           study_description: Description of the study/scan (e.g., 'Brain MRI with Contrast', 'Chest CT')
+
+          technologist_notes: Technologist notes for the study. Null clears; an array replaces the existing
+              set. Maximum 50 items, each up to 1000 characters
+
+          technologist_technique: Imaging technique description provided by the technologist. Null clears.
 
           extra_headers: Send extra headers
 
@@ -731,13 +836,18 @@ class AsyncStudiesResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "assigned_to": assigned_to,
+                    "clinical_history": clinical_history,
+                    "clinical_indication": clinical_indication,
                     "express_customer_id": express_customer_id,
+                    "external_patient_id": external_patient_id,
                     "metadata": metadata,
-                    "prior_report_texts": prior_report_texts,
-                    "prior_study_ids": prior_study_ids,
+                    "modality": modality,
+                    "prior_reports": prior_reports,
                     "report_metadata": report_metadata,
                     "severity": severity,
                     "study_description": study_description,
+                    "technologist_notes": technologist_notes,
+                    "technologist_technique": technologist_technique,
                 },
                 study_update_params.StudyUpdateParams,
             ),
