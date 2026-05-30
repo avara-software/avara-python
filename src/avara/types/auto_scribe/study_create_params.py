@@ -3,23 +3,25 @@
 from __future__ import annotations
 
 from typing import Dict, Iterable, Optional
-from typing_extensions import Literal, Required, Annotated, TypedDict
+from typing_extensions import Required, Annotated, TypedDict
 
 from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
+from ..shared.severity import Severity
+from .prior_report_param import PriorReportParam
 from ..study_report_metadata_param import StudyReportMetadataParam
 
-__all__ = ["StudyCreateParams", "PriorReport"]
+__all__ = ["StudyCreateParams"]
 
 
 class StudyCreateParams(TypedDict, total=False):
     report_metadata: Required[Annotated[StudyReportMetadataParam, PropertyInfo(alias="reportMetadata")]]
     """Patient demographics and scan information for report generation"""
 
-    severity: Required[Literal["normal", "high", "stat"]]
-    """Priority level of the study.
+    severity: Required[Severity]
+    """Priority level of a study.
 
-    'normal' for routine, 'high' for urgent, 'stat' for immediate attention
+    'normal' for routine, 'high' for urgent, 'stat' for immediate attention.
     """
 
     study_description: Required[Annotated[str, PropertyInfo(alias="studyDescription")]]
@@ -58,7 +60,7 @@ class StudyCreateParams(TypedDict, total=False):
     modality: Optional[str]
     """Imaging modality for the study (free text, e.g., 'CT', 'MRI', 'X-Ray')"""
 
-    prior_reports: Annotated[Iterable[PriorReport], PropertyInfo(alias="priorReports")]
+    prior_reports: Annotated[Iterable[PriorReportParam], PropertyInfo(alias="priorReports")]
     """
     External prior reports (metadata + full report text) to provide
     longitudinal/comparison context for this study. Maximum 50 items
@@ -69,22 +71,3 @@ class StudyCreateParams(TypedDict, total=False):
 
     technologist_technique: Annotated[Optional[str], PropertyInfo(alias="technologistTechnique")]
     """Imaging technique description provided by the technologist"""
-
-
-class PriorReport(TypedDict, total=False):
-    """External prior report metadata and text stored on a study"""
-
-    report_text: Required[Annotated[str, PropertyInfo(alias="reportText")]]
-    """Full prior report text"""
-
-    external_study_id: Annotated[str, PropertyInfo(alias="externalStudyId")]
-    """Integrator's external study identifier"""
-
-    modality: str
-    """Imaging modality for the prior study"""
-
-    study_date: Annotated[str, PropertyInfo(alias="studyDate")]
-    """Prior study date (YYYY-MM-DD)"""
-
-    study_description: Annotated[str, PropertyInfo(alias="studyDescription")]
-    """Description of the prior study"""

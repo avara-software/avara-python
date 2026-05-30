@@ -2,11 +2,13 @@
 
 from typing import Optional
 from datetime import datetime
-from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
+from ..shared.clinic_role import ClinicRole
+from ..shared.invited_source import InvitedSource
+from ..shared.assignable_user_level import AssignableUserLevel
 
 __all__ = ["UserInviteResponse"]
 
@@ -20,30 +22,8 @@ class UserInviteResponse(BaseModel):
     can_manage_studies: bool = FieldInfo(alias="canManageStudies")
     """Whether the user has permission to create, update, and manage studies"""
 
-    clinic_role: Literal[
-        "Radiologist",
-        "Cardiologist",
-        "Neurologist",
-        "Urologist",
-        "Gynecologist",
-        "Endocrinologist",
-        "Doctor",
-        "Surgeon",
-        "Physician",
-        "Physician Assistant",
-        "Nurse Practitioner",
-        "Registered Nurse",
-        "Patient Care Coordinator",
-        "Front Desk Operator",
-        "Imaging Technologist",
-        "PACS Administrator",
-        "Software Engineer",
-        "Revenue Cycle Manager",
-        "Administrative Director",
-        "Administrative Assistant",
-        "Other",
-    ] = FieldInfo(alias="clinicRole")
-    """User's clinical or organizational role"""
+    clinic_role: ClinicRole = FieldInfo(alias="clinicRole")
+    """A user's clinical or organizational role within the clinic."""
 
     created_at: Optional[datetime] = FieldInfo(alias="createdAt", default=None)
     """Timestamp when the user was created"""
@@ -57,8 +37,11 @@ class UserInviteResponse(BaseModel):
     has_dashboard_access: bool = FieldInfo(alias="hasDashboardAccess")
     """Whether the user can access the dashboard interface. Required for admin users"""
 
-    invited_source: Literal["dashboard", "api"] = FieldInfo(alias="invitedSource")
-    """How the user was invited - via dashboard UI or API"""
+    invited_source: InvitedSource = FieldInfo(alias="invitedSource")
+    """
+    How a user/invitation was created - via the dashboard UI ('dashboard') or the
+    API ('api').
+    """
 
     last_login_at: Optional[datetime] = FieldInfo(alias="lastLoginAt", default=None)
     """Timestamp of user's last login, null if never logged in"""
@@ -66,10 +49,11 @@ class UserInviteResponse(BaseModel):
     last_name: str = FieldInfo(alias="lastName")
     """User's last name"""
 
-    level: Literal["admin", "member"]
-    """User access level.
+    level: AssignableUserLevel
+    """User access level assignable via the API.
 
-    'admin' can manage users/settings, 'member' has standard access
+    'admin' can manage users/settings, 'member' has standard access. 'owner' is
+    dashboard-only and cannot be assigned via the API.
     """
 
     user_id: str = FieldInfo(alias="userId")

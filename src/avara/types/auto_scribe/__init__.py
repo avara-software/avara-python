@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+from .prior_report import PriorReport as PriorReport
 from .user_list_params import UserListParams as UserListParams
 from .report_pdf_params import ReportPdfParams as ReportPdfParams
 from .study_list_params import StudyListParams as StudyListParams
+from .prior_report_param import PriorReportParam as PriorReportParam
 from .report_list_params import ReportListParams as ReportListParams
 from .report_text_params import ReportTextParams as ReportTextParams
 from .user_invite_params import UserInviteParams as UserInviteParams

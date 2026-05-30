@@ -3,10 +3,10 @@
 from __future__ import annotations
 
 from typing import Dict, Optional
-from typing_extensions import Literal
 
 import httpx
 
+from ...types import StudyViewerStatus
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
@@ -27,6 +27,8 @@ from ...types.viewer import (
     study_uncancel_params,
     study_reroute_url_params,
 )
+from ...types.shared.severity import Severity
+from ...types.study_viewer_status import StudyViewerStatus
 from ...types.viewer.study_list_response import StudyListResponse
 from ...types.viewer.study_cancel_response import StudyCancelResponse
 from ...types.viewer.study_create_response import StudyCreateResponse
@@ -62,7 +64,7 @@ class StudiesResource(SyncAPIResource):
     def create(
         self,
         *,
-        severity: Literal["normal", "high", "stat"],
+        severity: Severity,
         study_description: str,
         study_instance_uid: str,
         assigned_to: str | Omit = omit,
@@ -80,8 +82,8 @@ class StudiesResource(SyncAPIResource):
         UID and metadata. The study can be optionally assigned to a user.
 
         Args:
-          severity: Priority level of the study. 'normal' for routine, 'high' for urgent, 'stat' for
-              immediate attention
+          severity: Priority level of a study. 'normal' for routine, 'high' for urgent, 'stat' for
+              immediate attention.
 
           study_description: Description of the study/scan (e.g., 'Brain MRI with Contrast', 'Chest CT')
 
@@ -165,9 +167,9 @@ class StudiesResource(SyncAPIResource):
         *,
         assigned_to: str | Omit = omit,
         metadata: Optional[Dict[str, str]] | Omit = omit,
-        severity: Literal["normal", "high", "stat"] | Omit = omit,
+        severity: Severity | Omit = omit,
         study_description: str | Omit = omit,
-        study_viewer_status: Literal["incomplete", "complete"] | Omit = omit,
+        study_viewer_status: StudyViewerStatus | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -185,10 +187,13 @@ class StudiesResource(SyncAPIResource):
 
           assigned_to: User ID to assign the study to, or null to unassign. Format: usr\\__{32-hex-chars}
 
-          severity: Priority level of the study. 'normal' for routine, 'high' for urgent, 'stat' for
-              immediate attention
+          severity: Priority level of a study. 'normal' for routine, 'high' for urgent, 'stat' for
+              immediate attention.
 
           study_description: Description of the study/scan (e.g., 'Brain MRI with Contrast', 'Chest CT')
+
+          study_viewer_status: Viewer completion status for a study. 'incomplete' = not yet finished in the
+              viewer, 'complete' = finished.
 
           extra_headers: Send extra headers
 
@@ -226,9 +231,9 @@ class StudiesResource(SyncAPIResource):
         express_customer_id: Optional[str] | Omit = omit,
         is_cancelled: Optional[bool] | Omit = omit,
         limit: float | Omit = omit,
-        severity: Literal["normal", "high", "stat"] | Omit = omit,
+        severity: Severity | Omit = omit,
         study_description: str | Omit = omit,
-        study_viewer_status: Literal["incomplete", "complete"] | Omit = omit,
+        study_viewer_status: StudyViewerStatus | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -495,7 +500,7 @@ class AsyncStudiesResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        severity: Literal["normal", "high", "stat"],
+        severity: Severity,
         study_description: str,
         study_instance_uid: str,
         assigned_to: str | Omit = omit,
@@ -513,8 +518,8 @@ class AsyncStudiesResource(AsyncAPIResource):
         UID and metadata. The study can be optionally assigned to a user.
 
         Args:
-          severity: Priority level of the study. 'normal' for routine, 'high' for urgent, 'stat' for
-              immediate attention
+          severity: Priority level of a study. 'normal' for routine, 'high' for urgent, 'stat' for
+              immediate attention.
 
           study_description: Description of the study/scan (e.g., 'Brain MRI with Contrast', 'Chest CT')
 
@@ -598,9 +603,9 @@ class AsyncStudiesResource(AsyncAPIResource):
         *,
         assigned_to: str | Omit = omit,
         metadata: Optional[Dict[str, str]] | Omit = omit,
-        severity: Literal["normal", "high", "stat"] | Omit = omit,
+        severity: Severity | Omit = omit,
         study_description: str | Omit = omit,
-        study_viewer_status: Literal["incomplete", "complete"] | Omit = omit,
+        study_viewer_status: StudyViewerStatus | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -618,10 +623,13 @@ class AsyncStudiesResource(AsyncAPIResource):
 
           assigned_to: User ID to assign the study to, or null to unassign. Format: usr\\__{32-hex-chars}
 
-          severity: Priority level of the study. 'normal' for routine, 'high' for urgent, 'stat' for
-              immediate attention
+          severity: Priority level of a study. 'normal' for routine, 'high' for urgent, 'stat' for
+              immediate attention.
 
           study_description: Description of the study/scan (e.g., 'Brain MRI with Contrast', 'Chest CT')
+
+          study_viewer_status: Viewer completion status for a study. 'incomplete' = not yet finished in the
+              viewer, 'complete' = finished.
 
           extra_headers: Send extra headers
 
@@ -659,9 +667,9 @@ class AsyncStudiesResource(AsyncAPIResource):
         express_customer_id: Optional[str] | Omit = omit,
         is_cancelled: Optional[bool] | Omit = omit,
         limit: float | Omit = omit,
-        severity: Literal["normal", "high", "stat"] | Omit = omit,
+        severity: Severity | Omit = omit,
         study_description: str | Omit = omit,
-        study_viewer_status: Literal["incomplete", "complete"] | Omit = omit,
+        study_viewer_status: StudyViewerStatus | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

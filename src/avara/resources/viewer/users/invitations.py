@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from typing import List, Optional
-from typing_extensions import Literal
 
 import httpx
 
@@ -20,6 +19,10 @@ from ...._response import (
 from ....pagination import SyncCursorInvitations, AsyncCursorInvitations
 from ...._base_client import AsyncPaginator, make_request_options
 from ....types.viewer.users import invitation_list_params, invitation_revoke_params, invitation_update_params
+from ....types.shared.clinic_role import ClinicRole
+from ....types.shared.invitation_status import InvitationStatus
+from ....types.shared.assignable_user_level import AssignableUserLevel
+from ....types.shared.invitation_expired_filter import InvitationExpiredFilter
 from ....types.viewer.users.invitation_list_response import InvitationListResponse
 from ....types.viewer.users.invitation_revoke_response import InvitationRevokeResponse
 from ....types.viewer.users.invitation_update_response import InvitationUpdateResponse
@@ -91,36 +94,11 @@ class InvitationsResource(SyncAPIResource):
         invitation_id: str,
         *,
         can_manage_studies: bool | Omit = omit,
-        clinic_role: Optional[
-            Literal[
-                "Radiologist",
-                "Cardiologist",
-                "Neurologist",
-                "Urologist",
-                "Gynecologist",
-                "Endocrinologist",
-                "Doctor",
-                "Surgeon",
-                "Physician",
-                "Physician Assistant",
-                "Nurse Practitioner",
-                "Registered Nurse",
-                "Patient Care Coordinator",
-                "Front Desk Operator",
-                "Imaging Technologist",
-                "PACS Administrator",
-                "Software Engineer",
-                "Revenue Cycle Manager",
-                "Administrative Director",
-                "Administrative Assistant",
-                "Other",
-            ]
-        ]
-        | Omit = omit,
+        clinic_role: Optional[ClinicRole] | Omit = omit,
         first_name: str | Omit = omit,
         has_dashboard_access: bool | Omit = omit,
         last_name: str | Omit = omit,
-        level: Literal["admin", "member"] | Omit = omit,
+        level: AssignableUserLevel | Omit = omit,
         middle_name: Optional[str] | Omit = omit,
         phone_number: Optional[str] | Omit = omit,
         suffix1: Optional[str] | Omit = omit,
@@ -139,11 +117,17 @@ class InvitationsResource(SyncAPIResource):
         Args:
           invitation_id: Unique invitation identifier. Format: inv\\__{32-hex-chars}
 
+          clinic_role: A user's clinical or organizational role within the clinic.
+
           first_name: Invited user's first name
 
           has_dashboard_access: Whether the invited user will have dashboard access
 
           last_name: Invited user's last name
+
+          level: User access level assignable via the API. 'admin' can manage users/settings,
+              'member' has standard access. 'owner' is dashboard-only and cannot be assigned
+              via the API.
 
           extra_headers: Send extra headers
 
@@ -183,10 +167,10 @@ class InvitationsResource(SyncAPIResource):
         *,
         cursor: str | Omit = omit,
         end_date: str | Omit = omit,
-        expired: Literal["all", "expired", "not-expired"] | Omit = omit,
+        expired: InvitationExpiredFilter | Omit = omit,
         limit: float | Omit = omit,
         start_date: str | Omit = omit,
-        status: List[Literal["sent", "accepted", "rejected", "revoked"]] | Omit = omit,
+        status: List[InvitationStatus] | Omit = omit,
         user_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -357,36 +341,11 @@ class AsyncInvitationsResource(AsyncAPIResource):
         invitation_id: str,
         *,
         can_manage_studies: bool | Omit = omit,
-        clinic_role: Optional[
-            Literal[
-                "Radiologist",
-                "Cardiologist",
-                "Neurologist",
-                "Urologist",
-                "Gynecologist",
-                "Endocrinologist",
-                "Doctor",
-                "Surgeon",
-                "Physician",
-                "Physician Assistant",
-                "Nurse Practitioner",
-                "Registered Nurse",
-                "Patient Care Coordinator",
-                "Front Desk Operator",
-                "Imaging Technologist",
-                "PACS Administrator",
-                "Software Engineer",
-                "Revenue Cycle Manager",
-                "Administrative Director",
-                "Administrative Assistant",
-                "Other",
-            ]
-        ]
-        | Omit = omit,
+        clinic_role: Optional[ClinicRole] | Omit = omit,
         first_name: str | Omit = omit,
         has_dashboard_access: bool | Omit = omit,
         last_name: str | Omit = omit,
-        level: Literal["admin", "member"] | Omit = omit,
+        level: AssignableUserLevel | Omit = omit,
         middle_name: Optional[str] | Omit = omit,
         phone_number: Optional[str] | Omit = omit,
         suffix1: Optional[str] | Omit = omit,
@@ -405,11 +364,17 @@ class AsyncInvitationsResource(AsyncAPIResource):
         Args:
           invitation_id: Unique invitation identifier. Format: inv\\__{32-hex-chars}
 
+          clinic_role: A user's clinical or organizational role within the clinic.
+
           first_name: Invited user's first name
 
           has_dashboard_access: Whether the invited user will have dashboard access
 
           last_name: Invited user's last name
+
+          level: User access level assignable via the API. 'admin' can manage users/settings,
+              'member' has standard access. 'owner' is dashboard-only and cannot be assigned
+              via the API.
 
           extra_headers: Send extra headers
 
@@ -449,10 +414,10 @@ class AsyncInvitationsResource(AsyncAPIResource):
         *,
         cursor: str | Omit = omit,
         end_date: str | Omit = omit,
-        expired: Literal["all", "expired", "not-expired"] | Omit = omit,
+        expired: InvitationExpiredFilter | Omit = omit,
         limit: float | Omit = omit,
         start_date: str | Omit = omit,
-        status: List[Literal["sent", "accepted", "rejected", "revoked"]] | Omit = omit,
+        status: List[InvitationStatus] | Omit = omit,
         user_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

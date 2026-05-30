@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from typing import Dict, List, Iterable, Optional
-from typing_extensions import Literal
 
 import httpx
 
@@ -28,7 +27,10 @@ from ...types.auto_scribe import (
     study_reroute_url_params,
     study_viewer_only_reroute_url_params,
 )
+from ...types.shared.severity import Severity
+from ...types.study_report_status import StudyReportStatus
 from ...types.study_report_metadata_param import StudyReportMetadataParam
+from ...types.auto_scribe.prior_report_param import PriorReportParam
 from ...types.auto_scribe.study_list_response import StudyListResponse
 from ...types.auto_scribe.study_cancel_response import StudyCancelResponse
 from ...types.auto_scribe.study_create_response import StudyCreateResponse
@@ -66,7 +68,7 @@ class StudiesResource(SyncAPIResource):
         self,
         *,
         report_metadata: StudyReportMetadataParam,
-        severity: Literal["normal", "high", "stat"],
+        severity: Severity,
         study_description: str,
         study_instance_uid: str,
         assigned_to: str | Omit = omit,
@@ -76,7 +78,7 @@ class StudiesResource(SyncAPIResource):
         external_patient_id: Optional[str] | Omit = omit,
         metadata: Dict[str, str] | Omit = omit,
         modality: Optional[str] | Omit = omit,
-        prior_reports: Iterable[study_create_params.PriorReport] | Omit = omit,
+        prior_reports: Iterable[PriorReportParam] | Omit = omit,
         technologist_notes: SequenceNotStr[str] | Omit = omit,
         technologist_technique: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -96,8 +98,8 @@ class StudiesResource(SyncAPIResource):
         Args:
           report_metadata: Patient demographics and scan information for report generation
 
-          severity: Priority level of the study. 'normal' for routine, 'high' for urgent, 'stat' for
-              immediate attention
+          severity: Priority level of a study. 'normal' for routine, 'high' for urgent, 'stat' for
+              immediate attention.
 
           study_description: Description of the study/scan (e.g., 'Brain MRI with Contrast', 'Chest CT')
 
@@ -210,9 +212,9 @@ class StudiesResource(SyncAPIResource):
         external_patient_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, str]] | Omit = omit,
         modality: Optional[str] | Omit = omit,
-        prior_reports: Optional[Iterable[study_update_params.PriorReport]] | Omit = omit,
+        prior_reports: Optional[Iterable[PriorReportParam]] | Omit = omit,
         report_metadata: study_update_params.ReportMetadata | Omit = omit,
-        severity: Literal["normal", "high", "stat"] | Omit = omit,
+        severity: Severity | Omit = omit,
         study_description: str | Omit = omit,
         technologist_notes: Optional[SequenceNotStr[str]] | Omit = omit,
         technologist_technique: Optional[str] | Omit = omit,
@@ -249,8 +251,8 @@ class StudiesResource(SyncAPIResource):
           prior_reports: External prior reports (metadata + full report text) for comparison context.
               Null clears; an array replaces the existing set. Maximum 50 items
 
-          severity: Priority level of the study. 'normal' for routine, 'high' for urgent, 'stat' for
-              immediate attention
+          severity: Priority level of a study. 'normal' for routine, 'high' for urgent, 'stat' for
+              immediate attention.
 
           study_description: Description of the study/scan (e.g., 'Brain MRI with Contrast', 'Chest CT')
 
@@ -303,10 +305,9 @@ class StudiesResource(SyncAPIResource):
         express_customer_id: Optional[str] | Omit = omit,
         is_cancelled: Optional[bool] | Omit = omit,
         limit: float | Omit = omit,
-        severity: Literal["normal", "high", "stat"] | Omit = omit,
+        severity: Severity | Omit = omit,
         study_description: str | Omit = omit,
-        study_report_status: List[Literal["unassigned", "assigned", "in_progress", "completed", "addendum_active"]]
-        | Omit = omit,
+        study_report_status: List[StudyReportStatus] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -628,7 +629,7 @@ class AsyncStudiesResource(AsyncAPIResource):
         self,
         *,
         report_metadata: StudyReportMetadataParam,
-        severity: Literal["normal", "high", "stat"],
+        severity: Severity,
         study_description: str,
         study_instance_uid: str,
         assigned_to: str | Omit = omit,
@@ -638,7 +639,7 @@ class AsyncStudiesResource(AsyncAPIResource):
         external_patient_id: Optional[str] | Omit = omit,
         metadata: Dict[str, str] | Omit = omit,
         modality: Optional[str] | Omit = omit,
-        prior_reports: Iterable[study_create_params.PriorReport] | Omit = omit,
+        prior_reports: Iterable[PriorReportParam] | Omit = omit,
         technologist_notes: SequenceNotStr[str] | Omit = omit,
         technologist_technique: Optional[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -658,8 +659,8 @@ class AsyncStudiesResource(AsyncAPIResource):
         Args:
           report_metadata: Patient demographics and scan information for report generation
 
-          severity: Priority level of the study. 'normal' for routine, 'high' for urgent, 'stat' for
-              immediate attention
+          severity: Priority level of a study. 'normal' for routine, 'high' for urgent, 'stat' for
+              immediate attention.
 
           study_description: Description of the study/scan (e.g., 'Brain MRI with Contrast', 'Chest CT')
 
@@ -772,9 +773,9 @@ class AsyncStudiesResource(AsyncAPIResource):
         external_patient_id: Optional[str] | Omit = omit,
         metadata: Optional[Dict[str, str]] | Omit = omit,
         modality: Optional[str] | Omit = omit,
-        prior_reports: Optional[Iterable[study_update_params.PriorReport]] | Omit = omit,
+        prior_reports: Optional[Iterable[PriorReportParam]] | Omit = omit,
         report_metadata: study_update_params.ReportMetadata | Omit = omit,
-        severity: Literal["normal", "high", "stat"] | Omit = omit,
+        severity: Severity | Omit = omit,
         study_description: str | Omit = omit,
         technologist_notes: Optional[SequenceNotStr[str]] | Omit = omit,
         technologist_technique: Optional[str] | Omit = omit,
@@ -811,8 +812,8 @@ class AsyncStudiesResource(AsyncAPIResource):
           prior_reports: External prior reports (metadata + full report text) for comparison context.
               Null clears; an array replaces the existing set. Maximum 50 items
 
-          severity: Priority level of the study. 'normal' for routine, 'high' for urgent, 'stat' for
-              immediate attention
+          severity: Priority level of a study. 'normal' for routine, 'high' for urgent, 'stat' for
+              immediate attention.
 
           study_description: Description of the study/scan (e.g., 'Brain MRI with Contrast', 'Chest CT')
 
@@ -865,10 +866,9 @@ class AsyncStudiesResource(AsyncAPIResource):
         express_customer_id: Optional[str] | Omit = omit,
         is_cancelled: Optional[bool] | Omit = omit,
         limit: float | Omit = omit,
-        severity: Literal["normal", "high", "stat"] | Omit = omit,
+        severity: Severity | Omit = omit,
         study_description: str | Omit = omit,
-        study_report_status: List[Literal["unassigned", "assigned", "in_progress", "completed", "addendum_active"]]
-        | Omit = omit,
+        study_report_status: List[StudyReportStatus] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

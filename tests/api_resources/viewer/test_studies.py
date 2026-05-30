@@ -197,7 +197,7 @@ class TestStudies:
             limit=20,
             severity="normal",
             study_description="CT Head",
-            study_viewer_status="complete",
+            study_viewer_status="incomplete",
         )
         assert_matches_type(SyncCursorStudies[StudyListResponse], study, path=["response"])
 
@@ -552,7 +552,7 @@ class TestAsyncStudies:
             limit=20,
             severity="normal",
             study_description="CT Head",
-            study_viewer_status="complete",
+            study_viewer_status="incomplete",
         )
         assert_matches_type(AsyncCursorStudies[StudyListResponse], study, path=["response"])
 

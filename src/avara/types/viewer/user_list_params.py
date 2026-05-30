@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal, Annotated, TypedDict
+from typing_extensions import Annotated, TypedDict
 
 from ..._utils import PropertyInfo
+from ..shared.user_level import UserLevel
+from ..shared.invited_source import InvitedSource
 
 __all__ = ["UserListParams"]
 
@@ -19,13 +21,13 @@ class UserListParams(TypedDict, total=False):
     first_name: Annotated[str, PropertyInfo(alias="firstName")]
     """Filter by first name (contains match)"""
 
-    invited_source: Annotated[Literal["dashboard", "api"], PropertyInfo(alias="invitedSource")]
+    invited_source: Annotated[InvitedSource, PropertyInfo(alias="invitedSource")]
     """Filter by invitation source"""
 
     last_name: Annotated[str, PropertyInfo(alias="lastName")]
     """Filter by last name (contains match)"""
 
-    level: Literal["owner", "admin", "member"]
+    level: UserLevel
     """Filter by user level"""
 
     limit: float

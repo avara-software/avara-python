@@ -3,9 +3,11 @@
 from __future__ import annotations
 
 from typing import List
-from typing_extensions import Literal, Annotated, TypedDict
+from typing_extensions import Annotated, TypedDict
 
 from ...._utils import PropertyInfo
+from ...shared.invitation_status import InvitationStatus
+from ...shared.invitation_expired_filter import InvitationExpiredFilter
 
 __all__ = ["InvitationListParams"]
 
@@ -17,7 +19,7 @@ class InvitationListParams(TypedDict, total=False):
     end_date: Annotated[str, PropertyInfo(alias="endDate")]
     """Filter invitations created on or before this date (YYYY-MM-DD)"""
 
-    expired: Literal["all", "expired", "not-expired"]
+    expired: InvitationExpiredFilter
     """Filter by expiration status"""
 
     limit: float
@@ -26,7 +28,7 @@ class InvitationListParams(TypedDict, total=False):
     start_date: Annotated[str, PropertyInfo(alias="startDate")]
     """Filter invitations created on or after this date (YYYY-MM-DD)"""
 
-    status: List[Literal["sent", "accepted", "rejected", "revoked"]]
+    status: List[InvitationStatus]
     """Filter by invitation status(es)"""
 
     user_id: Annotated[str, PropertyInfo(alias="userId")]

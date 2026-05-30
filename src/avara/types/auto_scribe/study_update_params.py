@@ -3,12 +3,17 @@
 from __future__ import annotations
 
 from typing import Dict, Iterable, Optional
-from typing_extensions import Literal, Required, Annotated, TypedDict
+from typing_extensions import Required, Annotated, TypedDict
 
+from ..sex import Sex
 from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
+from ..height_unit import HeightUnit
+from ..weight_unit import WeightUnit
+from ..shared.severity import Severity
+from .prior_report_param import PriorReportParam
 
-__all__ = ["StudyUpdateParams", "PriorReport", "ReportMetadata", "ReportMetadataHeight", "ReportMetadataWeight"]
+__all__ = ["StudyUpdateParams", "ReportMetadata", "ReportMetadataHeight", "ReportMetadataWeight"]
 
 
 class StudyUpdateParams(TypedDict, total=False):
@@ -41,7 +46,7 @@ class StudyUpdateParams(TypedDict, total=False):
     modality: Optional[str]
     """Imaging modality for the study (free text). Null clears."""
 
-    prior_reports: Annotated[Optional[Iterable[PriorReport]], PropertyInfo(alias="priorReports")]
+    prior_reports: Annotated[Optional[Iterable[PriorReportParam]], PropertyInfo(alias="priorReports")]
     """External prior reports (metadata + full report text) for comparison context.
 
     Null clears; an array replaces the existing set. Maximum 50 items
@@ -49,10 +54,10 @@ class StudyUpdateParams(TypedDict, total=False):
 
     report_metadata: Annotated[ReportMetadata, PropertyInfo(alias="reportMetadata")]
 
-    severity: Literal["normal", "high", "stat"]
-    """Priority level of the study.
+    severity: Severity
+    """Priority level of a study.
 
-    'normal' for routine, 'high' for urgent, 'stat' for immediate attention
+    'normal' for routine, 'high' for urgent, 'stat' for immediate attention.
     """
 
     study_description: Annotated[str, PropertyInfo(alias="studyDescription")]
@@ -69,33 +74,16 @@ class StudyUpdateParams(TypedDict, total=False):
     """Imaging technique description provided by the technologist. Null clears."""
 
 
-class PriorReport(TypedDict, total=False):
-    """External prior report metadata and text stored on a study"""
-
-    report_text: Required[Annotated[str, PropertyInfo(alias="reportText")]]
-    """Full prior report text"""
-
-    external_study_id: Annotated[str, PropertyInfo(alias="externalStudyId")]
-    """Integrator's external study identifier"""
-
-    modality: str
-    """Imaging modality for the prior study"""
-
-    study_date: Annotated[str, PropertyInfo(alias="studyDate")]
-    """Prior study date (YYYY-MM-DD)"""
-
-    study_description: Annotated[str, PropertyInfo(alias="studyDescription")]
-    """Description of the prior study"""
-
-
 class ReportMetadataHeight(TypedDict, total=False):
-    unit: Required[Literal["in", "cm"]]
+    unit: Required[HeightUnit]
+    """Unit of measure for a height value. 'in' = inches, 'cm' = centimeters."""
 
     value: Required[float]
 
 
 class ReportMetadataWeight(TypedDict, total=False):
-    unit: Required[Literal["lbs", "kg"]]
+    unit: Required[WeightUnit]
+    """Unit of measure for a weight value. 'lbs' = pounds, 'kg' = kilograms."""
 
     value: Required[float]
 
@@ -121,7 +109,8 @@ class ReportMetadata(TypedDict, total=False):
 
     referring_physician_name: Annotated[Optional[str], PropertyInfo(alias="referringPhysicianName")]
 
-    sex: Optional[Literal["male", "female", "other"]]
+    sex: Optional[Sex]
+    """Patient's biological sex. Options: 'male', 'female', 'other'"""
 
     study_date: Annotated[Optional[str], PropertyInfo(alias="studyDate")]
     """Study date (YYYY-MM-DD).

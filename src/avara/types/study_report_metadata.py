@@ -1,11 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import Optional
-from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
+from .sex import Sex
 from .._models import BaseModel
+from .height_unit import HeightUnit
+from .weight_unit import WeightUnit
 
 __all__ = ["StudyReportMetadata", "Height", "Weight"]
 
@@ -15,7 +17,8 @@ class Height(BaseModel):
     Patient's height with unit (e.g., {value: 70, unit: 'inches'} or {value: 178, unit: 'cm'})
     """
 
-    unit: Literal["in", "cm"]
+    unit: HeightUnit
+    """Unit of measure for a height value. 'in' = inches, 'cm' = centimeters."""
 
     value: float
 
@@ -25,7 +28,8 @@ class Weight(BaseModel):
     Patient's weight with unit (e.g., {value: 150, unit: 'lbs'} or {value: 68, unit: 'kg'})
     """
 
-    unit: Literal["lbs", "kg"]
+    unit: WeightUnit
+    """Unit of measure for a weight value. 'lbs' = pounds, 'kg' = kilograms."""
 
     value: float
 
@@ -63,7 +67,7 @@ class StudyReportMetadata(BaseModel):
     referring_physician_name: Optional[str] = FieldInfo(alias="referringPhysicianName", default=None)
     """Name of the physician who referred the patient for this scan"""
 
-    sex: Optional[Literal["male", "female", "other"]] = None
+    sex: Optional[Sex] = None
     """Patient's biological sex. Options: 'male', 'female', 'other'"""
 
     study_date: Optional[str] = FieldInfo(alias="studyDate", default=None)
