@@ -13,7 +13,7 @@ class ReportDeliveredEventData(BaseModel):
     """Event payload containing report and study information"""
 
     is_critical: bool = FieldInfo(alias="isCritical")
-    """Whether the report was marked critical at sign-out."""
+    """Whether the report was marked critical at sign-off."""
 
     presigned_url: str = FieldInfo(alias="presignedUrl")
     """Presigned URL for PDF download. Time-limited, typically valid for 1 hour."""
