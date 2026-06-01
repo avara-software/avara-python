@@ -16,7 +16,7 @@ class SingleReportPdfResponse(BaseModel):
     """Response containing a single report with its PDF download URL"""
 
     is_critical: Optional[bool] = FieldInfo(alias="isCritical", default=None)
-    """Whether the report was marked critical at sign-out.
+    """Whether the report was marked critical at sign-off.
 
     null when the report is not yet completed; true/false once completed.
     """

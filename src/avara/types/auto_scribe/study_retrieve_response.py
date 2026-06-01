@@ -84,7 +84,7 @@ class StudyRetrieveResponse(BaseModel):
     """Integrator-provided stable patient identifier for linking studies"""
 
     is_critical: Optional[bool] = FieldInfo(alias="isCritical", default=None)
-    """Whether the primary report was marked as critical at sign-out"""
+    """Whether the primary report was marked as critical at sign-off"""
 
     metadata: Optional[Dict[str, str]] = None
     """Custom key-value metadata for the study.

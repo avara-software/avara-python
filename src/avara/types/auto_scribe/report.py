@@ -22,7 +22,7 @@ class Report(BaseModel):
     """Whether this report is an addendum to a previous report"""
 
     is_critical: Optional[bool] = FieldInfo(alias="isCritical", default=None)
-    """Whether the report was marked critical at sign-out.
+    """Whether the report was marked critical at sign-off.
 
     null when the report is not yet completed; true/false once completed.
     """
