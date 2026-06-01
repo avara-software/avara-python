@@ -21,6 +21,12 @@ class Report(BaseModel):
     is_addendum: bool = FieldInfo(alias="isAddendum")
     """Whether this report is an addendum to a previous report"""
 
+    is_critical: Optional[bool] = FieldInfo(alias="isCritical", default=None)
+    """Whether the report was marked critical at sign-out.
+
+    null when the report is not yet completed; true/false once completed.
+    """
+
     report_id: str = FieldInfo(alias="reportId")
     """Unique report identifier. Format: rep\\__{32-hex-chars}"""
 

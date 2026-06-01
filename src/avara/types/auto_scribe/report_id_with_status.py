@@ -1,5 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from typing import Optional
+
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
@@ -10,6 +12,12 @@ __all__ = ["ReportIDWithStatus"]
 
 class ReportIDWithStatus(BaseModel):
     """A report ID paired with its current status"""
+
+    is_critical: Optional[bool] = FieldInfo(alias="isCritical", default=None)
+    """Whether the report was marked critical at sign-off.
+
+    null when the report is not yet completed; true/false once completed.
+    """
 
     report_id: str = FieldInfo(alias="reportId")
     """Unique report identifier. Format: rep\\__{32-hex-chars}"""
