@@ -1,5 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from typing import Optional
+
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
@@ -10,6 +12,12 @@ __all__ = ["ReportPdfItem"]
 
 class ReportPdfItem(BaseModel):
     """A report with its PDF download URL"""
+
+    is_critical: Optional[bool] = FieldInfo(alias="isCritical", default=None)
+    """Whether the report was marked critical at sign-out.
+
+    null when the report is not yet completed; true/false once completed.
+    """
 
     presigned_url: str = FieldInfo(alias="presignedUrl")
     """Time-limited presigned URL to download the PDF (expires after 1 hour)"""
