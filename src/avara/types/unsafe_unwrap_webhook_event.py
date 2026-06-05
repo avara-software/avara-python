@@ -6,9 +6,11 @@ from typing_extensions import Annotated, TypeAlias
 from .._utils import PropertyInfo
 from .report_delivered_event import ReportDeliveredEvent
 from .study_access_requested_event import StudyAccessRequestedEvent
+from .secondary_capture_access_requested_event import SecondaryCaptureAccessRequestedEvent
 
 __all__ = ["UnsafeUnwrapWebhookEvent"]
 
 UnsafeUnwrapWebhookEvent: TypeAlias = Annotated[
-    Union[StudyAccessRequestedEvent, ReportDeliveredEvent], PropertyInfo(discriminator="type")
+    Union[StudyAccessRequestedEvent, ReportDeliveredEvent, SecondaryCaptureAccessRequestedEvent],
+    PropertyInfo(discriminator="type"),
 ]
