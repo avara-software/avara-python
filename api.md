@@ -259,6 +259,7 @@ from avara.types import (
     ReportDeliveredResponse,
     StudyAccessRequestedEvent,
     StudyAccessRequestedEventData,
+    StudyAccessRequestedMediaURL,
     StudyAccessRequestedResponse,
     WebhookEvent,
     UnsafeUnwrapWebhookEvent,
