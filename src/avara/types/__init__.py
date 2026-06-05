@@ -37,9 +37,6 @@ from .study_report_metadata_param import StudyReportMetadataParam as StudyReport
 from .unsafe_unwrap_webhook_event import UnsafeUnwrapWebhookEvent as UnsafeUnwrapWebhookEvent
 from .study_access_requested_event import StudyAccessRequestedEvent as StudyAccessRequestedEvent
 from .study_access_requested_event_data import StudyAccessRequestedEventData as StudyAccessRequestedEventData
-from .secondary_capture_access_requested_event import (
-    SecondaryCaptureAccessRequestedEvent as SecondaryCaptureAccessRequestedEvent,
-)
-from .secondary_capture_access_requested_event_data import (
-    SecondaryCaptureAccessRequestedEventData as SecondaryCaptureAccessRequestedEventData,
+from .secondary_capture_access_requested_webhook_event import (
+    SecondaryCaptureAccessRequestedWebhookEvent as SecondaryCaptureAccessRequestedWebhookEvent,
 )
