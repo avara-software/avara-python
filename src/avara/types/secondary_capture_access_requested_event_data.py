@@ -1,16 +1,15 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import Optional
-from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["SecondaryCaptureAccessRequestedWebhookEvent", "Data"]
+__all__ = ["SecondaryCaptureAccessRequestedEventData"]
 
 
-class Data(BaseModel):
+class SecondaryCaptureAccessRequestedEventData(BaseModel):
     """
     Event payload containing study + (optional) series/SOP information for a secondary capture upload
     """
@@ -35,21 +34,3 @@ class Data(BaseModel):
     DICOM SOP Instance UID generated for the new secondary capture object (when
     available).
     """
-
-
-class SecondaryCaptureAccessRequestedWebhookEvent(BaseModel):
-    """
-    Webhook event sent when Avara needs presigned UPLOAD URLs for a secondary capture DICOM. This is a synchronous webhook - you must respond with the upload URLs within the request timeout.
-    """
-
-    id: str
-    """Unique webhook event ID. Format: whe\\__{32-hex-chars}"""
-
-    data: Data
-    """
-    Event payload containing study + (optional) series/SOP information for a
-    secondary capture upload
-    """
-
-    type: Literal["secondary_capture.access_requested"]
-    """Event type identifier"""
