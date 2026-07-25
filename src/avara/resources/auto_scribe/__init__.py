@@ -32,8 +32,22 @@ from .auto_scribe import (
     AutoScribeResourceWithStreamingResponse,
     AsyncAutoScribeResourceWithStreamingResponse,
 )
+from .clinical_references import (
+    ClinicalReferencesResource,
+    AsyncClinicalReferencesResource,
+    ClinicalReferencesResourceWithRawResponse,
+    AsyncClinicalReferencesResourceWithRawResponse,
+    ClinicalReferencesResourceWithStreamingResponse,
+    AsyncClinicalReferencesResourceWithStreamingResponse,
+)
 
 __all__ = [
+    "ClinicalReferencesResource",
+    "AsyncClinicalReferencesResource",
+    "ClinicalReferencesResourceWithRawResponse",
+    "AsyncClinicalReferencesResourceWithRawResponse",
+    "ClinicalReferencesResourceWithStreamingResponse",
+    "AsyncClinicalReferencesResourceWithStreamingResponse",
     "StudiesResource",
     "AsyncStudiesResource",
     "StudiesResourceWithRawResponse",

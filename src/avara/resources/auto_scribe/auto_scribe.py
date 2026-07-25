@@ -28,11 +28,23 @@ from .users.users import (
     UsersResourceWithStreamingResponse,
     AsyncUsersResourceWithStreamingResponse,
 )
+from .clinical_references import (
+    ClinicalReferencesResource,
+    AsyncClinicalReferencesResource,
+    ClinicalReferencesResourceWithRawResponse,
+    AsyncClinicalReferencesResourceWithRawResponse,
+    ClinicalReferencesResourceWithStreamingResponse,
+    AsyncClinicalReferencesResourceWithStreamingResponse,
+)
 
 __all__ = ["AutoScribeResource", "AsyncAutoScribeResource"]
 
 
 class AutoScribeResource(SyncAPIResource):
+    @cached_property
+    def clinical_references(self) -> ClinicalReferencesResource:
+        return ClinicalReferencesResource(self._client)
+
     @cached_property
     def studies(self) -> StudiesResource:
         return StudiesResource(self._client)
@@ -66,6 +78,10 @@ class AutoScribeResource(SyncAPIResource):
 
 
 class AsyncAutoScribeResource(AsyncAPIResource):
+    @cached_property
+    def clinical_references(self) -> AsyncClinicalReferencesResource:
+        return AsyncClinicalReferencesResource(self._client)
+
     @cached_property
     def studies(self) -> AsyncStudiesResource:
         return AsyncStudiesResource(self._client)
@@ -103,6 +119,10 @@ class AutoScribeResourceWithRawResponse:
         self._auto_scribe = auto_scribe
 
     @cached_property
+    def clinical_references(self) -> ClinicalReferencesResourceWithRawResponse:
+        return ClinicalReferencesResourceWithRawResponse(self._auto_scribe.clinical_references)
+
+    @cached_property
     def studies(self) -> StudiesResourceWithRawResponse:
         return StudiesResourceWithRawResponse(self._auto_scribe.studies)
 
@@ -118,6 +138,10 @@ class AutoScribeResourceWithRawResponse:
 class AsyncAutoScribeResourceWithRawResponse:
     def __init__(self, auto_scribe: AsyncAutoScribeResource) -> None:
         self._auto_scribe = auto_scribe
+
+    @cached_property
+    def clinical_references(self) -> AsyncClinicalReferencesResourceWithRawResponse:
+        return AsyncClinicalReferencesResourceWithRawResponse(self._auto_scribe.clinical_references)
 
     @cached_property
     def studies(self) -> AsyncStudiesResourceWithRawResponse:
@@ -137,6 +161,10 @@ class AutoScribeResourceWithStreamingResponse:
         self._auto_scribe = auto_scribe
 
     @cached_property
+    def clinical_references(self) -> ClinicalReferencesResourceWithStreamingResponse:
+        return ClinicalReferencesResourceWithStreamingResponse(self._auto_scribe.clinical_references)
+
+    @cached_property
     def studies(self) -> StudiesResourceWithStreamingResponse:
         return StudiesResourceWithStreamingResponse(self._auto_scribe.studies)
 
@@ -152,6 +180,10 @@ class AutoScribeResourceWithStreamingResponse:
 class AsyncAutoScribeResourceWithStreamingResponse:
     def __init__(self, auto_scribe: AsyncAutoScribeResource) -> None:
         self._auto_scribe = auto_scribe
+
+    @cached_property
+    def clinical_references(self) -> AsyncClinicalReferencesResourceWithStreamingResponse:
+        return AsyncClinicalReferencesResourceWithStreamingResponse(self._auto_scribe.clinical_references)
 
     @cached_property
     def studies(self) -> AsyncStudiesResourceWithStreamingResponse:

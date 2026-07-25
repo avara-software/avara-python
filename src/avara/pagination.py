@@ -16,6 +16,8 @@ __all__ = [
     "AsyncCursorInvitations",
     "SyncCursorExpressCustomers",
     "AsyncCursorExpressCustomers",
+    "SyncCursorClinicalReferences",
+    "AsyncCursorClinicalReferences",
 ]
 
 _T = TypeVar("_T")
@@ -259,6 +261,70 @@ class AsyncCursorExpressCustomers(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
         if not express_customers:
             return []
         return express_customers
+
+    @override
+    def has_next_page(self) -> bool:
+        has_more = self.has_more
+        if has_more is not None and has_more is False:
+            return False
+
+        return super().has_next_page()
+
+    @override
+    def next_page_info(self) -> Optional[PageInfo]:
+        cursor = self.cursor
+        if not cursor:
+            return None
+
+        return PageInfo(params={"cursor": cursor})
+
+
+class SyncCursorClinicalReferences(BaseSyncPage[_T], BasePage[_T], Generic[_T]):
+    clinical_references: List[_T] = FieldInfo(alias="clinicalReferences")
+    """Array of clinical reference objects"""
+    cursor: Optional[str] = None
+    """Next page cursor. Pass this to the next request to get the next page of results"""
+    has_more: Optional[bool] = FieldInfo(alias="hasMore", default=None)
+    """Whether there are more results available"""
+
+    @override
+    def _get_page_items(self) -> List[_T]:
+        clinical_references = self.clinical_references
+        if not clinical_references:
+            return []
+        return clinical_references
+
+    @override
+    def has_next_page(self) -> bool:
+        has_more = self.has_more
+        if has_more is not None and has_more is False:
+            return False
+
+        return super().has_next_page()
+
+    @override
+    def next_page_info(self) -> Optional[PageInfo]:
+        cursor = self.cursor
+        if not cursor:
+            return None
+
+        return PageInfo(params={"cursor": cursor})
+
+
+class AsyncCursorClinicalReferences(BaseAsyncPage[_T], BasePage[_T], Generic[_T]):
+    clinical_references: List[_T] = FieldInfo(alias="clinicalReferences")
+    """Array of clinical reference objects"""
+    cursor: Optional[str] = None
+    """Next page cursor. Pass this to the next request to get the next page of results"""
+    has_more: Optional[bool] = FieldInfo(alias="hasMore", default=None)
+    """Whether there are more results available"""
+
+    @override
+    def _get_page_items(self) -> List[_T]:
+        clinical_references = self.clinical_references
+        if not clinical_references:
+            return []
+        return clinical_references
 
     @override
     def has_next_page(self) -> bool:

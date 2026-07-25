@@ -9,6 +9,7 @@ from .report_text_item import ReportTextItem as ReportTextItem
 from .user_list_params import UserListParams as UserListParams
 from .report_pdf_params import ReportPdfParams as ReportPdfParams
 from .study_list_params import StudyListParams as StudyListParams
+from .clinical_reference import ClinicalReference as ClinicalReference
 from .prior_report_param import PriorReportParam as PriorReportParam
 from .report_list_params import ReportListParams as ReportListParams
 from .report_text_params import ReportTextParams as ReportTextParams
@@ -39,8 +40,11 @@ from .user_reactivate_response import UserReactivateResponse as UserReactivateRe
 from .user_revoke_access_params import UserRevokeAccessParams as UserRevokeAccessParams
 from .study_reroute_url_response import StudyRerouteURLResponse as StudyRerouteURLResponse
 from .user_revoke_access_response import UserRevokeAccessResponse as UserRevokeAccessResponse
+from .clinical_reference_list_params import ClinicalReferenceListParams as ClinicalReferenceListParams
 from .study_retrieve_by_uid_response import StudyRetrieveByUidResponse as StudyRetrieveByUidResponse
 from .report_cancel_addendum_response import ReportCancelAddendumResponse as ReportCancelAddendumResponse
+from .clinical_reference_create_params import ClinicalReferenceCreateParams as ClinicalReferenceCreateParams
+from .clinical_reference_update_params import ClinicalReferenceUpdateParams as ClinicalReferenceUpdateParams
 from .study_viewer_only_reroute_url_params import StudyViewerOnlyRerouteURLParams as StudyViewerOnlyRerouteURLParams
 from .study_viewer_only_reroute_url_response import (
     StudyViewerOnlyRerouteURLResponse as StudyViewerOnlyRerouteURLResponse,
