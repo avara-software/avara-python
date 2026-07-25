@@ -132,12 +132,12 @@ from avara import Avara
 
 client = Avara()
 
-all_studies = []
+all_clinical_references = []
 # Automatically fetches more pages as needed.
-for study in client.auto_scribe.studies.list():
-    # Do something with study here
-    all_studies.append(study)
-print(all_studies)
+for clinical_reference in client.auto_scribe.clinical_references.list():
+    # Do something with clinical_reference here
+    all_clinical_references.append(clinical_reference)
+print(all_clinical_references)
 ```
 
 Or, asynchronously:
@@ -150,11 +150,11 @@ client = AsyncAvara()
 
 
 async def main() -> None:
-    all_studies = []
+    all_clinical_references = []
     # Iterate through items across all pages, issuing requests as needed.
-    async for study in client.auto_scribe.studies.list():
-        all_studies.append(study)
-    print(all_studies)
+    async for clinical_reference in client.auto_scribe.clinical_references.list():
+        all_clinical_references.append(clinical_reference)
+    print(all_clinical_references)
 
 
 asyncio.run(main())
@@ -163,11 +163,11 @@ asyncio.run(main())
 Alternatively, you can use the `.has_next_page()`, `.next_page_info()`, or `.get_next_page()` methods for more granular control working with pages:
 
 ```python
-first_page = await client.auto_scribe.studies.list()
+first_page = await client.auto_scribe.clinical_references.list()
 if first_page.has_next_page():
     print(f"will fetch next page using these details: {first_page.next_page_info()}")
     next_page = await first_page.get_next_page()
-    print(f"number of items we just fetched: {len(next_page.studies)}")
+    print(f"number of items we just fetched: {len(next_page.clinical_references)}")
 
 # Remove `await` for non-async usage.
 ```
@@ -175,11 +175,11 @@ if first_page.has_next_page():
 Or just work directly with the returned data:
 
 ```python
-first_page = await client.auto_scribe.studies.list()
+first_page = await client.auto_scribe.clinical_references.list()
 
 print(f"next page cursor: {first_page.cursor}")  # => "next page cursor: ..."
-for study in first_page.studies:
-    print(study.study_instance_uid)
+for clinical_reference in first_page.clinical_references:
+    print(clinical_reference.clinical_reference_id)
 
 # Remove `await` for non-async usage.
 ```

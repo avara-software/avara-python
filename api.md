@@ -21,6 +21,7 @@ Types:
 
 ```python
 from avara.types import (
+    ClinicalReferenceType,
     HeightUnit,
     ReportStatus,
     Sex,
@@ -29,6 +30,23 @@ from avara.types import (
     WeightUnit,
 )
 ```
+
+## ClinicalReferences
+
+Types:
+
+```python
+from avara.types.auto_scribe import ClinicalReference
+```
+
+Methods:
+
+- <code title="post /v1/autoScribe/clinicalReferences">client.auto_scribe.clinical_references.<a href="./src/avara/resources/auto_scribe/clinical_references.py">create</a>(\*\*<a href="src/avara/types/auto_scribe/clinical_reference_create_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/clinical_reference.py">ClinicalReference</a></code>
+- <code title="get /v1/autoScribe/clinicalReferences/{clinicalReferenceId}">client.auto_scribe.clinical_references.<a href="./src/avara/resources/auto_scribe/clinical_references.py">retrieve</a>(clinical_reference_id) -> <a href="./src/avara/types/auto_scribe/clinical_reference.py">ClinicalReference</a></code>
+- <code title="patch /v1/autoScribe/clinicalReferences/{clinicalReferenceId}">client.auto_scribe.clinical_references.<a href="./src/avara/resources/auto_scribe/clinical_references.py">update</a>(clinical_reference_id, \*\*<a href="src/avara/types/auto_scribe/clinical_reference_update_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/clinical_reference.py">ClinicalReference</a></code>
+- <code title="get /v1/autoScribe/clinicalReferences">client.auto_scribe.clinical_references.<a href="./src/avara/resources/auto_scribe/clinical_references.py">list</a>(\*\*<a href="src/avara/types/auto_scribe/clinical_reference_list_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/clinical_reference.py">SyncCursorClinicalReferences[ClinicalReference]</a></code>
+- <code title="post /v1/autoScribe/clinicalReferences/{clinicalReferenceId}/delete">client.auto_scribe.clinical_references.<a href="./src/avara/resources/auto_scribe/clinical_references.py">delete</a>(clinical_reference_id) -> <a href="./src/avara/types/auto_scribe/clinical_reference.py">ClinicalReference</a></code>
+- <code title="get /v1/autoScribe/clinicalReferences/byExternalReferenceId/{externalReferenceId}">client.auto_scribe.clinical_references.<a href="./src/avara/resources/auto_scribe/clinical_references.py">retrieve_by_external_reference_id</a>(external_reference_id) -> <a href="./src/avara/types/auto_scribe/clinical_reference.py">ClinicalReference</a></code>
 
 ## Studies
 

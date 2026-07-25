@@ -27,6 +27,7 @@ from .express_list_response import ExpressListResponse as ExpressListResponse
 from .express_update_params import ExpressUpdateParams as ExpressUpdateParams
 from .study_report_metadata import StudyReportMetadata as StudyReportMetadata
 from .report_delivered_event import ReportDeliveredEvent as ReportDeliveredEvent
+from .clinical_reference_type import ClinicalReferenceType as ClinicalReferenceType
 from .express_create_response import ExpressCreateResponse as ExpressCreateResponse
 from .express_update_response import ExpressUpdateResponse as ExpressUpdateResponse
 from .express_retrieve_response import ExpressRetrieveResponse as ExpressRetrieveResponse
