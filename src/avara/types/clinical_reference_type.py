@@ -4,4 +4,4 @@ from typing_extensions import Literal, TypeAlias
 
 __all__ = ["ClinicalReferenceType"]
 
-ClinicalReferenceType: TypeAlias = Literal["facility", "referring_provider", "study_description", "imaging_protocol"]
+ClinicalReferenceType: TypeAlias = Literal["facility", "referring_provider", "study_description", "procedure"]
