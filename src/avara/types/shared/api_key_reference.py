@@ -18,5 +18,10 @@ class APIKeyReference(BaseModel):
     description: str
     """Human-readable description of the API key"""
 
+    is_clinical_context_enrichment_enabled: Optional[bool] = FieldInfo(
+        alias="isClinicalContextEnrichmentEnabled", default=None
+    )
+    """Whether this API key has a clinical-context enrichment webhook configured"""
+
     is_viewer_enabled: Optional[bool] = FieldInfo(alias="isViewerEnabled", default=None)
     """Whether this API key has access to the Viewer product"""
