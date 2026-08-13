@@ -37,10 +37,26 @@ from .report_delivered_event_data import ReportDeliveredEventData as ReportDeliv
 from .study_report_metadata_param import StudyReportMetadataParam as StudyReportMetadataParam
 from .unsafe_unwrap_webhook_event import UnsafeUnwrapWebhookEvent as UnsafeUnwrapWebhookEvent
 from .study_access_requested_event import StudyAccessRequestedEvent as StudyAccessRequestedEvent
+from .modality_worklist_requested_event import ModalityWorklistRequestedEvent as ModalityWorklistRequestedEvent
 from .study_access_requested_event_data import StudyAccessRequestedEventData as StudyAccessRequestedEventData
+from .modality_worklist_requested_event_data import (
+    ModalityWorklistRequestedEventData as ModalityWorklistRequestedEventData,
+)
+from .patient_study_enrichment_requested_event import (
+    PatientStudyEnrichmentRequestedEvent as PatientStudyEnrichmentRequestedEvent,
+)
 from .secondary_capture_access_requested_event import (
     SecondaryCaptureAccessRequestedEvent as SecondaryCaptureAccessRequestedEvent,
 )
+from .clinical_context_enrichment_requested_event import (
+    ClinicalContextEnrichmentRequestedEvent as ClinicalContextEnrichmentRequestedEvent,
+)
+from .patient_study_enrichment_requested_event_data import (
+    PatientStudyEnrichmentRequestedEventData as PatientStudyEnrichmentRequestedEventData,
+)
 from .secondary_capture_access_requested_event_data import (
     SecondaryCaptureAccessRequestedEventData as SecondaryCaptureAccessRequestedEventData,
+)
+from .clinical_context_enrichment_requested_event_data import (
+    ClinicalContextEnrichmentRequestedEventData as ClinicalContextEnrichmentRequestedEventData,
 )

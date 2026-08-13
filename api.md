@@ -272,6 +272,20 @@ Types:
 
 ```python
 from avara.types import (
+    ClinicalContextEnrichmentDocument,
+    ClinicalContextEnrichmentDocumentURL,
+    ClinicalContextEnrichmentPriorReport,
+    ClinicalContextEnrichmentRequestedEvent,
+    ClinicalContextEnrichmentRequestedEventData,
+    ClinicalContextEnrichmentRequestedResponse,
+    ModalityWorklistItem,
+    ModalityWorklistRequestedEvent,
+    ModalityWorklistRequestedEventData,
+    ModalityWorklistRequestedResponse,
+    ModalityWorklistScheduledStep,
+    PatientStudyEnrichmentRequestedEvent,
+    PatientStudyEnrichmentRequestedEventData,
+    PatientStudyEnrichmentRequestedResponse,
     ReportDeliveredEvent,
     ReportDeliveredEventData,
     ReportDeliveredResponse,
