@@ -37,8 +37,12 @@ from .report_delivered_event_data import ReportDeliveredEventData as ReportDeliv
 from .study_report_metadata_param import StudyReportMetadataParam as StudyReportMetadataParam
 from .unsafe_unwrap_webhook_event import UnsafeUnwrapWebhookEvent as UnsafeUnwrapWebhookEvent
 from .study_access_requested_event import StudyAccessRequestedEvent as StudyAccessRequestedEvent
+from .ephemeral_access_requested_event import EphemeralAccessRequestedEvent as EphemeralAccessRequestedEvent
 from .modality_worklist_requested_event import ModalityWorklistRequestedEvent as ModalityWorklistRequestedEvent
 from .study_access_requested_event_data import StudyAccessRequestedEventData as StudyAccessRequestedEventData
+from .ephemeral_access_requested_event_data import (
+    EphemeralAccessRequestedEventData as EphemeralAccessRequestedEventData,
+)
 from .modality_worklist_requested_event_data import (
     ModalityWorklistRequestedEventData as ModalityWorklistRequestedEventData,
 )

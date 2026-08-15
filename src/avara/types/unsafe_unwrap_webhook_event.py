@@ -6,6 +6,7 @@ from typing_extensions import Annotated, TypeAlias
 from .._utils import PropertyInfo
 from .report_delivered_event import ReportDeliveredEvent
 from .study_access_requested_event import StudyAccessRequestedEvent
+from .ephemeral_access_requested_event import EphemeralAccessRequestedEvent
 from .modality_worklist_requested_event import ModalityWorklistRequestedEvent
 from .patient_study_enrichment_requested_event import PatientStudyEnrichmentRequestedEvent
 from .secondary_capture_access_requested_event import SecondaryCaptureAccessRequestedEvent
@@ -15,6 +16,7 @@ __all__ = ["UnsafeUnwrapWebhookEvent"]
 
 UnsafeUnwrapWebhookEvent: TypeAlias = Annotated[
     Union[
+        EphemeralAccessRequestedEvent,
         StudyAccessRequestedEvent,
         ReportDeliveredEvent,
         SecondaryCaptureAccessRequestedEvent,

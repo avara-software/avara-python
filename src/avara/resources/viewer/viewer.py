@@ -20,11 +20,23 @@ from .users.users import (
     UsersResourceWithStreamingResponse,
     AsyncUsersResourceWithStreamingResponse,
 )
+from .ephemeral_sessions import (
+    EphemeralSessionsResource,
+    AsyncEphemeralSessionsResource,
+    EphemeralSessionsResourceWithRawResponse,
+    AsyncEphemeralSessionsResourceWithRawResponse,
+    EphemeralSessionsResourceWithStreamingResponse,
+    AsyncEphemeralSessionsResourceWithStreamingResponse,
+)
 
 __all__ = ["ViewerResource", "AsyncViewerResource"]
 
 
 class ViewerResource(SyncAPIResource):
+    @cached_property
+    def ephemeral_sessions(self) -> EphemeralSessionsResource:
+        return EphemeralSessionsResource(self._client)
+
     @cached_property
     def studies(self) -> StudiesResource:
         return StudiesResource(self._client)
@@ -54,6 +66,10 @@ class ViewerResource(SyncAPIResource):
 
 
 class AsyncViewerResource(AsyncAPIResource):
+    @cached_property
+    def ephemeral_sessions(self) -> AsyncEphemeralSessionsResource:
+        return AsyncEphemeralSessionsResource(self._client)
+
     @cached_property
     def studies(self) -> AsyncStudiesResource:
         return AsyncStudiesResource(self._client)
@@ -87,6 +103,10 @@ class ViewerResourceWithRawResponse:
         self._viewer = viewer
 
     @cached_property
+    def ephemeral_sessions(self) -> EphemeralSessionsResourceWithRawResponse:
+        return EphemeralSessionsResourceWithRawResponse(self._viewer.ephemeral_sessions)
+
+    @cached_property
     def studies(self) -> StudiesResourceWithRawResponse:
         return StudiesResourceWithRawResponse(self._viewer.studies)
 
@@ -98,6 +118,10 @@ class ViewerResourceWithRawResponse:
 class AsyncViewerResourceWithRawResponse:
     def __init__(self, viewer: AsyncViewerResource) -> None:
         self._viewer = viewer
+
+    @cached_property
+    def ephemeral_sessions(self) -> AsyncEphemeralSessionsResourceWithRawResponse:
+        return AsyncEphemeralSessionsResourceWithRawResponse(self._viewer.ephemeral_sessions)
 
     @cached_property
     def studies(self) -> AsyncStudiesResourceWithRawResponse:
@@ -113,6 +137,10 @@ class ViewerResourceWithStreamingResponse:
         self._viewer = viewer
 
     @cached_property
+    def ephemeral_sessions(self) -> EphemeralSessionsResourceWithStreamingResponse:
+        return EphemeralSessionsResourceWithStreamingResponse(self._viewer.ephemeral_sessions)
+
+    @cached_property
     def studies(self) -> StudiesResourceWithStreamingResponse:
         return StudiesResourceWithStreamingResponse(self._viewer.studies)
 
@@ -124,6 +152,10 @@ class ViewerResourceWithStreamingResponse:
 class AsyncViewerResourceWithStreamingResponse:
     def __init__(self, viewer: AsyncViewerResource) -> None:
         self._viewer = viewer
+
+    @cached_property
+    def ephemeral_sessions(self) -> AsyncEphemeralSessionsResourceWithStreamingResponse:
+        return AsyncEphemeralSessionsResourceWithStreamingResponse(self._viewer.ephemeral_sessions)
 
     @cached_property
     def studies(self) -> AsyncStudiesResourceWithStreamingResponse:

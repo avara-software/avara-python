@@ -28,6 +28,14 @@ from .users.users import (
     UsersResourceWithStreamingResponse,
     AsyncUsersResourceWithStreamingResponse,
 )
+from .ephemeral_sessions import (
+    EphemeralSessionsResource,
+    AsyncEphemeralSessionsResource,
+    EphemeralSessionsResourceWithRawResponse,
+    AsyncEphemeralSessionsResourceWithRawResponse,
+    EphemeralSessionsResourceWithStreamingResponse,
+    AsyncEphemeralSessionsResourceWithStreamingResponse,
+)
 from .clinical_references import (
     ClinicalReferencesResource,
     AsyncClinicalReferencesResource,
@@ -44,6 +52,10 @@ class AutoScribeResource(SyncAPIResource):
     @cached_property
     def clinical_references(self) -> ClinicalReferencesResource:
         return ClinicalReferencesResource(self._client)
+
+    @cached_property
+    def ephemeral_sessions(self) -> EphemeralSessionsResource:
+        return EphemeralSessionsResource(self._client)
 
     @cached_property
     def studies(self) -> StudiesResource:
@@ -81,6 +93,10 @@ class AsyncAutoScribeResource(AsyncAPIResource):
     @cached_property
     def clinical_references(self) -> AsyncClinicalReferencesResource:
         return AsyncClinicalReferencesResource(self._client)
+
+    @cached_property
+    def ephemeral_sessions(self) -> AsyncEphemeralSessionsResource:
+        return AsyncEphemeralSessionsResource(self._client)
 
     @cached_property
     def studies(self) -> AsyncStudiesResource:
@@ -123,6 +139,10 @@ class AutoScribeResourceWithRawResponse:
         return ClinicalReferencesResourceWithRawResponse(self._auto_scribe.clinical_references)
 
     @cached_property
+    def ephemeral_sessions(self) -> EphemeralSessionsResourceWithRawResponse:
+        return EphemeralSessionsResourceWithRawResponse(self._auto_scribe.ephemeral_sessions)
+
+    @cached_property
     def studies(self) -> StudiesResourceWithRawResponse:
         return StudiesResourceWithRawResponse(self._auto_scribe.studies)
 
@@ -142,6 +162,10 @@ class AsyncAutoScribeResourceWithRawResponse:
     @cached_property
     def clinical_references(self) -> AsyncClinicalReferencesResourceWithRawResponse:
         return AsyncClinicalReferencesResourceWithRawResponse(self._auto_scribe.clinical_references)
+
+    @cached_property
+    def ephemeral_sessions(self) -> AsyncEphemeralSessionsResourceWithRawResponse:
+        return AsyncEphemeralSessionsResourceWithRawResponse(self._auto_scribe.ephemeral_sessions)
 
     @cached_property
     def studies(self) -> AsyncStudiesResourceWithRawResponse:
@@ -165,6 +189,10 @@ class AutoScribeResourceWithStreamingResponse:
         return ClinicalReferencesResourceWithStreamingResponse(self._auto_scribe.clinical_references)
 
     @cached_property
+    def ephemeral_sessions(self) -> EphemeralSessionsResourceWithStreamingResponse:
+        return EphemeralSessionsResourceWithStreamingResponse(self._auto_scribe.ephemeral_sessions)
+
+    @cached_property
     def studies(self) -> StudiesResourceWithStreamingResponse:
         return StudiesResourceWithStreamingResponse(self._auto_scribe.studies)
 
@@ -184,6 +212,10 @@ class AsyncAutoScribeResourceWithStreamingResponse:
     @cached_property
     def clinical_references(self) -> AsyncClinicalReferencesResourceWithStreamingResponse:
         return AsyncClinicalReferencesResourceWithStreamingResponse(self._auto_scribe.clinical_references)
+
+    @cached_property
+    def ephemeral_sessions(self) -> AsyncEphemeralSessionsResourceWithStreamingResponse:
+        return AsyncEphemeralSessionsResourceWithStreamingResponse(self._auto_scribe.ephemeral_sessions)
 
     @cached_property
     def studies(self) -> AsyncStudiesResourceWithStreamingResponse:

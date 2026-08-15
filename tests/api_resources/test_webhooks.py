@@ -31,7 +31,7 @@ class TestWebhooks:
 
         client = client.with_options(webhook_key=client_opt)
 
-        data = """{"id":"whe_1234567890abcdef1234567890abcdef","data":{"studyId":"stu_1234567890abcdef1234567890abcdef","studyInstanceUid":"1.2.840.113619.2.55.3.1234567890"},"type":"study.access_requested"}"""
+        data = """{"id":"whe_1234567890abcdef1234567890abcdef","data":{"retrievalId":"order-12345","options":{"studyInstanceUids":"bar"}},"type":"ephemeral.access_requested"}"""
         msg_id = "1"
         timestamp = datetime.now(tz=timezone.utc)
         sig = hook.sign(msg_id=msg_id, timestamp=timestamp, data=data)
@@ -76,7 +76,7 @@ class TestAsyncWebhooks:
 
         async_client = async_client.with_options(webhook_key=client_opt)
 
-        data = """{"id":"whe_1234567890abcdef1234567890abcdef","data":{"studyId":"stu_1234567890abcdef1234567890abcdef","studyInstanceUid":"1.2.840.113619.2.55.3.1234567890"},"type":"study.access_requested"}"""
+        data = """{"id":"whe_1234567890abcdef1234567890abcdef","data":{"retrievalId":"order-12345","options":{"studyInstanceUids":"bar"}},"type":"ephemeral.access_requested"}"""
         msg_id = "1"
         timestamp = datetime.now(tz=timezone.utc)
         sig = hook.sign(msg_id=msg_id, timestamp=timestamp, data=data)
