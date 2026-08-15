@@ -32,6 +32,14 @@ from .auto_scribe import (
     AutoScribeResourceWithStreamingResponse,
     AsyncAutoScribeResourceWithStreamingResponse,
 )
+from .ephemeral_sessions import (
+    EphemeralSessionsResource,
+    AsyncEphemeralSessionsResource,
+    EphemeralSessionsResourceWithRawResponse,
+    AsyncEphemeralSessionsResourceWithRawResponse,
+    EphemeralSessionsResourceWithStreamingResponse,
+    AsyncEphemeralSessionsResourceWithStreamingResponse,
+)
 from .clinical_references import (
     ClinicalReferencesResource,
     AsyncClinicalReferencesResource,
@@ -48,6 +56,12 @@ __all__ = [
     "AsyncClinicalReferencesResourceWithRawResponse",
     "ClinicalReferencesResourceWithStreamingResponse",
     "AsyncClinicalReferencesResourceWithStreamingResponse",
+    "EphemeralSessionsResource",
+    "AsyncEphemeralSessionsResource",
+    "EphemeralSessionsResourceWithRawResponse",
+    "AsyncEphemeralSessionsResourceWithRawResponse",
+    "EphemeralSessionsResourceWithStreamingResponse",
+    "AsyncEphemeralSessionsResourceWithStreamingResponse",
     "StudiesResource",
     "AsyncStudiesResource",
     "StudiesResourceWithRawResponse",

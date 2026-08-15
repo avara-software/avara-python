@@ -24,8 +24,22 @@ from .studies import (
     StudiesResourceWithStreamingResponse,
     AsyncStudiesResourceWithStreamingResponse,
 )
+from .ephemeral_sessions import (
+    EphemeralSessionsResource,
+    AsyncEphemeralSessionsResource,
+    EphemeralSessionsResourceWithRawResponse,
+    AsyncEphemeralSessionsResourceWithRawResponse,
+    EphemeralSessionsResourceWithStreamingResponse,
+    AsyncEphemeralSessionsResourceWithStreamingResponse,
+)
 
 __all__ = [
+    "EphemeralSessionsResource",
+    "AsyncEphemeralSessionsResource",
+    "EphemeralSessionsResourceWithRawResponse",
+    "AsyncEphemeralSessionsResourceWithRawResponse",
+    "EphemeralSessionsResourceWithStreamingResponse",
+    "AsyncEphemeralSessionsResourceWithStreamingResponse",
     "StudiesResource",
     "AsyncStudiesResource",
     "StudiesResourceWithRawResponse",

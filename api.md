@@ -48,6 +48,18 @@ Methods:
 - <code title="post /v1/autoScribe/clinicalReferences/{clinicalReferenceId}/delete">client.auto_scribe.clinical_references.<a href="./src/avara/resources/auto_scribe/clinical_references.py">delete</a>(clinical_reference_id) -> <a href="./src/avara/types/auto_scribe/clinical_reference.py">ClinicalReference</a></code>
 - <code title="get /v1/autoScribe/clinicalReferences/byExternalReferenceId/{externalReferenceId}">client.auto_scribe.clinical_references.<a href="./src/avara/resources/auto_scribe/clinical_references.py">retrieve_by_external_reference_id</a>(external_reference_id) -> <a href="./src/avara/types/auto_scribe/clinical_reference.py">ClinicalReference</a></code>
 
+## EphemeralSessions
+
+Types:
+
+```python
+from avara.types.auto_scribe import EphemeralSessionCreateResponse
+```
+
+Methods:
+
+- <code title="post /v1/autoScribe/ephemeral-sessions">client.auto_scribe.ephemeral_sessions.<a href="./src/avara/resources/auto_scribe/ephemeral_sessions.py">create</a>(\*\*<a href="src/avara/types/auto_scribe/ephemeral_session_create_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/ephemeral_session_create_response.py">EphemeralSessionCreateResponse</a></code>
+
 ## Studies
 
 Types:
@@ -156,6 +168,18 @@ Types:
 ```python
 from avara.types import StudyViewerStatus
 ```
+
+## EphemeralSessions
+
+Types:
+
+```python
+from avara.types.viewer import EphemeralSessionCreateResponse
+```
+
+Methods:
+
+- <code title="post /v1/viewer/ephemeral-sessions">client.viewer.ephemeral_sessions.<a href="./src/avara/resources/viewer/ephemeral_sessions.py">create</a>(\*\*<a href="src/avara/types/viewer/ephemeral_session_create_params.py">params</a>) -> <a href="./src/avara/types/viewer/ephemeral_session_create_response.py">EphemeralSessionCreateResponse</a></code>
 
 ## Studies
 
@@ -278,6 +302,9 @@ from avara.types import (
     ClinicalContextEnrichmentRequestedEvent,
     ClinicalContextEnrichmentRequestedEventData,
     ClinicalContextEnrichmentRequestedResponse,
+    EphemeralAccessRequestedEvent,
+    EphemeralAccessRequestedEventData,
+    EphemeralAccessRequestedResponse,
     ModalityWorklistItem,
     ModalityWorklistRequestedEvent,
     ModalityWorklistRequestedEventData,
