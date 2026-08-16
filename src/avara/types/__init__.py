@@ -17,6 +17,7 @@ from .shared import (
     EphemeralHangingProtocol as EphemeralHangingProtocol,
     ExpressCustomerReference as ExpressCustomerReference,
 )
+from .study_type import StudyType as StudyType
 from .height_unit import HeightUnit as HeightUnit
 from .weight_unit import WeightUnit as WeightUnit
 from .report_status import ReportStatus as ReportStatus

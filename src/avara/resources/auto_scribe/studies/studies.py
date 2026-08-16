@@ -6,19 +6,29 @@ from typing import Dict, List, Iterable, Optional
 
 import httpx
 
-from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ..._utils import path_template, maybe_transform, async_maybe_transform
-from ..._compat import cached_property
-from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import (
+from ....types import StudyType
+from ...._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
+from ...._utils import path_template, maybe_transform, async_maybe_transform
+from ...._compat import cached_property
+from ...._resource import SyncAPIResource, AsyncAPIResource
+from ...._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...pagination import SyncCursorStudies, AsyncCursorStudies
-from ..._base_client import AsyncPaginator, make_request_options
-from ...types.auto_scribe import (
+from ....pagination import SyncCursorStudies, AsyncCursorStudies
+from ...._base_client import AsyncPaginator, make_request_options
+from .external.external import (
+    ExternalResource,
+    AsyncExternalResource,
+    ExternalResourceWithRawResponse,
+    AsyncExternalResourceWithRawResponse,
+    ExternalResourceWithStreamingResponse,
+    AsyncExternalResourceWithStreamingResponse,
+)
+from ....types.study_type import StudyType
+from ....types.auto_scribe import (
     study_list_params,
     study_cancel_params,
     study_create_params,
@@ -27,24 +37,28 @@ from ...types.auto_scribe import (
     study_reroute_url_params,
     study_viewer_only_reroute_url_params,
 )
-from ...types.shared.severity import Severity
-from ...types.study_report_status import StudyReportStatus
-from ...types.study_report_metadata_param import StudyReportMetadataParam
-from ...types.auto_scribe.prior_report_param import PriorReportParam
-from ...types.auto_scribe.study_list_response import StudyListResponse
-from ...types.auto_scribe.study_cancel_response import StudyCancelResponse
-from ...types.auto_scribe.study_create_response import StudyCreateResponse
-from ...types.auto_scribe.study_update_response import StudyUpdateResponse
-from ...types.auto_scribe.study_retrieve_response import StudyRetrieveResponse
-from ...types.auto_scribe.study_uncancel_response import StudyUncancelResponse
-from ...types.auto_scribe.study_reroute_url_response import StudyRerouteURLResponse
-from ...types.auto_scribe.study_retrieve_by_uid_response import StudyRetrieveByUidResponse
-from ...types.auto_scribe.study_viewer_only_reroute_url_response import StudyViewerOnlyRerouteURLResponse
+from ....types.shared.severity import Severity
+from ....types.study_report_status import StudyReportStatus
+from ....types.study_report_metadata_param import StudyReportMetadataParam
+from ....types.auto_scribe.prior_report_param import PriorReportParam
+from ....types.auto_scribe.study_list_response import StudyListResponse
+from ....types.auto_scribe.study_cancel_response import StudyCancelResponse
+from ....types.auto_scribe.study_create_response import StudyCreateResponse
+from ....types.auto_scribe.study_update_response import StudyUpdateResponse
+from ....types.auto_scribe.study_retrieve_response import StudyRetrieveResponse
+from ....types.auto_scribe.study_uncancel_response import StudyUncancelResponse
+from ....types.auto_scribe.study_reroute_url_response import StudyRerouteURLResponse
+from ....types.auto_scribe.study_retrieve_by_uid_response import StudyRetrieveByUidResponse
+from ....types.auto_scribe.study_viewer_only_reroute_url_response import StudyViewerOnlyRerouteURLResponse
 
 __all__ = ["StudiesResource", "AsyncStudiesResource"]
 
 
 class StudiesResource(SyncAPIResource):
+    @cached_property
+    def external(self) -> ExternalResource:
+        return ExternalResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> StudiesResourceWithRawResponse:
         """
@@ -308,6 +322,7 @@ class StudiesResource(SyncAPIResource):
         severity: Severity | Omit = omit,
         study_description: str | Omit = omit,
         study_report_status: List[StudyReportStatus] | Omit = omit,
+        study_type: StudyType | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -341,6 +356,8 @@ class StudiesResource(SyncAPIResource):
 
           study_report_status: Filter by report status(es)
 
+          study_type: Filter by study kind. Omit to return both 'standard' and 'external' studies.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -367,6 +384,7 @@ class StudiesResource(SyncAPIResource):
                         "severity": severity,
                         "study_description": study_description,
                         "study_report_status": study_report_status,
+                        "study_type": study_type,
                     },
                     study_list_params.StudyListParams,
                 ),
@@ -606,6 +624,10 @@ class StudiesResource(SyncAPIResource):
 
 
 class AsyncStudiesResource(AsyncAPIResource):
+    @cached_property
+    def external(self) -> AsyncExternalResource:
+        return AsyncExternalResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> AsyncStudiesResourceWithRawResponse:
         """
@@ -869,6 +891,7 @@ class AsyncStudiesResource(AsyncAPIResource):
         severity: Severity | Omit = omit,
         study_description: str | Omit = omit,
         study_report_status: List[StudyReportStatus] | Omit = omit,
+        study_type: StudyType | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -902,6 +925,8 @@ class AsyncStudiesResource(AsyncAPIResource):
 
           study_report_status: Filter by report status(es)
 
+          study_type: Filter by study kind. Omit to return both 'standard' and 'external' studies.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -928,6 +953,7 @@ class AsyncStudiesResource(AsyncAPIResource):
                         "severity": severity,
                         "study_description": study_description,
                         "study_report_status": study_report_status,
+                        "study_type": study_type,
                     },
                     study_list_params.StudyListParams,
                 ),
@@ -1198,6 +1224,10 @@ class StudiesResourceWithRawResponse:
             studies.viewer_only_reroute_url,
         )
 
+    @cached_property
+    def external(self) -> ExternalResourceWithRawResponse:
+        return ExternalResourceWithRawResponse(self._studies.external)
+
 
 class AsyncStudiesResourceWithRawResponse:
     def __init__(self, studies: AsyncStudiesResource) -> None:
@@ -1230,6 +1260,10 @@ class AsyncStudiesResourceWithRawResponse:
         self.viewer_only_reroute_url = async_to_raw_response_wrapper(
             studies.viewer_only_reroute_url,
         )
+
+    @cached_property
+    def external(self) -> AsyncExternalResourceWithRawResponse:
+        return AsyncExternalResourceWithRawResponse(self._studies.external)
 
 
 class StudiesResourceWithStreamingResponse:
@@ -1264,6 +1298,10 @@ class StudiesResourceWithStreamingResponse:
             studies.viewer_only_reroute_url,
         )
 
+    @cached_property
+    def external(self) -> ExternalResourceWithStreamingResponse:
+        return ExternalResourceWithStreamingResponse(self._studies.external)
+
 
 class AsyncStudiesResourceWithStreamingResponse:
     def __init__(self, studies: AsyncStudiesResource) -> None:
@@ -1296,3 +1334,7 @@ class AsyncStudiesResourceWithStreamingResponse:
         self.viewer_only_reroute_url = async_to_streamed_response_wrapper(
             studies.viewer_only_reroute_url,
         )
+
+    @cached_property
+    def external(self) -> AsyncExternalResourceWithStreamingResponse:
+        return AsyncExternalResourceWithStreamingResponse(self._studies.external)

@@ -272,6 +272,7 @@ class TestStudies:
             severity="normal",
             study_description="CT Head",
             study_report_status=["completed"],
+            study_type="standard",
         )
         assert_matches_type(SyncCursorStudies[StudyListResponse], study, path=["response"])
 
@@ -745,6 +746,7 @@ class TestAsyncStudies:
             severity="normal",
             study_description="CT Head",
             study_report_status=["completed"],
+            study_type="standard",
         )
         assert_matches_type(AsyncCursorStudies[StudyListResponse], study, path=["response"])
 
