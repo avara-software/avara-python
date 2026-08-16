@@ -5,21 +5,21 @@ from datetime import datetime
 
 from pydantic import Field as FieldInfo
 
-from ..._models import BaseModel
-from ..study_type import StudyType
-from .prior_report import PriorReport
-from ..shared.severity import Severity
-from ..study_report_status import StudyReportStatus
-from .report_id_with_status import ReportIDWithStatus
-from ..shared.user_reference import UserReference
-from ..study_report_metadata import StudyReportMetadata
-from ..shared.api_key_reference import APIKeyReference
-from ..shared.express_customer_reference import ExpressCustomerReference
+from ...._models import BaseModel
+from ...study_type import StudyType
+from ..prior_report import PriorReport
+from ...shared.severity import Severity
+from ...study_report_status import StudyReportStatus
+from ..report_id_with_status import ReportIDWithStatus
+from ...shared.user_reference import UserReference
+from ...study_report_metadata import StudyReportMetadata
+from ...shared.api_key_reference import APIKeyReference
+from ...shared.express_customer_reference import ExpressCustomerReference
 
-__all__ = ["StudyRetrieveResponse"]
+__all__ = ["ExternalCreateResponse"]
 
 
-class StudyRetrieveResponse(BaseModel):
+class ExternalCreateResponse(BaseModel):
     """A study entity in the AutoScribe system with report workflow status"""
 
     cancelled_at: Optional[datetime] = FieldInfo(alias="cancelledAt", default=None)

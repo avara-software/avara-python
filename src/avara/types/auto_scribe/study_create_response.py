@@ -6,6 +6,7 @@ from datetime import datetime
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
+from ..study_type import StudyType
 from .prior_report import PriorReport
 from ..shared.severity import Severity
 from ..study_report_status import StudyReportStatus
@@ -83,6 +84,12 @@ class StudyCreateResponse(BaseModel):
     external_patient_id: Optional[str] = FieldInfo(alias="externalPatientId", default=None)
     """Integrator-provided stable patient identifier for linking studies"""
 
+    external_report_id: Optional[str] = FieldInfo(alias="externalReportId", default=None)
+    """External report identifier when this study has an attached archive report.
+
+    Format: ext\\__{32-hex-chars}
+    """
+
     is_critical: Optional[bool] = FieldInfo(alias="isCritical", default=None)
     """Whether the primary report was marked as critical at sign-off"""
 
@@ -100,6 +107,13 @@ class StudyCreateResponse(BaseModel):
 
     report_ids: Optional[List[ReportIDWithStatus]] = FieldInfo(alias="reportIds", default=None)
     """Array of report IDs associated with this study, including addendums"""
+
+    study_type: Optional[StudyType] = FieldInfo(alias="studyType", default=None)
+    """Kind of study.
+
+    'standard' is a live AutoScribe reading-workflow study. 'external' is an
+    imported archive study.
+    """
 
     technologist_notes: Optional[List[str]] = FieldInfo(alias="technologistNotes", default=None)
     """Technologist notes for the study"""

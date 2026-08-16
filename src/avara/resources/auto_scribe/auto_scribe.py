@@ -10,14 +10,6 @@ from .reports import (
     ReportsResourceWithStreamingResponse,
     AsyncReportsResourceWithStreamingResponse,
 )
-from .studies import (
-    StudiesResource,
-    AsyncStudiesResource,
-    StudiesResourceWithRawResponse,
-    AsyncStudiesResourceWithRawResponse,
-    StudiesResourceWithStreamingResponse,
-    AsyncStudiesResourceWithStreamingResponse,
-)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from .users.users import (
@@ -27,6 +19,14 @@ from .users.users import (
     AsyncUsersResourceWithRawResponse,
     UsersResourceWithStreamingResponse,
     AsyncUsersResourceWithStreamingResponse,
+)
+from .studies.studies import (
+    StudiesResource,
+    AsyncStudiesResource,
+    StudiesResourceWithRawResponse,
+    AsyncStudiesResourceWithRawResponse,
+    StudiesResourceWithStreamingResponse,
+    AsyncStudiesResourceWithStreamingResponse,
 )
 from .ephemeral_sessions import (
     EphemeralSessionsResource,

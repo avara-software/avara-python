@@ -6,6 +6,7 @@ from typing import List, Optional
 from typing_extensions import Annotated, TypedDict
 
 from ..._utils import PropertyInfo
+from ..study_type import StudyType
 from ..shared.severity import Severity
 from ..study_report_status import StudyReportStatus
 
@@ -42,3 +43,6 @@ class StudyListParams(TypedDict, total=False):
 
     study_report_status: Annotated[List[StudyReportStatus], PropertyInfo(alias="studyReportStatus")]
     """Filter by report status(es)"""
+
+    study_type: Annotated[StudyType, PropertyInfo(alias="studyType")]
+    """Filter by study kind. Omit to return both 'standard' and 'external' studies."""

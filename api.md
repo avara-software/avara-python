@@ -29,6 +29,7 @@ from avara.types import (
     Sex,
     StudyReportMetadata,
     StudyReportStatus,
+    StudyType,
     WeightUnit,
 )
 ```
@@ -84,15 +85,46 @@ from avara.types.auto_scribe import (
 
 Methods:
 
-- <code title="post /v1/autoScribe/studies">client.auto_scribe.studies.<a href="./src/avara/resources/auto_scribe/studies.py">create</a>(\*\*<a href="src/avara/types/auto_scribe/study_create_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/study_create_response.py">StudyCreateResponse</a></code>
-- <code title="get /v1/autoScribe/studies/{studyId}">client.auto_scribe.studies.<a href="./src/avara/resources/auto_scribe/studies.py">retrieve</a>(study_id) -> <a href="./src/avara/types/auto_scribe/study_retrieve_response.py">StudyRetrieveResponse</a></code>
-- <code title="patch /v1/autoScribe/studies/{studyId}">client.auto_scribe.studies.<a href="./src/avara/resources/auto_scribe/studies.py">update</a>(study_id, \*\*<a href="src/avara/types/auto_scribe/study_update_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/study_update_response.py">StudyUpdateResponse</a></code>
-- <code title="get /v1/autoScribe/studies">client.auto_scribe.studies.<a href="./src/avara/resources/auto_scribe/studies.py">list</a>(\*\*<a href="src/avara/types/auto_scribe/study_list_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/study_list_response.py">SyncCursorStudies[StudyListResponse]</a></code>
-- <code title="post /v1/autoScribe/studies/cancel">client.auto_scribe.studies.<a href="./src/avara/resources/auto_scribe/studies.py">cancel</a>(\*\*<a href="src/avara/types/auto_scribe/study_cancel_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/study_cancel_response.py">StudyCancelResponse</a></code>
-- <code title="post /v1/autoScribe/studies/reroute-url">client.auto_scribe.studies.<a href="./src/avara/resources/auto_scribe/studies.py">reroute_url</a>(\*\*<a href="src/avara/types/auto_scribe/study_reroute_url_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/study_reroute_url_response.py">StudyRerouteURLResponse</a></code>
-- <code title="get /v1/autoScribe/studies/by-uid/{studyInstanceUid}">client.auto_scribe.studies.<a href="./src/avara/resources/auto_scribe/studies.py">retrieve_by_uid</a>(study_instance_uid) -> <a href="./src/avara/types/auto_scribe/study_retrieve_by_uid_response.py">StudyRetrieveByUidResponse</a></code>
-- <code title="post /v1/autoScribe/studies/uncancel">client.auto_scribe.studies.<a href="./src/avara/resources/auto_scribe/studies.py">uncancel</a>(\*\*<a href="src/avara/types/auto_scribe/study_uncancel_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/study_uncancel_response.py">StudyUncancelResponse</a></code>
-- <code title="post /v1/autoScribe/studies/viewer-only-reroute-url">client.auto_scribe.studies.<a href="./src/avara/resources/auto_scribe/studies.py">viewer_only_reroute_url</a>(\*\*<a href="src/avara/types/auto_scribe/study_viewer_only_reroute_url_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/study_viewer_only_reroute_url_response.py">StudyViewerOnlyRerouteURLResponse</a></code>
+- <code title="post /v1/autoScribe/studies">client.auto_scribe.studies.<a href="./src/avara/resources/auto_scribe/studies/studies.py">create</a>(\*\*<a href="src/avara/types/auto_scribe/study_create_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/study_create_response.py">StudyCreateResponse</a></code>
+- <code title="get /v1/autoScribe/studies/{studyId}">client.auto_scribe.studies.<a href="./src/avara/resources/auto_scribe/studies/studies.py">retrieve</a>(study_id) -> <a href="./src/avara/types/auto_scribe/study_retrieve_response.py">StudyRetrieveResponse</a></code>
+- <code title="patch /v1/autoScribe/studies/{studyId}">client.auto_scribe.studies.<a href="./src/avara/resources/auto_scribe/studies/studies.py">update</a>(study_id, \*\*<a href="src/avara/types/auto_scribe/study_update_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/study_update_response.py">StudyUpdateResponse</a></code>
+- <code title="get /v1/autoScribe/studies">client.auto_scribe.studies.<a href="./src/avara/resources/auto_scribe/studies/studies.py">list</a>(\*\*<a href="src/avara/types/auto_scribe/study_list_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/study_list_response.py">SyncCursorStudies[StudyListResponse]</a></code>
+- <code title="post /v1/autoScribe/studies/cancel">client.auto_scribe.studies.<a href="./src/avara/resources/auto_scribe/studies/studies.py">cancel</a>(\*\*<a href="src/avara/types/auto_scribe/study_cancel_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/study_cancel_response.py">StudyCancelResponse</a></code>
+- <code title="post /v1/autoScribe/studies/reroute-url">client.auto_scribe.studies.<a href="./src/avara/resources/auto_scribe/studies/studies.py">reroute_url</a>(\*\*<a href="src/avara/types/auto_scribe/study_reroute_url_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/study_reroute_url_response.py">StudyRerouteURLResponse</a></code>
+- <code title="get /v1/autoScribe/studies/by-uid/{studyInstanceUid}">client.auto_scribe.studies.<a href="./src/avara/resources/auto_scribe/studies/studies.py">retrieve_by_uid</a>(study_instance_uid) -> <a href="./src/avara/types/auto_scribe/study_retrieve_by_uid_response.py">StudyRetrieveByUidResponse</a></code>
+- <code title="post /v1/autoScribe/studies/uncancel">client.auto_scribe.studies.<a href="./src/avara/resources/auto_scribe/studies/studies.py">uncancel</a>(\*\*<a href="src/avara/types/auto_scribe/study_uncancel_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/study_uncancel_response.py">StudyUncancelResponse</a></code>
+- <code title="post /v1/autoScribe/studies/viewer-only-reroute-url">client.auto_scribe.studies.<a href="./src/avara/resources/auto_scribe/studies/studies.py">viewer_only_reroute_url</a>(\*\*<a href="src/avara/types/auto_scribe/study_viewer_only_reroute_url_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/study_viewer_only_reroute_url_response.py">StudyViewerOnlyRerouteURLResponse</a></code>
+
+### External
+
+Types:
+
+```python
+from avara.types.auto_scribe.studies import ExternalCreateResponse, ExternalDeleteResponse
+```
+
+Methods:
+
+- <code title="post /v1/autoScribe/studies/external">client.auto_scribe.studies.external.<a href="./src/avara/resources/auto_scribe/studies/external/external.py">create</a>(\*\*<a href="src/avara/types/auto_scribe/studies/external_create_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/studies/external_create_response.py">ExternalCreateResponse</a></code>
+- <code title="post /v1/autoScribe/studies/external/delete">client.auto_scribe.studies.external.<a href="./src/avara/resources/auto_scribe/studies/external/external.py">delete</a>(\*\*<a href="src/avara/types/auto_scribe/studies/external_delete_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/studies/external_delete_response.py">ExternalDeleteResponse</a></code>
+
+#### Reports
+
+Types:
+
+```python
+from avara.types.auto_scribe.studies.external import (
+    ReportCreateResponse,
+    ReportRetrieveResponse,
+    ReportListResponse,
+)
+```
+
+Methods:
+
+- <code title="post /v1/autoScribe/studies/external/reports">client.auto_scribe.studies.external.reports.<a href="./src/avara/resources/auto_scribe/studies/external/reports.py">create</a>(\*\*<a href="src/avara/types/auto_scribe/studies/external/report_create_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/studies/external/report_create_response.py">ReportCreateResponse</a></code>
+- <code title="get /v1/autoScribe/studies/external/reports/{externalReportId}">client.auto_scribe.studies.external.reports.<a href="./src/avara/resources/auto_scribe/studies/external/reports.py">retrieve</a>(external_report_id) -> <a href="./src/avara/types/auto_scribe/studies/external/report_retrieve_response.py">ReportRetrieveResponse</a></code>
+- <code title="get /v1/autoScribe/studies/external/reports">client.auto_scribe.studies.external.reports.<a href="./src/avara/resources/auto_scribe/studies/external/reports.py">list</a>(\*\*<a href="src/avara/types/auto_scribe/studies/external/report_list_params.py">params</a>) -> <a href="./src/avara/types/auto_scribe/studies/external/report_list_response.py">SyncCursorExternalReports[ReportListResponse]</a></code>
 
 ## Users
 
