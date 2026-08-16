@@ -30,6 +30,10 @@ class TestEphemeralSessions:
     def test_method_create_with_all_params(self, client: Avara) -> None:
         ephemeral_session = client.viewer.ephemeral_sessions.create(
             retrieval_id="order-12345",
+            hanging_protocol={
+                "layout": "2x2",
+                "viewport_assignments": ["Axial T1", "Axial T2", None, "Sagittal T2"],
+            },
             options={"studyInstanceUids": "bar"},
         )
         assert_matches_type(EphemeralSessionCreateResponse, ephemeral_session, path=["response"])
@@ -79,6 +83,10 @@ class TestAsyncEphemeralSessions:
     async def test_method_create_with_all_params(self, async_client: AsyncAvara) -> None:
         ephemeral_session = await async_client.viewer.ephemeral_sessions.create(
             retrieval_id="order-12345",
+            hanging_protocol={
+                "layout": "2x2",
+                "viewport_assignments": ["Axial T1", "Axial T2", None, "Sagittal T2"],
+            },
             options={"studyInstanceUids": "bar"},
         )
         assert_matches_type(EphemeralSessionCreateResponse, ephemeral_session, path=["response"])

@@ -18,6 +18,7 @@ from ..._response import (
 )
 from ..._base_client import make_request_options
 from ...types.viewer import ephemeral_session_create_params
+from ...types.shared_params.ephemeral_hanging_protocol import EphemeralHangingProtocol
 from ...types.viewer.ephemeral_session_create_response import EphemeralSessionCreateResponse
 
 __all__ = ["EphemeralSessionsResource", "AsyncEphemeralSessionsResource"]
@@ -47,6 +48,7 @@ class EphemeralSessionsResource(SyncAPIResource):
         self,
         *,
         retrieval_id: str,
+        hanging_protocol: EphemeralHangingProtocol | Omit = omit,
         options: Dict[str, object] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -60,11 +62,15 @@ class EphemeralSessionsResource(SyncAPIResource):
 
         The token names a customer retrievalId (not an Avara study). Optional
         options are echoed verbatim on ephemeral.access_requested (max 3072 bytes JSON).
+        Optional hangingProtocol applies a single-monitor layout when the viewer loads.
         Requires a customer study webhook on the API key.
 
         Args:
           retrieval_id: Opaque customer handle for this view session. Avara stores and echoes it; it is
               not an Avara study ID.
+
+          hanging_protocol: Optional single-monitor hanging protocol applied when the ephemeral viewer
+              loads. Omitted = no protocol. Invalid shape is rejected.
 
           options: Optional JSON object echoed verbatim on ephemeral.access_requested. Avara does
               not read or edit it. Hard cap 3072 bytes on JSON.stringify. Examples:
@@ -84,6 +90,7 @@ class EphemeralSessionsResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "retrieval_id": retrieval_id,
+                    "hanging_protocol": hanging_protocol,
                     "options": options,
                 },
                 ephemeral_session_create_params.EphemeralSessionCreateParams,
@@ -119,6 +126,7 @@ class AsyncEphemeralSessionsResource(AsyncAPIResource):
         self,
         *,
         retrieval_id: str,
+        hanging_protocol: EphemeralHangingProtocol | Omit = omit,
         options: Dict[str, object] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -132,11 +140,15 @@ class AsyncEphemeralSessionsResource(AsyncAPIResource):
 
         The token names a customer retrievalId (not an Avara study). Optional
         options are echoed verbatim on ephemeral.access_requested (max 3072 bytes JSON).
+        Optional hangingProtocol applies a single-monitor layout when the viewer loads.
         Requires a customer study webhook on the API key.
 
         Args:
           retrieval_id: Opaque customer handle for this view session. Avara stores and echoes it; it is
               not an Avara study ID.
+
+          hanging_protocol: Optional single-monitor hanging protocol applied when the ephemeral viewer
+              loads. Omitted = no protocol. Invalid shape is rejected.
 
           options: Optional JSON object echoed verbatim on ephemeral.access_requested. Avara does
               not read or edit it. Hard cap 3072 bytes on JSON.stringify. Examples:
@@ -156,6 +168,7 @@ class AsyncEphemeralSessionsResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "retrieval_id": retrieval_id,
+                    "hanging_protocol": hanging_protocol,
                     "options": options,
                 },
                 ephemeral_session_create_params.EphemeralSessionCreateParams,

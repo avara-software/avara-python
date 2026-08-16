@@ -6,6 +6,7 @@ from typing import Dict
 from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
+from ..shared_params.ephemeral_hanging_protocol import EphemeralHangingProtocol
 
 __all__ = ["EphemeralSessionCreateParams"]
 
@@ -15,6 +16,13 @@ class EphemeralSessionCreateParams(TypedDict, total=False):
     """Opaque customer handle for this view session.
 
     Avara stores and echoes it; it is not an Avara study ID.
+    """
+
+    hanging_protocol: Annotated[EphemeralHangingProtocol, PropertyInfo(alias="hangingProtocol")]
+    """Optional single-monitor hanging protocol applied when the ephemeral viewer
+    loads.
+
+    Omitted = no protocol. Invalid shape is rejected.
     """
 
     options: Dict[str, object]
