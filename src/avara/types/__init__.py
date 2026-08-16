@@ -7,12 +7,14 @@ from .shared import (
     Severity as Severity,
     UserLevel as UserLevel,
     ClinicRole as ClinicRole,
+    ViewerLayout as ViewerLayout,
     InvitedSource as InvitedSource,
     UserReference as UserReference,
     APIKeyReference as APIKeyReference,
     InvitationStatus as InvitationStatus,
     AssignableUserLevel as AssignableUserLevel,
     InvitationExpiredFilter as InvitationExpiredFilter,
+    EphemeralHangingProtocol as EphemeralHangingProtocol,
     ExpressCustomerReference as ExpressCustomerReference,
 )
 from .height_unit import HeightUnit as HeightUnit

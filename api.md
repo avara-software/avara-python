@@ -5,6 +5,7 @@ from avara.types import (
     APIKeyReference,
     AssignableUserLevel,
     ClinicRole,
+    EphemeralHangingProtocol,
     ExpressCustomerReference,
     InvitationExpiredFilter,
     InvitationStatus,
@@ -12,6 +13,7 @@ from avara.types import (
     Severity,
     UserLevel,
     UserReference,
+    ViewerLayout,
 )
 ```
 
