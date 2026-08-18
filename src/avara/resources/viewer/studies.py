@@ -48,7 +48,7 @@ class StudiesResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/avara-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/avara-software/avara-python#accessing-raw-response-data-eg-headers
         """
         return StudiesResourceWithRawResponse(self)
 
@@ -57,7 +57,7 @@ class StudiesResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/avara-python#with_streaming_response
+        For more information, see https://www.github.com/avara-software/avara-python#with_streaming_response
         """
         return StudiesResourceWithStreamingResponse(self)
 
@@ -484,7 +484,7 @@ class AsyncStudiesResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/stainless-sdks/avara-python#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/avara-software/avara-python#accessing-raw-response-data-eg-headers
         """
         return AsyncStudiesResourceWithRawResponse(self)
 
@@ -493,7 +493,7 @@ class AsyncStudiesResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/stainless-sdks/avara-python#with_streaming_response
+        For more information, see https://www.github.com/avara-software/avara-python#with_streaming_response
         """
         return AsyncStudiesResourceWithStreamingResponse(self)
 
