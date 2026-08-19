@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/avara-software/avara-python/compare/v0.2.0...v0.2.1) (2026-08-19)
+
+
+### Bug Fixes
+
+* automating end to end typescript and python oidc publishing ([1a4d9cd](https://github.com/avara-software/avara-python/commit/1a4d9cddbf7f4e53f20a09b35a80c894b3b51a0e))
+
 ## [0.2.0](https://github.com/avara-software/avara-python/compare/v0.1.0...v0.2.0) (2026-08-19)
 
 
