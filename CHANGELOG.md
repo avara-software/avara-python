@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.0](https://github.com/avara-software/avara-python/compare/v0.1.0...v0.2.0) (2026-08-19)
+
+
+### Features
+
+* enable oidc publish scaffolds ([4bb9079](https://github.com/avara-software/avara-python/commit/4bb9079395a8080af231ea21fd0248f038d7b4d2))
+* enable release-please for npm and pypi ([3126196](https://github.com/avara-software/avara-python/commit/3126196c231a0f059e1abc13ceb3b1b2346d13a3))
+
 ## 0.1.0 (2026-08-18)
 
 Full Changelog: [v0.0.1...v0.1.0](https://github.com/avara-software/avara-python/compare/v0.0.1...v0.1.0)
