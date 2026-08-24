@@ -24,5 +24,11 @@ class ReportDeliveredEventData(BaseModel):
     study_id: str = FieldInfo(alias="studyId")
     """Avara study ID. Format: stu\\__{32-hex-chars}"""
 
+    study_instance_uid: str = FieldInfo(alias="studyInstanceUid")
+    """DICOM Study Instance UID"""
+
+    external_patient_id: Optional[str] = FieldInfo(alias="externalPatientId", default=None)
+    """External patient identifier when available"""
+
     plain_text: Optional[str] = FieldInfo(alias="plainText", default=None)
     """Report plain text content (optional). Contains the full report text."""
