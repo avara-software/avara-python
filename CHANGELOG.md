@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/avara-software/avara-python/compare/v0.2.1...v0.3.0) (2026-08-24)
+
+
+### Features
+
+* extending the SDK and the API to support study uid and external patient id on webhook report delivery ([22f88b4](https://github.com/avara-software/avara-python/commit/22f88b48017954eab5781ca22933a097f878997a))
+
 ## [0.2.1](https://github.com/avara-software/avara-python/compare/v0.2.0...v0.2.1) (2026-08-19)
 
 
